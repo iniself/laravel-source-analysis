@@ -6,69 +6,69 @@
  ---
   &emsp;&emsp;我们先回顾一下自动加载引导类：
 	
-	 ```php
-     public static function getLoader()
-     {
-        /***************************经典单例模式********************/
-        if (null !== self::$loader) {
-            return self::$loader;
-        }
-        
-        /***********************获得自动加载核心类对象********************/
-        spl_autoload_register(array('ComposerAutoloaderInit
-        832ea71bfb9a4128da8660baedaac82e', 'loadClassLoader'), true, true);
-        
-        self::$loader = $loader = new \Composer\Autoload\ClassLoader();
-        
-        spl_autoload_unregister(array('ComposerAutoloaderInit
-        832ea71bfb9a4128da8660baedaac82e', 'loadClassLoader'));
+```php
+public static function getLoader()
+{
+/***************************经典单例模式********************/
+if (null !== self::$loader) {
+    return self::$loader;
+}
 
-        /***********************初始化自动加载核心类对象********************/
-        $useStaticLoader = PHP_VERSION_ID >= 50600 && 
-        !defined('HHVM_VERSION');
-        
-        if ($useStaticLoader) {
-            require_once __DIR__ . '/autoload_static.php';
+/***********************获得自动加载核心类对象********************/
+spl_autoload_register(array('ComposerAutoloaderInit
+832ea71bfb9a4128da8660baedaac82e', 'loadClassLoader'), true, true);
 
-            call_user_func(\Composer\Autoload\ComposerStaticInit
-            832ea71bfb9a4128da8660baedaac82e::getInitializer($loader));
-      
-        } else {
-            $map = require __DIR__ . '/autoload_namespaces.php';
-            foreach ($map as $namespace => $path) {
-                $loader->set($namespace, $path);
-            }
+self::$loader = $loader = new \Composer\Autoload\ClassLoader();
 
-            $map = require __DIR__ . '/autoload_psr4.php';
-            foreach ($map as $namespace => $path) {
-                $loader->setPsr4($namespace, $path);
-            }
+spl_autoload_unregister(array('ComposerAutoloaderInit
+832ea71bfb9a4128da8660baedaac82e', 'loadClassLoader'));
 
-            $classMap = require __DIR__ . '/autoload_classmap.php';
-            if ($classMap) {
-                $loader->addClassMap($classMap);
-            }
-        }
+/***********************初始化自动加载核心类对象********************/
+$useStaticLoader = PHP_VERSION_ID >= 50600 && 
+!defined('HHVM_VERSION');
 
-        /***********************注册自动加载核心类对象********************/
-        $loader->register(true);
+if ($useStaticLoader) {
+    require_once __DIR__ . '/autoload_static.php';
 
-        /***********************自动加载全局函数********************/
-        if ($useStaticLoader) {
-            $includeFiles = Composer\Autoload\ComposerStaticInit
-            832ea71bfb9a4128da8660baedaac82e::$files;
-        } else {
-            $includeFiles = require __DIR__ . '/autoload_files.php';
-        }
-        
-        foreach ($includeFiles as $fileIdentifier => $file) {
-            composerRequire
-            832ea71bfb9a4128da8660baedaac82e($fileIdentifier, $file);
-        }
+    call_user_func(\Composer\Autoload\ComposerStaticInit
+    832ea71bfb9a4128da8660baedaac82e::getInitializer($loader));
 
-        return $loader;
-    } 
-      ```
+} else {
+    $map = require __DIR__ . '/autoload_namespaces.php';
+    foreach ($map as $namespace => $path) {
+        $loader->set($namespace, $path);
+    }
+
+    $map = require __DIR__ . '/autoload_psr4.php';
+    foreach ($map as $namespace => $path) {
+        $loader->setPsr4($namespace, $path);
+    }
+
+    $classMap = require __DIR__ . '/autoload_classmap.php';
+    if ($classMap) {
+        $loader->addClassMap($classMap);
+    }
+}
+
+/***********************注册自动加载核心类对象********************/
+$loader->register(true);
+
+/***********************自动加载全局函数********************/
+if ($useStaticLoader) {
+    $includeFiles = Composer\Autoload\ComposerStaticInit
+    832ea71bfb9a4128da8660baedaac82e::$files;
+} else {
+    $includeFiles = require __DIR__ . '/autoload_files.php';
+}
+
+foreach ($includeFiles as $fileIdentifier => $file) {
+    composerRequire
+    832ea71bfb9a4128da8660baedaac82e($fileIdentifier, $file);
+}
+
+return $loader;
+} 
+```
 现在我们开始引导类的第四部分：注册自动加载核心类对象。我们来看看核心类的register()函数：
 	
 	```php
