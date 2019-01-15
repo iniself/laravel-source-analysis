@@ -86,10 +86,11 @@
 
 # laravel框架下Composer的自动加载源码分析——autoload_real引导类
 ---
-在 vendor 目录下的 `autoload.php` 文件中我们可以看出，程序主要调用了引导类的静态方法 `getLoader()` ，我们接着看看这个函数。
+在 vendor 目录下的 `autoload.php` 文件中我们可以看出，程序主要调用了 `autoload_real.php` 引导类的静态方法 `getLoader()` ，我们接着看看这个函数。
 
 ```php
 <?php
+	/***********************autoload_real.php************************/
 	public static function getLoader()
 	{
 	  /***************************经典单例模式********************/
