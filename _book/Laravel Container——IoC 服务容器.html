@@ -1,0 +1,1776 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Laravel Container——IoC 服务容器 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    PHP Composer 自动加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="PHP Composer——自动加载原理.html">
+            
+                <a href="PHP Composer——自动加载原理.html">
+            
+                    
+                    PHP Composer——自动加载原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="PHP Composer—— 初始化源码分析.html">
+            
+                <a href="PHP Composer—— 初始化源码分析.html">
+            
+                    
+                    PHP Composer—— 初始化源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="PHP Composer-——-注册与运行源码分析.html">
+            
+                <a href="PHP Composer-——-注册与运行源码分析.html">
+            
+                    
+                    PHP Composer-——-注册与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Laravel Facade 门面
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="Laravel Facade——Facade 门面源码分析.html">
+            
+                <a href="Laravel Facade——Facade 门面源码分析.html">
+            
+                    
+                    Laravel Facade——Facade 门面源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Laravel Ioc 容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.4.1" data-path="Laravel Container——IoC 服务容器.html">
+            
+                <a href="Laravel Container——IoC 服务容器.html">
+            
+                    
+                    Laravel Container——IoC 服务容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器绑定)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器解析)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="Laravel Container——服务容器的细节特性.html">
+            
+                <a href="Laravel Container——服务容器的细节特性.html">
+            
+                    
+                    Laravel Container——服务容器的细节特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Laravel Route 路由
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Laravel HTTP——路由.html">
+            
+                <a href="Laravel HTTP——路由.html">
+            
+                    
+                    Laravel HTTP——路由
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="Laravel HTTP——路由加载源码分析.html">
+            
+                <a href="Laravel HTTP——路由加载源码分析.html">
+            
+                    
+                    Laravel HTTP——路由加载源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                <a href="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                    
+                    Laravel HTTP——Pipeline中间件处理源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="Laravel HTTP——路由的正则编译.html">
+            
+                <a href="Laravel HTTP——路由的正则编译.html">
+            
+                    
+                    Laravel HTTP——路由的正则编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                <a href="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                    
+                    Laravel HTTP——路由的匹配与参数绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="Laravel HTTP——路由中间件源码分析.html">
+            
+                <a href="Laravel HTTP——路由中间件源码分析.html">
+            
+                    
+                    Laravel HTTP——路由中间件源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                <a href="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                    
+                    Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                <a href="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                    
+                    Laravel HTTP——控制器方法的参数构建与运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                <a href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP—— RESTFul 风格路由的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                <a href="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP——重定向的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Laravel ENV 环境变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                <a href="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                    
+                    Laravel ENV—— 环境变量的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Laravel Config 配置文件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                <a href="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                    
+                    Laravel Config—— 配置文件的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Laravel Exceptions 异常处理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="Laravel Exceptions——异常与错误处理.html">
+            
+                <a href="Laravel Exceptions——异常与错误处理.html">
+            
+                    
+                    Laravel Exceptions——异常与错误处理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Laravel Providers 服务提供者
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                <a href="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                    
+                    Laravel Providers——服务提供者的注册与启动源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Laravel Database 数据库
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="Laravel Database——数据库服务的启动与连接.html">
+            
+                <a href="Laravel Database——数据库服务的启动与连接.html">
+            
+                    
+                    Laravel Database——数据库服务的启动与连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="Laravel Database——数据库的 CRUD 操作.html">
+            
+                <a href="Laravel Database——数据库的 CRUD 操作.html">
+            
+                    
+                    Laravel Database——数据库的 CRUD 操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="Laravel Database——查询构造器与语法编译器源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="Laravel Database——查询构造器与语法编译器源码分析%28中%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(中)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="Laravel Database——查询构造器与语法编译器源码分析%28下%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="Laravel Database——分页原理与源码分析.html">
+            
+                <a href="Laravel Database——分页原理与源码分析.html">
+            
+                    
+                    Laravel Database——分页原理与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Laravel Database——Eloquent Model 源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                <a href="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                <a href="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                    
+                    Laravel Database——Eloquent Model 关联源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                <a href="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                    
+                    Laravel Database——Eloquent Model 模型关系加载与查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                <a href="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                    
+                    Laravel Database——Eloquent Model 更新关联模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Laravel Session
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="Laravel Session——session 的启动与运行源码分析.html">
+            
+                <a href="Laravel Session——session 的启动与运行源码分析.html">
+            
+                    
+                    Laravel Session——session 的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    Laravel Event 事件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                <a href="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                    
+                    Laravel Event——事件系统的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    Laravel Queue 队列
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务与分发源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务处理器源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    Laravel 广播系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="Laravel Broadcast——广播系统源码剖析.html">
+            
+                <a href="Laravel Broadcast——广播系统源码剖析.html">
+            
+                    
+                    Laravel Broadcast——广播系统源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    Laravel Passport
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Laravel Container——IoC 服务容器</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x670D;&#x52A1;&#x5BB9;&#x5668;">&#x670D;&#x52A1;&#x5BB9;&#x5668;</h1>
+<hr>
+<p>&#x5728;&#x8BF4; Ioc &#x5BB9;&#x5668;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E86;&#x89E3;&#x4EC0;&#x4E48;&#x662F; Ioc &#x5BB9;&#x5668;&#x3002;</p>
+<blockquote>
+<p>Laravel &#x670D;&#x52A1;&#x5BB9;&#x5668;&#x662F;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x7BA1;&#x7406;&#x7C7B;&#x4F9D;&#x8D56;&#x548C;&#x6267;&#x884C;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x7684;&#x5F3A;&#x5927;&#x5DE5;&#x5177;&#x3002;</p>
+</blockquote>
+<p>&#x5728;&#x7406;&#x89E3;&#x8FD9;&#x53E5;&#x8BDD;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5148;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x7684;&#x6765;&#x9F99;&#x53BB;&#x8109;&#xFF1A; <a href="https://www.insp.top/learn-laravel-container" target="_blank">laravel&#x795E;&#x5947;&#x7684;&#x670D;&#x52A1;&#x5BB9;&#x5668;</a>&#x3002;&#x8FD9;&#x7BC7;&#x535A;&#x5BA2;&#x544A;&#x8BC9;&#x6211;&#x4EEC;&#xFF0C;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x5C31;&#x662F;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x7684;&#x5347;&#x7EA7;&#x7248;&#xFF0C;&#x5BF9;&#x4E8E;&#x4F20;&#x7EDF;&#x7684;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x6765;&#x8BF4;&#xFF0C;&#x867D;&#x7136;&#x89E3;&#x8026;&#x4E86;&#x5BF9;&#x8C61;&#x548C;&#x5916;&#x90E8;&#x8D44;&#x6E90;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x4F46;&#x662F;&#x5DE5;&#x5382;&#x548C;&#x5916;&#x90E8;&#x8D44;&#x6E90;&#x4E4B;&#x95F4;&#x5374;&#x5B58;&#x5728;&#x4E86;&#x8026;&#x548C;&#x3002;&#x800C;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x5728;&#x4E3A;&#x5BF9;&#x8C61;&#x521B;&#x5EFA;&#x4E86;&#x5916;&#x90E8;&#x8D44;&#x6E90;&#x7684;&#x540C;&#x65F6;&#xFF0C;&#x53C8;&#x4E0E;&#x5916;&#x90E8;&#x8D44;&#x6E90;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5173;&#x7CFB;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C31;&#x662F; Ioc &#x5BB9;&#x5668;&#x3002;
+&#x2003;
+&#x6240;&#x8C13;&#x7684;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x548C;&#x63A7;&#x5236;&#x53CD;&#x8F6C;:  <a href="http://blog.csdn.net/doris_crazy/article/details/18353197" target="_blank">&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x548C;&#x63A7;&#x5236;&#x53CD;&#x8F6C;</a>&#xFF0C;&#x5C31;&#x662F;</p>
+<blockquote>
+<p>&#x53EA;&#x8981;&#x4E0D;&#x662F;&#x7531;&#x5185;&#x90E8;&#x751F;&#x4EA7;&#xFF08;&#x6BD4;&#x5982;&#x521D;&#x59CB;&#x5316;&#x3001;&#x6784;&#x9020;&#x51FD;&#x6570;  __construct  &#x4E2D;&#x901A;&#x8FC7;&#x5DE5;&#x5382;&#x65B9;&#x6CD5;&#x3001;&#x81EA;&#x884C;&#x624B;&#x52A8; new &#x7684;&#xFF09;&#xFF0C;&#x800C;&#x662F;&#x7531;&#x5916;&#x90E8;&#x4EE5;&#x53C2;&#x6570;&#x6216;&#x5176;&#x4ED6;&#x5F62;&#x5F0F;&#x6CE8;&#x5165;&#x7684;&#xFF0C;&#x90FD;&#x5C5E;&#x4E8E;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#xFF08;DI&#xFF09;</p>
+</blockquote>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF1A;</p>
+<blockquote>
+<p>&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x662F;&#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x89D2;&#x5EA6;&#x5728;&#x63CF;&#x8FF0;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x63CF;&#x8FF0;&#x5B8C;&#x6574;&#x70B9;&#xFF1A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4F9D;&#x8D56;&#x5BB9;&#x5668;&#x521B;&#x5EFA;&#x5E76;&#x6CE8;&#x5165;&#x5B83;&#x6240;&#x9700;&#x8981;&#x7684;&#x5916;&#x90E8;&#x8D44;&#x6E90;&#xFF1B;</p>
+<p>&#x63A7;&#x5236;&#x53CD;&#x8F6C;&#x662F;&#x4ECE;&#x5BB9;&#x5668;&#x7684;&#x89D2;&#x5EA6;&#x5728;&#x63CF;&#x8FF0;&#xFF0C;&#x63CF;&#x8FF0;&#x5B8C;&#x6574;&#x70B9;&#xFF1A;&#x5BB9;&#x5668;&#x63A7;&#x5236;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x7531;&#x5BB9;&#x5668;&#x53CD;&#x5411;&#x7684;&#x5411;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6CE8;&#x5165;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6240;&#x9700;&#x8981;&#x7684;&#x5916;&#x90E8;&#x8D44;&#x6E90;&#x3002;</p>
+</blockquote>
+<h1 id="laravel&#x4E2D;&#x7684;&#x670D;&#x52A1;&#x5BB9;&#x5668;">Laravel&#x4E2D;&#x7684;&#x670D;&#x52A1;&#x5BB9;&#x5668;</h1>
+<hr>
+<p>Laravel&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x4E3B;&#x8981;&#x627F;&#x62C5;&#x4E24;&#x4E2A;&#x4F5C;&#x7528;&#xFF1A;&#x7ED1;&#x5B9A;&#x4E0E;&#x89E3;&#x6790;&#x3002;</p>
+<h2 id="&#x7ED1;&#x5B9A;">&#x7ED1;&#x5B9A;</h2>
+<p>&#x6240;&#x8C13;&#x7684;&#x7ED1;&#x5B9A;&#x5C31;&#x662F;&#x5C06;&#x63A5;&#x53E3;&#x4E0E;&#x5B9E;&#x73B0;&#x5EFA;&#x7ACB;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;&#x3002;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x7684;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x7ED1;&#x5B9A;&#x90FD;&#x662F;&#x5728;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x4E2D;&#x5B8C;&#x6210;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5728;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x4E2D;&#x7ED1;&#x5B9A;&#x3002;</p>
+<blockquote>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7C7B;&#x6CA1;&#x6709;&#x57FA;&#x4E8E;&#x4EFB;&#x4F55;&#x63A5;&#x53E3;&#x90A3;&#x4E48;&#x5C31;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x5C06;&#x5176;&#x7ED1;&#x5B9A;&#x5230;&#x5BB9;&#x5668;&#x3002;&#x5BB9;&#x5668;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x88AB;&#x544A;&#x77E5;&#x5982;&#x4F55;&#x6784;&#x5EFA;&#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4F1A;&#x4F7F;&#x7528;  PHP &#x7684;&#x53CD;&#x5C04;&#x670D;&#x52A1;&#x81EA;&#x52A8;&#x89E3;&#x6790;&#x51FA;&#x5177;&#x4F53;&#x7684;&#x5BF9;&#x8C61;&#x3002;</p>
+</blockquote>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x7684;&#x5916;&#x90E8;&#x8D44;&#x6E90;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x63A5;&#x53E3;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x7ED1;&#x5B9A;&#xFF0C;&#x76F4;&#x63A5;&#x5229;&#x7528;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x8FDB;&#x884C;&#x89E3;&#x6790;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x4F1A;&#x6839;&#x636E;&#x7C7B;&#x540D;&#x5229;&#x7528;&#x53CD;&#x5C04;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x81EA;&#x52A8;&#x6784;&#x9020;&#x3002;</p>
+<h3 id="bind&#x7ED1;&#x5B9A;">bind&#x7ED1;&#x5B9A;</h3>
+<p>&#x7ED1;&#x5B9A;&#x6709;&#x591A;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x9996;&#x5148;&#x6700;&#x5E38;&#x7528;&#x7684;&#x662F;bind&#x51FD;&#x6570;&#x7684;&#x7ED1;&#x5B9A;&#xFF1A;</p>
+<ul>
+<li>&#x7ED1;&#x5B9A;&#x81EA;&#x8EAB;</li>
+</ul>
+<pre><code class="lang-php">  $this-&gt;app-&gt;bind(<span class="hljs-string">&apos;App\Services\RedisEventPusher&apos;</span>, <span class="hljs-keyword">null</span>);
+</code></pre>
+<ul>
+<li>&#x7ED1;&#x5B9A;&#x95ED;&#x5305;</li>
+</ul>
+<pre><code class="lang-php">$this-&gt;app-&gt;bind(<span class="hljs-string">&apos;name&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;Taylor&apos;</span>;
+});<span class="hljs-comment">//&#x95ED;&#x5305;&#x8FD4;&#x56DE;&#x53D8;&#x91CF;</span>
+
+$this-&gt;app-&gt;bind(<span class="hljs-string">&apos;HelpSpot\API&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> HelpSpot\API::class;
+});<span class="hljs-comment">//&#x95ED;&#x5305;&#x76F4;&#x63A5;&#x63D0;&#x4F9B;&#x7C7B;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testSharedClosureResolution</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $class = <span class="hljs-keyword">new</span> stdClass;
+    $container-&gt;bind(<span class="hljs-string">&apos;class&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> <span class="hljs-title">use</span> <span class="hljs-params">($class)</span> </span>{
+        <span class="hljs-keyword">return</span> $class;
+    });
+
+    $this-&gt;assertSame($class, $container-&gt;make(<span class="hljs-string">&apos;class&apos;</span>));
+}<span class="hljs-comment">//&#x95ED;&#x5305;&#x8FD4;&#x56DE;&#x7C7B;&#x53D8;&#x91CF;</span>
+
+$this-&gt;app-&gt;bind(<span class="hljs-string">&apos;HelpSpot\API&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> HelpSpot\API();
+});<span class="hljs-comment">//&#x95ED;&#x5305;&#x76F4;&#x63A5;&#x63D0;&#x4F9B;&#x7C7B;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;</span>
+
+$this-&gt;app-&gt;bind(<span class="hljs-string">&apos;HelpSpot\API&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app)</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> HelpSpot\API($app-&gt;make(<span class="hljs-string">&apos;HttpClient&apos;</span>));
+});<span class="hljs-comment">//&#x95ED;&#x5305;&#x8FD4;&#x56DE;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x7684;&#x7C7B;</span>
+</code></pre>
+<ul>
+<li>&#x7ED1;&#x5B9A;&#x63A5;&#x53E3;</li>
+</ul>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testCanBuildWithoutParameterStackWithConstructors</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;bind(<span class="hljs-string">&apos;Illuminate\Tests\Container\IContainerContractStub&apos;</span>, 
+                     <span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStub&apos;</span>);
+
+    $this-&gt;assertInstanceOf(ContainerDependentStub::class, 
+                            $container-&gt;build(ContainerDependentStub::class));
+}
+
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IContainerContractStub</span>
+</span>{
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ContainerImplementationStub</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">IContainerContractStub</span>
+</span>{
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ContainerDependentStub</span>
+</span>{
+    <span class="hljs-keyword">public</span> $impl;
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(IContainerContractStub $impl)</span>
+    </span>{
+        $this-&gt;impl = $impl;
+    }
+}
+</code></pre>
+<p>&#x8FD9;&#x4E09;&#x79CD;&#x7ED1;&#x5B9A;&#x65B9;&#x5F0F;&#x4E2D;&#xFF0C;&#x7B2C;&#x4E00;&#x79CD;&#x7ED1;&#x5B9A;&#x81EA;&#x8EAB;&#x4E00;&#x822C;&#x7528;&#x4E8E;&#x7ED1;&#x5B9A;&#x5355;&#x4F8B;&#x3002;</p>
+<h3 id="bindif&#x7ED1;&#x5B9A;">bindif&#x7ED1;&#x5B9A;</h3>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testBindIfDoesntRegisterIfServiceAlreadyRegistered</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;bind(<span class="hljs-string">&apos;name&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span>
+         <span class="hljs-title">return</span> &apos;<span class="hljs-title">Taylor</span>&apos;</span>;
+     });
+
+    $container-&gt;bindIf(<span class="hljs-string">&apos;name&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+         <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;Dayle&apos;</span>;
+    });
+
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;Taylor&apos;</span>, $container-&gt;make(<span class="hljs-string">&apos;name&apos;</span>));
+}
+</code></pre>
+<h3 id="singleton&#x7ED1;&#x5B9A;">singleton&#x7ED1;&#x5B9A;</h3>
+<p>singleton &#x65B9;&#x6CD5;&#x7ED1;&#x5B9A;&#x4E00;&#x4E2A;&#x53EA;&#x9700;&#x8981;&#x89E3;&#x6790;&#x4E00;&#x6B21;&#x7684;&#x7C7B;&#x6216;&#x63A5;&#x53E3;&#x5230;&#x5BB9;&#x5668;&#xFF0C;&#x7136;&#x540E;&#x63A5;&#x4E0B;&#x6765;&#x5BF9;&#x5BB9;&#x5668;&#x7684;&#x8C03;&#x7528;&#x5C06;&#x4F1A;&#x8FD4;&#x56DE;&#x540C;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-php">$this-&gt;app-&gt;singleton(<span class="hljs-string">&apos;HelpSpot\API&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app)</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> HelpSpot\API($app-&gt;make(<span class="hljs-string">&apos;HttpClient&apos;</span>));
+});
+</code></pre>
+<p>&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;singleton&#x7ED1;&#x5B9A;&#x5728;&#x89E3;&#x6790;&#x7684;&#x65F6;&#x5019;&#x82E5;&#x5B58;&#x5728;&#x53C2;&#x6570;&#x91CD;&#x8F7D;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x81EA;&#x52A8;&#x53D6;&#x6D88;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testSingletonBindingsNotRespectedWithMakeParameters</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+
+    $container-&gt;singleton(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app, $config)</span> </span>{
+        <span class="hljs-keyword">return</span> $config;
+    });
+
+    $this-&gt;assertEquals([<span class="hljs-string">&apos;name&apos;</span> =&gt; <span class="hljs-string">&apos;taylor&apos;</span>], $container-&gt;makeWith(<span class="hljs-string">&apos;foo&apos;</span>, [<span class="hljs-string">&apos;name&apos;</span> =&gt; <span class="hljs-string">&apos;taylor&apos;</span>]));
+    $this-&gt;assertEquals([<span class="hljs-string">&apos;name&apos;</span> =&gt; <span class="hljs-string">&apos;abigail&apos;</span>], $container-&gt;makeWith(<span class="hljs-string">&apos;foo&apos;</span>, [<span class="hljs-string">&apos;name&apos;</span> =&gt; <span class="hljs-string">&apos;abigail&apos;</span>]));
+    }
+</code></pre>
+<h3 id="instance&#x7ED1;&#x5B9A;">instance&#x7ED1;&#x5B9A;</h3>
+<p>&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; instance &#x65B9;&#x6CD5;&#x7ED1;&#x5B9A;&#x4E00;&#x4E2A;&#x5DF2;&#x5B58;&#x5728;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x5230;&#x5BB9;&#x5668;&#xFF0C;&#x968F;&#x540E;&#x8C03;&#x7528;&#x5BB9;&#x5668;&#x5C06;&#x603B;&#x662F;&#x8FD4;&#x56DE;&#x7ED9;&#x5B9A;&#x7684;&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-php">  $api = <span class="hljs-keyword">new</span> HelpSpot\API(<span class="hljs-keyword">new</span> HttpClient);
+  $this-&gt;app-&gt;instance(<span class="hljs-string">&apos;HelpSpot\Api&apos;</span>, $api);
+</code></pre>
+<h3 id="context&#x7ED1;&#x5B9A;">Context&#x7ED1;&#x5B9A;</h3>
+<p>&#x6709;&#x65F6;&#x4FAF;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x6709;&#x4E24;&#x4E2A;&#x7C7B;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x5728;&#x6BCF;&#x4E2A;&#x7C7B;&#x4E2D;&#x6CE8;&#x5165;&#x4E0D;&#x540C;&#x5B9E;&#x73B0;&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;&#x4E24;&#x4E2A;&#x63A7;&#x5236;&#x5668;&#x4F9D;&#x8D56; Illuminate\Contracts\Filesystem\Filesystem &#x5951;&#x7EA6;&#x7684;&#x4E0D;&#x540C;&#x5B9E;&#x73B0;&#x3002;Laravel &#x4E3A;&#x6B64;&#x5B9A;&#x4E49;&#x4E86;&#x7B80;&#x5355;&#x3001;&#x5E73;&#x6ED1;&#x7684;&#x63A5;&#x53E3;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Support</span>\<span class="hljs-title">Facades</span>\<span class="hljs-title">Storage</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">VideoController</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>\<span class="hljs-title">PhotoControllers</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Contracts</span>\<span class="hljs-title">Filesystem</span>\<span class="hljs-title">Filesystem</span>;
+
+$this-&gt;app-&gt;when(StorageController::class)
+          -&gt;needs(Filesystem::class)
+          -&gt;give(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+            Storage::class
+          });<span class="hljs-comment">//&#x63D0;&#x4F9B;&#x7C7B;&#x540D;</span>
+
+$this-&gt;app-&gt;when(PhotoController::class)
+          -&gt;needs(Filesystem::class)
+          -&gt;give(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+             <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Storage();
+          });<span class="hljs-comment">//&#x63D0;&#x4F9B;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;</span>
+
+$this-&gt;app-&gt;when(VideoController::class)
+          -&gt;needs(Filesystem::class)
+          -&gt;give(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Storage($app-&gt;make(Disk::class));
+          });<span class="hljs-comment">//&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;</span>
+</code></pre>
+<h3 id="&#x539F;&#x59CB;&#x503C;&#x7ED1;&#x5B9A;">&#x539F;&#x59CB;&#x503C;&#x7ED1;&#x5B9A;</h3>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x63A5;&#x6536;&#x6CE8;&#x5165;&#x7C7B;&#x7684;&#x7C7B;&#xFF0C;&#x540C;&#x65F6;&#x9700;&#x8981;&#x6CE8;&#x5165;&#x4E00;&#x4E2A;&#x539F;&#x751F;&#x7684;&#x6570;&#x503C;&#x6BD4;&#x5982;&#x6574;&#x578B;&#xFF0C;&#x53EF;&#x4EE5;&#x7ED3;&#x5408;&#x4E0A;&#x4E0B;&#x6587;&#x8F7B;&#x677E;&#x6CE8;&#x5165;&#x8FD9;&#x4E2A;&#x7C7B;&#x9700;&#x8981;&#x7684;&#x4EFB;&#x4F55;&#x503C;&#xFF1A;</p>
+<pre><code class="lang-php">$this-&gt;app-&gt;when(<span class="hljs-string">&apos;App\Http\Controllers\UserController&apos;</span>)
+          -&gt;needs(<span class="hljs-string">&apos;$variableName&apos;</span>)
+          -&gt;give($value);
+</code></pre>
+<h3 id="&#x6570;&#x7EC4;&#x7ED1;&#x5B9A;">&#x6570;&#x7EC4;&#x7ED1;&#x5B9A;</h3>
+<p>&#x6570;&#x7EC4;&#x7ED1;&#x5B9A;&#x4E00;&#x822C;&#x7528;&#x4E8E;&#x7ED1;&#x5B9A;&#x95ED;&#x5305;&#x548C;&#x53D8;&#x91CF;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x80FD;&#x7ED1;&#x5B9A;&#x63A5;&#x53E3;&#xFF0C;&#x5426;&#x5219;&#x53EA;&#x80FD;&#x8FD4;&#x56DE;&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x540D;&#x5B57;&#x7B26;&#x4E32;,&#x5E76;&#x4E0D;&#x80FD;&#x8FD4;&#x56DE;&#x5B9E;&#x73B0;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testArrayAccess</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container[IContainerContractStub::class] = ContainerImplementationStub::class;
+
+    $this-&gt;assertTrue(<span class="hljs-keyword">isset</span>($container[IContainerContractStub::class]));
+    $this-&gt;assertEquals(ContainerImplementationStub::class, 
+                        $container[IContainerContractStub::class]);
+
+    <span class="hljs-keyword">unset</span>($container[<span class="hljs-string">&apos;something&apos;</span>]);
+    $this-&gt;assertFalse(<span class="hljs-keyword">isset</span>($container[<span class="hljs-string">&apos;something&apos;</span>]));
+}
+</code></pre>
+<h3 id="&#x6807;&#x7B7E;&#x7ED1;&#x5B9A;">&#x6807;&#x7B7E;&#x7ED1;&#x5B9A;</h3>
+<p>&#x5C11;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x89E3;&#x6790;&#x7279;&#x5B9A;&#x5206;&#x7C7B;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x7ED1;&#x5B9A;&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;&#x4F60;&#x6B63;&#x5728;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x63A5;&#x6536;&#x591A;&#x4E2A;&#x4E0D;&#x540C; Report &#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x7684;&#x62A5;&#x544A;&#x805A;&#x5408;&#x5668;&#xFF0C;&#x5728;&#x6CE8;&#x518C;&#x5B8C; Report &#x5B9E;&#x73B0;&#x4E4B;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; tag &#x65B9;&#x6CD5;&#x7ED9;&#x5B83;&#x4EEC;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x6807;&#x7B7E;&#xFF1A;</p>
+<pre><code class="lang-php">$this-&gt;app-&gt;bind(<span class="hljs-string">&apos;SpeedReport&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+  <span class="hljs-comment">//</span>
+});
+
+$this-&gt;app-&gt;bind(<span class="hljs-string">&apos;MemoryReport&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+  <span class="hljs-comment">//</span>
+});
+
+$this-&gt;app-&gt;tag([<span class="hljs-string">&apos;SpeedReport&apos;</span>, <span class="hljs-string">&apos;MemoryReport&apos;</span>], <span class="hljs-string">&apos;reports&apos;</span>);
+</code></pre>
+<p>&#x8FD9;&#x4E9B;&#x670D;&#x52A1;&#x88AB;&#x6253;&#x4E0A;&#x6807;&#x7B7E;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; tagged &#x65B9;&#x6CD5;&#x6765;&#x8F7B;&#x677E;&#x89E3;&#x6790;&#x5B83;&#x4EEC;&#xFF1A;</p>
+<pre><code class="lang-php">$this-&gt;app-&gt;bind(<span class="hljs-string">&apos;ReportAggregator&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app)</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ReportAggregator($app-&gt;tagged(<span class="hljs-string">&apos;reports&apos;</span>));
+});
+</code></pre>
+<pre><code class="lang-php">  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testContainerTags</span><span class="hljs-params">()</span>
+  </span>{
+         $container = <span class="hljs-keyword">new</span> Container;
+         $container-&gt;tag(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStub&apos;</span>, <span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-string">&apos;bar&apos;</span>);
+         $container-&gt;tag(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStubTwo&apos;</span>, [<span class="hljs-string">&apos;foo&apos;</span>]);
+
+         $this-&gt;assertCount(<span class="hljs-number">1</span>, $container-&gt;tagged(<span class="hljs-string">&apos;bar&apos;</span>));
+         $this-&gt;assertCount(<span class="hljs-number">2</span>, $container-&gt;tagged(<span class="hljs-string">&apos;foo&apos;</span>));
+         $this-&gt;assertInstanceOf(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStub&apos;</span>, $container-&gt;tagged(<span class="hljs-string">&apos;foo&apos;</span>)[<span class="hljs-number">0</span>]);
+         $this-&gt;assertInstanceOf(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStub&apos;</span>, $container-&gt;tagged(<span class="hljs-string">&apos;bar&apos;</span>)[<span class="hljs-number">0</span>]);
+         $this-&gt;assertInstanceOf(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStubTwo&apos;</span>, $container-&gt;tagged(<span class="hljs-string">&apos;foo&apos;</span>)[<span class="hljs-number">1</span>]);
+
+         $container = <span class="hljs-keyword">new</span> Container;
+         $container-&gt;tag([<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStub&apos;</span>, <span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStubTwo&apos;</span>], [<span class="hljs-string">&apos;foo&apos;</span>]);
+         $this-&gt;assertCount(<span class="hljs-number">2</span>, $container-&gt;tagged(<span class="hljs-string">&apos;foo&apos;</span>));
+         $this-&gt;assertInstanceOf(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStub&apos;</span>, $container-&gt;tagged(<span class="hljs-string">&apos;foo&apos;</span>)[<span class="hljs-number">0</span>]);
+         $this-&gt;assertInstanceOf(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStubTwo&apos;</span>, $container-&gt;tagged(<span class="hljs-string">&apos;foo&apos;</span>)[<span class="hljs-number">1</span>]);
+
+          $this-&gt;assertEmpty($container-&gt;tagged(<span class="hljs-string">&apos;this_tag_does_not_exist&apos;</span>));
+  }
+</code></pre>
+<h3 id="extend&#x6269;&#x5C55;">extend&#x6269;&#x5C55;</h3>
+<p>extend&#x662F;&#x5728;&#x5F53;&#x539F;&#x6765;&#x7684;&#x7C7B;&#x88AB;&#x6CE8;&#x518C;&#x6216;&#x8005;&#x5B9E;&#x4F8B;&#x5316;&#x51FA;&#x6765;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x6269;&#x5C55;&#xFF0C;&#x800C;&#x4E14;&#x53EF;&#x4EE5;&#x652F;&#x6301;&#x591A;&#x91CD;&#x6269;&#x5C55;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testExtendInstancesArePreserved</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        $obj = <span class="hljs-keyword">new</span> StdClass;
+        $obj-&gt;foo = <span class="hljs-string">&apos;bar&apos;</span>;
+
+        <span class="hljs-keyword">return</span> $obj;
+    });
+
+    $obj = <span class="hljs-keyword">new</span> StdClass;
+    $obj-&gt;foo = <span class="hljs-string">&apos;foo&apos;</span>;
+    $container-&gt;instance(<span class="hljs-string">&apos;foo&apos;</span>, $obj);
+
+    $container-&gt;extend(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($obj, $container)</span> </span>{
+        $obj-&gt;bar = <span class="hljs-string">&apos;baz&apos;</span>;
+        <span class="hljs-keyword">return</span> $obj;
+    });
+
+    $container-&gt;extend(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($obj, $container)</span> </span>{
+        $obj-&gt;baz = <span class="hljs-string">&apos;foo&apos;</span>;
+        <span class="hljs-keyword">return</span> $obj;
+    });
+
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;foo&apos;</span>, $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>)-&gt;foo);
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;baz&apos;</span>, $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>)-&gt;bar);
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;foo&apos;</span>, $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>)-&gt;baz);
+}
+</code></pre>
+<h3 id="rebounds&#x4E0E;rebinding">Rebounds&#x4E0E;Rebinding</h3>
+<p>&#x7ED1;&#x5B9A;&#x662F;&#x9488;&#x5BF9;&#x63A5;&#x53E3;&#x7684;&#xFF0C;&#x662F;&#x4E3A;&#x63A5;&#x53E3;&#x63D0;&#x4F9B;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5BF9;&#x63A5;&#x53E3;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x65F6;&#x95F4;&#x6BB5;&#x91CC;&#x63D0;&#x4F9B;&#x4E0D;&#x540C;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#xFF0C;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x5BF9;&#x540C;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x63D0;&#x4F9B;&#x65B0;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x540E;&#xFF0C;&#x4E0D;&#x4F1A;&#x5BF9;&#x5DF2;&#x7ECF;&#x5B9E;&#x4F8B;&#x5316;&#x7684;&#x5BF9;&#x8C61;&#x4EA7;&#x751F;&#x4EFB;&#x4F55;&#x5F71;&#x54CD;&#x3002;&#x4F46;&#x662F;&#x5728;&#x4E00;&#x4E9B;&#x573A;&#x666F;&#x4E0B;&#xFF0C;&#x5728;&#x63D0;&#x4F9B;&#x65B0;&#x7684;&#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x5BF9;&#x5DF2;&#x7ECF;&#x5B9E;&#x4F8B;&#x5316;&#x7684;&#x5BF9;&#x8C61;&#x91CD;&#x65B0;&#x505A;&#x4E00;&#x4E9B;&#x6539;&#x53D8;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C31;&#x662F; rebinding &#x51FD;&#x6570;&#x7684;&#x7528;&#x9014;&#x3002;
+&#x4E0B;&#x9762;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Fuel $fuel)</span>
+    </span>{
+        $this-&gt;fuel = $fuel;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">refuel</span><span class="hljs-params">($litres)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $litres * $this-&gt;fuel-&gt;getPrice();
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setFuel</span><span class="hljs-params">(Fuel $fuel)</span>
+    </span>{
+        $this-&gt;fuel = $fuel;
+    }
+
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JeepWrangler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Car</span>
+</span>{
+  <span class="hljs-comment">//</span>
+}
+
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Fuel</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPrice</span><span class="hljs-params">()</span></span>;
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Petrol</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Fuel</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPrice</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-number">130.7</span>;
+    }
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x5728;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x4E2D;&#x662F;&#x8FD9;&#x6837;&#x5BF9;car&#x63A5;&#x53E3;&#x548C;fuel&#x63A5;&#x53E3;&#x7ED1;&#x5B9A;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-php">$this-&gt;app-&gt;bind(<span class="hljs-string">&apos;fuel&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app)</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Petrol;
+});
+
+$this-&gt;app-&gt;bind(<span class="hljs-string">&apos;car&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app)</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> JeepWrangler($app[<span class="hljs-string">&apos;fuel&apos;</span>]);
+});
+
+$this-&gt;app-&gt;make(<span class="hljs-string">&apos;car&apos;</span>);
+</code></pre>
+<p>&#x5982;&#x679C;car&#x88AB;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x89E3;&#x6790;&#x5B9E;&#x4F8B;&#x5316;&#x6210;&#x5BF9;&#x8C61;&#x4E4B;&#x540E;&#xFF0C;&#x6709;&#x4EBA;&#x4FEE;&#x6539;&#x4E86; fuel &#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4ECE; Petrol &#x6539;&#x4E3A; PremiumPetrol&#xFF1A;</p>
+<pre><code class="lang-php">$this-&gt;app-&gt;bind(<span class="hljs-string">&apos;fuel&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app)</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> PremiumPetrol;
+});
+</code></pre>
+<p>&#x7531;&#x4E8E; car &#x5DF2;&#x7ECF;&#x88AB;&#x5B9E;&#x4F8B;&#x5316;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x7684;&#x6539;&#x53D8;&#x5E76;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x5230; car &#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x5047;&#x82E5;&#x6211;&#x4EEC;&#x60F3;&#x8981; car &#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF; fuel &#x968F;&#x7740; fuel &#x63A5;&#x53E3;&#x7684;&#x53D8;&#x5316;&#x800C;&#x53D8;&#x5316;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x6BCF;&#x5F53;&#x5BF9; fuel &#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x8FDB;&#x884C;&#x6539;&#x53D8;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x90FD;&#x8981;&#x5BF9; car &#x7684; fuel &#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x66F4;&#x65B0;&#xFF0C;&#x8FD9;&#x5C31;&#x662F; rebinding &#x7684;&#x7528;&#x9014;&#xFF1A;</p>
+<pre><code class="lang-php">$this-&gt;app-&gt;bindShared(<span class="hljs-string">&apos;car&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app)</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> JeepWrangler($app-&gt;rebinding(<span class="hljs-string">&apos;fuel&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app, $fuel)</span> </span>{
+        $app[<span class="hljs-string">&apos;car&apos;</span>]-&gt;setFuel($fuel);
+    }));
+});
+</code></pre>
+<h2 id="&#x670D;&#x52A1;&#x522B;&#x540D;">&#x670D;&#x52A1;&#x522B;&#x540D;</h2>
+<h3 id="&#x4EC0;&#x4E48;&#x662F;&#x670D;&#x52A1;&#x522B;&#x540D;">&#x4EC0;&#x4E48;&#x662F;&#x670D;&#x52A1;&#x522B;&#x540D;</h3>
+<p>&#x5728;&#x8BF4;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x7684;&#x89E3;&#x6790;&#x4E4B;&#x524D;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x8BF4;&#x8BF4;&#x670D;&#x52A1;&#x7684;&#x522B;&#x540D;&#x3002;&#x4EC0;&#x4E48;&#x662F;&#x670D;&#x52A1;&#x522B;&#x540D;&#x5462;&#xFF1F;&#x4E0D;&#x540C;&#x4E8E;&#x4E0A;&#x4E00;&#x4E2A;&#x535A;&#x5BA2;&#x4E2D;&#x63D0;&#x5230;&#x7684; Facade &#x95E8;&#x9762;&#x7684;&#x522B;&#x540D;(&#x5728; config/app &#x4E2D;&#x5B9A;&#x4E49;)&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x522B;&#x540D;&#x670D;&#x52A1;&#x7ED1;&#x5B9A;&#x540D;&#x79F0;&#x7684;&#x522B;&#x540D;&#x3002;&#x901A;&#x8FC7;&#x670D;&#x52A1;&#x7ED1;&#x5B9A;&#x7684;&#x522B;&#x540D;&#xFF0C;&#x5728;&#x89E3;&#x6790;&#x670D;&#x52A1;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8DDF;&#x4E0D;&#x4F7F;&#x7528;&#x522B;&#x540D;&#x7684;&#x6548;&#x679C;&#x4E00;&#x81F4;&#x3002;&#x522B;&#x540D;&#x7684;&#x4F5C;&#x7528;&#x4E5F;&#x662F;&#x4E3A;&#x4E86;&#x540C;&#x65F6;&#x652F;&#x6301;&#x5168;&#x7C7B;&#x578B;&#x7684;&#x670D;&#x52A1;&#x7ED1;&#x5B9A;&#x540D;&#x79F0;&#x4EE5;&#x53CA;&#x7B80;&#x77ED;&#x7684;&#x670D;&#x52A1;&#x7ED1;&#x5B9A;&#x540D;&#x79F0;&#x8003;&#x8651;&#x7684;&#x3002;
+&#x2003;
+&#x901A;&#x4FD7;&#x7684;&#x8BB2;&#xFF0C;&#x5047;&#x5982;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x521B;&#x5EFA; auth &#x670D;&#x52A1;&#xFF0C;&#x6211;&#x4EEC;&#x65E2;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x5199;&#xFF1A;</p>
+<pre><code class="lang-php">$this-&gt;app-&gt;make(<span class="hljs-string">&apos;auth&apos;</span>)
+</code></pre>
+<p>&#x53C8;&#x53EF;&#x4EE5;&#x5199;&#x6210;&#xFF1A;</p>
+<pre><code class="lang-php">$this-&gt;app-&gt;make(<span class="hljs-string">&apos;\Illuminate\Auth\AuthManager::class&apos;</span>)
+</code></pre>
+<p>&#x8FD8;&#x53EF;&#x4EE5;&#x5199;&#x6210;</p>
+<pre><code class="lang-php">$this-&gt;app-&gt;make(<span class="hljs-string">&apos;\Illuminate\Contracts\Auth\Factory::class&apos;</span>)
+</code></pre>
+<p>&#x540E;&#x9762;&#x4E24;&#x4E2A;&#x670D;&#x52A1;&#x7684;&#x540D;&#x5B57;&#x90FD;&#x662F; auth &#x7684;&#x522B;&#x540D;&#xFF0C;&#x4F7F;&#x7528;&#x522B;&#x540D;&#x548C;&#x4F7F;&#x7528; auth &#x7684;&#x6548;&#x679C;&#x662F;&#x76F8;&#x540C;&#x7684;&#x3002;</p>
+<h3 id="&#x670D;&#x52A1;&#x522B;&#x540D;&#x7684;&#x9012;&#x5F52;">&#x670D;&#x52A1;&#x522B;&#x540D;&#x7684;&#x9012;&#x5F52;</h3>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x522B;&#x540D;&#x662F;&#x53EF;&#x4EE5;&#x9012;&#x5F52;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-php">app()-&gt;alias(<span class="hljs-string">&apos;service&apos;</span>, <span class="hljs-string">&apos;alias_a&apos;</span>);
+app()-&gt;alias(<span class="hljs-string">&apos;alias_a&apos;</span>, <span class="hljs-string">&apos;alias_b&apos;</span>);
+app()-alias(<span class="hljs-string">&apos;alias_b&apos;</span>, <span class="hljs-string">&apos;alias_c&apos;</span>);
+</code></pre>
+<p>&#x4F1A;&#x5F97;&#x5230;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-string">&apos;alias_a&apos;</span> =&gt; <span class="hljs-string">&apos;service&apos;</span>
+<span class="hljs-string">&apos;alias_b&apos;</span> =&gt; <span class="hljs-string">&apos;alias_a&apos;</span>
+<span class="hljs-string">&apos;alias_c&apos;</span> =&gt; <span class="hljs-string">&apos;alias_b&apos;</span>
+</code></pre>
+<h3 id="&#x670D;&#x52A1;&#x522B;&#x540D;&#x7684;&#x5B9E;&#x73B0;">&#x670D;&#x52A1;&#x522B;&#x540D;&#x7684;&#x5B9E;&#x73B0;</h3>
+<p>&#x90A3;&#x4E48;&#x8FD9;&#x4E9B;&#x522B;&#x540D;&#x662F;&#x5982;&#x4F55;&#x52A0;&#x8F7D;&#x5230;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x91CC;&#x9762;&#x7684;&#x5462;&#xFF1F;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x91CC;&#x9762;&#x6709;&#x4E2A; aliases &#x6570;&#x7EC4;&#xFF1A;</p>
+<pre><code class="lang-php">$aliases = [
+  <span class="hljs-string">&apos;app&apos;</span> =&gt; [\Illuminate\Foundation\Application::class, \Illuminate\Contracts\Container\Container::class, \Illuminate\Contracts\Foundation\Application::class],
+  <span class="hljs-string">&apos;auth&apos;</span> =&gt; [\Illuminate\Auth\AuthManager::class, \Illuminate\Contracts\Auth\Factory::class],
+  <span class="hljs-string">&apos;auth.driver&apos;</span> =&gt; [\Illuminate\Contracts\Auth\Guard::class],
+  <span class="hljs-string">&apos;blade.compiler&apos;</span> =&gt; [\Illuminate\View\Compilers\BladeCompiler::class],
+  <span class="hljs-string">&apos;cache&apos;</span> =&gt; [\Illuminate\Cache\CacheManager::class, \Illuminate\Contracts\Cache\Factory::class],
+...
+]
+</code></pre>
+<p>&#x800C;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x7684;&#x521D;&#x59CB;&#x5316;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4F1A;&#x8FD0;&#x884C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registerCoreContainerAliases</span><span class="hljs-params">()</span>
+</span>{
+  <span class="hljs-keyword">foreach</span> ($aliases <span class="hljs-keyword">as</span> $key =&gt; $aliases) {
+    <span class="hljs-keyword">foreach</span> ($aliases <span class="hljs-keyword">as</span> $alias) {
+      $this-&gt;alias($key, $alias);
+    }
+  }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">alias</span><span class="hljs-params">($abstract, $alias)</span>
+</span>{
+  $this-&gt;aliases[$alias] = $abstract;
+
+  $this-&gt;abstractAliases[$abstract][] = $alias;
+}
+</code></pre>
+<p>&#x52A0;&#x8F7D;&#x540E;&#xFF0C;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x7684;aliases&#x548C;abstractAliases&#x6570;&#x7EC4;&#xFF1A;</p>
+<pre><code class="lang-php">$aliases = [
+  <span class="hljs-string">&apos;Illuminate\Foundation\Application&apos;</span> = <span class="hljs-string">&quot;app&quot;</span>
+  <span class="hljs-string">&apos;Illuminate\Contracts\Container\Container&apos;</span> = <span class="hljs-string">&quot;app&quot;</span>
+  <span class="hljs-string">&apos;Illuminate\Contracts\Foundation\Application&apos;</span> = <span class="hljs-string">&quot;app&quot;</span>
+  <span class="hljs-string">&apos;Illuminate\Auth\AuthManager&apos;</span> = <span class="hljs-string">&quot;auth&quot;</span>
+  <span class="hljs-string">&apos;Illuminate\Contracts\Auth\Factory&apos;</span> = <span class="hljs-string">&quot;auth&quot;</span>
+  <span class="hljs-string">&apos;Illuminate\Contracts\Auth\Guard&apos;</span> = <span class="hljs-string">&quot;auth.driver&quot;</span>
+  <span class="hljs-string">&apos;Illuminate\View\Compilers\BladeCompiler&apos;</span> = <span class="hljs-string">&quot;blade.compiler&quot;</span>
+  <span class="hljs-string">&apos;Illuminate\Cache\CacheManager&apos;</span> = <span class="hljs-string">&quot;cache&quot;</span>
+  <span class="hljs-string">&apos;Illuminate\Contracts\Cache\Factory&apos;</span> = <span class="hljs-string">&quot;cache&quot;</span>
+  ...
+&#xFF3D;
+$abstractAliases = [
+  app = {<span class="hljs-keyword">array</span>} [<span class="hljs-number">3</span>]
+  <span class="hljs-number">0</span> = <span class="hljs-string">&quot;Illuminate\Foundation\Application&quot;</span>
+  <span class="hljs-number">1</span> = <span class="hljs-string">&quot;Illuminate\Contracts\Container\Container&quot;</span>
+  <span class="hljs-number">2</span> = <span class="hljs-string">&quot;Illuminate\Contracts\Foundation\Application&quot;</span>
+  auth = {<span class="hljs-keyword">array</span>} [<span class="hljs-number">2</span>]
+  <span class="hljs-number">0</span> = <span class="hljs-string">&quot;Illuminate\Auth\AuthManager&quot;</span>
+  <span class="hljs-number">1</span> = <span class="hljs-string">&quot;Illuminate\Contracts\Auth\Factory&quot;</span>
+  auth.driver = {<span class="hljs-keyword">array</span>} [<span class="hljs-number">1</span>]
+  <span class="hljs-number">0</span> = <span class="hljs-string">&quot;Illuminate\Contracts\Auth\Guard&quot;</span>
+  blade.compiler = {<span class="hljs-keyword">array</span>} [<span class="hljs-number">1</span>]
+  <span class="hljs-number">0</span> = <span class="hljs-string">&quot;Illuminate\View\Compilers\BladeCompiler&quot;</span>
+  cache = {<span class="hljs-keyword">array</span>} [<span class="hljs-number">2</span>]
+  <span class="hljs-number">0</span> = <span class="hljs-string">&quot;Illuminate\Cache\CacheManager&quot;</span>
+  <span class="hljs-number">1</span> = <span class="hljs-string">&quot;Illuminate\Contracts\Cache\Factory&quot;</span>
+  ...
+]
+</code></pre>
+<h2 id="&#x670D;&#x52A1;&#x89E3;&#x6790;">&#x670D;&#x52A1;&#x89E3;&#x6790;</h2>
+<h3 id="make-&#x89E3;&#x6790;">make &#x89E3;&#x6790;</h3>
+<p>&#x6709;&#x5F88;&#x591A;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x4ECE;&#x5BB9;&#x5668;&#x4E2D;&#x89E3;&#x6790;&#x5BF9;&#x8C61;&#xFF0C;&#x9996;&#x5148;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; make &#x65B9;&#x6CD5;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x63A5;&#x6536;&#x4F60;&#x60F3;&#x8981;&#x89E3;&#x6790;&#x7684;&#x7C7B;&#x540D;&#x6216;&#x63A5;&#x53E3;&#x540D;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testAutoConcreteResolution</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $this-&gt;assertInstanceOf(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerConcreteStub&apos;</span>, 
+           $container-&gt;make(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerConcreteStub&apos;</span>));
+}
+
+<span class="hljs-comment">//&#x5E26;&#x6709;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x548C;&#x9ED8;&#x8BA4;&#x503C;&#x7684;&#x89E3;&#x6790;</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testResolutionOfDefaultParameters</span><span class="hljs-params">()</span>
+</span>{
+       $container = <span class="hljs-keyword">new</span> Container;
+       $instance = $container-&gt;make(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerDefaultValueStub&apos;</span>);
+       $this-&gt;assertInstanceOf(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerConcreteStub&apos;</span>, 
+                                $instance-&gt;stub);
+       $this-&gt;assertEquals(<span class="hljs-string">&apos;taylor&apos;</span>, $instance-&gt;default);
+}
+
+<span class="hljs-comment">//</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testResolvingWithArrayOfParameters</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+
+    $instance = $container-&gt;makeWith(ContainerDefaultValueStub::class, [<span class="hljs-string">&apos;default&apos;</span> =&gt; <span class="hljs-string">&apos;adam&apos;</span>]);
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;adam&apos;</span>, $instance-&gt;default);
+
+    $instance = $container-&gt;make(ContainerDefaultValueStub::class);
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;taylor&apos;</span>, $instance-&gt;default);
+
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app, $config)</span> </span>{
+        <span class="hljs-keyword">return</span> $config;
+    });
+    $this-&gt;assertEquals([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], $container-&gt;makeWith(<span class="hljs-string">&apos;foo&apos;</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]));
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testNestedDependencyResolution</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;bind(<span class="hljs-string">&apos;Illuminate\Tests\Container\IContainerContractStub&apos;</span>, <span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStub&apos;</span>);
+    $class = $container-&gt;make(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerNestedDependentStub&apos;</span>);
+    $this-&gt;assertInstanceOf(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerDependentStub&apos;</span>, $class-&gt;inner);
+    $this-&gt;assertInstanceOf(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStub&apos;</span>, $class-&gt;inner-&gt;impl);
+    }
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ContainerDefaultValueStub</span>
+</span>{
+    <span class="hljs-keyword">public</span> $stub;
+    <span class="hljs-keyword">public</span> $default;
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(ContainerConcreteStub $stub, $default = <span class="hljs-string">&apos;taylor&apos;</span>)</span>
+    </span>{
+        $this-&gt;stub = $stub;
+        $this-&gt;default = $default;
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ContainerConcreteStub</span>
+</span>{
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ContainerImplementationStub</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">IContainerContractStub</span>
+</span>{
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ContainerDependentStub</span>
+</span>{
+    <span class="hljs-keyword">public</span> $impl;
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(IContainerContractStub $impl)</span>
+    </span>{
+        $this-&gt;impl = $impl;
+    }
+}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ContainerNestedDependentStub</span>
+</span>{
+    <span class="hljs-keyword">public</span> $inner;
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(ContainerDependentStub $inner)</span>
+    </span>{
+        $this-&gt;inner = $inner;
+    }
+}
+</code></pre>
+<p>  &#x5982;&#x679C;&#x4F60;&#x6240;&#x5728;&#x7684;&#x4EE3;&#x7801;&#x4F4D;&#x7F6E;&#x8BBF;&#x95EE;&#x4E0D;&#x4E86; $app &#x53D8;&#x91CF;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8F85;&#x52A9;&#x51FD;&#x6570;resolve&#xFF1A;</p>
+<pre><code class="lang-php">$api = resolve(<span class="hljs-string">&apos;HelpSpot\API&apos;</span>);
+</code></pre>
+<h3 id="&#x81EA;&#x52A8;&#x6CE8;&#x5165;">&#x81EA;&#x52A8;&#x6CE8;&#x5165;</h3>
+<pre><code class="lang-php"><span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Controllers</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Users</span>\<span class="hljs-title">Repository</span> <span class="hljs-title">as</span> <span class="hljs-title">UserRepository</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span></span>{
+  <span class="hljs-comment">/**
+  * &#x7528;&#x6237;&#x4ED3;&#x5E93;&#x5B9E;&#x4F8B;
+  */</span>
+  <span class="hljs-keyword">protected</span> $users;
+
+  <span class="hljs-comment">/**
+  * &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x63A7;&#x5236;&#x5668;&#x5B9E;&#x4F8B;
+  *
+  * <span class="hljs-doctag">@param</span> UserRepository $users &#x81EA;&#x52A8;&#x6CE8;&#x5165;
+  * <span class="hljs-doctag">@return</span> void
+  */</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(UserRepository $users)</span>
+  </span>{
+    $this-&gt;users = $users;
+  }
+}
+</code></pre>
+<h3 id="call-&#x65B9;&#x6CD5;&#x6CE8;&#x5165;">call &#x65B9;&#x6CD5;&#x6CE8;&#x5165;</h3>
+<p>make &#x89E3;&#x6790;&#x662F;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x8FDB;&#x884C;&#x89E3;&#x6790;&#x6784;&#x5EFA;&#x7C7B;&#x5BF9;&#x8C61;&#x65F6;&#x6240;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x8FD8;&#x6709;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x9700;&#x6C42;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x5F53;&#x524D;&#x5DF2;&#x7ECF;&#x83B7;&#x53D6;&#x4E86;&#x4E00;&#x4E2A;&#x7C7B;&#x5BF9;&#x8C61;&#xFF0C;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x8C03;&#x7528;&#x5B83;&#x7684;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x65F6;&#x53D1;&#x73B0;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E2D;&#x53C2;&#x6570;&#x4F17;&#x591A;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x4E2A;&#x7684; make &#x4F1A;&#x6BD4;&#x8F83;&#x7E41;&#x7410;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x5C31;&#x8981;&#x7528;&#x5230; call &#x89E3;&#x6790;&#x4E86;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaskRepository</span></span>{
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testContainerCall</span><span class="hljs-params">(User $user,Task $task)</span></span>{
+        $this-&gt;assertInstanceOf(User::class, $user);
+
+        $this-&gt;assertInstanceOf(Task::class, $task);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testContainerCallStatic</span><span class="hljs-params">(User $user,Task $task)</span></span>{
+        $this-&gt;assertInstanceOf(User::class, $user);
+
+        $this-&gt;assertInstanceOf(Task::class, $task);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testCallback</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;call callback successfully!&apos;</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testDefaultMethod</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;default Method successfully!&apos;</span>;
+    }
+}
+</code></pre>
+<h4 id="&#x95ED;&#x5305;&#x51FD;&#x6570;&#x6CE8;&#x5165;">&#x95ED;&#x5305;&#x51FD;&#x6570;&#x6CE8;&#x5165;</h4>
+<pre><code class="lang-php">  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testCallWithDependencies</span><span class="hljs-params">()</span>
+  </span>{
+      $container = <span class="hljs-keyword">new</span> Container;
+      $result = $container-&gt;call(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(StdClass $foo, $bar = [])</span> </span>{
+          <span class="hljs-keyword">return</span> func_get_args();
+      });
+
+      $this-&gt;assertInstanceOf(<span class="hljs-string">&apos;stdClass&apos;</span>, $result[<span class="hljs-number">0</span>]);
+      $this-&gt;assertEquals([], $result[<span class="hljs-number">1</span>]);
+
+      $result = $container-&gt;call(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(StdClass $foo, $bar = [])</span> </span>{
+          <span class="hljs-keyword">return</span> func_get_args();
+      }, [<span class="hljs-string">&apos;bar&apos;</span> =&gt; <span class="hljs-string">&apos;taylor&apos;</span>]);
+
+      $this-&gt;assertInstanceOf(<span class="hljs-string">&apos;stdClass&apos;</span>, $result[<span class="hljs-number">0</span>]);
+      $this-&gt;assertEquals(<span class="hljs-string">&apos;taylor&apos;</span>, $result[<span class="hljs-number">1</span>]);
+}
+</code></pre>
+<h4 id="&#x666E;&#x901A;&#x51FD;&#x6570;&#x6CE8;&#x5165;">&#x666E;&#x901A;&#x51FD;&#x6570;&#x6CE8;&#x5165;</h4>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testCallWithGlobalMethodName</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $result = $container-&gt;call(<span class="hljs-string">&apos;Illuminate\Tests\Container\containerTestInject&apos;</span>);
+    $this-&gt;assertInstanceOf(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerConcreteStub&apos;</span>, $result[<span class="hljs-number">0</span>]);
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;taylor&apos;</span>, $result[<span class="hljs-number">1</span>]);
+}
+</code></pre>
+<h4 id="&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x6CE8;&#x5165;">&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x6CE8;&#x5165;</h4>
+<p>&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x7684; call &#x89E3;&#x6790;&#x4E3B;&#x8981;&#x4F9D;&#x9760; call_user_func_array() &#x51FD;&#x6570;&#xFF0C;&#x5173;&#x4E8E;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x67E5;&#x770B; <a href="https://segmentfault.com/a/1190000006981167" target="_blank">Laravel&#x5B66;&#x4E60;&#x7B14;&#x8BB0;&#x4E4B;Callback Type - &#x6765;&#x751F;&#x505A;&#x4E2A;&#x6F2B;&#x753B;&#x5BB6;</a>&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5BF9;&#x7C7B;&#x4E2D;&#x7684;&#x9759;&#x6001;&#x51FD;&#x6570;&#x548C;&#x975E;&#x9759;&#x6001;&#x51FD;&#x6570;&#x6709;&#x4E00;&#x4E9B;&#x533A;&#x522B;&#xFF0C;&#x5BF9;&#x4E8E;&#x9759;&#x6001;&#x51FD;&#x6570;&#x6765;&#x8BF4;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ContainerCallTest</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testContainerCallStatic</span><span class="hljs-params">()</span></span>{
+        App::call(TaskRepository::class.<span class="hljs-string">&apos;@testContainerCallStatic&apos;</span>);
+        App::call(TaskRepository::class.<span class="hljs-string">&apos;::testContainerCallStatic&apos;</span>);
+        App::call([TaskRepository::class,<span class="hljs-string">&apos;testContainerCallStatic&apos;</span>]);
+    }
+}
+</code></pre>
+<p>&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x8C03;&#x7528;&#x7C7B;&#x7684;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x6709;&#x4E09;&#x79CD;&#xFF0C;&#x6CE8;&#x610F;&#x7B2C;&#x4E09;&#x79CD;&#x4F7F;&#x7528;&#x6570;&#x7EC4;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x6570;&#x7EC4;&#x4E2D;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F20;&#x7C7B;&#x540D;  TaskRepository::class&#xFF1B;</p>
+<h4 id="&#x975E;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x6CE8;&#x5165;">&#x975E;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x6CE8;&#x5165;</h4>
+<p>&#x5BF9;&#x4E8E;&#x7C7B;&#x7684;&#x975E;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ContainerCallTest</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testContainerCall</span><span class="hljs-params">()</span></span>{
+        $taskRepo = <span class="hljs-keyword">new</span> TaskRepository();
+        App::call(TaskRepository::class.<span class="hljs-string">&apos;@testContainerCall&apos;</span>);
+        App::call([$taskRepo,<span class="hljs-string">&apos;testContainerCall&apos;</span>]);
+    }
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x975E;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x53EA;&#x6709;&#x4E24;&#x79CD;&#x8C03;&#x7528;&#x65B9;&#x5F0F;&#xFF0C;&#x800C;&#x4E14;&#x7B2C;&#x4E8C;&#x79CD;&#x6570;&#x7EC4;&#x4F20;&#x9012;&#x7684;&#x53C2;&#x6570;&#x662F;&#x7C7B;&#x5BF9;&#x8C61;&#xFF0C;&#x539F;&#x56E0;&#x5C31;&#x662F; call_user_func_array&#x51FD;&#x6570;&#x7684;&#x9650;&#x5236;&#xFF0C;&#x5BF9;&#x4E8E;&#x975E;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x53EA;&#x80FD;&#x4F20;&#x9012;&#x5BF9;&#x8C61;&#x3002;</p>
+<h4 id="bindmethod-&#x65B9;&#x6CD5;&#x7ED1;&#x5B9A;">bindmethod &#x65B9;&#x6CD5;&#x7ED1;&#x5B9A;</h4>
+<p>&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x8FD8;&#x6709;&#x4E00;&#x4E2A; bindmethod &#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x7ED1;&#x5B9A;&#x7C7B;&#x7684;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x5230;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testContainCallMethodBind</span><span class="hljs-params">()</span></span>{
+
+    App::bindMethod(TaskRepository::class.<span class="hljs-string">&apos;@testContainerCallStatic&apos;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+         $taskRepo = <span class="hljs-keyword">new</span> TaskRepository();
+         $taskRepo-&gt;testCallback();
+    });
+
+    App::call(TaskRepository::class.<span class="hljs-string">&apos;@testContainerCallStatic&apos;</span>);
+    App::call(TaskRepository::class.<span class="hljs-string">&apos;::testContainerCallStatic&apos;</span>);
+    App::call([TaskRepository::class,<span class="hljs-string">&apos;testContainerCallStatic&apos;</span>]);
+
+    App::bindMethod(TaskRepository::class.<span class="hljs-string">&apos;@testContainerCall&apos;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(TaskRepository $taskRepo)</span> </span>{ $taskRepo-&gt;testCallback(); });
+
+    $taskRepo = <span class="hljs-keyword">new</span> TaskRepository();
+    App::call(TaskRepository::class.<span class="hljs-string">&apos;@testContainerCall&apos;</span>);
+    App::call([$taskRepo,<span class="hljs-string">&apos;testContainerCall&apos;</span>]);
+}
+</code></pre>
+<p>&#x4ECE;&#x7ED3;&#x679C;&#x4E0A;&#x770B;&#xFF0C;bindmethod &#x4E0D;&#x4F1A;&#x5BF9;&#x9759;&#x6001;&#x7684;&#x7B2C;&#x4E8C;&#x79CD;&#x89E3;&#x6790;&#x65B9;&#x6CD5;&#xFF08; :: &#x89E3;&#x6790;&#x65B9;&#x5F0F;&#xFF09;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x5BF9;&#x4E8E;&#x5176;&#x4ED6;&#x65B9;&#x5F0F;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x7ED1;&#x5B9A;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code class="lang-php">  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testCallWithBoundMethod</span><span class="hljs-params">()</span>
+  </span>{
+      $container = <span class="hljs-keyword">new</span> Container;
+      $container-&gt;bindMethod(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestCallStub@unresolvable&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($stub)</span> </span>{
+          <span class="hljs-keyword">return</span> $stub-&gt;unresolvable(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-string">&apos;bar&apos;</span>);
+      });
+      $result = $container-&gt;call(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestCallStub@unresolvable&apos;</span>);
+      $this-&gt;assertEquals([<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-string">&apos;bar&apos;</span>], $result);
+
+      $container = <span class="hljs-keyword">new</span> Container;
+      $container-&gt;bindMethod(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestCallStub@unresolvable&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($stub)</span> </span>{
+          <span class="hljs-keyword">return</span> $stub-&gt;unresolvable(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-string">&apos;bar&apos;</span>);
+  });
+      $result = $container-&gt;call([<span class="hljs-keyword">new</span> ContainerTestCallStub, <span class="hljs-string">&apos;unresolvable&apos;</span>]);
+      $this-&gt;assertEquals([<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-string">&apos;bar&apos;</span>], $result);
+  }
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ContainerTestCallStub</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unresolvable</span><span class="hljs-params">($foo, $bar)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> func_get_args();
+    }
+}
+</code></pre>
+<h4 id="&#x9ED8;&#x8BA4;&#x51FD;&#x6570;&#x6CE8;&#x5165;">&#x9ED8;&#x8BA4;&#x51FD;&#x6570;&#x6CE8;&#x5165;</h4>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testContainCallDefultMethod</span><span class="hljs-params">()</span></span>{
+
+    App::call(TaskRepository::class,[],<span class="hljs-string">&apos;testContainerCall&apos;</span>);
+
+    App::call(TaskRepository::class,[],<span class="hljs-string">&apos;testContainerCallStatic&apos;</span>);
+
+    App::bindMethod(TaskRepository::class.<span class="hljs-string">&apos;@testContainerCallStatic&apos;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        $taskRepo = <span class="hljs-keyword">new</span> TaskRepository();
+        $taskRepo-&gt;testCallback();
+    });
+
+    App::bindMethod(TaskRepository::class.<span class="hljs-string">&apos;@testContainerCall&apos;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(TaskRepository $taskRepo)</span> </span>{  $taskRepo-&gt;testCallback(); });
+
+    App::call(TaskRepository::class,[],<span class="hljs-string">&apos;testContainerCall&apos;</span>);
+
+    App::call(TaskRepository::class,[],<span class="hljs-string">&apos;testContainerCallStatic&apos;</span>);
+
+}
+</code></pre>
+<p>&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x8FD9;&#x79CD;&#x9ED8;&#x8BA4;&#x51FD;&#x6570;&#x6CE8;&#x5165;&#x7684;&#x65B9;&#x6CD5;&#x4F7F;&#x5F97;&#x975E;&#x9759;&#x6001;&#x7684;&#x65B9;&#x6CD5;&#x4E5F;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x7C7B;&#x540D;&#x53BB;&#x8C03;&#x7528;&#xFF0C;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x5BF9;&#x8C61;&#x3002;&#x9ED8;&#x8BA4;&#x51FD;&#x6570;&#x6CE8;&#x5165;&#x4E5F;&#x56DE;&#x53D7;&#x5230; bindmethod &#x51FD;&#x6570;&#x7684;&#x5F71;&#x54CD;&#x3002;</p>
+<h3 id="&#x6570;&#x7EC4;&#x89E3;&#x6790;">&#x6570;&#x7EC4;&#x89E3;&#x6790;</h3>
+<pre><code class="lang-php">  app()[<span class="hljs-string">&apos;service&apos;</span>];
+</code></pre>
+<h3 id="appservice&#x7684;&#x5F62;&#x5F0F;">app($service)&#x7684;&#x5F62;&#x5F0F;</h3>
+<pre><code class="lang-php">  app(<span class="hljs-string">&apos;service&apos;</span>);
+</code></pre>
+<h2 id="&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x4E8B;&#x4EF6;">&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x4E8B;&#x4EF6;</h2>
+<p>&#x6BCF;&#x5F53;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x89E3;&#x6790;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x65F6;&#x5C31;&#x4F1A;&#x89E6;&#x53D1;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; resolving &#x65B9;&#x6CD5;&#x76D1;&#x542C;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php">$this-&gt;app-&gt;resolving(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($object, $app)</span> </span>{
+  <span class="hljs-comment">// &#x89E3;&#x6790;&#x4EFB;&#x4F55;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x65F6;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;...</span>
+});
+$this-&gt;app-&gt;resolving(HelpSpot\API::class, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($api, $app)</span> </span>{
+  <span class="hljs-comment">// &#x89E3;&#x6790;&#x300C;HelpSpot\API&#x300D;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x65F6;&#x8C03;&#x7528;...</span>
+});
+$this-&gt;app-&gt;afterResolving(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($object, $app)</span> </span>{
+  <span class="hljs-comment">// &#x89E3;&#x6790;&#x4EFB;&#x4F55;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x540E;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;...</span>
+});
+$this-&gt;app-&gt;afterResolving(HelpSpot\API::class, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($api, $app)</span> </span>{
+  <span class="hljs-comment">// &#x89E3;&#x6790;&#x300C;HelpSpot\API&#x300D;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x540E;&#x8C03;&#x7528;...</span>
+});
+</code></pre>
+<p>&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x6BCF;&#x6B21;&#x89E3;&#x6790;&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x8FD9;&#x4E9B;&#x901A;&#x8FC7; resolving &#x548C; afterResolving &#x51FD;&#x6570;&#x4F20;&#x5165;&#x7684;&#x95ED;&#x5305;&#x51FD;&#x6570;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x89E6;&#x53D1;&#x8FD9;&#x4E9B;&#x4E8B;&#x4EF6;&#x3002;
+&#x6CE8;&#x610F;&#xFF1A;&#x5982;&#x679C;&#x662F;&#x5355;&#x4F8B;&#xFF0C;&#x5219;&#x53EA;&#x5728;&#x89E3;&#x6790;&#x65F6;&#x4F1A;&#x89E6;&#x53D1;&#x4E00;&#x6B21;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testResolvingCallbacksAreCalled</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;resolving(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($object)</span> </span>{
+        <span class="hljs-keyword">return</span> $object-&gt;name = <span class="hljs-string">&apos;taylor&apos;</span>;
+    });
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> StdClass;
+    });
+    $instance = $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>);
+
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;taylor&apos;</span>, $instance-&gt;name);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testResolvingCallbacksAreCalledForType</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;resolving(<span class="hljs-string">&apos;StdClass&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($object)</span> </span>{
+        <span class="hljs-keyword">return</span> $object-&gt;name = <span class="hljs-string">&apos;taylor&apos;</span>;
+    });
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+          <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> StdClass;
+    });
+    $instance = $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>);
+
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;taylor&apos;</span>, $instance-&gt;name);
+}
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testResolvingCallbacksShouldBeFiredWhenCalledWithAliases</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;alias(<span class="hljs-string">&apos;StdClass&apos;</span>, <span class="hljs-string">&apos;std&apos;</span>);
+    $container-&gt;resolving(<span class="hljs-string">&apos;std&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($object)</span> </span>{
+        <span class="hljs-keyword">return</span> $object-&gt;name = <span class="hljs-string">&apos;taylor&apos;</span>;
+    });
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> StdClass;
+    });
+    $instance = $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>);
+
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;taylor&apos;</span>, $instance-&gt;name);
+}
+</code></pre>
+<h2 id="&#x88C5;&#x9970;&#x51FD;&#x6570;">&#x88C5;&#x9970;&#x51FD;&#x6570;</h2>
+<p>&#x5BB9;&#x5668;&#x7684;&#x88C5;&#x9970;&#x51FD;&#x6570;&#x6709;&#x4E24;&#x79CD;&#xFF0C;wrap&#x7528;&#x4E8E;&#x88C5;&#x9970;call&#xFF0C;factory&#x7528;&#x4E8E;&#x88C5;&#x9970;make&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testContainerWrap</span><span class="hljs-params">()</span>
+</span>{
+      $result = $container-&gt;wrap(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(StdClass $foo, $bar = [])</span> </span>{
+          <span class="hljs-keyword">return</span> func_get_args();
+      }, [<span class="hljs-string">&apos;bar&apos;</span> =&gt; <span class="hljs-string">&apos;taylor&apos;</span>]);
+
+      $this-&gt;assertInstanceOf(<span class="hljs-string">&apos;Closure&apos;</span>, $result);
+      $result = $result();
+
+      $this-&gt;assertInstanceOf(<span class="hljs-string">&apos;stdClass&apos;</span>, $result[<span class="hljs-number">0</span>]);
+      $this-&gt;assertEquals(<span class="hljs-string">&apos;taylor&apos;</span>, $result[<span class="hljs-number">1</span>]);
+  }
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testContainerGetFactory</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;bind(<span class="hljs-string">&apos;name&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;Taylor&#x2019;;
+    });
+    $factory = $container-&gt;factory(&apos;</span>name<span class="hljs-string">&apos;);
+    $this-&gt;assertEquals($container-&gt;make(&apos;</span>name<span class="hljs-string">&apos;), $factory());
+}
+</span></code></pre>
+<h2 id="&#x5BB9;&#x5668;&#x91CD;&#x7F6E;flush">&#x5BB9;&#x5668;&#x91CD;&#x7F6E;flush</h2>
+<p>&#x5BB9;&#x5668;&#x7684;&#x91CD;&#x7F6E;&#x51FD;&#x6570;flush&#x4F1A;&#x6E05;&#x7A7A;&#x5BB9;&#x5668;&#x5185;&#x90E8;&#x7684;aliases&#x3001;abstractAliases&#x3001;resolved&#x3001;bindings&#x3001;instances</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testContainerFlushFlushesAllBindingsAliasesAndResolvedInstances</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;bind(<span class="hljs-string">&apos;ConcreteStub&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ContainerConcreteStub;
+    }, <span class="hljs-keyword">true</span>);
+    $container-&gt;alias(<span class="hljs-string">&apos;ConcreteStub&apos;</span>, <span class="hljs-string">&apos;ContainerConcreteStub&apos;</span>);
+
+    $concreteStubInstance = $container-&gt;make(<span class="hljs-string">&apos;ConcreteStub&apos;</span>);
+    $this-&gt;assertTrue($container-&gt;resolved(<span class="hljs-string">&apos;ConcreteStub&apos;</span>));
+    $this-&gt;assertTrue($container-&gt;isAlias(<span class="hljs-string">&apos;ContainerConcreteStub&apos;</span>));
+    $this-&gt;assertArrayHasKey(<span class="hljs-string">&apos;ConcreteStub&apos;</span>, $container-&gt;getBindings());
+    $this-&gt;assertTrue($container-&gt;isShared(<span class="hljs-string">&apos;ConcreteStub&apos;</span>));
+
+    $container-&gt;flush();
+    $this-&gt;assertFalse($container-&gt;resolved(<span class="hljs-string">&apos;ConcreteStub&apos;</span>));
+    $this-&gt;assertFalse($container-&gt;isAlias(<span class="hljs-string">&apos;ContainerConcreteStub&apos;</span>));
+    $this-&gt;assertEmpty($container-&gt;getBindings());
+    $this-&gt;assertFalse($container-&gt;isShared(<span class="hljs-string">&apos;ConcreteStub&apos;</span>));
+}
+</code></pre>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/" target="_blank">StackEdit</a>.</p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md" class="navigation navigation-next navigation-unique" aria-label="Next page: Laravel Container——IoC 服务容器源码解析(服务器绑定)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Laravel Container——IoC 服务容器","level":"1.4.1","depth":2,"next":{"title":"Laravel Container——IoC 服务容器源码解析(服务器绑定)","level":"1.4.2","depth":2,"path":"Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md","ref":"Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md","articles":[]},"previous":{"title":"Laravel Ioc 容器","level":"1.4","depth":1,"ref":"","articles":[{"title":"Laravel Container——IoC 服务容器","level":"1.4.1","depth":2,"path":"Laravel Container——IoC 服务容器.md","ref":"Laravel Container——IoC 服务容器.md","articles":[]},{"title":"Laravel Container——IoC 服务容器源码解析(服务器绑定)","level":"1.4.2","depth":2,"path":"Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md","ref":"Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md","articles":[]},{"title":"Laravel Container——IoC 服务容器源码解析(服务器解析)","level":"1.4.3","depth":2,"path":"Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md","ref":"Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md","articles":[]},{"title":"Laravel Container——服务容器的细节特性","level":"1.4.4","depth":2,"path":"Laravel Container——服务容器的细节特性.md","ref":"Laravel Container——服务容器的细节特性.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Laravel Container——IoC 服务容器.md","mtime":"2019-01-15T10:29:00.298Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T10:51:52.544Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

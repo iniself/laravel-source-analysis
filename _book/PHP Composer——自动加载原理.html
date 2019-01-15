@@ -1,0 +1,1257 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>PHP Composer——自动加载原理 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="PHP Composer—— 初始化源码分析.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    PHP Composer 自动加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="PHP Composer——自动加载原理.html">
+            
+                <a href="PHP Composer——自动加载原理.html">
+            
+                    
+                    PHP Composer——自动加载原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="PHP Composer—— 初始化源码分析.html">
+            
+                <a href="PHP Composer—— 初始化源码分析.html">
+            
+                    
+                    PHP Composer—— 初始化源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="PHP Composer-——-注册与运行源码分析.html">
+            
+                <a href="PHP Composer-——-注册与运行源码分析.html">
+            
+                    
+                    PHP Composer-——-注册与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Laravel Facade 门面
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="Laravel Facade——Facade 门面源码分析.html">
+            
+                <a href="Laravel Facade——Facade 门面源码分析.html">
+            
+                    
+                    Laravel Facade——Facade 门面源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Laravel Ioc 容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Laravel Container——IoC 服务容器.html">
+            
+                <a href="Laravel Container——IoC 服务容器.html">
+            
+                    
+                    Laravel Container——IoC 服务容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器绑定)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器解析)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="Laravel Container——服务容器的细节特性.html">
+            
+                <a href="Laravel Container——服务容器的细节特性.html">
+            
+                    
+                    Laravel Container——服务容器的细节特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Laravel Route 路由
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Laravel HTTP——路由.html">
+            
+                <a href="Laravel HTTP——路由.html">
+            
+                    
+                    Laravel HTTP——路由
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="Laravel HTTP——路由加载源码分析.html">
+            
+                <a href="Laravel HTTP——路由加载源码分析.html">
+            
+                    
+                    Laravel HTTP——路由加载源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                <a href="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                    
+                    Laravel HTTP——Pipeline中间件处理源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="Laravel HTTP——路由的正则编译.html">
+            
+                <a href="Laravel HTTP——路由的正则编译.html">
+            
+                    
+                    Laravel HTTP——路由的正则编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                <a href="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                    
+                    Laravel HTTP——路由的匹配与参数绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="Laravel HTTP——路由中间件源码分析.html">
+            
+                <a href="Laravel HTTP——路由中间件源码分析.html">
+            
+                    
+                    Laravel HTTP——路由中间件源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                <a href="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                    
+                    Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                <a href="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                    
+                    Laravel HTTP——控制器方法的参数构建与运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                <a href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP—— RESTFul 风格路由的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                <a href="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP——重定向的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Laravel ENV 环境变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                <a href="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                    
+                    Laravel ENV—— 环境变量的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Laravel Config 配置文件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                <a href="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                    
+                    Laravel Config—— 配置文件的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Laravel Exceptions 异常处理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="Laravel Exceptions——异常与错误处理.html">
+            
+                <a href="Laravel Exceptions——异常与错误处理.html">
+            
+                    
+                    Laravel Exceptions——异常与错误处理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Laravel Providers 服务提供者
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                <a href="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                    
+                    Laravel Providers——服务提供者的注册与启动源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Laravel Database 数据库
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="Laravel Database——数据库服务的启动与连接.html">
+            
+                <a href="Laravel Database——数据库服务的启动与连接.html">
+            
+                    
+                    Laravel Database——数据库服务的启动与连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="Laravel Database——数据库的 CRUD 操作.html">
+            
+                <a href="Laravel Database——数据库的 CRUD 操作.html">
+            
+                    
+                    Laravel Database——数据库的 CRUD 操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="Laravel Database——查询构造器与语法编译器源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="Laravel Database——查询构造器与语法编译器源码分析%28中%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(中)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="Laravel Database——查询构造器与语法编译器源码分析%28下%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="Laravel Database——分页原理与源码分析.html">
+            
+                <a href="Laravel Database——分页原理与源码分析.html">
+            
+                    
+                    Laravel Database——分页原理与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Laravel Database——Eloquent Model 源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                <a href="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                <a href="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                    
+                    Laravel Database——Eloquent Model 关联源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                <a href="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                    
+                    Laravel Database——Eloquent Model 模型关系加载与查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                <a href="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                    
+                    Laravel Database——Eloquent Model 更新关联模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Laravel Session
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="Laravel Session——session 的启动与运行源码分析.html">
+            
+                <a href="Laravel Session——session 的启动与运行源码分析.html">
+            
+                    
+                    Laravel Session——session 的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    Laravel Event 事件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                <a href="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                    
+                    Laravel Event——事件系统的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    Laravel Queue 队列
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务与分发源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务处理器源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    Laravel 广播系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="Laravel Broadcast——广播系统源码剖析.html">
+            
+                <a href="Laravel Broadcast——广播系统源码剖析.html">
+            
+                    
+                    Laravel Broadcast——广播系统源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    Laravel Passport
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >PHP Composer——自动加载原理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h1>
+<p>&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x662F;&#x5BF9; <code>PHP&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x529F;&#x80FD;</code> &#x7684;&#x4E00;&#x4E2A;&#x603B;&#x7ED3;&#xFF0C;&#x5185;&#x5BB9;&#x6D89;&#x53CA; <code>PHP&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x529F;&#x80FD;</code> &#x3001;<code>PHP&#x547D;&#x540D;&#x7A7A;&#x95F4;</code>&#x3001;<code>PSR0/PSR4&#x6807;&#x51C6;</code> &#x7B49;&#x5185;&#x5BB9;&#x3002;</p>
+<h1 id="&#x4E00;&#x3001;php-&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x529F;&#x80FD;">&#x4E00;&#x3001;PHP &#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x529F;&#x80FD;</h1>
+<h2 id="php-&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x529F;&#x80FD;&#x7684;&#x7531;&#x6765;">PHP &#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x529F;&#x80FD;&#x7684;&#x7531;&#x6765;</h2>
+<p>&#x5728; PHP &#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x5E0C;&#x671B;&#x4ECE;&#x5916;&#x90E8;&#x5F15;&#x5165;&#x4E00;&#x4E2A; Class &#xFF0C;&#x901A;&#x5E38;&#x4F1A;&#x4F7F;&#x7528; <code>include</code> &#x548C; <code>require</code> &#x65B9;&#x6CD5;&#xFF0C;&#x53BB;&#x628A;&#x5B9A;&#x4E49;&#x8FD9;&#x4E2A; Class &#x7684;&#x6587;&#x4EF6;&#x5305;&#x542B;&#x8FDB;&#x6765;&#x3002;&#x8FD9;&#x4E2A;&#x5728;&#x5C0F;&#x89C4;&#x6A21;&#x5F00;&#x53D1;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6CA1;&#x4EC0;&#x4E48;&#x5927;&#x95EE;&#x9898;&#x3002;&#x4F46;&#x5728;&#x5927;&#x578B;&#x7684;&#x5F00;&#x53D1;&#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x4F1A;&#x5E26;&#x6765;&#x4E00;&#x4E9B;&#x9690;&#x542B;&#x7684;&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x679C;&#x4E00;&#x4E2A; PHP &#x6587;&#x4EF6;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5F88;&#x591A;&#x5176;&#x5B83;&#x7C7B;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x9700;&#x8981;&#x5F88;&#x591A;&#x7684; <code>require/include</code> &#x8BED;&#x53E5;&#xFF0C;&#x8FD9;&#x6837;&#x6709;&#x53EF;&#x80FD;&#x4F1A; <strong>&#x9020;&#x6210;&#x9057;&#x6F0F;</strong> &#x6216;&#x8005; <strong>&#x5305;&#x542B;&#x8FDB;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x7C7B;&#x6587;&#x4EF6;</strong>&#x3002;&#x5982;&#x679C;&#x5927;&#x91CF;&#x7684;&#x6587;&#x4EF6;&#x90FD;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5176;&#x5B83;&#x7684;&#x7C7B;&#xFF0C;&#x90A3;&#x4E48;&#x8981;&#x4FDD;&#x8BC1;&#x6BCF;&#x4E2A;&#x6587;&#x4EF6;&#x90FD;&#x5305;&#x542B;&#x6B63;&#x786E;&#x7684;&#x7C7B;&#x6587;&#x4EF6;&#x80AF;&#x5B9A;&#x662F;&#x4E00;&#x4E2A;&#x5669;&#x68A6;&#xFF0C; &#x51B5;&#x4E14; require_once &#x7684;&#x4EE3;&#x4EF7;&#x5F88;&#x5927;&#x3002;</p>
+<p>PHP5 &#x4E3A;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x8FD9;&#x5C31;&#x662F; <code>&#x7C7B;&#x7684;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;(autoload)&#x673A;&#x5236;</code>&#x3002;<code>autoload&#x673A;&#x5236;</code> &#x53EF;&#x4EE5;&#x4F7F;&#x5F97; PHP &#x7A0B;&#x5E8F;&#x6709;&#x53EF;&#x80FD;&#x5728;&#x4F7F;&#x7528;&#x7C7B;&#x65F6;&#x624D;&#x81EA;&#x52A8;&#x5305;&#x542B;&#x7C7B;&#x6587;&#x4EF6;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x5C06;&#x6240;&#x6709;&#x7684;&#x7C7B;&#x6587;&#x4EF6;<code>include</code>&#x8FDB;&#x6765;&#xFF0C;&#x8FD9;&#x79CD;&#x673A;&#x5236;&#x4E5F;&#x79F0;&#x4E3A; <code>Lazy loading (&#x5EF6;&#x8FDF;&#x52A0;&#x8F7D;)</code>&#x3002;</p>
+<ul>
+<li><p>&#x603B;&#x7ED3;&#x8D77;&#x6765;&#xFF0C;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x529F;&#x80FD;&#x5E26;&#x6765;&#x4E86;&#x51E0;&#x5904;&#x4F18;&#x70B9;&#xFF1A;</p>
+<blockquote>
+<ol>
+<li>&#x4F7F;&#x7528;&#x7C7B;&#x4E4B;&#x524D;&#x65E0;&#x9700; <code>include / require</code></li>
+<li>&#x4F7F;&#x7528;&#x7C7B;&#x7684;&#x65F6;&#x5019;&#x624D;&#x4F1A; <code>include / require</code> &#x6587;&#x4EF6;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86; <code>lazy loading</code> &#xFF0C;&#x907F;&#x514D;&#x4E86; <code>include / require</code> &#x591A;&#x4F59;&#x6587;&#x4EF6;&#x3002;</li>
+<li>&#x65E0;&#x9700;&#x8003;&#x8651;&#x5F15;&#x5165; <strong>&#x7C7B;&#x7684;&#x5B9E;&#x9645;&#x78C1;&#x76D8;&#x5730;&#x5740;</strong> &#xFF0C;&#x5B9E;&#x73B0;&#x4E86;&#x903B;&#x8F91;&#x548C;&#x5B9E;&#x4F53;&#x6587;&#x4EF6;&#x7684;&#x5206;&#x79BB;&#x3002;</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>&#x5982;&#x679C;&#x60F3;&#x5177;&#x4F53;&#x8BE6;&#x7EC6;&#x7684;&#x4E86;&#x89E3;&#x5173;&#x4E8E;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x8D44;&#x6599;&#xFF1A;<blockquote>
+<p><a href="http://blog.csdn.net/hguisu/article/details/7463333" target="_blank">PHP &#x7C7B;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x673A;&#x5236;</a></p>
+<p><a href="http://www.jb51.net/article/31279.htm" target="_blank">PHP autoload&#x673A;&#x5236;&#x7684;&#x5B9E;&#x73B0;&#x89E3;&#x6790;</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="php-&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x51FD;&#x6570;-autoload">PHP &#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x51FD;&#x6570; __autoload()</h2>
+<ul>
+<li><p>&#x901A;&#x5E38; PHP5 &#x5728;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x7C7B;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x53D1;&#x73B0;&#x8FD9;&#x4E2A;&#x7C7B;&#x6CA1;&#x6709;&#x52A0;&#x8F7D;&#xFF0C;&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x8FD0;&#x884C; __autoload() &#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x662F;&#x6211;&#x4EEC;&#x5728;&#x7A0B;&#x5E8F;&#x4E2D;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x52A0;&#x8F7D;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x7C7B;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__autoload</span><span class="hljs-params">($classname)</span> </span>{
+   <span class="hljs-keyword">require_once</span> ($classname . <span class="hljs-string">&quot;.class.php&quot;</span>);
+}
+</code></pre>
+</li>
+<li><p>&#x5728;&#x6211;&#x4EEC;&#x8FD9;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x76F4;&#x63A5;&#x5C06;&#x7C7B;&#x540D;&#x52A0;&#x4E0A;&#x6269;&#x5C55;&#x540D; <code>.class.php</code> &#x6784;&#x6210;&#x4E86;&#x7C7B;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528; <code>require_once</code> &#x5C06;&#x5176;&#x52A0;&#x8F7D;&#x3002;</p>
+<blockquote>
+<p>&#x4ECE;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x51FA; __autoload &#x81F3;&#x5C11;&#x8981;&#x505A;&#x4E09;&#x4EF6;&#x4E8B;&#x60C5;&#xFF1A;</p>
+<ol>
+<li><p>&#x6839;&#x636E;&#x7C7B;&#x540D;&#x786E;&#x5B9A;&#x7C7B;&#x6587;&#x4EF6;&#x540D;&#xFF1B;</p>
+</li>
+<li><p>&#x786E;&#x5B9A;&#x7C7B;&#x6587;&#x4EF6;&#x6240;&#x5728;&#x7684;&#x78C1;&#x76D8;&#x8DEF;&#x5F84; <code>(&#x5728;&#x6211;&#x4EEC;&#x7684;&#x4F8B;&#x5B50;&#x662F;&#x6700;&#x7B80;&#x5355;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x7C7B;&#x4E0E;&#x8C03;&#x7528;&#x5B83;&#x4EEC;&#x7684;PHP&#x7A0B;&#x5E8F;&#x6587;&#x4EF6;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x4E0B;)</code>&#xFF1B;</p>
+</li>
+<li><p>&#x5C06;&#x7C7B;&#x4ECE;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x4E2D;&#x52A0;&#x8F7D;&#x5230;&#x7CFB;&#x7EDF;&#x4E2D;&#x3002;</p>
+</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>&#x7B2C;&#x4E09;&#x6B65;&#x6700;&#x7B80;&#x5355;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x4F7F;&#x7528; <code>include / require</code> &#x5373;&#x53EF;&#x3002;&#x8981;&#x5B9E;&#x73B0;&#x7B2C;&#x4E00;&#x6B65;&#xFF0C;&#x7B2C;&#x4E8C;&#x6B65;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5FC5;&#x987B;&#x5728;&#x5F00;&#x53D1;&#x65F6;&#x7EA6;&#x5B9A;&#x7C7B;&#x540D;&#x4E0E;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x7684;&#x6620;&#x5C04;&#x65B9;&#x6CD5;&#xFF0C;&#x53EA;&#x6709;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x624D;&#x80FD;&#x6839;&#x636E;&#x7C7B;&#x540D;&#x627E;&#x5230;&#x5B83;&#x5BF9;&#x5E94;&#x7684;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x3002;</p>
+</li>
+<li><p>&#x5F53;&#x6709;&#x5927;&#x91CF;&#x7684;&#x7C7B;&#x6587;&#x4EF6;&#x8981;&#x5305;&#x542B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x8981;&#x786E;&#x5B9A;&#x76F8;&#x5E94;&#x7684;&#x89C4;&#x5219;&#xFF0C;&#x7136;&#x540E;&#x5728; <strong><code>__autoload()</code> &#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x5C06;&#x7C7B;&#x540D;&#x4E0E;&#x5B9E;&#x9645;&#x7684;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x5BF9;&#x5E94;&#x8D77;&#x6765;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0; <code>lazy loading</code> &#x7684;&#x6548;&#x679C;</strong> &#x3002;&#x4ECE;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x770B;&#x51FA; <code>__autoload()</code> &#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#x6700;&#x91CD;&#x8981;&#x7684;&#x662F;&#x7C7B;&#x540D;&#x4E0E;&#x5B9E;&#x9645;&#x7684;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x6620;&#x5C04;&#x89C4;&#x5219;&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+</li>
+</ul>
+<h2 id="autoload-&#x51FD;&#x6570;&#x5B58;&#x5728;&#x7684;&#x95EE;&#x9898;">__autoload() &#x51FD;&#x6570;&#x5B58;&#x5728;&#x7684;&#x95EE;&#x9898;</h2>
+<ul>
+<li><p>&#x5982;&#x679C;&#x5728;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5F88;&#x591A;&#x5176;&#x5B83;&#x7684;&#x7C7B;&#x5E93;&#xFF0C;&#x8FD9;&#x4E9B;&#x7C7B;&#x5E93;&#x53EF;&#x80FD;&#x662F;&#x7531;&#x4E0D;&#x540C;&#x7684;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x7F16;&#x5199;&#x7684;&#xFF0C;  &#x5176;&#x7C7B;&#x540D;&#x4E0E;&#x5B9E;&#x9645;&#x7684;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x7684;&#x6620;&#x5C04;&#x89C4;&#x5219;&#x4E0D;&#x5C3D;&#x76F8;&#x540C;&#x3002;&#x8FD9;&#x65F6;&#x5982;&#x679C;&#x8981;&#x5B9E;&#x73B0;&#x7C7B;&#x5E93;&#x6587;&#x4EF6;&#x7684;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#xFF0C;&#x5C31;&#x5FC5;&#x987B; <strong>&#x5728;__autoload()&#x51FD;&#x6570;&#x4E2D;&#x5C06;&#x6240;&#x6709;&#x7684;&#x6620;&#x5C04;&#x89C4;&#x5219;&#x5168;&#x90E8;&#x5B9E;&#x73B0;</strong>&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x8BDD; <code>__autoload()</code> &#x51FD;&#x6570;&#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x975E;&#x5E38;&#x590D;&#x6742;&#xFF0C;&#x751A;&#x81F3;&#x65E0;&#x6CD5;&#x5B9E;&#x73B0;&#x3002;&#x6700;&#x540E;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4; <code>__autoload()</code> &#x51FD;&#x6570;&#x5341;&#x5206;&#x81C3;&#x80BF;&#xFF0C;&#x8FD9;&#x65F6;&#x5373;&#x4FBF;&#x80FD;&#x591F;&#x5B9E;&#x73B0;&#xFF0C;&#x4E5F;&#x4F1A;&#x7ED9;&#x5C06;&#x6765;&#x7684;&#x7EF4;&#x62A4;&#x548C;&#x7CFB;&#x7EDF;&#x6548;&#x7387;&#x5E26;&#x6765;&#x5F88;&#x5927;&#x7684;&#x8D1F;&#x9762;&#x5F71;&#x54CD;&#x3002;</p>
+</li>
+<li><p>&#x90A3;&#x4E48;&#x95EE;&#x9898;&#x51FA;&#x73B0;&#x5728;&#x54EA;&#x91CC;&#x5462;&#xFF1F;&#x95EE;&#x9898;&#x51FA;&#x73B0;&#x5728; <strong>__autoload() &#x662F;&#x5168;&#x5C40;&#x51FD;&#x6570;&#x53EA;&#x80FD;&#x5B9A;&#x4E49;&#x4E00;&#x6B21;</strong> &#xFF0C;&#x4E0D;&#x591F;&#x7075;&#x6D3B;&#xFF0C;&#x6240;&#x4EE5;&#x6240;&#x6709;&#x7684;&#x7C7B;&#x540D;&#x4E0E;&#x6587;&#x4EF6;&#x540D;&#x5BF9;&#x5E94;&#x7684;&#x903B;&#x8F91;&#x89C4;&#x5219;&#x90FD;&#x8981;&#x5728;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x91CC;&#x9762;&#x5B9E;&#x73B0;&#xFF0C;&#x9020;&#x6210;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x81C3;&#x80BF;&#x3002;&#x90A3;&#x4E48;&#x5982;&#x4F55;&#x6765;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x5462;&#xFF1F;&#x7B54;&#x6848;&#x5C31;&#x662F;&#x4F7F;&#x7528;&#x4E00;&#x4E2A; <strong>__autoload&#x8C03;&#x7528;&#x5806;&#x6808;</strong> &#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x5199;&#x5230;&#x4E0D;&#x540C;&#x7684; <code>__autoload&#x51FD;&#x6570;</code> &#x4E2D;&#x53BB;&#xFF0C;&#x7136;&#x540E;&#x7EDF;&#x4E00;&#x6CE8;&#x518C;&#x7EDF;&#x4E00;&#x7BA1;&#x7406;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C31;&#x662F;PHP5&#x5F15;&#x5165;&#x7684; <code>SPL Autoload</code> &#x3002;</p>
+</li>
+</ul>
+<h2 id="spl-autoload">SPL Autoload</h2>
+<ul>
+<li>SPL&#x662F;Standard PHP Library(&#x6807;&#x51C6;PHP&#x5E93;)&#x7684;&#x7F29;&#x5199;&#x3002;&#x5B83;&#x662F;PHP5&#x5F15;&#x5165;&#x7684;&#x4E00;&#x4E2A;&#x6269;&#x5C55;&#x5E93;&#xFF0C;&#x5176;&#x4E3B;&#x8981;&#x529F;&#x80FD;&#x5305;&#x62EC;autoload&#x673A;&#x5236;&#x7684;&#x5B9E;&#x73B0;&#x53CA;&#x5305;&#x62EC;&#x5404;&#x79CD;Iterator&#x63A5;&#x53E3;&#x6216;&#x7C7B;&#x3002;SPL Autoload&#x5177;&#x4F53;&#x6709;&#x51E0;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;<blockquote>
+<ol>
+<li><em>spl_autoload_register&#xFF1A;&#x6CE8;&#x518C;__autoload()&#x51FD;&#x6570;</em></li>
+<li><em>spl_autoload_unregister&#xFF1A;&#x6CE8;&#x9500;&#x5DF2;&#x6CE8;&#x518C;&#x7684;&#x51FD;&#x6570;</em></li>
+<li><em>spl_autoload_functions&#xFF1A;&#x8FD4;&#x56DE;&#x6240;&#x6709;&#x5DF2;&#x6CE8;&#x518C;&#x7684;&#x51FD;&#x6570;</em></li>
+<li><em>spl_autoload_call&#xFF1A;&#x5C1D;&#x8BD5;&#x6240;&#x6709;&#x5DF2;&#x6CE8;&#x518C;&#x7684;&#x51FD;&#x6570;&#x6765;&#x52A0;&#x8F7D;&#x7C7B;</em></li>
+<li><em>spl_autoload &#xFF1A;__autoload()&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;</em></li>
+<li><em>spl_autoload_extionsions&#xFF1A; &#x6CE8;&#x518C;&#x5E76;&#x8FD4;&#x56DE;spl_autoload&#x51FD;&#x6570;&#x4F7F;&#x7528;&#x7684;&#x9ED8;&#x8BA4;&#x6587;&#x4EF6;&#x6269;&#x5C55;&#x540D;&#x3002;</em></li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h1 id="todo-continue">todo Continue</h1>
+<h1 id="todo-continue">todo Continue</h1>
+<h1 id="todo-continue">todo Continue</h1>
+<h1 id="todo-continue">todo Continue</h1>
+<h1 id="todo-continue">todo Continue</h1>
+<h1 id="todo-continue">todo Continue</h1>
+<p>&#x2003;&#x2003;
+&#x2003;&#x2003;&#x8FD9;&#x51E0;&#x4E2A;&#x51FD;&#x6570;&#x5177;&#x4F53;&#x8BE6;&#x7EC6;&#x7528;&#x6CD5;&#x53EF;&#x89C1; <a href="http://www.jb51.net/article/56370.htm" target="_blank">php&#x4E2D;spl_autoload&#x8BE6;&#x89E3;</a></p>
+<p> &#x2003;&#x2003;&#x7B80;&#x5355;&#x6765;&#x8BF4;&#xFF0C;spl_autoload &#x5C31;&#x662F; SPL &#x81EA;&#x5DF1;&#x7684;&#x5B9A;&#x4E49; <code>__autoload()</code>&#x51FD;&#x6570;&#xFF0C;&#x529F;&#x80FD;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x5C31;&#x662F;&#x53BB;&#x6CE8;&#x518C;&#x7684;&#x76EE;&#x5F55;(&#x7531;set_include_path&#x8BBE;&#x7F6E;)&#x627E;&#x4E0E;$classname&#x540C;&#x540D;&#x7684;.php/.inc&#x6587;&#x4EF6;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x7279;&#x5B9A;&#x7C7B;&#x578B;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x65B9;&#x6CD5;&#x662F;&#x6CE8;&#x518C;&#x6269;&#x5C55;&#x540D;(spl_autoload_extionsions)&#x3002;</p>
+<p> &#x2003;&#x2003;&#x800C; spl<em>autoload_register() &#x5C31;&#x662F;&#x6211;&#x4EEC;&#x4E0A;&#x9762;&#x6240;&#x8BF4;&#x7684;\</em>_autoload&#x8C03;&#x7528;&#x5806;&#x6808;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5411;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x6CE8;&#x518C;&#x591A;&#x4E2A;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;_autoload()&#x51FD;&#x6570;&#xFF0C;&#x5F53;PHP&#x627E;&#x4E0D;&#x5230;&#x7C7B;&#x540D;&#x65F6;&#xFF0C;PHP&#x5C31;&#x4F1A;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x5806;&#x6808;&#xFF0C;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x53BB;&#x8C03;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x7684;_autoload()&#x51FD;&#x6570;&#xFF0C;&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x529F;&#x80FD;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4E0D;&#x5411;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x8F93;&#x5165;&#x4EFB;&#x4F55;&#x53C2;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x6CE8;&#x518C;spl_autoload()&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x2003;&#x2003;&#x597D;&#x5566;&#xFF0C;PHP&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x7684;&#x5E95;&#x5C42;&#x5C31;&#x662F;&#x8FD9;&#x4E9B;&#xFF0C;&#x6CE8;&#x518C;&#x673A;&#x5236;&#x5DF2;&#x7ECF;&#x975E;&#x5E38;&#x7075;&#x6D3B;&#xFF0C;&#x4F46;&#x662F;&#x8FD8;&#x7F3A;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;&#x6211;&#x4EEC;&#x4E0A;&#x9762;&#x8BF4;&#x8FC7;&#xFF0C;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x5173;&#x952E;&#x5C31;&#x662F;&#x7C7B;&#x540D;&#x548C;&#x6587;&#x4EF6;&#x7684;&#x6620;&#x5C04;&#xFF0C;&#x8FD9;&#x79CD;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x4E0D;&#x540C;&#x6846;&#x67B6;&#x6709;&#x4E0D;&#x540C;&#x65B9;&#x6CD5;&#xFF0C;&#x975E;&#x5E38;&#x7075;&#x6D3B;&#xFF0C;&#x4F46;&#x662F;&#x8FC7;&#x4E8E;&#x7075;&#x6D3B;&#x5C31;&#x4F1A;&#x663E;&#x5F97;&#x6742;&#x4E71;&#xFF0C;PHP&#x6709;&#x4E13;&#x95E8;&#x5BF9;&#x8FD9;&#x79CD;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x7684;&#x89C4;&#x8303;&#xFF0C;&#x90A3;&#x5C31;&#x662F;PSR&#x6807;&#x51C6;&#x4E2D;PSR0&#x4E0E;PSR4&#x3002;</p>
+<p>&#x2003;&#x2003;&#x4E0D;&#x8FC7;&#x5728;&#x8C08;PSR0&#x4E0E;PSR4&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x4E86;&#x89E3;PHP&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E24;&#x4E2A;&#x6807;&#x51C6;&#x5176;&#x5B9E;&#x9488;&#x5BF9;&#x7684;&#x90FD;&#x4E0D;&#x662F;&#x7C7B;&#x540D;&#x4E0E;&#x76EE;&#x5F55;&#x6587;&#x4EF6;&#x7684;&#x6620;&#x5C04;&#xFF0C;&#x800C;&#x662F;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E0E;&#x6587;&#x4EF6;&#x7684;&#x6620;&#x5C04;&#x3002;&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x8FD9;&#x6837;&#x5462;&#xFF1F;&#x5728;&#x6211;&#x7684;&#x7406;&#x89E3;&#x4E2D;&#xFF0C;&#x89C4;&#x8303;&#x7684;&#x9762;&#x5411;&#x5BF9;&#x8C61;PHP&#x601D;&#x60F3;&#xFF0C;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x5728;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x7B97;&#x662F;&#x7C7B;&#x540D;&#x7684;&#x522B;&#x540D;&#xFF0C;&#x90A3;&#x4E48;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x63A8;&#x51FA;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x4F18;&#x70B9;&#x662F;&#x4EC0;&#x4E48;&#x5462;</p>
+<hr>
+<h1 id="&#x4E8C;&#x3001;namespace&#x547D;&#x540D;&#x7A7A;&#x95F4;">&#x4E8C;&#x3001;Namespace&#x547D;&#x540D;&#x7A7A;&#x95F4;</h1>
+<p>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#x8981;&#x4E86;&#x89E3;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x9996;&#x5148;&#x5148;&#x770B;&#x770B;<a href="http://php.net/manual/zh/language.namespaces.rationale.php" target="_blank">&#x5B98;&#x65B9;&#x6587;&#x6863;</a> &#x4E2D;&#x5BF9;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x4ECB;&#x7ECD;&#xFF1A;</p>
+<blockquote>
+<p>&#x2003;&#x2003;&#x4EC0;&#x4E48;&#x662F;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF1F;&#x4ECE;&#x5E7F;&#x4E49;&#x4E0A;&#x6765;&#x8BF4;&#xFF0C;<strong>&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x662F;&#x4E00;&#x79CD;&#x5C01;&#x88C5;&#x4E8B;&#x7269;&#x7684;&#x65B9;&#x6CD5;&#x3002;</strong>&#x5728;&#x5F88;&#x591A;&#x5730;&#x65B9;&#x90FD;&#x53EF;&#x4EE5;&#x89C1;&#x5230;&#x8FD9;&#x79CD;&#x62BD;&#x8C61;&#x6982;&#x5FF5;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5728;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E2D;&#x76EE;&#x5F55;&#x7528;&#x6765;&#x5C06;&#x76F8;&#x5173;&#x6587;&#x4EF6;&#x5206;&#x7EC4;&#xFF0C; <strong>&#x5BF9;&#x4E8E;&#x76EE;&#x5F55;&#x4E2D;&#x7684;&#x6587;&#x4EF6;&#x6765;&#x8BF4;&#xFF0C;&#x5B83;&#x5C31;&#x626E;&#x6F14;&#x4E86;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x89D2;&#x8272;&#x3002;</strong> &#x5177;&#x4F53;&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x6587;&#x4EF6; <code>foo.txt</code> &#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x5728;&#x76EE;&#x5F55; <code>/home/greg</code> &#x548C; <code>/home/other</code> &#x4E2D;&#x5B58;&#x5728;&#xFF0C;&#x4F46;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x4E2D;&#x4E0D;&#x80FD;&#x5B58;&#x5728;&#x4E24;&#x4E2A; foo.txt &#x6587;&#x4EF6;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x5728;&#x76EE;&#x5F55; <code>/home/greg</code> &#x5916;&#x8BBF;&#x95EE; <code>foo.txt</code> &#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x5C06;&#x76EE;&#x5F55;&#x540D;&#x4EE5;&#x53CA;&#x76EE;&#x5F55;&#x5206;&#x9694;&#x7B26;&#x653E;&#x5728;&#x6587;&#x4EF6;&#x540D;&#x4E4B;&#x524D;&#x5F97;&#x5230; <code>/home/greg/foo.txt</code>&#x3002;&#x8FD9;&#x4E2A;&#x539F;&#x7406;&#x5E94;&#x7528;&#x5230;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x9886;&#x57DF;&#x5C31;&#x662F;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x6982;&#x5FF5;&#x3002;</p>
+<p>&#x2003;&#x2003;<strong> &#x5728;PHP&#x4E2D;&#xFF0C;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7528;&#x6765;&#x89E3;&#x51B3;&#x5728;&#x7F16;&#x5199;&#x7C7B;&#x5E93;&#x6216;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x65F6;&#x521B;&#x5EFA;&#x53EF;&#x91CD;&#x7528;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x7C7B;&#x6216;&#x51FD;&#x6570;&#x65F6;&#x78B0;&#x5230;&#x7684;&#x4E24;&#x7C7B;&#x95EE;&#x9898;&#xFF1A;</strong></p>
+<p>&#x2003;&#x2003;1. &#x7528;&#x6237;&#x7F16;&#x5199;&#x7684;&#x4EE3;&#x7801;&#x4E0E;PHP&#x5185;&#x90E8;&#x7684;&#x7C7B;/&#x51FD;&#x6570;/&#x5E38;&#x91CF;&#x6216;&#x7B2C;&#x4E09;&#x65B9;&#x7C7B;/&#x51FD;&#x6570;/&#x5E38;&#x91CF;&#x4E4B;&#x95F4;&#x7684; <strong>&#x540D;&#x5B57;&#x51B2;&#x7A81;</strong> *</p>
+<p>&#x2003;&#x2003;2. &#x4E3A;&#x5F88;&#x957F;&#x7684;&#x6807;&#x8BC6;&#x7B26;&#x540D;&#x79F0;(&#x901A;&#x5E38;&#x662F;&#x4E3A;&#x4E86;&#x7F13;&#x89E3;&#x7B2C;&#x4E00;&#x7C7B;&#x95EE;&#x9898;&#x800C;&#x5B9A;&#x4E49;&#x7684;)&#x521B;&#x5EFA;&#x4E00;&#x4E2A;<strong>&#x522B;&#x540D;</strong>&#xFF08;&#x6216;&#x7B80;&#x77ED;&#xFF09;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x63D0;&#x9AD8;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x53EF;&#x8BFB;&#x6027;&#x3002;*</p>
+<p>&#x2003;&#x2003;<em> <strong>PHP &#x547D;&#x540D;&#x7A7A;&#x95F4;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x5C06;&#x76F8;&#x5173;&#x7684;&#x7C7B;&#x3001;&#x51FD;&#x6570;&#x548C;&#x5E38;&#x91CF;&#x7EC4;&#x5408;&#x5230;&#x4E00;&#x8D77;&#x7684;&#x9014;&#x5F84;&#x3002;</strong></em></p>
+</blockquote>
+<p>&#x2003;&#x2003;
+&#x2003;&#x2003;&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x5C31;&#x662F;PHP&#x662F;&#x4E0D;&#x5141;&#x8BB8;&#x7A0B;&#x5E8F;&#x4E2D;&#x5B58;&#x5728;&#x4E24;&#x4E2A;&#x540D;&#x5B57;&#x4E00;&#x6837;&#x4E00;&#x6837;&#x7684;&#x7C7B;&#x6216;&#x8005;&#x51FD;&#x6570;&#x6216;&#x8005;&#x53D8;&#x91CF;&#x540D;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x6709;&#x4EBA;&#x5C31;&#x5F88;&#x7591;&#x60D1;&#x4E86;&#xFF0C;&#x90A3;&#x5C31;&#x4E0D;&#x8D77;&#x4E00;&#x6837;&#x540D;&#x5B57;&#x4E0D;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF1F;&#x4E8B;&#x5B9E;&#x4E0A;&#x5F88;&#x591A;&#x5927;&#x7A0B;&#x5E8F;&#x4F9D;&#x8D56;&#x5F88;&#x591A;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#xFF0C;&#x540D;&#x5B57;&#x51B2;&#x7A81;&#x4EC0;&#x4E48;&#x7684;&#x4E0D;&#x8981;&#x592A;&#x5E38;&#x89C1;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C31;&#x662F;&#x5B98;&#x7F51;&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x3002;&#x90A3;&#x4E48;&#x5982;&#x4F55;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x5462;&#xFF1F;&#x5728;&#x6CA1;&#x6709;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x601C;&#x7684;&#x7A0B;&#x5E8F;&#x5458;&#x53EA;&#x80FD;&#x7ED9;&#x7C7B;&#x540D;&#x8D77;<code>a_b_c_d_e_f</code>&#x8FD9;&#x6837;&#x7684;&#xFF0C;&#x5176;&#x4E2D;<code>a/b/c/d/e/f</code>&#x4E00;&#x822C;&#x6709;&#x5176;&#x7279;&#x5B9A;&#x610F;&#x4E49;&#xFF0C;&#x8FD9;&#x6837;&#x4E00;&#x822C;&#x5C31;&#x4E0D;&#x4F1A;&#x53D1;&#x751F;&#x51B2;&#x7A81;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x957F;&#x7684;&#x7C7B;&#x540D;&#x7F16;&#x5199;&#x8D77;&#x6765;&#x7D2F;&#xFF0C;&#x8BFB;&#x8D77;&#x6765;&#x66F4;&#x662F;&#x96BE;&#x53D7;&#x3002;&#x56E0;&#x6B64;PHP5&#x5C31;&#x63A8;&#x51FA;&#x4E86;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x7C7B;&#x540D;&#x662F;&#x7C7B;&#x540D;&#xFF0C;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x662F;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x7A0B;&#x5E8F;&#x5199;/&#x770B;&#x7684;&#x65F6;&#x5019;&#x76F4;&#x63A5;&#x7528;&#x7C7B;&#x540D;&#xFF0C;&#x8FD0;&#x884C;&#x8D77;&#x6765;&#x673A;&#x5668;&#x770B;&#x7684;&#x662F;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x89E3;&#x51B3;&#x4E86;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x2003;&#x2003;&#x53E6;&#x5916;&#xFF0C;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x5C06;&#x76F8;&#x5173;&#x7684;&#x7C7B;&#x3001;&#x51FD;&#x6570;&#x548C;&#x5E38;&#x91CF;&#x7EC4;&#x5408;&#x5230;&#x4E00;&#x8D77;&#x7684;&#x9014;&#x5F84;&#x3002;&#x8FD9;&#x4E5F;&#x662F;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x8BED;&#x8A00;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x5F88;&#x5927;&#x7528;&#x9014;&#xFF0C;&#x628A;&#x7279;&#x5B9A;&#x7528;&#x9014;&#x6240;&#x9700;&#x8981;&#x7684;&#x7C7B;&#x3001;&#x53D8;&#x91CF;&#x3001;&#x51FD;&#x6570;&#x5199;&#x5230;&#x4E00;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E2D;&#xFF0C;&#x8FDB;&#x884C;&#x5C01;&#x88C5;&#x3002;</p>
+<p>&#x2003;&#x2003;&#x89E3;&#x51B3;&#x4E86;&#x7C7B;&#x540D;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x7EC8;&#x4E8E;&#x53EF;&#x4EE5;&#x56DE;&#x5230;PSR&#x6807;&#x51C6;&#x6765;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;PSR0&#x4E0E;PSR4&#x662F;&#x600E;&#x4E48; <strong>&#x89C4;&#x8303;</strong> &#x6587;&#x4EF6;&#x4E0E;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x7684;&#x5462;&#xFF1F;&#x7B54;&#x6848;&#x5C31;&#x662F;&#xFF1A;&#x5BF9; <strong>&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x547D;&#x540D;</strong>&#xFF08;&#x989D;&#xFF0C;&#x6709;&#x70B9;&#x7ED5;&#xFF09;&#x3001;<strong>&#x7C7B;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x7684;&#x4F4D;&#x7F6E;</strong> &#x548C; <strong>&#x4E24;&#x8005;&#x6620;&#x5C04;&#x5173;&#x7CFB;</strong> &#x505A;&#x51FA;&#x4E86;&#x9650;&#x5236;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C31;&#x662F;&#x6807;&#x51C6;&#x7684;&#x6838;&#x5FC3;&#x4E86;&#x3002;</p>
+<p>&#x66F4;&#x5B8C;&#x6574;&#x7684;&#x63CF;&#x8FF0;&#x53EF;&#x89C1;<a href="http://laravelacademy.org/post/4221.html" target="_blank">&#x73B0;&#x4EE3; PHP &#x65B0;&#x7279;&#x6027;&#x7CFB;&#x5217;&#xFF08;&#x4E00;&#xFF09; &#x2014;&#x2014; &#x547D;&#x540D;&#x7A7A;&#x95F4;</a></p>
+<hr>
+<h1 id="&#x4E09;&#x3001;psr&#x6807;&#x51C6;">&#x4E09;&#x3001;PSR&#x6807;&#x51C6;</h1>
+<p>&#x2003;&#x2003;
+&#x2003;&#x2003;&#x5728;&#x8BF4;PSR0&#x4E0E;PSR4&#x4E4B;&#x524D;&#x5148;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;PSR&#x6807;&#x51C6;&#x3002;PSR&#x6807;&#x51C6;&#x7684;&#x53D1;&#x660E;&#x8005;&#x548C;&#x89C4;&#x8303;&#x8005;&#x662F;&#xFF1A;PHP-FIG&#xFF0C;&#x5B83;&#x7684;&#x7F51;&#x7AD9;&#x662F;&#xFF1A;<a href="www.php-fig.org">www.php-fig.org</a>&#x3002;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;&#x8054;&#x76DF;&#x7EC4;&#x7EC7;&#x53D1;&#x660E;&#x548C;&#x521B;&#x9020;&#x4E86;PSR-[0-4]&#x89C4;&#x8303;&#x3002;FIG &#x662F; Framework Interoperability Group&#xFF08;&#x6846;&#x67B6;&#x53EF;&#x4E92;&#x7528;&#x6027;&#x5C0F;&#x7EC4;&#xFF09;&#x7684;&#x7F29;&#x5199;&#xFF0C;&#x7531;&#x51E0;&#x4F4D;&#x5F00;&#x6E90;&#x6846;&#x67B6;&#x7684;&#x5F00;&#x53D1;&#x8005;&#x6210;&#x7ACB;&#x4E8E; 2009 &#x5E74;&#xFF0C;&#x4ECE;&#x90A3;&#x5F00;&#x59CB;&#x4E5F;&#x9009;&#x53D6;&#x4E86;&#x5F88;&#x591A;&#x5176;&#x4ED6;&#x6210;&#x5458;&#x8FDB;&#x6765;&#xFF0C;&#x867D;&#x7136;&#x4E0D;&#x662F; &#x201C;&#x5B98;&#x65B9;&#x201D; &#x7EC4;&#x7EC7;&#xFF0C;&#x4F46;&#x4E5F;&#x4EE3;&#x8868;&#x4E86;&#x793E;&#x533A;&#x4E2D;&#x4E0D;&#x5C0F;&#x7684;&#x4E00;&#x5757;&#x3002;&#x7EC4;&#x7EC7;&#x7684;&#x76EE;&#x7684;&#x5728;&#x4E8E;&#xFF1A;&#x4EE5;&#x6700;&#x4F4E;&#x7A0B;&#x5EA6;&#x7684;&#x9650;&#x5236;&#xFF0C;&#x6765;&#x7EDF;&#x4E00;&#x5404;&#x4E2A;&#x9879;&#x76EE;&#x7684;&#x7F16;&#x7801;&#x89C4;&#x8303;&#xFF0C;&#x907F;&#x514D;&#x5404;&#x5BB6;&#x81EA;&#x884C;&#x53D1;&#x5C55;&#x7684;&#x98CE;&#x683C;&#x963B;&#x788D;&#x4E86;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x5E08;&#x5F00;&#x53D1;&#x7684;&#x56F0;&#x6270;&#xFF0C;&#x4E8E;&#x662F;&#x5927;&#x4F19;&#x53D1;&#x660E;&#x548C;&#x603B;&#x7ED3;&#x4E86;PSR&#xFF0C;PSR&#x662F;Proposing a Standards Recommendation&#xFF08;&#x63D0;&#x51FA;&#x6807;&#x51C6;&#x5EFA;&#x8BAE;&#xFF09;&#x7684;&#x7F29;&#x5199;&#xFF0C;&#x622A;&#x6B62;&#x5230;&#x76EE;&#x524D;&#x4E3A;&#x6B62;&#xFF0C;&#x603B;&#x5171;&#x6709;5&#x5957;PSR&#x89C4;&#x8303;&#xFF0C;&#x5206;&#x522B;&#x662F;&#xFF1A;</p>
+<blockquote>
+<p>PSR-0 (Autoloading Standard) <em>&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6807;&#x51C6;</em></p>
+<p>PSR-1 (Basic Coding Standard)<em>&#x57FA;&#x7840;&#x7F16;&#x7801;&#x6807;&#x51C6;</em></p>
+<p>PSR-2 (Coding Style Guide) <em>&#x7F16;&#x7801;&#x98CE;&#x683C;&#x5411;&#x5BFC;</em></p>
+<p>PSR-3 (Logger Interface) <em>&#x65E5;&#x5FD7;&#x63A5;&#x53E3;</em></p>
+<p>PSR-4 (Improved Autoloading) <em>&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x7684;&#x589E;&#x5F3A;&#x7248;&#xFF0C;&#x53EF;&#x4EE5;&#x66FF;&#x6362;&#x6389;PSR-0&#x4E86;&#x3002;</em></p>
+</blockquote>
+<p>&#x2003;&#x2003;
+&#x2003;&#x2003;&#x5177;&#x4F53;&#x8BE6;&#x7EC6;&#x7684;&#x89C4;&#x8303;&#x6807;&#x51C6;&#x53EF;&#x4EE5;&#x67E5;&#x770B;<a href="https://www.zybuluo.com/phper/note/65033" target="_blank">PHP&#x4E2D;PSR-[0-4]&#x89C4;&#x8303;</a></p>
+<h2 id="psr0&#x6807;&#x51C6;">PSR0&#x6807;&#x51C6;</h2>
+<p>&#x2003;&#x2003;
+&#x2003;&#x2003;PRS-0&#x89C4;&#x8303;&#x662F;&#x4ED6;&#x4EEC;&#x51FA;&#x7684;&#x7B2C;1&#x5957;&#x89C4;&#x8303;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x5236;&#x5B9A;&#x4E86;&#x4E00;&#x4E9B;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6807;&#x51C6;&#xFF08;Autoloading Standard&#xFF09;PSR-0&#x5F3A;&#x5236;&#x6027;&#x8981;&#x6C42;&#x51E0;&#x70B9;&#xFF1A;</p>
+<blockquote>
+<ol>
+<li><p>&#x4E00;&#x4E2A;&#x5B8C;&#x5168;&#x5408;&#x683C;&#x7684;namespace&#x548C;class&#x5FC5;&#x987B;&#x7B26;&#x5408;&#x8FD9;&#x6837;&#x7684;&#x7ED3;&#x6784;&#xFF1A;<code>&lt;Vendor Name&gt;[&lt;Namespace&gt;]*&lt;Class Name&gt;</code></p>
+</li>
+<li><p>&#x6BCF;&#x4E2A;namespace&#x5FC5;&#x987B;&#x6709;&#x4E00;&#x4E2A;&#x9876;&#x5C42;&#x7684;namespace&#xFF08;&quot;Vendor Name&quot;&#x63D0;&#x4F9B;&#x8005;&#x540D;&#x5B57;&#xFF09;</p>
+</li>
+<li><p>&#x6BCF;&#x4E2A;namespace&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;&#x5B50;namespace</p>
+</li>
+<li><p>&#x5F53;&#x4ECE;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#x52A0;&#x8F7D;&#x65F6;&#xFF0C;&#x6BCF;&#x4E2A;namespace&#x7684;&#x5206;&#x9694;&#x7B26;(/)&#x8981;&#x8F6C;&#x6362;&#x6210; DIRECTORY_SEPARATOR(&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x8DEF;&#x5F84;&#x5206;&#x9694;&#x7B26;)</p>
+</li>
+<li><p>&#x5728;&#x7C7B;&#x540D;&#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A;&#x4E0B;&#x5212;&#x7EBF;(_) &#x7B26;&#x53F7;&#x8981;&#x8F6C;&#x6362;&#x6210; <code>DIRECTORY_SEPARATOR(&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x8DEF;&#x5F84;&#x5206;&#x9694;&#x7B26;)</code>&#x3002;&#x5728;<code>namespace</code>&#x4E2D;&#xFF0C;&#x4E0B;&#x5212;&#x7EBF; _ &#x7B26;&#x53F7;&#x662F;&#x6CA1;&#x6709;&#xFF08;&#x7279;&#x6B8A;&#xFF09;&#x610F;&#x4E49;&#x7684;&#x3002;</p>
+</li>
+<li><p>&#x5F53;&#x4ECE;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#x8F7D;&#x5165;&#x65F6;&#xFF0C;&#x5408;&#x683C;&#x7684;<code>namespace</code>&#x548C;<code>class</code>&#x4E00;&#x5B9A;&#x662F;&#x4EE5; <code>.php</code> &#x7ED3;&#x5C3E;&#x7684;</p>
+</li>
+<li><p><code>verdor name</code>, <code>namespaces</code>, <code>class</code>&#x540D;&#x53EF;&#x4EE5;&#x7531;&#x5927;&#x5C0F;&#x5199;&#x5B57;&#x6BCD;&#x7EC4;&#x5408;&#x800C;&#x6210;&#xFF08;&#x5927;&#x5C0F;&#x5199;&#x654F;&#x611F;&#x7684;&#xFF09;</p>
+</li>
+</ol>
+</blockquote>
+<p>&#x2003;&#x2003;
+&#x2003;&#x2003; &#x5177;&#x4F53;&#x89C4;&#x5219;&#x53EF;&#x80FD;&#x6709;&#x4E9B;&#x8BA9;&#x4EBA;&#x6655;&#xFF0C;&#x6211;&#x4EEC;&#x4ECE;&#x5934;&#x8BB2;&#x4E00;&#x4E0B;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x2003;&#x2003;&#x6211;&#x4EEC;&#x5148;&#x6765;&#x770B;PSR0&#x6807;&#x51C6;&#x5927;&#x81F4;&#x5185;&#x5BB9;&#xFF0C;&#x7B2C;1&#x3001;2&#x3001;3&#x3001;7&#x6761;&#x5BF9;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x540D;&#x5B57;&#x505A;&#x51FA;&#x4E86;&#x9650;&#x5236;&#xFF0C;&#x7B2C;4&#x3001;5&#x6761;&#x5BF9;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x548C;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x505A;&#x51FA;&#x4E86;&#x9650;&#x5236;&#xFF0C;&#x7B2C;6&#x6761;&#x662F;&#x6587;&#x4EF6;&#x540E;&#x7F00;&#x540D;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x2003;&#x2003; &#x524D;&#x9762;&#x6211;&#x4EEC;&#x8BF4;&#x8FC7;&#xFF0C;PSR&#x6807;&#x51C6;&#x662F;&#x5982;&#x4F55;&#x89C4;&#x8303;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x548C;&#x6240;&#x5728;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x4E4B;&#x95F4;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#xFF1F;&#x662F;&#x901A;&#x8FC7;&#x9650;&#x5236;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x540D;&#x5B57;&#x3001;&#x6240;&#x5728;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x7684;&#x4F4D;&#x7F6E;&#x548C;&#x4E24;&#x8005;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x2003;&#x2003;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x5C31;&#x8981;&#x95EE;&#x4E86;&#xFF0C;&#x54EA;&#x91CC;&#x9650;&#x5236;&#x4E86;&#x6587;&#x4EF6;&#x6240;&#x5728;&#x76EE;&#x5F55;&#x7684;&#x4F4D;&#x7F6E;&#x4E86;&#x5462;&#xFF1F;&#x5176;&#x5B9E;&#x7B54;&#x6848;&#x5C31;&#x662F;&#xFF1A;
+&#x2003;&#x2003;</p>
+<blockquote>
+<p><strong>&#x9650;&#x5236;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x540D;&#x5B57;</strong> <code>+</code> <strong>&#x9650;&#x5236;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x540D;&#x5B57;&#x4E0E;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x6620;&#x5C04;</strong> <code>=</code> <strong>&#x9650;&#x5236;&#x6587;&#x4EF6;&#x76EE;&#x5F55;</strong></p>
+</blockquote>
+<p>&#x2003;&#x2003;
+&#x2003;&#x2003;&#x597D;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x60F3;&#x4E00;&#x60F3;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x7A0B;&#x5E8F;&#x6765;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x5B83;&#x60F3;&#x8981;&#x652F;&#x6301;PSR0&#x6807;&#x51C6;,&#x5B83;&#x9700;&#x8981;&#x505A;&#x4EC0;&#x4E48;&#x8C03;&#x6574;&#x5462;&#xFF1F;</p>
+<blockquote>
+<ol>
+<li>&#x9996;&#x5148;&#xFF0C;&#x7A0B;&#x5E8F;&#x5FC5;&#x987B;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7B26;&#x5408;PSR0&#x6807;&#x51C6;&#x7B2C;4&#x3001;5&#x6761;&#x7684;&#x6620;&#x5C04;&#x51FD;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x6CE8;&#x518C;&#x5230;spl_register()&#x4E2D;&#xFF1B;</li>
+<li>&#x5176;&#x6B21;&#xFF0C;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x65F6;&#xFF0C;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x540D;&#x5B57;&#x548C;&#x6240;&#x5728;&#x6587;&#x4EF6;&#x7684;&#x76EE;&#x5F55;&#x4F4D;&#x7F6E;&#x5FC5;&#x987B;&#x7B26;&#x5408;&#x7B2C;1&#x3001;2&#x3001;3&#x3001;7&#x6761;&#x3002;</li>
+</ol>
+</blockquote>
+<p>&#x2003;&#x2003;
+&#x2003;&#x2003; &#x4E00;&#x822C;&#x4E3A;&#x4E86;&#x4EE3;&#x7801;&#x7EF4;&#x62A4;&#x65B9;&#x4FBF;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5728;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x53EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x3002;</p>
+<p>&#x2003;&#x2003; &#x597D;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x4E86;&#x7B26;&#x5408;PSR0&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x540D;&#x5B57;&#xFF0C;&#x901A;&#x8FC7;&#x7B26;&#x5408;PSR0&#x6807;&#x51C6;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x7B26;&#x5408;PSR0&#x6807;&#x51C6;&#x7684;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x5730;&#x5740;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6309;&#x7167;PSR0&#x6807;&#x51C6;&#x6B63;&#x786E;&#x5B58;&#x653E;&#x6587;&#x4EF6;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x987A;&#x5229;require&#x8BE5;&#x6587;&#x4EF6;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8BE5;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x5566;&#xFF0C;&#x662F;&#x4E0D;&#x662F;&#x5F88;&#x795E;&#x5947;&#x5462;&#xFF1F;</p>
+<p>&#x2003;&#x2003;
+&#x2003;&#x2003; &#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x8BE6;&#x7EC6;&#x5730;&#x6765;&#x770B;&#x770B;PSR0&#x6807;&#x51C6;&#x5230;&#x5E95;&#x89C4;&#x8303;&#x4E86;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;</p>
+<p>&#x2003;&#x2003;
+&#x2003;&#x2003; &#x6211;&#x4EEC;&#x4EE5;laravel&#x4E2D;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;Symfony&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;<code>/Symfony/Core/Request</code>&#x4E3A;&#x4F8B;&#xFF0C;&#x8BB2;&#x4E00;&#x8BB2;&#x4E0A;&#x9762;PSR0&#x6807;&#x51C6;&#x3002;
+&#x2003;&#x2003;</p>
+<blockquote>
+<ol>
+<li>&#x4E00;&#x4E2A;&#x5B8C;&#x5168;&#x5408;&#x683C;&#x7684;namespace&#x548C;class&#x5FC5;&#x987B;&#x7B26;&#x5408;&#x8FD9;&#x6837;&#x7684;&#x7ED3;&#x6784;&#xFF1A;<code>&lt;Vendor Name&gt;[&lt;Namespace&gt;]*&lt;Class Name&gt;</code></li>
+</ol>
+</blockquote>
+<p>&#x2003;&#x2003;&#x4E0A;&#x9762;&#x6240;&#x5C55;&#x793A;&#x7684;/Symfony&#x5C31;&#x662F;Vendor Name&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#x7684;&#x540D;&#x5B57;&#xFF0C;/Core&#x662F;Namespace&#x540D;&#x5B57;&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x6211;&#x4EEC;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x4E00;&#x4E9B;&#x5C5E;&#x6027;&#x4FE1;&#x606F;(&#x4F8B;&#x5982;request&#x662F;Symfony&#x7684;&#x6838;&#x5FC3;&#x529F;&#x80FD;)&#xFF1B;&#x6700;&#x540E;Request&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x540D;&#x5B57;&#xFF0C;&#x8FD9;&#x4E2A;&#x6807;&#x51C6;&#x89C4;&#x8303;&#x5C31;&#x662F;&#x8BA9;&#x4EBA;&#x770B;&#x5230;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x6765;&#x6E90;&#x3001;&#x529F;&#x80FD;&#x975E;&#x5E38;&#x660E;&#x6717;&#xFF0C;&#x6709;&#x5229;&#x4E8E;&#x4EE3;&#x7801;&#x7684;&#x7EF4;&#x62A4;&#x3002;
+&#x2003;&#x2003;</p>
+<blockquote>
+<p>2 . &#x6BCF;&#x4E2A;namespace&#x5FC5;&#x987B;&#x6709;&#x4E00;&#x4E2A;&#x9876;&#x5C42;&#x7684;namespace&#xFF08;&quot;Vendor Name&quot;&#x63D0;&#x4F9B;&#x8005;&#x540D;&#x5B57;&#xFF09;</p>
+</blockquote>
+<p>&#x2003;&#x2003;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x6BCF;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x90FD;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C;&#x4E8E;/Symfony&#x7684;&#x9876;&#x7EA7;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x6709;&#x8FD9;&#x79CD;&#x89C4;&#x5219;&#x5462;&#xFF1F;&#x56E0;&#x4E3A;PSR0&#x6807;&#x51C6;&#x53EA;&#x8D1F;&#x8D23;&#x9876;&#x7EA7;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E4B;&#x540E;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;/Symfony/Core/Request&#x8FD9;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x5173;&#x4E8E;/Symfony&#x5E94;&#x8BE5;&#x5173;&#x8054;&#x5230;&#x54EA;&#x4E2A;&#x76EE;&#x5F55;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x7528;&#x6237;&#x6216;&#x8005;&#x6846;&#x67B6;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x7684;&#x4E86;&#x3002;&#x6240;&#x8C13;&#x7684;&#x9876;&#x5C42;&#x7684;namespace&#xFF0C;&#x5C31;&#x662F;&#x81EA;&#x5B9A;&#x4E49;&#x4E86;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x4E00;&#x822C;&#x5C31;&#x662F;&#x63D0;&#x4F9B;&#x8005;&#x540D;&#x5B57;&#xFF08;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#x7684;&#x540D;&#x5B57;&#xFF09;&#x3002;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#x9876;&#x7EA7;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x662F;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x7684;&#x57FA;&#x7840;&#x3002;&#x4E3A;&#x4EC0;&#x4E48;&#x6807;&#x51C6;&#x8981;&#x8FD9;&#x4E48;&#x8BBE;&#x7F6E;&#x5462;&#xFF1F;&#x539F;&#x56E0;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x662F;/Symfony/Core/Transport/Request&#xFF0C;&#x8FD8;&#x6709;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x662F;/Symfony/Core/Transport/Request1,&#x5982;&#x679C;&#x6CA1;&#x6709;&#x9876;&#x7EA7;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x5F97;&#x5199;&#x4E24;&#x4E2A;&#x8DEF;&#x5F84;&#x548C;&#x8FD9;&#x4E24;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x76F8;&#x5BF9;&#x5E94;&#xFF0C;&#x5982;&#x679C;&#x518D;&#x6709;Request2&#x3001;Request3&#x5462;&#x3002;&#x6709;&#x4E86;&#x9876;&#x5C42;&#x547D;&#x540D;&#x7A7A;&#x95F4;/Symfony&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x5C31;&#x4EC5;&#x4EC5;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x5BF9;&#x5E94;&#x5373;&#x53EF;&#xFF0C;&#x5269;&#x4E0B;&#x7684;&#x5C31;&#x5229;&#x7528;PSR&#x6807;&#x51C6;&#x53BB;&#x89E3;&#x6790;&#x5C31;&#x884C;&#x4E86;&#x3002;
+&#x2003;&#x2003;</p>
+<blockquote>
+<p>3.&#x6BCF;&#x4E2A;namespace&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;&#x5B50;namespace</p>
+</blockquote>
+<p>&#x2003;&#x2003;&#x8FD9;&#x4E2A;&#x5F88;&#x7B80;&#x5355;&#xFF0C;Request&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x6210;/Symfony/Core/Request&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x6210;/Symfony/Core/Transport/Request&#xFF0C;/Core&#x8FD9;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E0B;&#x9762;&#x53EF;&#x4EE5;&#x6709;&#x5F88;&#x591A;&#x5B50;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x653E;&#x591A;&#x5C11;&#x5C42;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x90FD;&#x662F;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x3002;</p>
+<p>&#x2003;&#x2003;</p>
+<blockquote>
+<p> 4.&#x5F53;&#x4ECE;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#x52A0;&#x8F7D;&#x65F6;&#xFF0C;&#x6BCF;&#x4E2A;namespace&#x7684;&#x5206;&#x9694;&#x7B26;(/)&#x8981;&#x8F6C;&#x6362;&#x6210; DIRECTORY_SEPARATOR(&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x8DEF;&#x5F84;&#x5206;&#x9694;&#x7B26;)</p>
+</blockquote>
+<p>&#x2003;&#x2003;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x7EC8;&#x4E8E;&#x6765;&#x5230;&#x4E86;&#x6620;&#x5C04;&#x89C4;&#x8303;&#x4E86;&#x3002;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;/&#x7B26;&#x53F7;&#x8981;&#x8F6C;&#x4E3A;&#x8DEF;&#x5F84;&#x5206;&#x9694;&#x7B26;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x8981;&#x628A;/Symfony/Core/Request&#x8FD9;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x8F6C;&#x4E3A;\Symfony\Core\Request&#x8FD9;&#x6837;&#x7684;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x3002;
+&#x2003;&#x2003;</p>
+<blockquote>
+<p>5.&#x5728;&#x7C7B;&#x540D;&#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A;&#x4E0B;&#x5212;&#x7EBF;_&#x7B26;&#x53F7;&#x8981;&#x8F6C;&#x6362;&#x6210;DIRECTORYSEPARATOR(&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x8DEF;&#x5F84;&#x5206;&#x9694;&#x7B26;)&#x3002;&#x5728;namespace&#x4E2D;&#xFF0C;&#x4E0B;&#x5212;&#x7EBF;\&#x7B26;&#x53F7;&#x662F;&#x6CA1;&#x6709;&#xFF08;&#x7279;&#x6B8A;&#xFF09;&#x610F;&#x4E49;&#x7684;&#x3002;</p>
+</blockquote>
+<p>&#x2003;&#x2003;&#x8FD9;&#x53E5;&#x8BDD;&#x7684;&#x610F;&#x601D;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x662F;\Symfony\Core\Request_a&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5C31;&#x5E94;&#x8BE5;&#x628A;&#x5B83;&#x6620;&#x5C04;&#x5230;\Symfony\Core\Request\a&#x8FD9;&#x6837;&#x7684;&#x76EE;&#x5F55;&#x3002;&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x6709;&#x8FD9;&#x79CD;&#x89C4;&#x5B9A;&#x5462;&#xFF1F;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;PHP5&#x4E4B;&#x524D;&#x5E76;&#x6CA1;&#x6709;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x7A0B;&#x5E8F;&#x5458;&#x53EA;&#x80FD;&#x628A;&#x540D;&#x5B57;&#x8D77;&#x6210;Symfony_Core_Request_a&#x8FD9;&#x6837;&#xFF0C;PSR0&#x7684;&#x8FD9;&#x6761;&#x89C4;&#x5B9A;&#x5C31;&#x662F;&#x4E3A;&#x4E86;&#x517C;&#x5BB9;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x3002;</p>
+<p>&#x2003;&#x2003;&#x5269;&#x4E0B;&#x4E24;&#x4E2A;&#x5F88;&#x7B80;&#x5355;&#x5C31;&#x4E0D;&#x8BF4;&#x4E86;&#x3002;
+&#x2003;&#x2003;</p>
+<p>&#x2003;&#x2003;&#x6709;&#x8FD9;&#x6837;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x547D;&#x540D;&#x89C4;&#x5219;&#x548C;&#x6620;&#x5C04;&#x6807;&#x51C6;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x63A8;&#x7406;&#x51FA;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x628A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x6240;&#x5728;&#x7684;&#x6587;&#x4EF6;&#x8BE5;&#x653E;&#x5728;&#x54EA;&#x91CC;&#x4E86;&#x3002;&#x4F9D;&#x65E7;&#x4EE5;\Symfony\Core\Request&#x4E3A;&#x4F8B;&#xFF0C; &#x5B83;&#x7684;&#x76EE;&#x5F55;&#x662F;/path/to/project/vendor/Symfony/Core/Request.php&#xFF0C;&#x5176;&#x4E2D;/path/to/project&#x662F;&#x4F60;&#x9879;&#x76EE;&#x5728;&#x78C1;&#x76D8;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;/path/to/project/vendor&#x662F;&#x9879;&#x76EE;&#x7528;&#x7684;&#x6240;&#x6709;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#x6240;&#x5728;&#x76EE;&#x5F55;&#x3002;/path/to/project/vendor/Symfony&#x5C31;&#x662F;&#x4E0E;&#x9876;&#x7EA7;&#x547D;&#x540D;&#x7A7A;&#x95F4;\Symfony&#x5B58;&#x5728;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x518D;&#x5F80;&#x4E0B;&#x7684;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x5C31;&#x662F;&#x6309;&#x7167;PSR0&#x6807;&#x51C6;&#x5EFA;&#x7ACB;&#x7684;&#xFF1A;</p>
+<blockquote>
+<p>&#x2003;&#x2003; \Symfony\Core\Request  =&gt;  /Symfony/Core/Request.php</p>
+</blockquote>
+<p>&#x2003;&#x2003; &#x4E00;&#x5207;&#x5F88;&#x5B8C;&#x6EE1;&#x4E86;&#x662F;&#x5417;&#xFF1F;&#x4E0D;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x4E9B;&#x7455;&#x75B5;&#xFF1A;</p>
+<blockquote>
+<ol>
+<li>&#x6211;&#x4EEC;&#x662F;&#x5426;&#x5E94;&#x8BE5;&#x8FD8;&#x517C;&#x5BB9;&#x6CA1;&#x6709;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x60C5;&#x51B5;&#x5462;&#xFF1F;</li>
+<li>&#x6309;&#x7167;PSR0&#x6807;&#x51C6;&#xFF0C;&#x547D;&#x540D;&#x7A7A;&#x95F4;\A\B\C\D\E\F&#x5FC5;&#x7136;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x7ED3;&#x6784;/A/B/C/D/E/F&#xFF0C;&#x8FD9;&#x79CD;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x5C42;&#x6B21;&#x662F;&#x4E0D;&#x662F;&#x592A;&#x6DF1;&#x4E86;&#xFF1F;</li>
+</ol>
+</blockquote>
+<h2 id="psr4&#x6807;&#x51C6;">PSR4&#x6807;&#x51C6;</h2>
+<p>&#x2003;&#x2003;2013&#x5E74;&#x5E95;&#xFF0C;&#x65B0;&#x51FA;&#x4E86;&#x7B2C;5&#x4E2A;&#x89C4;&#x8303;&#x2014;&#x2014;PSR-4&#x3002;</p>
+<p>&#x2003;&#x2003;PSR-4&#x89C4;&#x8303;&#x4E86;&#x5982;&#x4F55;&#x6307;&#x5B9A;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x4ECE;&#x800C;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x7C7B;&#x5B9A;&#x4E49;&#xFF0C;&#x540C;&#x65F6;&#x89C4;&#x8303;&#x4E86;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6587;&#x4EF6;&#x7684;&#x4F4D;&#x7F6E;&#x3002;&#x8FD9;&#x4E2A;&#x4E4D;&#x4E00;&#x770B;&#x548C;PSR-0&#x91CD;&#x590D;&#x4E86;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x5728;&#x529F;&#x80FD;&#x4E0A;&#x786E;&#x5B9E;&#x6709;&#x6240;&#x91CD;&#x590D;&#x3002;&#x533A;&#x522B;&#x5728;&#x4E8E;PSR-4&#x7684;&#x89C4;&#x8303;&#x6BD4;&#x8F83;&#x5E72;&#x51C0;&#xFF0C;&#x53BB;&#x9664;&#x4E86;&#x517C;&#x5BB9;PHP 5.3&#x4EE5;&#x524D;&#x7248;&#x672C;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x6709;&#x4E00;&#x70B9;PSR-0&#x5347;&#x7EA7;&#x7248;&#x7684;&#x611F;&#x89C9;&#x3002;&#x5F53;&#x7136;&#xFF0C;PSR-4&#x4E5F;&#x4E0D;&#x662F;&#x8981;&#x5B8C;&#x5168;&#x66FF;&#x4EE3;PSR-0&#xFF0C;&#x800C;&#x662F;&#x5728;&#x5FC5;&#x8981;&#x7684;&#x65F6;&#x5019;&#x8865;&#x5145;PSR-0&#x2014;&#x2014;&#x5F53;&#x7136;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x613F;&#x610F;&#xFF0C;PSR-4&#x4E5F;&#x53EF;&#x4EE5;&#x66FF;&#x4EE3;PSR-0&#x3002;PSR-4&#x53EF;&#x4EE5;&#x548C;&#x5305;&#x62EC;PSR-0&#x5728;&#x5185;&#x7684;&#x5176;&#x4ED6;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x673A;&#x5236;&#x5171;&#x540C;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x2003;&#x2003;
+&#x2003;&#x2003; PSR4&#x6807;&#x51C6;&#x4E0E;PSR0&#x6807;&#x51C6;&#x7684;&#x533A;&#x522B;&#xFF1A;</p>
+<blockquote>
+<ol>
+<li>&#x5728;&#x7C7B;&#x540D;&#x4E2D;&#x4F7F;&#x7528;&#x4E0B;&#x5212;&#x7EBF;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x7279;&#x6B8A;&#x542B;&#x4E49;&#x3002;</li>
+<li>&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E0E;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x7684;&#x6620;&#x5C04;&#x65B9;&#x6CD5;&#x6709;&#x6240;&#x8C03;&#x6574;&#x3002;</li>
+</ol>
+</blockquote>
+<p>&#x2003;&#x2003;&#x5BF9;&#x7B2C;&#x4E8C;&#x9879;&#x6211;&#x4EEC;&#x8BE6;&#x7EC6;&#x89E3;&#x91CA;&#x4E00;&#x4E0B;(<a href="http://hanfeng.name/blog/2015/08/17/composer-autoload/" target="_blank">Composer&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x7684;&#x539F;&#x7406;</a>)&#xFF1A;
+&#x2003;&#x2003;&#x5047;&#x5982;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF1A;Foo/class&#xFF0C;Foo&#x662F;&#x9876;&#x7EA7;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x5176;&#x5B58;&#x5728;&#x7740;&#x7528;&#x6237;&#x5B9A;&#x4E49;&#x7684;&#x4E0E;&#x76EE;&#x5F55;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#xFF1A;</p>
+<pre><code>&quot;Foo/&quot; =&gt; &quot;src/&quot;
+</code></pre><p>&#x2003;&#x2003;&#x6309;&#x7167;PSR0&#x6807;&#x51C6;&#xFF0C;&#x6620;&#x5C04;&#x540E;&#x7684;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x662F;:src/Foo/class.php&#xFF0C;&#x4F46;&#x662F;&#x6309;&#x7167;PSR4&#x6807;&#x51C6;&#xFF0C;&#x6620;&#x5C04;&#x540E;&#x7684;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x5C31;&#x4F1A;&#x662F;:src/class.php&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8FD9;&#x4E48;&#x66F4;&#x6539;&#x5462;&#xFF1F;&#x539F;&#x56E0;&#x5C31;&#x662F;&#x6015;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x592A;&#x957F;&#x5BFC;&#x81F4;&#x76EE;&#x5F55;&#x5C42;&#x6B21;&#x592A;&#x6DF1;&#xFF0C;&#x4F7F;&#x5F97;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x548C;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x66F4;&#x52A0;&#x7075;&#x6D3B;&#x3002;</p>
+<p>&#x2003;&#x2003;&#x518D;&#x4E3E;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;,&#x6765;&#x6E90;<a href="https://segmentfault.com/a/1190000000380008" target="_blank">PSR-4&#x2014;&#x2014;&#x65B0;&#x9C9C;&#x51FA;&#x7089;&#x7684;PHP&#x89C4;&#x8303;</a>&#xFF1A;</p>
+<p>&#x2003;&#x2003;PSR-0&#x98CE;&#x683C;</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+-vendor/
+| -vendor_name/
+| | -package_name/
+| | | -src/
+| | | | -Vendor_Name/
+| | | | | -Package_Name/
+| | | | | | -ClassName.php       <span class="hljs-comment"># Vendor_Name\Package_Name\ClassName</span>
+| | | -tests/
+| | | | -Vendor_Name/
+| | | | | -Package_Name/
+| | | | | | -ClassNameTest.php   <span class="hljs-comment"># Vendor_Name\Package_Name\ClassName</span>
+</code></pre>
+<p>&#x2003;&#x2003;PSR-4&#x98CE;&#x683C;</p>
+<pre><code class="lang-php">-vendor/
+| -vendor_name/
+| | -package_name/
+| | | -src/
+| | | | -ClassName.php       <span class="hljs-comment"># Vendor_Name\Package_Name\ClassName</span>
+| | | -tests/
+| | | | -ClassNameTest.php   <span class="hljs-comment"># Vendor_Name\Package_Name\ClassNameTest</span>
+</code></pre>
+<p>&#x2003;&#x2003;&#x5BF9;&#x6BD4;&#x4EE5;&#x4E0A;&#x4E24;&#x79CD;&#x7ED3;&#x6784;&#xFF0C;&#x660E;&#x663E;&#x53EF;&#x4EE5;&#x770B;&#x51FA;PSR-4&#x5E26;&#x6765;&#x66F4;&#x7B80;&#x6D01;&#x7684;&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#x3002;</p>
+<hr>
+<p>&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;&#x2003;Written with <a href="https://stackedit.io/" target="_blank">StackEdit</a>.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="PHP Composer—— 初始化源码分析.html" class="navigation navigation-next navigation-unique" aria-label="Next page: PHP Composer—— 初始化源码分析">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"PHP Composer——自动加载原理","level":"1.2.1","depth":2,"next":{"title":"PHP Composer—— 初始化源码分析","level":"1.2.2","depth":2,"path":"PHP Composer—— 初始化源码分析.md","ref":"PHP Composer—— 初始化源码分析.md","articles":[]},"previous":{"title":"PHP Composer 自动加载","level":"1.2","depth":1,"ref":"","articles":[{"title":"PHP Composer——自动加载原理","level":"1.2.1","depth":2,"path":"PHP Composer——自动加载原理.md","ref":"PHP Composer——自动加载原理.md","articles":[]},{"title":"PHP Composer—— 初始化源码分析","level":"1.2.2","depth":2,"path":"PHP Composer—— 初始化源码分析.md","ref":"PHP Composer—— 初始化源码分析.md","articles":[]},{"title":"PHP Composer-——-注册与运行源码分析","level":"1.2.3","depth":2,"path":"PHP Composer-——-注册与运行源码分析.md","ref":"PHP Composer-——-注册与运行源码分析.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP Composer——自动加载原理.md","mtime":"2019-01-15T10:50:48.614Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T10:51:52.544Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

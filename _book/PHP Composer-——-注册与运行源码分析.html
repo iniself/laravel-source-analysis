@@ -1,0 +1,1321 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>PHP Composer-——-注册与运行源码分析 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="PHP Composer—— 初始化源码分析.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    PHP Composer 自动加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="PHP Composer——自动加载原理.html">
+            
+                <a href="PHP Composer——自动加载原理.html">
+            
+                    
+                    PHP Composer——自动加载原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="PHP Composer—— 初始化源码分析.html">
+            
+                <a href="PHP Composer—— 初始化源码分析.html">
+            
+                    
+                    PHP Composer—— 初始化源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3" data-path="PHP Composer-——-注册与运行源码分析.html">
+            
+                <a href="PHP Composer-——-注册与运行源码分析.html">
+            
+                    
+                    PHP Composer-——-注册与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Laravel Facade 门面
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="Laravel Facade——Facade 门面源码分析.html">
+            
+                <a href="Laravel Facade——Facade 门面源码分析.html">
+            
+                    
+                    Laravel Facade——Facade 门面源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Laravel Ioc 容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Laravel Container——IoC 服务容器.html">
+            
+                <a href="Laravel Container——IoC 服务容器.html">
+            
+                    
+                    Laravel Container——IoC 服务容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器绑定)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器解析)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="Laravel Container——服务容器的细节特性.html">
+            
+                <a href="Laravel Container——服务容器的细节特性.html">
+            
+                    
+                    Laravel Container——服务容器的细节特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Laravel Route 路由
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Laravel HTTP——路由.html">
+            
+                <a href="Laravel HTTP——路由.html">
+            
+                    
+                    Laravel HTTP——路由
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="Laravel HTTP——路由加载源码分析.html">
+            
+                <a href="Laravel HTTP——路由加载源码分析.html">
+            
+                    
+                    Laravel HTTP——路由加载源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                <a href="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                    
+                    Laravel HTTP——Pipeline中间件处理源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="Laravel HTTP——路由的正则编译.html">
+            
+                <a href="Laravel HTTP——路由的正则编译.html">
+            
+                    
+                    Laravel HTTP——路由的正则编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                <a href="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                    
+                    Laravel HTTP——路由的匹配与参数绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="Laravel HTTP——路由中间件源码分析.html">
+            
+                <a href="Laravel HTTP——路由中间件源码分析.html">
+            
+                    
+                    Laravel HTTP——路由中间件源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                <a href="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                    
+                    Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                <a href="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                    
+                    Laravel HTTP——控制器方法的参数构建与运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                <a href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP—— RESTFul 风格路由的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                <a href="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP——重定向的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Laravel ENV 环境变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                <a href="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                    
+                    Laravel ENV—— 环境变量的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Laravel Config 配置文件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                <a href="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                    
+                    Laravel Config—— 配置文件的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Laravel Exceptions 异常处理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="Laravel Exceptions——异常与错误处理.html">
+            
+                <a href="Laravel Exceptions——异常与错误处理.html">
+            
+                    
+                    Laravel Exceptions——异常与错误处理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Laravel Providers 服务提供者
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                <a href="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                    
+                    Laravel Providers——服务提供者的注册与启动源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Laravel Database 数据库
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="Laravel Database——数据库服务的启动与连接.html">
+            
+                <a href="Laravel Database——数据库服务的启动与连接.html">
+            
+                    
+                    Laravel Database——数据库服务的启动与连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="Laravel Database——数据库的 CRUD 操作.html">
+            
+                <a href="Laravel Database——数据库的 CRUD 操作.html">
+            
+                    
+                    Laravel Database——数据库的 CRUD 操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="Laravel Database——查询构造器与语法编译器源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="Laravel Database——查询构造器与语法编译器源码分析%28中%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(中)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="Laravel Database——查询构造器与语法编译器源码分析%28下%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="Laravel Database——分页原理与源码分析.html">
+            
+                <a href="Laravel Database——分页原理与源码分析.html">
+            
+                    
+                    Laravel Database——分页原理与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Laravel Database——Eloquent Model 源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                <a href="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                <a href="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                    
+                    Laravel Database——Eloquent Model 关联源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                <a href="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                    
+                    Laravel Database——Eloquent Model 模型关系加载与查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                <a href="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                    
+                    Laravel Database——Eloquent Model 更新关联模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Laravel Session
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="Laravel Session——session 的启动与运行源码分析.html">
+            
+                <a href="Laravel Session——session 的启动与运行源码分析.html">
+            
+                    
+                    Laravel Session——session 的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    Laravel Event 事件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                <a href="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                    
+                    Laravel Event——事件系统的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    Laravel Queue 队列
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务与分发源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务处理器源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    Laravel 广播系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="Laravel Broadcast——广播系统源码剖析.html">
+            
+                <a href="Laravel Broadcast——广播系统源码剖析.html">
+            
+                    
+                    Laravel Broadcast——广播系统源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    Laravel Passport
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >PHP Composer-——-注册与运行源码分析</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h1>
+<hr>
+<p> &#x2003;&#x2003;<a href="http://leoyang90.cn/2017/03/13/Composer%20Autoload%20Source%20Reading%20%E2%80%94%E2%80%94%20Start%20and%20Initialize/" target="_blank">&#x4E0A;&#x4E00;&#x7BC7;</a>&#x6587;&#x7AE0;&#x6211;&#x4EEC;&#x8BB2;&#x5230;&#x4E86;Composer&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x529F;&#x80FD;&#x7684;&#x542F;&#x52A8;&#x4E0E;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x7ECF;&#x8FC7;&#x542F;&#x52A8;&#x4E0E;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6838;&#x5FC3;&#x7C7B;&#x5BF9;&#x8C61;&#x5DF2;&#x7ECF;&#x83B7;&#x5F97;&#x4E86;&#x9876;&#x7EA7;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E0E;&#x76F8;&#x5E94;&#x76EE;&#x5F55;&#x7684;&#x6620;&#x5C04;&#xFF0C;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x547D;&#x540D;&#x7A7A;&#x95F4;&apos;App\Console\Kernel&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x77E5;&#x9053;&#x4E86;App\&#x5BF9;&#x5E94;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5C31;&#x8981;&#x89E3;&#x51B3;&#x4E0B;&#x9762;&#x7684;&#x5C31;&#x662F;\Console\Kernel&#x8FD9;&#x4E00;&#x6BB5;&#x3002;</p>
+<h1 id="composer&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6E90;&#x7801;&#x5206;&#x6790;&#x2014;&#x2014;&#x6CE8;&#x518C;">Composer&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6E90;&#x7801;&#x5206;&#x6790;&#x2014;&#x2014;&#x6CE8;&#x518C;</h1>
+<hr>
+<p>  &#x2003;&#x2003;&#x6211;&#x4EEC;&#x5148;&#x56DE;&#x987E;&#x4E00;&#x4E0B;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x5F15;&#x5BFC;&#x7C7B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLoader</span><span class="hljs-params">()</span>
+</span>{
+<span class="hljs-comment">/***************************&#x7ECF;&#x5178;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;********************/</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">null</span> !== <span class="hljs-keyword">self</span>::$loader) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>::$loader;
+}
+
+<span class="hljs-comment">/***********************&#x83B7;&#x5F97;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6838;&#x5FC3;&#x7C7B;&#x5BF9;&#x8C61;********************/</span>
+spl_autoload_register(<span class="hljs-keyword">array</span>(<span class="hljs-string">&apos;ComposerAutoloaderInit
+832ea71bfb9a4128da8660baedaac82e&apos;</span>, <span class="hljs-string">&apos;loadClassLoader&apos;</span>), <span class="hljs-keyword">true</span>, <span class="hljs-keyword">true</span>);
+
+<span class="hljs-keyword">self</span>::$loader = $loader = <span class="hljs-keyword">new</span> \Composer\Autoload\ClassLoader();
+
+spl_autoload_unregister(<span class="hljs-keyword">array</span>(<span class="hljs-string">&apos;ComposerAutoloaderInit
+832ea71bfb9a4128da8660baedaac82e&apos;</span>, <span class="hljs-string">&apos;loadClassLoader&apos;</span>));
+
+<span class="hljs-comment">/***********************&#x521D;&#x59CB;&#x5316;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6838;&#x5FC3;&#x7C7B;&#x5BF9;&#x8C61;********************/</span>
+$useStaticLoader = PHP_VERSION_ID &gt;= <span class="hljs-number">50600</span> &amp;&amp; 
+!defined(<span class="hljs-string">&apos;HHVM_VERSION&apos;</span>);
+
+<span class="hljs-keyword">if</span> ($useStaticLoader) {
+    <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/autoload_static.php&apos;</span>;
+
+    call_user_func(\Composer\Autoload\ComposerStaticInit
+    <span class="hljs-number">832</span>ea71bfb9a4128da8660baedaac82e::getInitializer($loader));
+
+} <span class="hljs-keyword">else</span> {
+    $map = <span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/autoload_namespaces.php&apos;</span>;
+    <span class="hljs-keyword">foreach</span> ($map <span class="hljs-keyword">as</span> $namespace =&gt; $path) {
+        $loader-&gt;set($namespace, $path);
+    }
+
+    $map = <span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/autoload_psr4.php&apos;</span>;
+    <span class="hljs-keyword">foreach</span> ($map <span class="hljs-keyword">as</span> $namespace =&gt; $path) {
+        $loader-&gt;setPsr4($namespace, $path);
+    }
+
+    $classMap = <span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/autoload_classmap.php&apos;</span>;
+    <span class="hljs-keyword">if</span> ($classMap) {
+        $loader-&gt;addClassMap($classMap);
+    }
+}
+
+<span class="hljs-comment">/***********************&#x6CE8;&#x518C;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6838;&#x5FC3;&#x7C7B;&#x5BF9;&#x8C61;********************/</span>
+$loader-&gt;register(<span class="hljs-keyword">true</span>);
+
+<span class="hljs-comment">/***********************&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x5168;&#x5C40;&#x51FD;&#x6570;********************/</span>
+<span class="hljs-keyword">if</span> ($useStaticLoader) {
+    $includeFiles = Composer\Autoload\ComposerStaticInit
+    <span class="hljs-number">832</span>ea71bfb9a4128da8660baedaac82e::$files;
+} <span class="hljs-keyword">else</span> {
+    $includeFiles = <span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/autoload_files.php&apos;</span>;
+}
+
+<span class="hljs-keyword">foreach</span> ($includeFiles <span class="hljs-keyword">as</span> $fileIdentifier =&gt; $file) {
+    composerRequire
+    <span class="hljs-number">832</span>ea71bfb9a4128da8660baedaac82e($fileIdentifier, $file);
+}
+
+<span class="hljs-keyword">return</span> $loader;
+}
+</code></pre>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5F00;&#x59CB;&#x5F15;&#x5BFC;&#x7C7B;&#x7684;&#x7B2C;&#x56DB;&#x90E8;&#x5206;&#xFF1A;&#x6CE8;&#x518C;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6838;&#x5FC3;&#x7C7B;&#x5BF9;&#x8C61;&#x3002;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x6838;&#x5FC3;&#x7C7B;&#x7684;register()&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">register</span><span class="hljs-params">($prepend = false)</span>
+</span>{
+    spl_autoload_register(<span class="hljs-keyword">array</span>($this, <span class="hljs-string">&apos;loadClass&apos;</span>), <span class="hljs-keyword">true</span>, $prepend);
+}
+</code></pre>
+<p>&#x7B80;&#x5355;&#x5230;&#x7206;&#x70B8;&#x554A;&#xFF01;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6709;&#x6728;&#x6709;&#xFF01;&#x5176;&#x5B9E;&#x5965;&#x79D8;&#x90FD;&#x5728;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6838;&#x5FC3;&#x7C7B;ClassLoader&#x7684;loadClass()&#x51FD;&#x6570;&#x4E0A;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x8D1F;&#x8D23;&#x6309;&#x7167;PSR&#x6807;&#x51C6;&#x5C06;&#x9876;&#x5C42;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4EE5;&#x4E0B;&#x7684;&#x5185;&#x5BB9;&#x8F6C;&#x4E3A;&#x5BF9;&#x5E94;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E0A;&#x9762;&#x6240;&#x8BF4;&#x7684;&#x5C06;&apos;App\Console\Kernel&#x4E2D;&apos;Console\Kernel&#x8FD9;&#x4E00;&#x6BB5;&#x8F6C;&#x4E3A;&#x76EE;&#x5F55;&#xFF0C;&#x81F3;&#x4E8E;&#x600E;&#x4E48;&#x8F6C;&#x7684;&#x6211;&#x4EEC;&#x5728;&#x4E0B;&#x9762;&#x201C;Composer&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6E90;&#x7801;&#x5206;&#x6790;&#x2014;&#x2014;&#x8FD0;&#x884C;&#x201D;&#x8BB2;&#x3002;&#x6838;&#x5FC3;&#x7C7B;ClassLoader&#x5C06;loadClass()&#x51FD;&#x6570;&#x6CE8;&#x518C;&#x5230;PHP SPL&#x4E2D;&#x7684;spl_autoload_register()&#x91CC;&#x9762;&#x53BB;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x6765;&#x9F99;&#x53BB;&#x8109;&#x6211;&#x4EEC;&#x4E4B;&#x524D;<a href="http://leoyang90.cn/2017/03/11/PHP-Composer-autoload/" target="_blank">&#x6587;&#x7AE0;</a>&#x8BB2;&#x8FC7;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x6BCF;&#x5F53;PHP&#x9047;&#x5230;&#x4E00;&#x4E2A;&#x4E0D;&#x8BA4;&#x8BC6;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x65F6;&#x5019;&#xFF0C;PHP&#x4F1A;&#x81EA;&#x52A8;&#x8C03;&#x7528;&#x6CE8;&#x518C;&#x5230;spl_autoload_register&#x91CC;&#x9762;&#x7684;&#x51FD;&#x6570;&#x5806;&#x6808;&#xFF0C;&#x8FD0;&#x884C;&#x5176;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x76F4;&#x5230;&#x627E;&#x5230;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x5BF9;&#x5E94;&#x7684;&#x6587;&#x4EF6;&#x3002;</p>
+<h1 id="composer&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6E90;&#x7801;&#x5206;&#x6790;&#x2014;&#x2014;&#x5168;&#x5C40;&#x51FD;&#x6570;&#x7684;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;">Composer&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6E90;&#x7801;&#x5206;&#x6790;&#x2014;&#x2014;&#x5168;&#x5C40;&#x51FD;&#x6570;&#x7684;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;</h1>
+<p> &#x2003;&#x2003;Composer&#x4E0D;&#x6B62;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x52A0;&#x8F7D;&#x5168;&#x5C40;&#x51FD;&#x6570;&#x3002;&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x7684;&#x5462;&#xFF1F;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x628A;&#x5168;&#x5C40;&#x51FD;&#x6570;&#x5199;&#x5230;&#x7279;&#x5B9A;&#x7684;&#x6587;&#x4EF6;&#x91CC;&#x9762;&#x53BB;&#xFF0C;&#x5728;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x524D;&#x6328;&#x4E2A;require&#x5C31;&#x884C;&#x4E86;&#x3002;&#x8FD9;&#x4E2A;&#x5C31;&#x662F;composer&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x7684;&#x7B2C;&#x4E94;&#x6B65;&#xFF0C;&#x52A0;&#x8F7D;&#x5168;&#x5C40;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">if</span> ($useStaticLoader) {
+    $includeFiles = Composer\Autoload\ComposerStaticInit832ea71bfb9a4128da8660baedaac82e::$files;
+} <span class="hljs-keyword">else</span> {
+    $includeFiles = <span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/autoload_files.php&apos;</span>;
+}
+<span class="hljs-keyword">foreach</span> ($includeFiles <span class="hljs-keyword">as</span> $fileIdentifier =&gt; $file) {
+    composerRequire832ea71bfb9a4128da8660baedaac82e($fileIdentifier, $file);
+}
+</code></pre>
+<p>  &#x8DDF;&#x6838;&#x5FC3;&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x6837;&#xFF0C;&#x5168;&#x5C40;&#x51FD;&#x6570;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x4E5F;&#x5206;&#x4E3A;&#x4E24;&#x79CD;&#xFF1A;&#x9759;&#x6001;&#x521D;&#x59CB;&#x5316;&#x548C;&#x666E;&#x901A;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x9759;&#x6001;&#x52A0;&#x8F7D;&#x53EA;&#x652F;&#x6301;PHP5.6&#x4EE5;&#x4E0A;&#x5E76;&#x4E14;&#x4E0D;&#x652F;&#x6301;HHVM&#x3002;</p>
+<h2 id="&#x9759;&#x6001;&#x521D;&#x59CB;&#x5316;&#xFF1A;">&#x9759;&#x6001;&#x521D;&#x59CB;&#x5316;&#xFF1A;</h2>
+<p>  ComposerStaticInit832ea71bfb9a4128da8660baedaac82e::$files&#xFF1A;</p>
+<pre><code class="lang-php">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> $files = <span class="hljs-keyword">array</span> (
+    <span class="hljs-string">&apos;0e6d7bf4a5811bfa5cf40c5ccd6fae6a&apos;</span> =&gt; <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/..&apos;</span> . <span class="hljs-string">&apos;/symfony/polyfill-mbstring/bootstrap.php&apos;</span>,
+    <span class="hljs-string">&apos;667aeda72477189d0494fecd327c3641&apos;</span> =&gt; <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/..&apos;</span> . <span class="hljs-string">&apos;/symfony/var-dumper/Resources/functions/dump.php&apos;</span>,
+    ...
+);
+</code></pre>
+<p>  &#x770B;&#x5230;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x53C8;&#x8981;&#x6709;&#x7591;&#x95EE;&#x4E86;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x76F4;&#x63A5;&#x653E;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x540D;&#xFF0C;&#x8FD8;&#x8981;&#x4E00;&#x4E2A;hash&#x5E72;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;&#x8FD9;&#x4E2A;&#x6211;&#x4EEC;&#x4E00;&#x4F1A;&#x513F;&#x8BB2;&#xFF0C;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x5148;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#x7684;&#x7ED3;&#x6784;&#x3002;</p>
+<h2 id="&#x666E;&#x901A;&#x521D;&#x59CB;&#x5316;">&#x666E;&#x901A;&#x521D;&#x59CB;&#x5316;</h2>
+<p>  autoload_files:</p>
+<pre><code class="lang-php">$vendorDir = dirname(dirname(<span class="hljs-keyword">__FILE__</span>));
+$baseDir = dirname($vendorDir);
+
+<span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span>(
+<span class="hljs-string">&apos;0e6d7bf4a5811bfa5cf40c5ccd6fae6a&apos;</span> =&gt; $vendorDir . <span class="hljs-string">&apos;/symfony/polyfill-mbstring/bootstrap.php&apos;</span>,
+<span class="hljs-string">&apos;667aeda72477189d0494fecd327c3641&apos;</span> =&gt; $vendorDir . <span class="hljs-string">&apos;/symfony/var-dumper/Resources/functions/dump.php&apos;</span>,
+    ....
+);
+</code></pre>
+<p>&#x5176;&#x5B9E;&#x8DDF;&#x9759;&#x6001;&#x521D;&#x59CB;&#x5316;&#x533A;&#x522B;&#x4E0D;&#x5927;&#x3002;</p>
+<h2 id="&#x52A0;&#x8F7D;&#x5168;&#x5C40;&#x51FD;&#x6570;">&#x52A0;&#x8F7D;&#x5168;&#x5C40;&#x51FD;&#x6570;</h2>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ComposerAutoloaderInit832ea71bfb9a4128da8660baedaac82e</span></span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLoader</span><span class="hljs-params">()</span></span>{
+        ...
+        <span class="hljs-keyword">foreach</span> ($includeFiles <span class="hljs-keyword">as</span> $fileIdentifier =&gt; $file) {
+        composerRequire832ea71bfb9a4128da8660baedaac82e($fileIdentifier, $file);
+        }
+        ...
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">composerRequire832ea71bfb9a4128da8660baedaac82e</span><span class="hljs-params">($fileIdentifier, $file)</span>
+    </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">empty</span>(\$GLOBALS[<span class="hljs-string">&apos;__composer_autoload_files&apos;</span>][\$fileIdentifier])) {
+        <span class="hljs-keyword">require</span> $file;
+
+        $GLOBALS[<span class="hljs-string">&apos;__composer_autoload_files&apos;</span>][$fileIdentifier] = <span class="hljs-keyword">true</span>;
+    }
+}
+</code></pre>
+<p> &#x2003;&#x2003;&#x8FD9;&#x4E00;&#x6BB5;&#x5F88;&#x6709;&#x8BB2;&#x7A76;&#xFF0C;<strong>&#x7B2C;&#x4E00;&#x4E2A;&#x95EE;&#x9898;</strong>&#xFF1A;&#x4E3A;&#x4EC0;&#x4E48;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x5F15;&#x5BFC;&#x7C7B;&#x7684;getLoader()&#x51FD;&#x6570;&#x4E0D;&#x76F4;&#x63A5;require $includeFiles&#x91CC;&#x9762;&#x7684;&#x6BCF;&#x4E2A;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x800C;&#x8981;&#x7528;&#x7C7B;&#x5916;&#x9762;&#x7684;&#x51FD;&#x6570;composerRequire832ea71bfb9a4128da8660baedaac82e0&#xFF1F;(&#x987A;&#x4FBF;&#x8BF4;&#x4E0B;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x540D;hash&#x4ECD;&#x7136;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x548C;&#x7528;&#x6237;&#x5B9A;&#x4E49;&#x51FD;&#x6570;&#x51B2;&#x7A81;)&#x56E0;&#x4E3A;&#x6015;&#x6709;&#x4EBA;&#x5728;&#x5168;&#x5C40;&#x51FD;&#x6570;&#x6240;&#x5728;&#x7684;&#x6587;&#x4EF6;<strong>&#x5199;$this&#x6216;&#x8005;self</strong>&#x3002;
+ &#x2003;&#x2003;&#x5047;&#x5982;$includeFiles&#x6709;&#x4E2A;app/helper.php&#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x4E2A;helper.php&#x6587;&#x4EF6;&#x7684;&#x51FD;&#x6570;&#x5916;&#x6709;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#xFF1A;$this-&gt;foo()&#xFF0C;&#x5982;&#x679C;&#x5F15;&#x5BFC;&#x7C7B;&#x5728;getLoader()&#x51FD;&#x6570;&#x76F4;&#x63A5;require($file)&#xFF0C;&#x90A3;&#x4E48;&#x5F15;&#x5BFC;&#x7C7B;&#x5C31;&#x4F1A;&#x8FD0;&#x884C;&#x8FD9;&#x53E5;&#x4EE3;&#x7801;&#xFF0C;&#x8C03;&#x7528;&#x81EA;&#x5DF1;&#x7684;foo()&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x663E;&#x7136;&#x662F;&#x9519;&#x7684;&#x3002;&#x4E8B;&#x5B9E;&#x4E0A;helper.php&#x5C31;&#x4E0D;&#x5E94;&#x8BE5;&#x51FA;&#x73B0;$this&#x6216;self&#x8FD9;&#x6837;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x8FD9;&#x6837;&#x5199;&#x4E00;&#x822C;&#x90FD;&#x662F;&#x7528;&#x6237;&#x5199;&#x9519;&#x4E86;&#x7684;&#xFF0C;&#x4E00;&#x65E6;&#x8FD9;&#x6837;&#x7684;&#x4E8B;&#x60C5;&#x53D1;&#x751F;&#xFF0C;&#x7B2C;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#xFF1A;&#x5F15;&#x5BFC;&#x7C7B;&#x6070;&#x597D;&#x6709;foo()&#x51FD;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x83AB;&#x540D;&#x5176;&#x5999;&#x6267;&#x884C;&#x4E86;&#x5F15;&#x5BFC;&#x7C7B;&#x7684;foo();&#x7B2C;&#x4E8C;&#x79CD;&#x60C5;&#x51B5;&#xFF1A;&#x5F15;&#x5BFC;&#x7C7B;&#x6CA1;&#x6709;foo()&#x51FD;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x5374;&#x7529;&#x51FA;&#x6765;&#x5F15;&#x5BFC;&#x7C7B;&#x6CA1;&#x6709;foo()&#x65B9;&#x6CD5;&#x8FD9;&#x6837;&#x7684;&#x9519;&#x8BEF;&#x63D0;&#x793A;&#xFF0C;&#x7528;&#x6237;&#x4E0D;&#x77E5;&#x9053;&#x81EA;&#x5DF1;&#x54EA;&#x91CC;&#x9519;&#x4E86;&#x3002;&#x628A;require&#x8BED;&#x53E5;&#x653E;&#x5230;&#x5F15;&#x5BFC;&#x7C7B;&#x7684;&#x5916;&#x9762;&#xFF0C;&#x9047;&#x5230;$this&#x6216;&#x8005;self&#xFF0C;&#x7A0B;&#x5E8F;&#x5C31;&#x4F1A;&#x544A;&#x8BC9;&#x7528;&#x6237;&#x6839;&#x672C;&#x6CA1;&#x6709;&#x7C7B;&#xFF0C;$this&#x6216;self&#x65E0;&#x6548;&#xFF0C;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x66F4;&#x52A0;&#x660E;&#x6717;&#x3002;
+&#x2003;&#x2003;<strong>&#x7B2C;&#x4E8C;&#x4E2A;&#x95EE;&#x9898;</strong>&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x7528;hash&#x4F5C;&#x4E3A;$fileIdentifier&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x660E;&#x663E;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x662F;&#x7528;&#x6765;&#x63A7;&#x5236;&#x5168;&#x5C40;&#x51FD;&#x6570;&#x53EA;&#x88AB;require&#x4E00;&#x6B21;&#x7684;&#xFF0C;&#x90A3;&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x7528;require_once&#x5462;&#xFF1F;&#x4E8B;&#x5B9E;&#x4E0A;require_once&#x6BD4;require&#x6548;&#x7387;&#x4F4E;&#x5F88;&#x591A;&#xFF0C;&#x4F7F;&#x7528;&#x5168;&#x5C40;&#x53D8;&#x91CF;$GLOBALS&#x8FD9;&#x6837;&#x63A7;&#x5236;&#x52A0;&#x8F7D;&#x4F1A;&#x66F4;&#x5FEB;&#x3002;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x539F;&#x56E0;&#x6211;&#x731C;&#x6D4B;&#x5E94;&#x8BE5;&#x662F;require_once&#x5BF9;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x7684;&#x652F;&#x6301;&#x5E76;&#x4E0D;&#x7406;&#x60F3;&#xFF0C;&#x6240;&#x4EE5;composer&#x5C3D;&#x91CF;&#x5C11;&#x7528;require_once&#x3002;</p>
+<h1 id="composer&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6E90;&#x7801;&#x5206;&#x6790;&#x2014;&#x2014;&#x8FD0;&#x884C;">Composer&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6E90;&#x7801;&#x5206;&#x6790;&#x2014;&#x2014;&#x8FD0;&#x884C;</h1>
+<p>  &#x2003;&#x2003;&#x6211;&#x4EEC;&#x7EC8;&#x4E8E;&#x6765;&#x5230;&#x4E86;&#x6838;&#x5FC3;&#x7684;&#x6838;&#x5FC3;&#x2014;&#x2014;composer&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x7684;&#x771F;&#x76F8;&#xFF0C;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x5982;&#x4F55;&#x901A;&#x8FC7;composer&#x8F6C;&#x4E3A;&#x5BF9;&#x5E94;&#x76EE;&#x5F55;&#x6587;&#x4EF6;&#x7684;&#x5965;&#x79D8;&#x5C31;&#x5728;&#x8FD9;&#x4E00;&#x7AE0;&#x3002;
+ &#x2003;&#x2003;&#x524D;&#x9762;&#x8BF4;&#x8FC7;&#xFF0C;ClassLoader&#x7684;register()&#x51FD;&#x6570;&#x5C06;loadClass()&#x51FD;&#x6570;&#x6CE8;&#x518C;&#x5230;PHP&#x7684;SPL&#x51FD;&#x6570;&#x5806;&#x6808;&#x4E2D;&#xFF0C;&#x6BCF;&#x5F53;PHP&#x9047;&#x5230;&#x4E0D;&#x8BA4;&#x8BC6;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x65F6;&#x5C31;&#x4F1A;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x5806;&#x6808;&#x7684;&#x6BCF;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x76F4;&#x5230;&#x52A0;&#x8F7D;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x6210;&#x529F;&#x3002;&#x6240;&#x4EE5;loadClass()&#x51FD;&#x6570;&#x5C31;&#x662F;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x7684;&#x5173;&#x952E;
+ &#x4E86;&#x3002;
+ loadClass():</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadClass</span><span class="hljs-params">($class)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($file = $this-&gt;findFile($class)) {
+        includeFile($file);
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findFile</span><span class="hljs-params">($class)</span>
+</span>{
+    <span class="hljs-comment">// work around for PHP 5.3.0 - 5.3.2 https://bugs.php.net/50731</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-string">&apos;\\&apos;</span> == $class[<span class="hljs-number">0</span>]) {
+        $class = substr($class, <span class="hljs-number">1</span>);
+    }
+
+    <span class="hljs-comment">// class map lookup</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($this-&gt;classMap[$class])) {
+        <span class="hljs-keyword">return</span> $this-&gt;classMap[$class];
+    }
+    <span class="hljs-keyword">if</span> ($this-&gt;classMapAuthoritative) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+
+    $file = $this-&gt;findFileWithExtension($class, <span class="hljs-string">&apos;.php&apos;</span>);
+
+    <span class="hljs-comment">// Search for Hack files if we are running on HHVM</span>
+    <span class="hljs-keyword">if</span> ($file === <span class="hljs-keyword">null</span> &amp;&amp; defined(<span class="hljs-string">&apos;HHVM_VERSION&apos;</span>)) {
+        $file = $this-&gt;findFileWithExtension($class, <span class="hljs-string">&apos;.hh&apos;</span>);
+    }
+
+    <span class="hljs-keyword">if</span> ($file === <span class="hljs-keyword">null</span>) {
+        <span class="hljs-comment">// Remember that this class does not exist.</span>
+        <span class="hljs-keyword">return</span> $this-&gt;classMap[$class] = <span class="hljs-keyword">false</span>;
+    }
+
+    <span class="hljs-keyword">return</span> $file;
+}
+</code></pre>
+<p> &#x2003;&#x2003;&#x6211;&#x4EEC;&#x770B;&#x5230;loadClass()&#xFF0C;&#x4E3B;&#x8981;&#x8C03;&#x7528;findFile()&#x51FD;&#x6570;&#x3002;findFile()&#x5728;&#x89E3;&#x6790;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x65F6;&#x5019;&#x4E3B;&#x8981;&#x5206;&#x4E3A;&#x4E24;&#x90E8;&#x5206;&#xFF1A;classMap&#x548C;findFileWithExtension()&#x51FD;&#x6570;&#x3002;classMap&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x76F4;&#x63A5;&#x770B;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x662F;&#x5426;&#x5728;&#x6620;&#x5C04;&#x6570;&#x7EC4;&#x4E2D;&#x5373;&#x53EF;&#x3002;&#x9EBB;&#x70E6;&#x7684;&#x662F;findFileWithExtension()&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5305;&#x542B;&#x4E86;PSR0&#x548C;PSR4&#x6807;&#x51C6;&#x7684;&#x5B9E;&#x73B0;&#x3002;&#x8FD8;&#x6709;&#x4E2A;&#x503C;&#x5F97;&#x6211;&#x4EEC;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x67E5;&#x627E;&#x8DEF;&#x5F84;&#x6210;&#x529F;&#x540E;includeFile()&#x4ECD;&#x7136;&#x7C7B;&#x5916;&#x9762;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;ClassLoader&#x7684;&#x6210;&#x5458;&#x51FD;&#x6570;&#xFF0C;&#x539F;&#x7406;&#x8DDF;&#x4E0A;&#x9762;&#x4E00;&#x6837;&#xFF0C;&#x9632;&#x6B62;&#x6709;&#x7528;&#x6237;&#x5199;$this&#x6216;self&#x3002;&#x8FD8;&#x6709;&#x5C31;&#x662F;&#x5982;&#x679C;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x662F;&#x4EE5;\&#x5F00;&#x5934;&#x7684;&#xFF0C;&#x8981;&#x53BB;&#x6389;\&#x7136;&#x540E;&#x518D;&#x5339;&#x914D;&#x3002;
+ findFileWithExtension&#xFF1A;</p>
+<pre><code class="lang-php">        <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findFileWithExtension</span><span class="hljs-params">($class, $ext)</span>
+</span>{
+    <span class="hljs-comment">// PSR-4 lookup</span>
+    $logicalPathPsr4 = strtr($class, <span class="hljs-string">&apos;\\&apos;</span>, DIRECTORY_SEPARATOR) . $ext;
+
+    $first = $class[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($this-&gt;prefixLengthsPsr4[$first])) {
+        <span class="hljs-keyword">foreach</span> ($this-&gt;prefixLengthsPsr4[$first] <span class="hljs-keyword">as</span> $prefix =&gt; $length) {
+            <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> === strpos($class, $prefix)) {
+                <span class="hljs-keyword">foreach</span> ($this-&gt;prefixDirsPsr4[$prefix] <span class="hljs-keyword">as</span> $dir) {
+                    <span class="hljs-keyword">if</span> (file_exists($file = $dir . DIRECTORY_SEPARATOR . substr($logicalPathPsr4, $length))) {
+                        <span class="hljs-keyword">return</span> $file;
+                    }
+                }
+            }
+        }
+    }
+
+    <span class="hljs-comment">// PSR-4 fallback dirs</span>
+    <span class="hljs-keyword">foreach</span> ($this-&gt;fallbackDirsPsr4 <span class="hljs-keyword">as</span> $dir) {
+        <span class="hljs-keyword">if</span> (file_exists($file = $dir . DIRECTORY_SEPARATOR . $logicalPathPsr4)) {
+            <span class="hljs-keyword">return</span> $file;
+        }
+    }
+
+    <span class="hljs-comment">// PSR-0 lookup</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">false</span> !== $pos = strrpos($class, <span class="hljs-string">&apos;\\&apos;</span>)) {
+        <span class="hljs-comment">// namespaced class name</span>
+        $logicalPathPsr0 = substr($logicalPathPsr4, <span class="hljs-number">0</span>, $pos + <span class="hljs-number">1</span>)
+            . strtr(substr($logicalPathPsr4, $pos + <span class="hljs-number">1</span>), <span class="hljs-string">&apos;_&apos;</span>, DIRECTORY_SEPARATOR);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// PEAR-like class name</span>
+        $logicalPathPsr0 = strtr($class, <span class="hljs-string">&apos;_&apos;</span>, DIRECTORY_SEPARATOR) . $ext;
+    }
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($this-&gt;prefixesPsr0[$first])) {
+        <span class="hljs-keyword">foreach</span> ($this-&gt;prefixesPsr0[$first] <span class="hljs-keyword">as</span> $prefix =&gt; $dirs) {
+            <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> === strpos($class, $prefix)) {
+                <span class="hljs-keyword">foreach</span> ($dirs <span class="hljs-keyword">as</span> $dir) {
+                    <span class="hljs-keyword">if</span> (file_exists($file = $dir . DIRECTORY_SEPARATOR . $logicalPathPsr0)) {
+                        <span class="hljs-keyword">return</span> $file;
+                    }
+                }
+            }
+        }
+    }
+
+    <span class="hljs-comment">// PSR-0 fallback dirs</span>
+    <span class="hljs-keyword">foreach</span> ($this-&gt;fallbackDirsPsr0 <span class="hljs-keyword">as</span> $dir) {
+        <span class="hljs-keyword">if</span> (file_exists($file = $dir . DIRECTORY_SEPARATOR . $logicalPathPsr0)) {
+            <span class="hljs-keyword">return</span> $file;
+        }
+    }
+
+    <span class="hljs-comment">// PSR-0 include paths.</span>
+    <span class="hljs-keyword">if</span> ($this-&gt;useIncludePath &amp;&amp; $file = stream_resolve_include_path($logicalPathPsr0)) {
+        <span class="hljs-keyword">return</span> $file;
+    }
+}
+</code></pre>
+<p>&#x2003;&#x2003;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x4E3E;&#x4F8B;&#x6765;&#x8BF4;&#x4E0B;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x7684;&#x6D41;&#x7A0B;&#xFF1A;
+&#x2003;&#x2003;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x5199;&#x4E0B;&apos;phpDocumentor\Reflection\example&apos;&#xFF0C;PHP&#x4F1A;&#x901A;&#x8FC7;SPL&#x8C03;&#x7528;loadClass-&gt;findFile-&gt;findFileWithExtension&#x3002;&#x9996;&#x5148;&#x9ED8;&#x8BA4;&#x7528;php&#x4F5C;&#x4E3A;&#x6587;&#x4EF6;&#x540E;&#x7F00;&#x540D;&#x8C03;&#x7528;findFileWithExtension&#x51FD;&#x6570;&#x91CC;&#xFF0C;&#x5229;&#x7528;PSR4&#x6807;&#x51C6;&#x5C1D;&#x8BD5;&#x89E3;&#x6790;&#x76EE;&#x5F55;&#x6587;&#x4EF6;&#xFF0C;&#x5982;&#x679C;&#x6587;&#x4EF6;&#x4E0D;&#x5B58;&#x5728;&#x5219;&#x7EE7;&#x7EED;&#x7528;PSR0&#x6807;&#x51C6;&#x89E3;&#x6790;&#xFF0C;&#x5982;&#x679C;&#x89E3;&#x6790;&#x51FA;&#x6765;&#x7684;&#x76EE;&#x5F55;&#x6587;&#x4EF6;&#x4ECD;&#x7136;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x4F46;&#x662F;&#x73AF;&#x5883;&#x662F;HHVM&#x865A;&#x62DF;&#x673A;&#xFF0C;&#x7EE7;&#x7EED;&#x7528;&#x540E;&#x7F00;&#x540D;&#x4E3A;hh&#x518D;&#x6B21;&#x8C03;&#x7528;findFileWithExtension&#x51FD;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x8BF4;&#x660E;&#x6B64;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x65E0;&#x6CD5;&#x52A0;&#x8F7D;&#xFF0C;&#x653E;&#x5230;classMap&#x4E2D;&#x8BBE;&#x4E3A;false&#xFF0C;&#x4EE5;&#x4FBF;&#x4EE5;&#x540E;&#x66F4;&#x5FEB;&#x5730;&#x52A0;&#x8F7D;&#x3002;
+&#x2003;&#x2003;&#x5BF9;&#x4E8E;phpDocumentor\Reflection\example&#xFF0C;&#x5F53;&#x5C1D;&#x8BD5;&#x5229;&#x7528;PSR4&#x6807;&#x51C6;&#x6620;&#x5C04;&#x76EE;&#x5F55;&#x65F6;&#xFF0C;&#x6B65;&#x9AA4;&#x5982;&#x4E0B;&#xFF1A;</p>
+<h2 id="psr4&#x6807;&#x51C6;&#x52A0;&#x8F7D;">PSR4&#x6807;&#x51C6;&#x52A0;&#x8F7D;</h2>
+<blockquote>
+<ul>
+<li>&#x5C06;\&#x8F6C;&#x4E3A;&#x6587;&#x4EF6;&#x5206;&#x9694;&#x7B26;/&#xFF0C;&#x52A0;&#x4E0A;&#x540E;&#x7F00;php&#x6216;hh&#xFF0C;&#x5F97;&#x5230;$logicalPathPsr4&#x5373;phpDocumentor//Reflection//example.php(hh);</li>
+<li>&#x5229;&#x7528;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x6BCD;p&#x4F5C;&#x4E3A;&#x524D;&#x7F00;&#x7D22;&#x5F15;&#x641C;&#x7D22;prefixLengthsPsr4&#x6570;&#x7EC4;&#xFF0C;&#x67E5;&#x5230;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#xFF1A;</li>
+</ul>
+</blockquote>
+<pre><code class="lang-php">p<span class="hljs-string">&apos; =&gt; 
+    array (
+        &apos;</span>phpDocumentor\\Reflection\\<span class="hljs-string">&apos; =&gt; 25,
+        &apos;</span>phpDocumentor\\Fake\\<span class="hljs-string">&apos; =&gt; 19,
+    )
+</span></code></pre>
+<blockquote>
+<ul>
+<li>&#x904D;&#x5386;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x5F97;&#x5230;&#x4E24;&#x4E2A;&#x9876;&#x5C42;&#x547D;&#x540D;&#x7A7A;&#x95F4;phpDocumentor\Reflection\&#x548C;phpDocumentor\Fake\</li>
+<li>&#x7528;&#x8FD9;&#x4E24;&#x4E2A;&#x9876;&#x5C42;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E0E;phpDocumentor\Reflection\example_e&#x76F8;&#x6BD4;&#x8F83;&#xFF0C;&#x53EF;&#x4EE5;&#x5F97;&#x5230;phpDocumentor\Reflection\&#x8FD9;&#x4E2A;&#x9876;&#x5C42;&#x547D;&#x540D;&#x7A7A;&#x95F4;</li>
+<li>&#x5728;prefixLengthsPsr4&#x6620;&#x5C04;&#x6570;&#x7EC4;&#x4E2D;&#x5F97;&#x5230;phpDocumentor\Reflection\&#x957F;&#x5EA6;&#x4E3A;25&#x3002;</li>
+<li>&#x5728;prefixDirsPsr4&#x6620;&#x5C04;&#x6570;&#x7EC4;&#x4E2D;&#x5F97;&#x5230;phpDocumentor\Reflection\&#x7684;&#x76EE;&#x5F55;&#x6620;&#x5C04;&#x4E3A;&#xFF1A;</li>
+</ul>
+</blockquote>
+<pre><code class="lang-php"><span class="hljs-string">&apos;phpDocumentor\\Reflection\\&apos;</span> =&gt; 
+    <span class="hljs-keyword">array</span> (
+        <span class="hljs-number">0</span> =&gt; <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/..&apos;</span> . <span class="hljs-string">&apos;/phpdocumentor/reflection-common/src&apos;</span>,
+        <span class="hljs-number">1</span> =&gt; <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/..&apos;</span> . <span class="hljs-string">&apos;/phpdocumentor/type-resolver/src&apos;</span>,
+        <span class="hljs-number">2</span> =&gt; <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/..&apos;</span> . <span class="hljs-string">&apos;/phpdocumentor/reflection-docblock/src&apos;</span>,
+    ),
+</code></pre>
+<blockquote>
+<ul>
+<li>&#x904D;&#x5386;&#x8FD9;&#x4E2A;&#x6620;&#x5C04;&#x6570;&#x7EC4;&#xFF0C;&#x5F97;&#x5230;&#x4E09;&#x4E2A;&#x76EE;&#x5F55;&#x6620;&#x5C04;&#xFF1B;</li>
+<li>&#x67E5;&#x770B; &#x201C;&#x76EE;&#x5F55;+&#x6587;&#x4EF6;&#x5206;&#x9694;&#x7B26;//+substr($logicalPathPsr4, $length)&#x201D;&#x6587;&#x4EF6;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x5B58;&#x5728;&#x5373;&#x8FD4;&#x56DE;&#x3002;&#x8FD9;&#x91CC;&#x5C31;&#x662F;&apos;_<em>DIR_</em>/../phpdocumentor/reflection-common/src + /+ substr(phpDocumentor/Reflection/example_e.php(hh),25)&apos;</li>
+<li>&#x5982;&#x679C;&#x5931;&#x8D25;&#xFF0C;&#x5219;&#x5229;&#x7528;fallbackDirsPsr4&#x6570;&#x7EC4;&#x91CC;&#x9762;&#x7684;&#x76EE;&#x5F55;&#x7EE7;&#x7EED;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5B58;&#x5728;&#x6587;&#x4EF6;&#xFF0C;&#x5177;&#x4F53;&#x65B9;&#x6CD5;&#x662F;&#x201C;&#x76EE;&#x5F55;+&#x6587;&#x4EF6;&#x5206;&#x9694;&#x7B26;//+$logicalPathPsr4&#x201D;</li>
+</ul>
+</blockquote>
+<h2 id="psr0&#x6807;&#x51C6;&#x52A0;&#x8F7D;">PSR0&#x6807;&#x51C6;&#x52A0;&#x8F7D;</h2>
+<p>&#x5982;&#x679C;PSR4&#x6807;&#x51C6;&#x52A0;&#x8F7D;&#x5931;&#x8D25;&#xFF0C;&#x5219;&#x8981;&#x8FDB;&#x884C;PSR0&#x6807;&#x51C6;&#x52A0;&#x8F7D;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>&#x627E;&#x5230;phpDocumentor\Reflection\example<em>e&#x6700;&#x540E;&#x201C;\&#x201D;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x5C06;&#x5176;&#x540E;&#x9762;&#x6587;&#x4EF6;&#x540D;&#x4E2D;&#x2019;&#x2018;</em>&#x2019;&#x2018;&#x5B57;&#x7B26;&#x8F6C;&#x4E3A;&#x6587;&#x4EF6;&#x5206;&#x9694;&#x7B26;&#x201C;/&#x201D;,&#x5F97;&#x5230;$logicalPathPsr0&#x5373;phpDocumentor/Reflection/example/e.php(hh)
+&#x5229;&#x7528;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x6BCD;p&#x4F5C;&#x4E3A;&#x524D;&#x7F00;&#x7D22;&#x5F15;&#x641C;&#x7D22;prefixLengthsPsr4&#x6570;&#x7EC4;&#xFF0C;&#x67E5;&#x5230;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#xFF1A;</li>
+</ul>
+</blockquote>
+<pre><code class="lang-php"><span class="hljs-string">&apos;P&apos;</span> =&gt; 
+    <span class="hljs-keyword">array</span> (
+        <span class="hljs-string">&apos;Prophecy\\&apos;</span> =&gt; 
+        <span class="hljs-keyword">array</span> (
+            <span class="hljs-number">0</span> =&gt; <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/..&apos;</span> . <span class="hljs-string">&apos;/phpspec/prophecy/src&apos;</span>,
+        ),
+        <span class="hljs-string">&apos;phpDocumentor&apos;</span> =&gt; 
+        <span class="hljs-keyword">array</span> (
+            <span class="hljs-number">0</span> =&gt; <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/..&apos;</span> . <span class="hljs-string">&apos;/erusev/parsedown&apos;</span>,
+        ),
+    ),
+</code></pre>
+<blockquote>
+<ul>
+<li>&#x904D;&#x5386;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x5F97;&#x5230;&#x4E24;&#x4E2A;&#x9876;&#x5C42;&#x547D;&#x540D;&#x7A7A;&#x95F4;phpDocumentor&#x548C;Prophecy</li>
+<li>&#x7528;&#x8FD9;&#x4E24;&#x4E2A;&#x9876;&#x5C42;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E0E;phpDocumentor\Reflection\example_e&#x76F8;&#x6BD4;&#x8F83;&#xFF0C;&#x53EF;&#x4EE5;&#x5F97;&#x5230;phpDocumentor&#x8FD9;&#x4E2A;&#x9876;&#x5C42;&#x547D;&#x540D;&#x7A7A;&#x95F4;</li>
+<li>&#x5728;&#x6620;&#x5C04;&#x6570;&#x7EC4;&#x4E2D;&#x5F97;&#x5230;phpDocumentor&#x76EE;&#x5F55;&#x6620;&#x5C04;&#x4E3A;&apos;_<em>DIR_</em> . &apos;/..&apos; . &apos;/erusev/parsedown&apos;</li>
+<li>&#x67E5;&#x770B; &#x201C;&#x76EE;&#x5F55;+&#x6587;&#x4EF6;&#x5206;&#x9694;&#x7B26;//+$logicalPathPsr0&#x201D;&#x6587;&#x4EF6;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x5B58;&#x5728;&#x5373;&#x8FD4;&#x56DE;&#x3002;&#x8FD9;&#x91CC;&#x5C31;&#x662F;
+&#x201C;_<em>DIR_</em> . &apos;/..&apos; . &apos;/erusev/parsedown + //+ phpDocumentor//Reflection//example/e.php(hh)&#x201D;</li>
+<li>&#x5982;&#x679C;&#x5931;&#x8D25;&#xFF0C;&#x5219;&#x5229;&#x7528;fallbackDirsPsr0&#x6570;&#x7EC4;&#x91CC;&#x9762;&#x7684;&#x76EE;&#x5F55;&#x7EE7;&#x7EED;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5B58;&#x5728;&#x6587;&#x4EF6;&#xFF0C;&#x5177;&#x4F53;&#x65B9;&#x6CD5;&#x662F;&#x201C;&#x76EE;&#x5F55;+&#x6587;&#x4EF6;&#x5206;&#x9694;&#x7B26;//+$logicalPathPsr0&#x201D;</li>
+<li>&#x5982;&#x679C;&#x4ECD;&#x7136;&#x627E;&#x4E0D;&#x5230;&#xFF0C;&#x5219;&#x5229;&#x7528;stream_resolve_include_path()&#xFF0C;&#x5728;&#x5F53;&#x524D;include&#x76EE;&#x5F55;&#x5BFB;&#x627E;&#x8BE5;&#x6587;&#x4EF6;&#xFF0C;&#x5982;&#x679C;&#x627E;&#x5230;&#x8FD4;&#x56DE;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x3002;</li>
+</ul>
+</blockquote>
+<h1 id="&#x7ED3;&#x8BED;">&#x7ED3;&#x8BED;</h1>
+<p>&#x2003;&#x2003;&#x7ECF;&#x8FC7;&#x4E09;&#x7BC7;&#x6587;&#x7AE0;&#xFF0C;&#x7EC8;&#x4E8E;&#x5199;&#x5B8C;&#x4E86;PHP Composer&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x7684;&#x539F;&#x7406;&#x4E0E;&#x5B9E;&#x73B0;&#xFF0C;&#x7ED3;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5F00;&#x59CB;&#x8BB2;&#x89E3;laravel&#x6846;&#x67B6;&#x4E0B;&#x7684;&#x95E8;&#x9762;Facade,&#x8FD9;&#x4E2A;&#x95E8;&#x9762;&#x529F;&#x80FD;&#x548C;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6709;&#x7740;&#x4E00;&#x4E9B;&#x8054;&#x7CFB;.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="PHP Composer—— 初始化源码分析.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: PHP Composer—— 初始化源码分析">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"PHP Composer-——-注册与运行源码分析","level":"1.2.3","depth":2,"next":{"title":"Laravel Facade 门面","level":"1.3","depth":1,"ref":"","articles":[{"title":"Laravel Facade——Facade 门面源码分析","level":"1.3.1","depth":2,"path":"Laravel Facade——Facade 门面源码分析.md","ref":"Laravel Facade——Facade 门面源码分析.md","articles":[]}]},"previous":{"title":"PHP Composer—— 初始化源码分析","level":"1.2.2","depth":2,"path":"PHP Composer—— 初始化源码分析.md","ref":"PHP Composer—— 初始化源码分析.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP Composer-——-注册与运行源码分析.md","mtime":"2019-01-15T10:50:48.610Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T10:51:52.544Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

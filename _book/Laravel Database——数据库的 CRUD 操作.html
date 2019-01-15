@@ -1,0 +1,1540 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Laravel Database——数据库的 CRUD 操作 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Laravel Database——查询构造器与语法编译器源码分析%28上%29.md" />
+    
+    
+    <link rel="prev" href="Laravel Database——数据库服务的启动与连接.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    PHP Composer 自动加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="PHP Composer——自动加载原理.html">
+            
+                <a href="PHP Composer——自动加载原理.html">
+            
+                    
+                    PHP Composer——自动加载原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="PHP Composer—— 初始化源码分析.html">
+            
+                <a href="PHP Composer—— 初始化源码分析.html">
+            
+                    
+                    PHP Composer—— 初始化源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="PHP Composer-——-注册与运行源码分析.html">
+            
+                <a href="PHP Composer-——-注册与运行源码分析.html">
+            
+                    
+                    PHP Composer-——-注册与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Laravel Facade 门面
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="Laravel Facade——Facade 门面源码分析.html">
+            
+                <a href="Laravel Facade——Facade 门面源码分析.html">
+            
+                    
+                    Laravel Facade——Facade 门面源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Laravel Ioc 容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Laravel Container——IoC 服务容器.html">
+            
+                <a href="Laravel Container——IoC 服务容器.html">
+            
+                    
+                    Laravel Container——IoC 服务容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器绑定)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器解析)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="Laravel Container——服务容器的细节特性.html">
+            
+                <a href="Laravel Container——服务容器的细节特性.html">
+            
+                    
+                    Laravel Container——服务容器的细节特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Laravel Route 路由
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Laravel HTTP——路由.html">
+            
+                <a href="Laravel HTTP——路由.html">
+            
+                    
+                    Laravel HTTP——路由
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="Laravel HTTP——路由加载源码分析.html">
+            
+                <a href="Laravel HTTP——路由加载源码分析.html">
+            
+                    
+                    Laravel HTTP——路由加载源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                <a href="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                    
+                    Laravel HTTP——Pipeline中间件处理源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="Laravel HTTP——路由的正则编译.html">
+            
+                <a href="Laravel HTTP——路由的正则编译.html">
+            
+                    
+                    Laravel HTTP——路由的正则编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                <a href="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                    
+                    Laravel HTTP——路由的匹配与参数绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="Laravel HTTP——路由中间件源码分析.html">
+            
+                <a href="Laravel HTTP——路由中间件源码分析.html">
+            
+                    
+                    Laravel HTTP——路由中间件源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                <a href="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                    
+                    Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                <a href="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                    
+                    Laravel HTTP——控制器方法的参数构建与运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                <a href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP—— RESTFul 风格路由的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                <a href="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP——重定向的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Laravel ENV 环境变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                <a href="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                    
+                    Laravel ENV—— 环境变量的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Laravel Config 配置文件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                <a href="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                    
+                    Laravel Config—— 配置文件的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Laravel Exceptions 异常处理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="Laravel Exceptions——异常与错误处理.html">
+            
+                <a href="Laravel Exceptions——异常与错误处理.html">
+            
+                    
+                    Laravel Exceptions——异常与错误处理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Laravel Providers 服务提供者
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                <a href="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                    
+                    Laravel Providers——服务提供者的注册与启动源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Laravel Database 数据库
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="Laravel Database——数据库服务的启动与连接.html">
+            
+                <a href="Laravel Database——数据库服务的启动与连接.html">
+            
+                    
+                    Laravel Database——数据库服务的启动与连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.10.2" data-path="Laravel Database——数据库的 CRUD 操作.html">
+            
+                <a href="Laravel Database——数据库的 CRUD 操作.html">
+            
+                    
+                    Laravel Database——数据库的 CRUD 操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="Laravel Database——查询构造器与语法编译器源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="Laravel Database——查询构造器与语法编译器源码分析%28中%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(中)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="Laravel Database——查询构造器与语法编译器源码分析%28下%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="Laravel Database——分页原理与源码分析.html">
+            
+                <a href="Laravel Database——分页原理与源码分析.html">
+            
+                    
+                    Laravel Database——分页原理与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Laravel Database——Eloquent Model 源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                <a href="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                <a href="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                    
+                    Laravel Database——Eloquent Model 关联源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                <a href="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                    
+                    Laravel Database——Eloquent Model 模型关系加载与查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                <a href="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                    
+                    Laravel Database——Eloquent Model 更新关联模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Laravel Session
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="Laravel Session——session 的启动与运行源码分析.html">
+            
+                <a href="Laravel Session——session 的启动与运行源码分析.html">
+            
+                    
+                    Laravel Session——session 的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    Laravel Event 事件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                <a href="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                    
+                    Laravel Event——事件系统的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    Laravel Queue 队列
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务与分发源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务处理器源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    Laravel 广播系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="Laravel Broadcast——广播系统源码剖析.html">
+            
+                <a href="Laravel Broadcast——广播系统源码剖析.html">
+            
+                    
+                    Laravel Broadcast——广播系统源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    Laravel Passport
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Laravel Database——数据库的 CRUD 操作</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h2>
+<p>&#x5F53; <code>connection</code> &#x5BF9;&#x8C61;&#x6784;&#x5EFA;&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x5229;&#x7528; <code>DB</code> &#x6765;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x5E93;&#x7684; <code>CRUD</code> ( <code>Create</code>&#x3001;<code>Retrieve</code>&#x3001;<code>Update</code>&#x3001;<code>Delete</code>)&#x64CD;&#x4F5C;&#x3002;&#x672C;&#x7BC7;&#x6587;&#x7AE0;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4F1A;&#x8BB2;&#x8FF0; <code>laravel</code> &#x5982;&#x4F55;&#x4E0E; <code>pdo</code> &#x4EA4;&#x4E92;&#xFF0C;&#x5B9E;&#x73B0;&#x57FA;&#x672C;&#x6570;&#x636E;&#x5E93;&#x670D;&#x52A1;&#x7684;&#x539F;&#x7406;&#x3002;</p>
+<h2 id="run">run</h2>
+<p><code>laravel</code> &#x4E2D;&#x4EFB;&#x4F55;&#x6570;&#x636E;&#x5E93;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x8981;&#x7ECF;&#x8FC7; <code>run</code> &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4F5C;&#x7528;&#x5728;&#x4E8E;&#x91CD;&#x65B0;&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;&#x3001;&#x8BB0;&#x5F55;&#x6570;&#x636E;&#x5E93;&#x65E5;&#x5FD7;&#x3001;&#x6570;&#x636E;&#x5E93;&#x5F02;&#x5E38;&#x5904;&#x7406;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span><span class="hljs-params">($query, $bindings, Closure $callback)</span>
+</span>{
+    $this-&gt;reconnectIfMissingConnection();
+
+    $start = microtime(<span class="hljs-keyword">true</span>);
+
+    <span class="hljs-keyword">try</span> {
+        $result = $this-&gt;runQueryCallback($query, $bindings, $callback);
+    } <span class="hljs-keyword">catch</span> (QueryException $e) {
+        $result = $this-&gt;handleQueryException(
+            $e, $query, $bindings, $callback
+        );
+    }
+
+    $this-&gt;logQuery(
+        $query, $bindings, $this-&gt;getElapsedTime($start)
+    );
+
+    <span class="hljs-keyword">return</span> $result;
+}
+</code></pre>
+<h3 id="&#x91CD;&#x65B0;&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;-reconnect">&#x91CD;&#x65B0;&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93; reconnect</h3>
+<p>&#x5982;&#x679C;&#x5F53;&#x671F;&#x7684; <code>pdo</code> &#x662F;&#x7A7A;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x8C03;&#x7528; <code>reconnector</code> &#x91CD;&#x65B0;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x8FDE;&#x63A5;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reconnectIfMissingConnection</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> (is_null($this-&gt;pdo)) {
+        $this-&gt;reconnect();
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reconnect</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> (is_callable($this-&gt;reconnector)) {
+        <span class="hljs-keyword">return</span> call_user_func($this-&gt;reconnector, $this);
+    }
+
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> LogicException(<span class="hljs-string">&apos;Lost connection and no reconnector available.&apos;</span>);
+}
+</code></pre>
+<h3 id="&#x8FD0;&#x884C;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;">&#x8FD0;&#x884C;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;</h3>
+<p>&#x6570;&#x636E;&#x5E93;&#x7684; curd &#x64CD;&#x4F5C;&#x4F1A;&#x88AB;&#x5305;&#x88C5;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;&#x95ED;&#x5305;&#x51FD;&#x6570;&#xFF0C;&#x4F5C;&#x4E3A; <code>runQueryCallback</code> &#x7684;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5F53;&#x8FD0;&#x884C;&#x6B63;&#x5E38;&#x65F6;&#xFF0C;&#x4F1A;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF0C;&#x5982;&#x679C;&#x9047;&#x5230;&#x5F02;&#x5E38;&#x7684;&#x8BDD;&#xFF0C;&#x4F1A;&#x5C06;&#x5F02;&#x5E38;&#x8F6C;&#x5316;&#x4E3A; <code>QueryException</code>&#xFF0C;&#x5E76;&#x4E14;&#x629B;&#x51FA;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">runQueryCallback</span><span class="hljs-params">($query, $bindings, Closure $callback)</span>
+</span>{
+    <span class="hljs-keyword">try</span> {
+        $result = $callback($query, $bindings);
+    }
+
+    <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> QueryException(
+            $query, $this-&gt;prepareBindings($bindings), $e
+        );
+    }
+
+    <span class="hljs-keyword">return</span> $result;
+}
+</code></pre>
+<h3 id="&#x6570;&#x636E;&#x5E93;&#x5F02;&#x5E38;&#x5904;&#x7406;">&#x6570;&#x636E;&#x5E93;&#x5F02;&#x5E38;&#x5904;&#x7406;</h3>
+<p>&#x5F53; <code>pdo</code> &#x67E5;&#x8BE2;&#x8FD4;&#x56DE;&#x5F02;&#x5E38;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x5F53;&#x524D;&#x662F;&#x4E8B;&#x52A1;&#x8FDB;&#x884C;&#x65F6;&#xFF0C;&#x90A3;&#x4E48;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x5F02;&#x5E38;&#xFF0C;&#x8BA9;&#x4E0A;&#x4E00;&#x5C42;&#x4E8B;&#x52A1;&#x6765;&#x5904;&#x7406;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x662F;&#x7531;&#x4E8E;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x4E8B;&#x60C5;&#x8FDE;&#x63A5;&#x5BFC;&#x81F4;&#x7684;&#x5F02;&#x5E38;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x8981;&#x91CD;&#x65B0;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x8FDE;&#x63A5;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleQueryException</span><span class="hljs-params">($e, $query, $bindings, Closure $callback)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($this-&gt;transactions &gt;= <span class="hljs-number">1</span>) {
+        <span class="hljs-keyword">throw</span> $e;
+    }
+
+    <span class="hljs-keyword">return</span> $this-&gt;tryAgainIfCausedByLostConnection(
+        $e, $query, $bindings, $callback
+    );
+}
+</code></pre>
+<p>&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x5931;&#x53BB;&#x8FDE;&#x63A5;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tryAgainIfCausedByLostConnection</span><span class="hljs-params">(QueryException $e, $query, $bindings, Closure $callback)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($this-&gt;causedByLostConnection($e-&gt;getPrevious())) {
+        $this-&gt;reconnect();
+
+        <span class="hljs-keyword">return</span> $this-&gt;runQueryCallback($query, $bindings, $callback);
+    }
+
+    <span class="hljs-keyword">throw</span> $e;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">causedByLostConnection</span><span class="hljs-params">(Exception $e)</span>
+</span>{
+    $message = $e-&gt;getMessage();
+
+    <span class="hljs-keyword">return</span> Str::contains($message, [
+        <span class="hljs-string">&apos;server has gone away&apos;</span>,
+        <span class="hljs-string">&apos;no connection to the server&apos;</span>,
+        <span class="hljs-string">&apos;Lost connection&apos;</span>,
+        <span class="hljs-string">&apos;is dead or not enabled&apos;</span>,
+        <span class="hljs-string">&apos;Error while sending&apos;</span>,
+        <span class="hljs-string">&apos;decryption failed or bad record mac&apos;</span>,
+        <span class="hljs-string">&apos;server closed the connection unexpectedly&apos;</span>,
+        <span class="hljs-string">&apos;SSL connection has been closed unexpectedly&apos;</span>,
+        <span class="hljs-string">&apos;Error writing data to the connection&apos;</span>,
+        <span class="hljs-string">&apos;Resource deadlock avoided&apos;</span>,
+        <span class="hljs-string">&apos;Transaction() on null&apos;</span>,
+        <span class="hljs-string">&apos;child connection forced to terminate due to client_idle_limit&apos;</span>,
+    ]);
+}
+</code></pre>
+<h3 id="&#x6570;&#x636E;&#x5E93;&#x65E5;&#x5FD7;">&#x6570;&#x636E;&#x5E93;&#x65E5;&#x5FD7;</h3>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">logQuery</span><span class="hljs-params">($query, $bindings, $time = null)</span>
+</span>{
+    $this-&gt;event(<span class="hljs-keyword">new</span> QueryExecuted($query, $bindings, $time, $this));
+
+    <span class="hljs-keyword">if</span> ($this-&gt;loggingQueries) {
+        $this-&gt;queryLog[] = compact(<span class="hljs-string">&apos;query&apos;</span>, <span class="hljs-string">&apos;bindings&apos;</span>, <span class="hljs-string">&apos;time&apos;</span>);
+    }
+}
+</code></pre>
+<p>&#x60F3;&#x8981;&#x5F00;&#x542F;&#x6216;&#x5173;&#x95ED;&#x65E5;&#x5FD7;&#x529F;&#x80FD;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">enableQueryLog</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;loggingQueries = <span class="hljs-keyword">true</span>;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">disableQueryLog</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;loggingQueries = <span class="hljs-keyword">false</span>;
+}
+</code></pre>
+<h2 id="select-&#x67E5;&#x8BE2;">Select &#x67E5;&#x8BE2;</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">select</span><span class="hljs-params">($query, $bindings = [], $useReadPdo = true)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;run($query, $bindings, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($query, $bindings)</span> <span class="hljs-title">use</span> <span class="hljs-params">($useReadPdo)</span> </span>{
+        <span class="hljs-keyword">if</span> ($this-&gt;pretending()) {
+            <span class="hljs-keyword">return</span> [];
+        }
+
+        $statement = $this-&gt;prepared($this-&gt;getPdoForSelect($useReadPdo)
+                          -&gt;prepare($query));
+
+        $this-&gt;bindValues($statement, $this-&gt;prepareBindings($bindings));
+
+        $statement-&gt;execute();
+
+        <span class="hljs-keyword">return</span> $statement-&gt;fetchAll();
+    });
+}
+</code></pre>
+<p>&#x6570;&#x636E;&#x5E93;&#x7684;&#x67E5;&#x8BE2;&#x4E3B;&#x8981;&#x6709;&#x4E00;&#x4E0B;&#x51E0;&#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ul>
+<li>&#x83B7;&#x53D6; <code>$this-&gt;pdo</code> &#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF0C;&#x82E5;&#x5F53;&#x524D;&#x672A;&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x5219;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#xFF0C;&#x83B7;&#x53D6; <code>pdo</code> &#x5BF9;&#x8C61;&#x3002;</li>
+<li>&#x8BBE;&#x7F6E; <code>pdo</code> &#x6570;&#x636E; <code>fetch</code> &#x6A21;&#x5F0F;</li>
+<li><code>pdo</code> &#x8FDB;&#x884C; <code>sql</code> &#x8BED;&#x53E5;&#x9884;&#x5904;&#x7406;&#xFF0C;<code>pdo</code> &#x7ED1;&#x5B9A;&#x53C2;&#x6570;</li>
+<li><code>sql</code> &#x8BED;&#x53E5;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x83B7;&#x53D6;&#x6570;&#x636E;&#x3002;</li>
+</ul>
+<h3 id="getpdoforselect-&#x83B7;&#x53D6;-pdo-&#x5BF9;&#x8C61;">getPdoForSelect &#x83B7;&#x53D6; pdo &#x5BF9;&#x8C61;</h3>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPdoForSelect</span><span class="hljs-params">($useReadPdo = true)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $useReadPdo ? $this-&gt;getReadPdo() : $this-&gt;getPdo();
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPdo</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($this-&gt;pdo <span class="hljs-keyword">instanceof</span> Closure) {
+        <span class="hljs-keyword">return</span> $this-&gt;pdo = call_user_func($this-&gt;pdo);
+    }
+
+    <span class="hljs-keyword">return</span> $this-&gt;pdo;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getReadPdo</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($this-&gt;transactions &gt; <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span> $this-&gt;getPdo();
+    }
+
+    <span class="hljs-keyword">if</span> ($this-&gt;getConfig(<span class="hljs-string">&apos;sticky&apos;</span>) &amp;&amp; $this-&gt;recordsModified) {
+        <span class="hljs-keyword">return</span> $this-&gt;getPdo();
+    }
+
+    <span class="hljs-keyword">if</span> ($this-&gt;readPdo <span class="hljs-keyword">instanceof</span> Closure) {
+        <span class="hljs-keyword">return</span> $this-&gt;readPdo = call_user_func($this-&gt;readPdo);
+    }
+
+    <span class="hljs-keyword">return</span> $this-&gt;readPdo ?: $this-&gt;getPdo();
+}
+</code></pre>
+<p><code>getPdo</code> &#x8FD9;&#x91CC;&#x903B;&#x8F91;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x503C;&#x5F97;&#x6211;&#x4EEC;&#x6CE8;&#x610F;&#x7684;&#x662F; <code>getReadPdo</code>&#x3002;&#x4E3A;&#x4E86;&#x51CF;&#x7F13;&#x6570;&#x636E;&#x5E93;&#x7684;&#x538B;&#x529B;&#xFF0C;&#x6211;&#x4EEC;&#x5E38;&#x5E38;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x53EA;&#x8981;&#x5F53;&#x5199;&#x6570;&#x636E;&#x5E93;&#x8FD9;&#x79CD;&#x64CD;&#x4F5C;&#x53D1;&#x751F;&#x65F6;&#xFF0C;&#x624D;&#x4F1A;&#x4F7F;&#x7528;&#x5199;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x5426;&#x5219;&#x90FD;&#x4F1A;&#x7528;&#x8BFB;&#x6570;&#x636E;&#x5E93;&#x3002;&#x8FD9;&#x79CD;&#x63AA;&#x65BD;&#x51CF;&#x5C11;&#x4E86;&#x6570;&#x636E;&#x5E93;&#x7684;&#x538B;&#x529B;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x5E26;&#x6765;&#x4E86;&#x4E00;&#x4E9B;&#x95EE;&#x9898;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x8BFB;&#x5199;&#x4E24;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x5728;&#x4E00;&#x5B9A;&#x65F6;&#x95F4;&#x5185;&#x4F1A;&#x51FA;&#x73B0;&#x6570;&#x636E;&#x4E0D;&#x4E00;&#x81F4;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x539F;&#x56E0;&#x5C31;&#x662F;&#x5199;&#x5E93;&#x7684;&#x6570;&#x636E;&#x672A;&#x80FD;&#x53CA;&#x65F6;&#x63A8;&#x9001;&#x7ED9;&#x8BFB;&#x5E93;&#xFF0C;&#x9020;&#x6210;&#x8BFB;&#x5E93;&#x6570;&#x636E;&#x5EF6;&#x8FDF;&#x7684;&#x73B0;&#x8C61;&#x3002;&#x4E3A;&#x4E86;&#x5728;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x89E3;&#x51B3;&#x8FD9;&#x7C7B;&#x95EE;&#x9898;&#xFF0C;<code>laravel</code> &#x589E;&#x6DFB;&#x4E86; <code>sticky</code> &#x9009;&#x9879;&#xFF0C;</p>
+<p>&#x4ECE;&#x7A0B;&#x5E8F;&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x8BBE;&#x7F6E;&#x9009;&#x9879; <code>sticky</code> &#x4E3A;&#x771F;&#xFF0C;&#x5E76;&#x4E14;&#x7684;&#x786E;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x4E86;&#x5199;&#x64CD;&#x4F5C;&#x540E;&#xFF0C;<code>getReadPdo</code> &#x4F1A;&#x5F3A;&#x5236;&#x8FD4;&#x56DE;&#x4E3B;&#x5E93;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x907F;&#x514D;&#x4E86;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#x9020;&#x6210;&#x7684;&#x5EF6;&#x8FDF;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x8FD8;&#x6709;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x5F53;&#x6570;&#x636E;&#x5E93;&#x5728;&#x6267;&#x884C;&#x4E8B;&#x52A1;&#x671F;&#x95F4;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#x4E5F;&#x4F1A;&#x88AB;&#x5F3A;&#x5236;&#x8FDE;&#x63A5;&#x4E3B;&#x5E93;&#x3002;</p>
+<h3 id="prepared-&#x8BBE;&#x7F6E;&#x6570;&#x636E;&#x83B7;&#x53D6;&#x65B9;&#x5F0F;">prepared &#x8BBE;&#x7F6E;&#x6570;&#x636E;&#x83B7;&#x53D6;&#x65B9;&#x5F0F;</h3>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> $fetchMode = PDO::FETCH_OBJ;
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">prepared</span><span class="hljs-params">(PDOStatement $statement)</span>
+</span>{
+    $statement-&gt;setFetchMode($this-&gt;fetchMode);
+
+    $this-&gt;event(<span class="hljs-keyword">new</span> Events\StatementPrepared(
+        $this, $statement
+    ));
+
+    <span class="hljs-keyword">return</span> $statement;
+}
+</code></pre>
+<p><code>pdo</code> &#x7684; <code>setFetchMode</code> &#x51FD;&#x6570;&#x7528;&#x4E8E;&#x4E3A;&#x8BED;&#x53E5;&#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4;&#x7684;&#x83B7;&#x53D6;&#x6A21;&#x5F0F;&#xFF0C;&#x901A;&#x5E38;&#x6A21;&#x5F0F;&#x6709;&#x4E00;&#x4E0B;&#x51E0;&#x79CD;&#xFF1A;</p>
+<ul>
+<li>PDO::FETCH_ASSOC       //&#x4ECE;&#x7ED3;&#x679C;&#x96C6;&#x4E2D;&#x83B7;&#x53D6;&#x4EE5;&#x5217;&#x540D;&#x4E3A;&#x7D22;&#x5F15;&#x7684;&#x5173;&#x8054;&#x6570;&#x7EC4;&#x3002;</li>
+<li>PDO::FETCH_NUM         //&#x4ECE;&#x7ED3;&#x679C;&#x96C6;&#x4E2D;&#x83B7;&#x53D6;&#x4E00;&#x4E2A;&#x4EE5;&#x5217;&#x5728;&#x884C;&#x4E2D;&#x7684;&#x6570;&#x503C;&#x504F;&#x79FB;&#x91CF;&#x4E3A;&#x7D22;&#x5F15;&#x7684;&#x503C;&#x6570;&#x7EC4;&#x3002;</li>
+<li>PDO::FETCH_BOTH        //&#x8FD9;&#x662F;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x5305;&#x542B;&#x4E0A;&#x9762;&#x4E24;&#x79CD;&#x6570;&#x7EC4;&#x3002;</li>
+<li>PDO::FETCH_OBJ         //&#x4ECE;&#x7ED3;&#x679C;&#x96C6;&#x5F53;&#x524D;&#x884C;&#x7684;&#x8BB0;&#x5F55;&#x4E2D;&#x83B7;&#x53D6;&#x5176;&#x5C5E;&#x6027;&#x5BF9;&#x5E94;&#x5404;&#x4E2A;&#x5217;&#x540D;&#x7684;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x3002;</li>
+<li>PDO::FETCH_BOUND       //&#x4F7F;&#x7528;fetch()&#x8FD4;&#x56DE;TRUE&#xFF0C;&#x5E76;&#x5C06;&#x83B7;&#x53D6;&#x7684;&#x5217;&#x503C;&#x8D4B;&#x7ED9;&#x5728;bindParm()&#x65B9;&#x6CD5;&#x4E2D;&#x6307;&#x5B9A;&#x7684;&#x76F8;&#x5E94;&#x53D8;&#x91CF;&#x3002;</li>
+<li>PDO::FETCH_LAZY        //&#x521B;&#x5EFA;&#x5173;&#x8054;&#x6570;&#x7EC4;&#x548C;&#x7D22;&#x5F15;&#x6570;&#x7EC4;&#xFF0C;&#x4EE5;&#x53CA;&#x5305;&#x542B;&#x5217;&#x5C5E;&#x6027;&#x7684;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x4ECE;&#x800C;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x4E09;&#x79CD;&#x63A5;&#x53E3;&#x4E2D;&#x4EFB;&#x9009;&#x4E00;&#x79CD;&#x3002;</li>
+</ul>
+<h3 id="pdo-&#x7684;-prepare-&#x51FD;&#x6570;">pdo &#x7684; prepare &#x51FD;&#x6570;</h3>
+<p><code>prepare</code> &#x51FD;&#x6570;&#x4F1A;&#x4E3A; <code>PDOStatement::execute()</code> &#x65B9;&#x6CD5;&#x51C6;&#x5907;&#x8981;&#x6267;&#x884C;&#x7684; <code>SQL</code> &#x8BED;&#x53E5;&#xFF0C;<code>SQL</code> &#x8BED;&#x53E5;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x96F6;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x547D;&#x540D;&#xFF08;<code>:name</code>&#xFF09;&#x6216;&#x95EE;&#x53F7;&#xFF08;<code>?</code>&#xFF09;&#x53C2;&#x6570;&#x6807;&#x8BB0;&#xFF0C;&#x53C2;&#x6570;&#x5728;SQL&#x6267;&#x884C;&#x65F6;&#x4F1A;&#x88AB;&#x66FF;&#x6362;&#x3002;</p>
+<p>&#x4E0D;&#x80FD;&#x5728; <code>SQL</code> &#x8BED;&#x53E5;&#x4E2D;&#x540C;&#x65F6;&#x5305;&#x542B;&#x547D;&#x540D;&#xFF08;<code>:name</code>&#xFF09;&#x6216;&#x95EE;&#x53F7;&#xFF08;<code>?</code>&#xFF09;&#x53C2;&#x6570;&#x6807;&#x8BB0;&#xFF0C;&#x53EA;&#x80FD;&#x9009;&#x62E9;&#x5176;&#x4E2D;&#x4E00;&#x79CD;&#x98CE;&#x683C;&#x3002;</p>
+<p>&#x9884;&#x5904;&#x7406; <code>SQL</code> &#x8BED;&#x53E5;&#x4E2D;&#x7684;&#x53C2;&#x6570;&#x5728;&#x4F7F;&#x7528; <code>PDOStatement::execute()</code> &#x65B9;&#x6CD5;&#x65F6;&#x4F1A;&#x4F20;&#x9012;&#x771F;&#x5B9E;&#x7684;&#x53C2;&#x6570;&#x3002;</p>
+<p>&#x4E4B;&#x6240;&#x4EE5;&#x4F7F;&#x7528; <code>prepare</code> &#x51FD;&#x6570;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x9632;&#x6B62; <code>SQL</code> &#x6CE8;&#x5165;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x52A0;&#x5FEB;&#x540C;&#x4E00;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x7684;&#x901F;&#x5EA6;&#x3002;&#x5173;&#x4E8E;&#x9884;&#x5904;&#x7406;&#x4E0E;&#x53C2;&#x6570;&#x7ED1;&#x5B9A;&#x9632;&#x6B62; <code>SQL</code> &#x6F0F;&#x6D1E;&#x6CE8;&#x5165;&#x7684;&#x539F;&#x7406;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#xFF1A;<a href="http://www.cnblogs.com/csniper/p/5802202.html" target="_blank">Web&#x5B89;&#x5168;&#x4E4B;SQL&#x6CE8;&#x5165;&#x653B;&#x51FB;&#x6280;&#x5DE7;&#x4E0E;&#x9632;&#x8303;</a>.</p>
+<h3 id="pdo-&#x7684;-bindvalues-&#x51FD;&#x6570;">pdo &#x7684; bindValues &#x51FD;&#x6570;</h3>
+<p>&#x5728;&#x8C03;&#x7528; <code>pdo</code> &#x7684;&#x53C2;&#x6570;&#x7ED1;&#x5B9A;&#x51FD;&#x6570;&#x4E4B;&#x524D;&#xFF0C;<code>laravel</code> &#x5BF9;&#x53C2;&#x6570;&#x503C;&#x8FDB;&#x4E00;&#x6B65;&#x8FDB;&#x884C;&#x4E86;&#x4F18;&#x5316;&#xFF0C;&#x628A;&#x65F6;&#x95F4;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x5229;&#x7528; <code>grammer</code> &#x7684;&#x8BBE;&#x7F6E;&#x91CD;&#x65B0;&#x683C;&#x5F0F;&#x5316;&#xFF0C;<code>false</code> &#x4E5F;&#x6539;&#x4E3A;0&#x3002;</p>
+<p><code>pdo</code> &#x7684;&#x53C2;&#x6570;&#x7ED1;&#x5B9A;&#x51FD;&#x6570; <code>bindValue</code>&#xFF0C;&#x5BF9;&#x4E8E;&#x4F7F;&#x7528;&#x547D;&#x540D;&#x5360;&#x4F4D;&#x7B26;&#x7684;&#x9884;&#x5904;&#x7406;&#x8BED;&#x53E5;&#xFF0C;&#x5E94;&#x662F;&#x7C7B;&#x4F3C; :name &#x5F62;&#x5F0F;&#x7684;&#x53C2;&#x6570;&#x540D;&#x3002;&#x5BF9;&#x4E8E;&#x4F7F;&#x7528;&#x95EE;&#x53F7;&#x5360;&#x4F4D;&#x7B26;&#x7684;&#x9884;&#x5904;&#x7406;&#x8BED;&#x53E5;&#xFF0C;&#x5E94;&#x662F;&#x4EE5;1&#x5F00;&#x59CB;&#x7D22;&#x5F15;&#x7684;&#x53C2;&#x6570;&#x4F4D;&#x7F6E;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">prepareBindings</span><span class="hljs-params">(array $bindings)</span>
+</span>{
+    $grammar = $this-&gt;getQueryGrammar();
+
+    <span class="hljs-keyword">foreach</span> ($bindings <span class="hljs-keyword">as</span> $key =&gt; $value) {
+        <span class="hljs-keyword">if</span> ($value <span class="hljs-keyword">instanceof</span> DateTimeInterface) {
+            $bindings[$key] = $value-&gt;format($grammar-&gt;getDateFormat());
+        } <span class="hljs-keyword">elseif</span> ($value === <span class="hljs-keyword">false</span>) {
+            $bindings[$key] = <span class="hljs-number">0</span>;
+        }
+    }
+
+    <span class="hljs-keyword">return</span> $bindings;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bindValues</span><span class="hljs-params">($statement, $bindings)</span>
+</span>{
+    <span class="hljs-keyword">foreach</span> ($bindings <span class="hljs-keyword">as</span> $key =&gt; $value) {
+        $statement-&gt;bindValue(
+            is_string($key) ? $key : $key + <span class="hljs-number">1</span>, $value,
+            is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR
+        );
+    }
+}
+</code></pre>
+<h2 id="insert">insert</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insert</span><span class="hljs-params">($query, $bindings = [])</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;statement($query, $bindings);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">statement</span><span class="hljs-params">($query, $bindings = [])</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;run($query, $bindings, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($query, $bindings)</span> </span>{
+        <span class="hljs-keyword">if</span> ($this-&gt;pretending()) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        }
+
+        $statement = $this-&gt;getPdo()-&gt;prepare($query);
+
+        $this-&gt;bindValues($statement, $this-&gt;prepareBindings($bindings));
+
+        $this-&gt;recordsHaveBeenModified();
+
+        <span class="hljs-keyword">return</span> $statement-&gt;execute();
+    });
+}
+</code></pre>
+<p>&#x8FD9;&#x90E8;&#x5206;&#x7684;&#x4EE3;&#x7801;&#x4E0E; <code>select</code> &#x975E;&#x5E38;&#x76F8;&#x4F3C;&#xFF0C;&#x4E0D;&#x540C;&#x4E4B;&#x5904;&#x6709;&#x4E00;&#x4E0B;&#x51E0;&#x4E2A;&#xFF1A;</p>
+<ul>
+<li>&#x76F4;&#x63A5;&#x83B7;&#x53D6;&#x5199;&#x5E93;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x4E0D;&#x4F1A;&#x8003;&#x8651;&#x8BFB;&#x5E93;</li>
+<li>&#x7531;&#x4E8E;&#x4E0D;&#x9700;&#x8981;&#x8FD4;&#x56DE;&#x4EFB;&#x4F55;&#x6570;&#x636E;&#x5E93;&#x6570;&#x636E;&#xFF0C;&#x56E0;&#x6B64;&#x4E5F;&#x4E0D;&#x5FC5;&#x8BBE;&#x7F6E; <code>fetchMode</code>&#x3002;</li>
+<li><code>recordsHaveBeenModified</code> &#x51FD;&#x6570;&#x6807;&#x5FD7;&#x5F53;&#x524D;&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;&#x5DF2;&#x88AB;&#x5199;&#x5165;&#x3002;</li>
+<li>&#x4E0D;&#x9700;&#x8981;&#x8C03;&#x7528;&#x51FD;&#x6570; <code>fetchAll</code></li>
+</ul>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">recordsHaveBeenModified</span><span class="hljs-params">($value = true)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (! $this-&gt;recordsModified) {
+        $this-&gt;recordsModified = $value;
+    }
+}
+</code></pre>
+<h2 id="update&#x3001;delete">update&#x3001;delete</h2>
+<p><code>affectingStatement</code> &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E0E;&#x4E0A;&#x9762;&#x7684; <code>statement</code> &#x51FD;&#x6570;&#x4E00;&#x81F4;&#xFF0C;&#x53EA;&#x662F;&#x6700;&#x540E;&#x4F1A;&#x8FD4;&#x56DE;&#x66F4;&#x65B0;&#x3001;&#x5220;&#x9664;&#x5F71;&#x54CD;&#x7684;&#x884C;&#x6570;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span><span class="hljs-params">($query, $bindings = [])</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;affectingStatement($query, $bindings);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delete</span><span class="hljs-params">($query, $bindings = [])</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;affectingStatement($query, $bindings);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">affectingStatement</span><span class="hljs-params">($query, $bindings = [])</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;run($query, $bindings, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($query, $bindings)</span> </span>{
+        <span class="hljs-keyword">if</span> ($this-&gt;pretending()) {
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        }
+
+        $statement = $this-&gt;getPdo()-&gt;prepare($query);
+
+        $this-&gt;bindValues($statement, $this-&gt;prepareBindings($bindings));
+
+        $statement-&gt;execute();
+
+        $this-&gt;recordsHaveBeenModified(
+            ($count = $statement-&gt;rowCount()) &gt; <span class="hljs-number">0</span>
+        );
+
+        <span class="hljs-keyword">return</span> $count;
+    });
+}
+</code></pre>
+<h2 id="transaction-&#x6570;&#x636E;&#x5E93;&#x4E8B;&#x52A1;">transaction &#x6570;&#x636E;&#x5E93;&#x4E8B;&#x52A1;</h2>
+<p>&#x4E3A;&#x4FDD;&#x6301;&#x6570;&#x636E;&#x7684;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x5BF9;&#x4E8E;&#x91CD;&#x8981;&#x7684;&#x6570;&#x636E;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x5E93;&#x4E8B;&#x52A1;&#xFF0C;<code>transaction</code> &#x51FD;&#x6570;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x95ED;&#x5305;&#x51FD;&#x6570;&#xFF0C;&#x4E0E;&#x4E00;&#x4E2A;&#x91CD;&#x590D;&#x5C1D;&#x8BD5;&#x7684;&#x6B21;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transaction</span><span class="hljs-params">(Closure $callback, $attempts = <span class="hljs-number">1</span>)</span>
+</span>{
+    <span class="hljs-keyword">for</span> ($currentAttempt = <span class="hljs-number">1</span>; $currentAttempt &lt;= $attempts; $currentAttempt++) {
+        $this-&gt;beginTransaction();
+
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">return</span> tap($callback($this), <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($result)</span> </span>{
+                $this-&gt;commit();
+            });
+        }
+
+        <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
+            $this-&gt;handleTransactionException(
+                $e, $currentAttempt, $attempts
+            );
+        } <span class="hljs-keyword">catch</span> (Throwable $e) {
+            $this-&gt;rollBack();
+
+            <span class="hljs-keyword">throw</span> $e;
+        }
+    }
+}
+</code></pre>
+<h3 id="&#x5F00;&#x59CB;&#x4E8B;&#x52A1;">&#x5F00;&#x59CB;&#x4E8B;&#x52A1;</h3>
+<p>&#x6570;&#x636E;&#x5E93;&#x4E8B;&#x52A1;&#x4E2D;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x662F; <code>$this-&gt;transactions</code>&#xFF0C;&#x5B83;&#x6807;&#x5FD7;&#x7740;&#x5F53;&#x524D;&#x4E8B;&#x52A1;&#x7684;&#x8FDB;&#x7A0B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">beginTransaction</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;createTransaction();
+
+    ++$this-&gt;transactions;
+
+    $this-&gt;fireConnectionEvent(<span class="hljs-string">&apos;beganTransaction&apos;</span>);
+}
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5F53;&#x521B;&#x5EFA;&#x4E8B;&#x52A1;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x7D2F;&#x52A0; <code>$this-&gt;transactions</code>&#xFF0C;&#x5E76;&#x4E14;&#x542F;&#x52A8; <code>event</code>&#xFF0C;&#x521B;&#x5EFA;&#x4E8B;&#x52A1;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createTransaction</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($this-&gt;transactions == <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">try</span> {
+            $this-&gt;getPdo()-&gt;beginTransaction();
+        } <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
+            $this-&gt;handleBeginTransactionException($e);
+        }
+    } <span class="hljs-keyword">elseif</span> ($this-&gt;transactions &gt;= <span class="hljs-number">1</span> &amp;&amp; $this-&gt;queryGrammar-&gt;supportsSavepoints()) {
+        $this-&gt;createSavepoint();
+    }
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x5F53;&#x524D;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x4E8B;&#x52A1;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x8C03;&#x7528; <code>pdo</code> &#x6765;&#x5F00;&#x542F;&#x4E8B;&#x52A1;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5F53;&#x524D;&#x5DF2;&#x7ECF;&#x5728;&#x4E8B;&#x52A1;&#x4FDD;&#x62A4;&#x7684;&#x8303;&#x56F4;&#x5185;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x521B;&#x5EFA; <code>SAVEPOINT</code>&#xFF0C;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x5E93;&#x5D4C;&#x5957;&#x4E8B;&#x52A1;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createSavepoint</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;getPdo()-&gt;exec(
+        $this-&gt;queryGrammar-&gt;compileSavepoint(<span class="hljs-string">&apos;trans&apos;</span>.($this-&gt;transactions + <span class="hljs-number">1</span>))
+    );
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compileSavepoint</span><span class="hljs-params">($name)</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;SAVEPOINT &apos;</span>.$name;
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x521B;&#x5EFA;&#x4E8B;&#x52A1;&#x5931;&#x8D25;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x8C03;&#x7528; <code>handleBeginTransactionException</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleBeginTransactionException</span><span class="hljs-params">($e)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($this-&gt;causedByLostConnection($e)) {
+        $this-&gt;reconnect();
+
+        $this-&gt;pdo-&gt;beginTransaction();
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">throw</span> $e;
+    }
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x521B;&#x5EFA;&#x4E8B;&#x52A1;&#x5931;&#x8D25;&#x662F;&#x7531;&#x4E8E;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x5931;&#x53BB;&#x8FDE;&#x63A5;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x91CD;&#x65B0;&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x8981;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x3002;</p>
+<h3 id="&#x4E8B;&#x52A1;&#x5F02;&#x5E38;">&#x4E8B;&#x52A1;&#x5F02;&#x5E38;</h3>
+<p>&#x4E8B;&#x52A1;&#x7684;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x770B;&#x4E00;&#x770B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleTransactionException</span><span class="hljs-params">($e, $currentAttempt, $maxAttempts)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($this-&gt;causedByDeadlock($e) &amp;&amp;
+        $this-&gt;transactions &gt; <span class="hljs-number">1</span>) {
+        --$this-&gt;transactions;
+
+        <span class="hljs-keyword">throw</span> $e;
+    }
+
+    $this-&gt;rollBack();
+
+    <span class="hljs-keyword">if</span> ($this-&gt;causedByDeadlock($e) &amp;&amp;
+        $currentAttempt &lt; $maxAttempts) {
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-keyword">throw</span> $e;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">causedByDeadlock</span><span class="hljs-params">(Exception $e)</span>
+</span>{
+    $message = $e-&gt;getMessage();
+
+    <span class="hljs-keyword">return</span> Str::contains($message, [
+        <span class="hljs-string">&apos;Deadlock found when trying to get lock&apos;</span>,
+        <span class="hljs-string">&apos;deadlock detected&apos;</span>,
+        <span class="hljs-string">&apos;The database file is locked&apos;</span>,
+        <span class="hljs-string">&apos;database is locked&apos;</span>,
+        <span class="hljs-string">&apos;database table is locked&apos;</span>,
+        <span class="hljs-string">&apos;A table in the database is locked&apos;</span>,
+        <span class="hljs-string">&apos;has been chosen as the deadlock victim&apos;</span>,
+        <span class="hljs-string">&apos;Lock wait timeout exceeded; try restarting transaction&apos;</span>,
+    ]);
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x56DB;&#x79CD;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ul>
+<li>&#x5355;&#x4E00;&#x4E8B;&#x52A1;&#xFF0C;&#x975E;&#x6B7B;&#x9501;&#x5BFC;&#x81F4;&#x7684;&#x5F02;&#x5E38;</li>
+</ul>
+<p>&#x5355;&#x4E00;&#x4E8B;&#x52A1;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x6B64;&#x65F6;&#x7684;&#x4E8B;&#x52A1;&#x53EA;&#x6709;&#x4E00;&#x5C42;&#xFF0C;&#x6CA1;&#x6709;&#x5D4C;&#x5957;&#x4E8B;&#x52A1;&#x7684;&#x5B58;&#x5728;&#x3002;&#x6570;&#x636E;&#x5E93;&#x7684;&#x5F02;&#x5E38;&#x4E5F;&#x4E0D;&#x662F;&#x6B7B;&#x9501;&#x5BFC;&#x81F4;&#x7684;&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x7531;&#x4E8E; <code>sql</code> &#x8BED;&#x53E5;&#x4E0D;&#x6B63;&#x786E;&#x5F15;&#x8D77;&#x7684;&#x3002;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;<code>handleTransactionException</code> &#x4F1A;&#x76F4;&#x63A5;&#x56DE;&#x6EDA;&#x4E8B;&#x52A1;&#xFF0C;&#x5E76;&#x4E14;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x5230;&#x5916;&#x5C42;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">return</span> tap($callback($this), <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($result)</span> </span>{
+          $this-&gt;commit();
+      });
+}
+<span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
+     $this-&gt;handleTransactionException(
+         $e, $currentAttempt, $attempts
+     );
+} <span class="hljs-keyword">catch</span> (Throwable $e) {
+       $this-&gt;rollBack();
+
+       <span class="hljs-keyword">throw</span> $e;
+}
+</code></pre>
+<p>&#x63A5;&#x5230;&#x5F02;&#x5E38;&#x4E4B;&#x540E;&#xFF0C;&#x7A0B;&#x5E8F;&#x4F1A;&#x518D;&#x6B21;&#x56DE;&#x6EDA;&#xFF0C;&#x4F46;&#x662F;&#x7531;&#x4E8E; <code>$this-&gt;transactions</code> &#x5DF2;&#x7ECF;&#x4E3A; 0&#xFF0C;&#x56E0;&#x6B64;&#x56DE;&#x6EDA;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#xFF0C;&#x5E76;&#x672A;&#x771F;&#x6B63;&#x6267;&#x884C;&#xFF0C;&#x4E4B;&#x540E;&#x5C31;&#x4F1A;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x3002;</p>
+<ul>
+<li>&#x5355;&#x4E00;&#x4E8B;&#x52A1;&#xFF0C;&#x6B7B;&#x9501;&#x5F02;&#x5E38;</li>
+</ul>
+<p>&#x6709;&#x6B7B;&#x9501;&#x5BFC;&#x81F4;&#x7684;&#x5355;&#x4E00;&#x4E8B;&#x52A1;&#x5F02;&#x5E38;&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x7531;&#x4E8E;&#x5176;&#x4ED6;&#x7A0B;&#x5E8F;&#x540C;&#x65F6;&#x66F4;&#x6539;&#x4E86;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x8981;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x91CD;&#x590D;&#x5C1D;&#x8BD5;&#x7684;&#x6B21;&#x6570;&#x662F;&#x5426;&#x5927;&#x4E8E;&#x7528;&#x6237;&#x8BBE;&#x7F6E;&#x7684; <code>maxAttempts</code>&#xFF0C;&#x5982;&#x679C;&#x5C0F;&#x4E8E;&#x5C31;&#x7EE7;&#x7EED;&#x5C1D;&#x8BD5;&#xFF0C;&#x5982;&#x679C;&#x5927;&#x4E8E;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x3002;</p>
+<ul>
+<li>&#x5D4C;&#x5957;&#x4E8B;&#x52A1;&#xFF0C;&#x975E;&#x6B7B;&#x9501;&#x5F02;&#x5E38;</li>
+</ul>
+<p>&#x5982;&#x679C;&#x51FA;&#x73B0;&#x5D4C;&#x5957;&#x4E8B;&#x52A1;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-php">\DB::transaction(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    ...
+    <span class="hljs-comment">//directly or indirectly call another transaction:</span>
+    \DB::transaction(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+        ...
+        ...
+    }, <span class="hljs-number">2</span>);<span class="hljs-comment">//attempt twice</span>
+}, <span class="hljs-number">2</span>);<span class="hljs-comment">//attempt twice</span>
+</code></pre>
+<p>&#x5982;&#x679C;&#x662F;&#x975E;&#x6B7B;&#x9501;&#x5BFC;&#x81F4;&#x7684;&#x5F02;&#x5E38;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x8981;&#x9996;&#x5148;&#x56DE;&#x6EDA;&#x5185;&#x5C42;&#x7684;&#x4E8B;&#x52A1;&#xFF0C;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x5230;&#x5916;&#x5C42;&#x4E8B;&#x52A1;&#xFF0C;&#x518D;&#x56DE;&#x6EDA;&#x5916;&#x5C42;&#x4E8B;&#x52A1;&#xFF0C;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#xFF0C;&#x8BA9;&#x7528;&#x6237;&#x6765;&#x5904;&#x7406;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5BF9;&#x4E8E;&#x5D4C;&#x5957;&#x4E8B;&#x52A1;&#x6765;&#x8BF4;&#xFF0C;&#x5185;&#x90E8;&#x4E8B;&#x52A1;&#x5F02;&#x5E38;&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x56DE;&#x6EDA;&#x6574;&#x4E2A;&#x4E8B;&#x52A1;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4EC5;&#x4EC5;&#x56DE;&#x6EDA;&#x5185;&#x90E8;&#x4E8B;&#x52A1;&#x3002;</p>
+<ul>
+<li>&#x5D4C;&#x5957;&#x4E8B;&#x52A1;&#xFF0C;&#x6B7B;&#x9501;&#x5F02;&#x5E38;</li>
+</ul>
+<p>&#x5D4C;&#x5957;&#x4E8B;&#x52A1;&#x7684;&#x6B7B;&#x9501;&#x5F02;&#x5E38;&#xFF0C;&#x4ECD;&#x7136;&#x548C;&#x5D4C;&#x5957;&#x4E8B;&#x52A1;&#x975E;&#x6B7B;&#x9501;&#x5F02;&#x5E38;&#x4E00;&#x6837;&#xFF0C;&#x5185;&#x90E8;&#x4E8B;&#x52A1;&#x5F02;&#x5E38;&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x56DE;&#x6EDA;&#x6574;&#x4E2A;&#x4E8B;&#x52A1;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;<code>mysql</code> &#x5BF9;&#x4E8E;&#x5D4C;&#x5957;&#x4E8B;&#x52A1;&#x7684;&#x56DE;&#x6EDA;&#x4F1A;&#x5BFC;&#x81F4;&#x5916;&#x90E8;&#x4E8B;&#x52A1;&#x4E00;&#x5E76;&#x56DE;&#x6EDA;:<a href="https://dev.mysql.com/doc/refman/5.7/en/innodb-error-handling.html" target="_blank">InnoDB Error Handling</a>&#xFF0C;&#x56E0;&#x6B64;&#x8FD9;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4EC5;&#x4EC5;&#x5C06; <code>$this-&gt;transactions</code> &#x51CF;&#x4E00;&#xFF0C;&#x5E76;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#xFF0C;&#x4F7F;&#x5F97;&#x5916;&#x5C42;&#x4E8B;&#x52A1;&#x56DE;&#x6EDA;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x5373;&#x53EF;&#x3002;</p>
+<h3 id="&#x56DE;&#x6EDA;&#x4E8B;&#x52A1;">&#x56DE;&#x6EDA;&#x4E8B;&#x52A1;</h3>
+<p>&#x5982;&#x679C;&#x4E8B;&#x52A1;&#x5185;&#x7684;&#x6570;&#x636E;&#x5E93;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x5931;&#x8D25;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x8981;&#x8FDB;&#x884C;&#x56DE;&#x6EDA;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">rollBack</span><span class="hljs-params">($toLevel = null)</span>
+</span>{
+    $toLevel = is_null($toLevel)
+                ? $this-&gt;transactions - <span class="hljs-number">1</span>
+                : $toLevel;
+
+    <span class="hljs-keyword">if</span> ($toLevel &lt; <span class="hljs-number">0</span> || $toLevel &gt;= $this-&gt;transactions) {
+        <span class="hljs-keyword">return</span>;
+    }
+
+    $this-&gt;performRollBack($toLevel);
+
+    $this-&gt;transactions = $toLevel;
+
+    $this-&gt;fireConnectionEvent(<span class="hljs-string">&apos;rollingBack&apos;</span>);
+}
+</code></pre>
+<p>&#x56DE;&#x6EDA;&#x7684;&#x7B2C;&#x4E00;&#x4EF6;&#x4E8B;&#x5C31;&#x662F;&#x8981;&#x51CF;&#x5C11; <code>$this-&gt;transactions</code> &#x7684;&#x503C;&#xFF0C;&#x6807;&#x5FD7;&#x5F53;&#x524D;&#x4E8B;&#x52A1;&#x5931;&#x8D25;&#x3002;</p>
+<p>&#x56DE;&#x6EDA;&#x7684;&#x65F6;&#x5019;&#x4ECD;&#x7136;&#x8981;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x4E8B;&#x52A1;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x5982;&#x679C;&#x5F53;&#x524D;&#x5904;&#x4E8E;&#x5D4C;&#x5957;&#x4E8B;&#x52A1;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x8981;&#x8FDB;&#x884C;&#x56DE;&#x6EDA;&#x5230; <code>SAVEPOINT</code>&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5355;&#x4E00;&#x4E8B;&#x52A1;&#x7684;&#x8BDD;&#xFF0C;&#x624D;&#x4F1A;&#x771F;&#x6B63;&#x56DE;&#x6EDA;&#x9000;&#x51FA;&#x4E8B;&#x52A1;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">performRollBack</span><span class="hljs-params">($toLevel)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($toLevel == <span class="hljs-number">0</span>) {
+        $this-&gt;getPdo()-&gt;rollBack();
+    } <span class="hljs-keyword">elseif</span> ($this-&gt;queryGrammar-&gt;supportsSavepoints()) {
+        $this-&gt;getPdo()-&gt;exec(
+            $this-&gt;queryGrammar-&gt;compileSavepointRollBack(<span class="hljs-string">&apos;trans&apos;</span>.($toLevel + <span class="hljs-number">1</span>))
+        );
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compileSavepointRollBack</span><span class="hljs-params">($name)</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;ROLLBACK TO SAVEPOINT &apos;</span>.$name;
+}
+</code></pre>
+<h2 id="&#x63D0;&#x4EA4;&#x4E8B;&#x52A1;">&#x63D0;&#x4EA4;&#x4E8B;&#x52A1;</h2>
+<p>&#x63D0;&#x4EA4;&#x4E8B;&#x52A1;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x4EC5;&#x4EC5;&#x662F;&#x8C03;&#x7528; <code>pdo</code> &#x7684; <code>commit</code> &#x5373;&#x53EF;&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x5BF9;&#x4E8E;&#x5D4C;&#x5957;&#x4E8B;&#x52A1;&#x7684;&#x4E8B;&#x52A1;&#x63D0;&#x4EA4;&#xFF0C;<code>commit</code> &#x51FD;&#x6570;&#x4EC5;&#x4EC5;&#x66F4;&#x65B0;&#x4E86; <code>$this-&gt;transactions</code>&#xFF0C;&#x800C;&#x5E76;&#x6CA1;&#x6709;&#x771F;&#x6B63;&#x63D0;&#x4EA4;&#x4E8B;&#x52A1;&#xFF0C;&#x539F;&#x56E0;&#x662F;&#x5185;&#x5C42;&#x4E8B;&#x52A1;&#x7684;&#x63D0;&#x4EA4;&#x5BF9;&#x4E8E; <code>mysql</code> &#x6765;&#x8BF4;&#x662F;&#x65E0;&#x6548;&#x7684;&#xFF0C;&#x53EA;&#x6709;&#x5916;&#x90E8;&#x4E8B;&#x52A1;&#x7684;&#x63D0;&#x4EA4;&#x624D;&#x80FD;&#x66F4;&#x65B0;&#x6574;&#x4E2A;&#x4E8B;&#x52A1;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">commit</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($this-&gt;transactions == <span class="hljs-number">1</span>) {
+        $this-&gt;getPdo()-&gt;commit();
+    }
+
+    $this-&gt;transactions = max(<span class="hljs-number">0</span>, $this-&gt;transactions - <span class="hljs-number">1</span>);
+
+    $this-&gt;fireConnectionEvent(<span class="hljs-string">&apos;committed&apos;</span>);
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Laravel Database——数据库服务的启动与连接.html" class="navigation navigation-prev " aria-label="Previous page: Laravel Database——数据库服务的启动与连接">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Laravel Database——查询构造器与语法编译器源码分析%28上%29.md" class="navigation navigation-next " aria-label="Next page: Laravel Database——查询构造器与语法编译器源码分析(上)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Laravel Database——数据库的 CRUD 操作","level":"1.10.2","depth":2,"next":{"title":"Laravel Database——查询构造器与语法编译器源码分析(上)","level":"1.10.3","depth":2,"path":"Laravel Database——查询构造器与语法编译器源码分析%28上%29.md","ref":"Laravel Database——查询构造器与语法编译器源码分析%28上%29.md","articles":[]},"previous":{"title":"Laravel Database——数据库服务的启动与连接","level":"1.10.1","depth":2,"path":"Laravel Database——数据库服务的启动与连接.md","ref":"Laravel Database——数据库服务的启动与连接.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Laravel Database——数据库的 CRUD 操作.md","mtime":"2019-01-15T10:29:00.307Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T10:51:52.544Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

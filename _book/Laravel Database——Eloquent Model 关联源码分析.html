@@ -1,0 +1,1848 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Laravel Database——Eloquent Model 关联源码分析 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Laravel Database——Eloquent Model 模型关系加载与查询.html" />
+    
+    
+    <link rel="prev" href="Laravel Database——Eloquent Model 源码分析（下）.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    PHP Composer 自动加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="PHP Composer——自动加载原理.html">
+            
+                <a href="PHP Composer——自动加载原理.html">
+            
+                    
+                    PHP Composer——自动加载原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="PHP Composer—— 初始化源码分析.html">
+            
+                <a href="PHP Composer—— 初始化源码分析.html">
+            
+                    
+                    PHP Composer—— 初始化源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="PHP Composer-——-注册与运行源码分析.html">
+            
+                <a href="PHP Composer-——-注册与运行源码分析.html">
+            
+                    
+                    PHP Composer-——-注册与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Laravel Facade 门面
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="Laravel Facade——Facade 门面源码分析.html">
+            
+                <a href="Laravel Facade——Facade 门面源码分析.html">
+            
+                    
+                    Laravel Facade——Facade 门面源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Laravel Ioc 容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Laravel Container——IoC 服务容器.html">
+            
+                <a href="Laravel Container——IoC 服务容器.html">
+            
+                    
+                    Laravel Container——IoC 服务容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器绑定)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器解析)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="Laravel Container——服务容器的细节特性.html">
+            
+                <a href="Laravel Container——服务容器的细节特性.html">
+            
+                    
+                    Laravel Container——服务容器的细节特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Laravel Route 路由
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Laravel HTTP——路由.html">
+            
+                <a href="Laravel HTTP——路由.html">
+            
+                    
+                    Laravel HTTP——路由
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="Laravel HTTP——路由加载源码分析.html">
+            
+                <a href="Laravel HTTP——路由加载源码分析.html">
+            
+                    
+                    Laravel HTTP——路由加载源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                <a href="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                    
+                    Laravel HTTP——Pipeline中间件处理源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="Laravel HTTP——路由的正则编译.html">
+            
+                <a href="Laravel HTTP——路由的正则编译.html">
+            
+                    
+                    Laravel HTTP——路由的正则编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                <a href="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                    
+                    Laravel HTTP——路由的匹配与参数绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="Laravel HTTP——路由中间件源码分析.html">
+            
+                <a href="Laravel HTTP——路由中间件源码分析.html">
+            
+                    
+                    Laravel HTTP——路由中间件源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                <a href="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                    
+                    Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                <a href="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                    
+                    Laravel HTTP——控制器方法的参数构建与运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                <a href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP—— RESTFul 风格路由的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                <a href="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP——重定向的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Laravel ENV 环境变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                <a href="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                    
+                    Laravel ENV—— 环境变量的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Laravel Config 配置文件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                <a href="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                    
+                    Laravel Config—— 配置文件的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Laravel Exceptions 异常处理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="Laravel Exceptions——异常与错误处理.html">
+            
+                <a href="Laravel Exceptions——异常与错误处理.html">
+            
+                    
+                    Laravel Exceptions——异常与错误处理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Laravel Providers 服务提供者
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                <a href="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                    
+                    Laravel Providers——服务提供者的注册与启动源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Laravel Database 数据库
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="Laravel Database——数据库服务的启动与连接.html">
+            
+                <a href="Laravel Database——数据库服务的启动与连接.html">
+            
+                    
+                    Laravel Database——数据库服务的启动与连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="Laravel Database——数据库的 CRUD 操作.html">
+            
+                <a href="Laravel Database——数据库的 CRUD 操作.html">
+            
+                    
+                    Laravel Database——数据库的 CRUD 操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="Laravel Database——查询构造器与语法编译器源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="Laravel Database——查询构造器与语法编译器源码分析%28中%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(中)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="Laravel Database——查询构造器与语法编译器源码分析%28下%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="Laravel Database——分页原理与源码分析.html">
+            
+                <a href="Laravel Database——分页原理与源码分析.html">
+            
+                    
+                    Laravel Database——分页原理与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Laravel Database——Eloquent Model 源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                <a href="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.10.9" data-path="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                <a href="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                    
+                    Laravel Database——Eloquent Model 关联源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                <a href="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                    
+                    Laravel Database——Eloquent Model 模型关系加载与查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                <a href="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                    
+                    Laravel Database——Eloquent Model 更新关联模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Laravel Session
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="Laravel Session——session 的启动与运行源码分析.html">
+            
+                <a href="Laravel Session——session 的启动与运行源码分析.html">
+            
+                    
+                    Laravel Session——session 的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    Laravel Event 事件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                <a href="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                    
+                    Laravel Event——事件系统的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    Laravel Queue 队列
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务与分发源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务处理器源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    Laravel 广播系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="Laravel Broadcast——广播系统源码剖析.html">
+            
+                <a href="Laravel Broadcast——广播系统源码剖析.html">
+            
+                    
+                    Laravel Broadcast——广播系统源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    Laravel Passport
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Laravel Database——Eloquent Model 关联源码分析</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="laravel-database&#x2014;&#x2014;eloquent-model-&#x5173;&#x8054;&#x6E90;&#x7801;&#x5206;&#x6790;">Laravel Database&#x2014;&#x2014;Eloquent Model &#x5173;&#x8054;&#x6E90;&#x7801;&#x5206;&#x6790;</h1>
+<h2 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h2>
+<p>&#x6570;&#x636E;&#x5E93;&#x8868;&#x901A;&#x5E38;&#x76F8;&#x4E92;&#x5173;&#x8054;&#x3002;<code>laravel</code> &#x4E2D;&#x7684;&#x6A21;&#x578B;&#x5173;&#x8054;&#x529F;&#x80FD;&#x4F7F;&#x5F97;&#x5173;&#x4E8E;&#x6570;&#x636E;&#x5E93;&#x7684;&#x5173;&#x8054;&#x4EE3;&#x7801;&#x53D8;&#x5F97;&#x66F4;&#x52A0;&#x7B80;&#x5355;&#xFF0C;&#x66F4;&#x52A0;&#x4F18;&#x96C5;&#x3002;&#x672C;&#x6587;&#x4F1A;&#x8BE6;&#x7EC6;&#x8BF4;&#x8BF4;&#x5173;&#x4E8E;&#x6A21;&#x578B;&#x5173;&#x8054;&#x7684;&#x6E90;&#x7801;&#xFF0C;&#x4EE5;&#x4FBF;&#x66F4;&#x597D;&#x7684;&#x7406;&#x89E3;&#x548C;&#x4F7F;&#x7528;&#x5173;&#x8054;&#x6A21;&#x578B;&#x3002;&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF1A;<a href="https://d.laravel-china.org/docs/5.5/eloquent-relationships#defining-relationships" target="_blank">Eloquent&#xFF1A;&#x5173;&#x8054;</a></p>
+<h2 id="&#x5B9A;&#x4E49;&#x5173;&#x8054;">&#x5B9A;&#x4E49;&#x5173;&#x8054;</h2>
+<p>&#x6240;&#x8C13;&#x7684;&#x5B9A;&#x4E49;&#x5173;&#x8054;&#xFF0C;&#x5C31;&#x662F;&#x5728;&#x4E00;&#x4E2A; <code>Model</code> &#x4E2D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5173;&#x8054;&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x5229;&#x7528;&#x8FD9;&#x4E2A;&#x5173;&#x8054;&#x51FD;&#x6570;&#x53BB;&#x64CD;&#x4F5C;&#x53E6;&#x5916;&#x4E00;&#x4E2A; <code>Model</code>&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;<code>user</code> &#x8868;&#x662F;&#x7528;&#x6237;&#x8868;&#xFF0C;<code>posts</code> &#x662F;&#x7528;&#x6237;&#x53D1;&#x7684;&#x6587;&#x7AE0;&#xFF0C;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x53D1;&#x8868;&#x591A;&#x7BC7;&#x6587;&#x7AE0;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x5199;&#xFF1A;</p>
+<pre><code class="lang-php">$user-&gt;posts()-&gt;where(<span class="hljs-string">&apos;active&apos;</span>, <span class="hljs-number">1</span>)-&gt;get();
+</code></pre>
+<p>&#x8FD9;&#x8868;&#x660E;&#x4E86;&#x6211;&#x4EEC;&#x60F3;&#x901A;&#x8FC7; <code>$user</code> &#x8FD9;&#x4E2A;&#x7528;&#x6237;&#x67E5;&#x8BE2;&#x5230;&#x72B6;&#x6001; <code>active</code> &#x4E3A; 1 &#x7684;&#x6240;&#x6709;&#x6587;&#x7AE0;&#xFF0C;<code>posts</code> &#x5C31;&#x662F;&#x5173;&#x8054;&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x5173;&#x8054;&#x51FD;&#x6570;&#x53BB;&#x64CD;&#x4F5C;&#x53E6;&#x4E00;&#x4E2A;&#x4E0E; <code>user</code> &#x5173;&#x8054;&#x7684;&#x8868;&#x3002;</p>
+<p>&#x5728;&#x8BF4;&#x6A21;&#x578B;&#x5173;&#x8054;&#x7684;&#x5B9A;&#x4E49;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x5148;&#x8BF4;&#x8BF4;&#x7236;&#x6A21;&#x578B;&#x4E0E;&#x5B50;&#x6A21;&#x578B;&#x7684;&#x6982;&#x5FF5;&#x3002;&#x6240;&#x8C13;&#x7684;&#x7236;&#x6A21;&#x578B;&#x662F;&#x6307;&#x5728;&#x6A21;&#x578B;&#x5173;&#x7CFB;&#x4E2D;&#x4E3B;&#x52A8;&#x7684;&#x4E00;&#x65B9;&#xFF0C;&#x4F8B;&#x5982;&#x7528;&#x6237;&#x6A21;&#x578B;&#x548C;&#x6587;&#x7AE0;&#x6A21;&#x578B;&#x4E2D;&#x7684;&#x7528;&#x6237;&#xFF0C;&#x76F8;&#x5E94;&#x7684;&#x5B50;&#x6A21;&#x578B;&#x5C31;&#x662F;&#x6A21;&#x578B;&#x5173;&#x7CFB;&#x4E2D;&#x7684;&#x88AB;&#x52A8;&#x4E00;&#x65B9;&#xFF0C;&#x4F8B;&#x5982;&#x6587;&#x7AE0;&#x6A21;&#x578B;&#x3002;&#x5728;&#x6B63;&#x5411;&#x5B9A;&#x4E49;&#x4E2D;&#xFF0C;&#x88AB;&#x5173;&#x8054;&#x7684;&#x662F;&#x5B50;&#x6A21;&#x578B;&#xFF0C;&#x800C;&#x5728;&#x53CD;&#x5411;&#x5173;&#x8054;&#x4E2D;&#xFF0C;&#x88AB;&#x5173;&#x8054;&#x7684;&#x662F;&#x7236;&#x6A21;&#x578B;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x5173;&#x8054;&#x6709;&#x591A;&#x79CD;&#x5F62;&#x5F0F;&#xFF0C;&#x5404;&#x79CD;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="http://owql68l6p.bkt.clouddn.com/scheme.png" alt=""></p>
+<h2 id="hasone-&#x4E00;&#x5BF9;&#x4E00;">hasOne &#x4E00;&#x5BF9;&#x4E00;</h2>
+<p>&#x6211;&#x4EEC;&#x4EE5;&#x5B98;&#x65B9;&#x6587;&#x6863;&#x7684;&#x4F8B;&#x5B50;&#x6765;&#x8BF4;&#x660E;&#xFF0C;&#x4E00;&#x4E2A; <code>User</code> &#x6A21;&#x578B;&#x53EF;&#x80FD;&#x5173;&#x8054;&#x4E00;&#x4E2A; <code>Phone</code> &#x6A21;&#x578B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span>
+</span>{
+    <span class="hljs-comment">/**
+     * &#x83B7;&#x5F97;&#x4E0E;&#x7528;&#x6237;&#x5173;&#x8054;&#x7684;&#x7535;&#x8BDD;&#x8BB0;&#x5F55;&#x3002;
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">phone</span><span class="hljs-params">()</span>
+    </span>{
+        $this-&gt;hasOne(<span class="hljs-string">&apos;App\Phone&apos;</span>, <span class="hljs-string">&apos;user_id&apos;</span>, <span class="hljs-string">&apos;id&apos;</span>);
+    }
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B; <code>hasOne</code> &#x7684;&#x6E90;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hasOne</span><span class="hljs-params">($related, $foreignKey = null, $localKey = null)</span>
+</span>{
+    $instance = $this-&gt;newRelatedInstance($related);
+
+    $foreignKey = $foreignKey ?: $this-&gt;getForeignKey();
+
+    $localKey = $localKey ?: $this-&gt;getKeyName();
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> HasOne($instance-&gt;newQuery(), $this, $instance-&gt;getTable().<span class="hljs-string">&apos;.&apos;</span>.$foreignKey, $localKey);
+}
+</code></pre>
+<p><code>newRelatedInstance</code> &#x51FD;&#x6570;&#x8D1F;&#x8D23;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x88AB;&#x5173;&#x8054;&#x7684;&#x6A21;&#x578B;&#x5B9E;&#x4F8B;&#xFF0C;&#x4E3B;&#x8981;&#x76EE;&#x7684;&#x662F;&#x8BBE;&#x7F6E;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">newRelatedInstance</span><span class="hljs-params">($class)</span>
+</span>{
+    <span class="hljs-keyword">return</span> tap(<span class="hljs-keyword">new</span> $class, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($instance)</span> </span>{
+        <span class="hljs-keyword">if</span> (! $instance-&gt;getConnectionName()) {
+            $instance-&gt;setConnection($this-&gt;connection);
+        }
+    });
+}
+</code></pre>
+<p>&#x5728;&#x4E00;&#x5BF9;&#x4E00;&#x7684;&#x5173;&#x7CFB;&#x4E2D;&#xFF0C;<code>foreignKey</code> &#x5916;&#x952E;&#x540D;&#x9ED8;&#x8BA4;&#x662F;&#x7236;&#x6A21;&#x578B;&#x7684;&#x7C7B;&#x540D;&#x548C;&#x4E3B;&#x952E;&#x540D;&#x7684;&#x86C7;&#x5F62;&#x53D8;&#x91CF;&#xFF0C;<code>localKey</code> &#x662F;&#x7236;&#x6A21;&#x578B;&#x7684;&#x4E3B;&#x952E;&#x540D;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getForeignKey</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> Str::snake(class_basename($this)).<span class="hljs-string">&apos;_&apos;</span>.$this-&gt;primaryKey;
+}
+</code></pre>
+<p><code>hasOne</code> &#x51FD;&#x6570;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7EE7;&#x627F; <code>HasOneOrMany</code> &#x7C7B;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x4E00;&#x5BF9;&#x4E00;&#x4E0E;&#x4E00;&#x5BF9;&#x591A;&#x6784;&#x9020;&#x51FD;&#x6570;&#x76F8;&#x540C;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x4E3B;&#x8981;&#x8BBE;&#x7F6E;&#x5916;&#x952E;&#x540D;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Builder $query, Model $parent, $foreignKey, $localKey)</span>
+</span>{
+    $this-&gt;localKey = $localKey;
+    $this-&gt;foreignKey = $foreignKey;
+
+    <span class="hljs-keyword">parent</span>::__construct($query, $parent);
+}
+</code></pre>
+<p><code>HasOneOrMany</code> &#x7C7B;&#x7EE7;&#x627F; <code>Relation</code> &#x7C7B;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x4E3B;&#x8981;&#x8BBE;&#x7F6E; <code>parent</code> (&#x7236;&#x6A21;&#x578B;)&#x3001;&#x88AB;&#x5173;&#x8054;&#x6A21;&#x578B;&#xFF08;&#x5B50;&#x6A21;&#x578B;&#xFF09;&#x4E0E;&#x88AB;&#x5173;&#x8054;&#x6A21;&#x578B;&#xFF08;&#x5B50;&#x6A21;&#x578B;&#xFF09;&#x7684;&#x67E5;&#x8BE2;&#x6784;&#x9020;&#x5668;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Builder $query, Model $parent)</span>
+</span>{
+    $this-&gt;query = $query;
+    $this-&gt;parent = $parent;
+    $this-&gt;related = $query-&gt;getModel();
+
+    $this-&gt;addConstraints();
+}
+</code></pre>
+<p><code>hasOne</code> &#x7684;&#x6A21;&#x578B;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="http://owql68l6p.bkt.clouddn.com/hasOne%27.png" alt=""></p>
+<p>&#x9664;&#x4E86;&#x4FDD;&#x5B58;&#x88AB;&#x5173;&#x8054;&#x6A21;&#x578B;&#x7684;&#x67E5;&#x8BE2;&#x6784;&#x9020;&#x5668;&#x3001;&#x88AB;&#x5173;&#x8054;&#x6A21;&#x578B;&#x4E0E; <code>parent</code> &#x6A21;&#x578B;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x4F1A;&#x63D0;&#x4F9B;&#x989D;&#x5916;&#x7684;&#x9650;&#x5236;&#x6761;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addConstraints</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">static</span>::$constraints) {
+        $this-&gt;query-&gt;where($this-&gt;foreignKey, <span class="hljs-string">&apos;=&apos;</span>, $this-&gt;getParentKey());
+
+        $this-&gt;query-&gt;whereNotNull($this-&gt;foreignKey);
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getParentKey</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;parent-&gt;getAttribute($this-&gt;localKey);
+}
+</code></pre>
+<p>&#x9650;&#x5236;&#x6761;&#x4EF6;&#x4E3A;&#x88AB;&#x5173;&#x8054;&#x6A21;&#x578B;&#x548C;&#x5173;&#x8054;&#x6A21;&#x578B;&#x5EFA;&#x7ACB;&#x5916;&#x952E;&#x7EA6;&#x675F;&#x5173;&#x7CFB;&#xFF1A;</p>
+<pre><code class="lang-php">select phone where phone.user_id = <span class="hljs-number">1</span> (user.id)
+</code></pre>
+<h2 id="hasmany-&#x4E00;&#x5BF9;&#x591A;">hasMany &#x4E00;&#x5BF9;&#x591A;</h2>
+<p>&#x5728;&#x6A21;&#x578B;&#x5173;&#x8054;&#x7684;&#x5B9A;&#x4E49;&#x4E2D;&#xFF0C;&#x4E00;&#x5BF9;&#x4E00;&#x4E0E;&#x4E00;&#x5BF9;&#x591A;&#x6E90;&#x7801;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hasMany</span><span class="hljs-params">($related, $foreignKey = null, $localKey = null)</span>
+</span>{
+    $instance = $this-&gt;newRelatedInstance($related);
+
+    $foreignKey = $foreignKey ?: $this-&gt;getForeignKey();
+
+    $localKey = $localKey ?: $this-&gt;getKeyName();
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> HasMany(
+        $instance-&gt;newQuery(), $this, $instance-&gt;getTable().<span class="hljs-string">&apos;.&apos;</span>.$foreignKey, $localKey
+    );
+}
+</code></pre>
+<p><code>hasMany</code> &#x7684;&#x6A21;&#x578B;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="http://owql68l6p.bkt.clouddn.com/hasMany.png" alt=""></p>
+<p>&#x9650;&#x5236;&#x6761;&#x4EF6;&#x4E0E;&#x4E00;&#x5BF9;&#x4E00;&#x76F8;&#x540C;&#xFF0C;&#x4E3A;&#x88AB;&#x5173;&#x8054;&#x6A21;&#x578B;&#x548C;&#x5173;&#x8054;&#x6A21;&#x578B;&#x5EFA;&#x7ACB;&#x5916;&#x952E;&#x7EA6;&#x675F;&#x5173;&#x7CFB;&#xFF1A;</p>
+<pre><code class="lang-php">select phone where phone.user_id = <span class="hljs-number">1</span> (user.id)
+</code></pre>
+<h2 id="belongsto-&#x4E00;&#x5BF9;&#x4E00;&#x3001;&#x4E00;&#x5BF9;&#x591A;-&#x53CD;&#x5411;&#x5173;&#x8054;">belongsTo &#x4E00;&#x5BF9;&#x4E00;&#x3001;&#x4E00;&#x5BF9;&#x591A; &#x53CD;&#x5411;&#x5173;&#x8054;</h2>
+<p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x4ECE;&#x6587;&#x7AE0;&#x53CD;&#x5411;&#x67E5;&#x627E;&#x4F5C;&#x8005;&#x7528;&#x6237;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x53CD;&#x5411;&#x5173;&#x8054;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">user</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;belongsTo(<span class="hljs-string">&apos;App\User&apos;</span>, <span class="hljs-string">&apos;foreign_key&apos;</span>, <span class="hljs-string">&apos;other_key&apos;</span>);
+}
+</code></pre>
+<p><code>belongsTo</code> &#x6E90;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">belongsTo</span><span class="hljs-params">($related, $foreignKey = null, $ownerKey = null, $relation = null)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (is_null($relation)) {
+        $relation = $this-&gt;guessBelongsToRelation();
+    }
+
+    $instance = $this-&gt;newRelatedInstance($related);
+
+    <span class="hljs-keyword">if</span> (is_null($foreignKey)) {
+        $foreignKey = Str::snake($relation).<span class="hljs-string">&apos;_&apos;</span>.$instance-&gt;getKeyName();
+    }
+
+    $ownerKey = $ownerKey ?: $instance-&gt;getKeyName();
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> BelongsTo(
+        $instance-&gt;newQuery(), $this, $foreignKey, $ownerKey, $relation
+    );
+}
+</code></pre>
+<p>&#x6B63;&#x5411;&#x5B9A;&#x4E49;&#x4E0E;&#x53CD;&#x5411;&#x5B9A;&#x4E49;&#x4E0D;&#x540C;&#x7684;&#x662F;&#x591A;&#x4E86;&#x4E00;&#x4E2A;&#x53C2;&#x6570; <code>relation</code>&#xFF0C;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x9ED8;&#x8BA4;&#x503C;&#x662F;&#x4ECE; <code>debug_backtrace</code> &#x51FD;&#x6570;&#x83B7;&#x53D6;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">guessBelongsToRelation</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">list</span>($one, $two, $caller) = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, <span class="hljs-number">3</span>);
+
+    <span class="hljs-keyword">return</span> $caller[<span class="hljs-string">&apos;function&apos;</span>];
+}
+</code></pre>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x7684;&#x5173;&#x8054;&#x51FD;&#x6570;&#x540D; <code>user</code>&#xFF0C;<code>belongsTo</code> &#x51FD;&#x6570;&#x4F1A;&#x5C06;&#x5173;&#x8054;&#x51FD;&#x6570;&#x540D;&#x4F5C;&#x4E3A;&#x5173;&#x8054;&#x540D;&#x4FDD;&#x5B58;&#x8D77;&#x6765;&#x3002;</p>
+<p>&#x53E6;&#x4E00;&#x4E2A;&#x4E0D;&#x540C;&#x662F;&#x5916;&#x952E;&#x7684;&#x9ED8;&#x8BA4;&#x540D;&#x79F0;&#xFF0C;&#x4E0D;&#x518D;&#x662F;&#x7C7B;&#x540D; + &#x4E3B;&#x952E;&#x540D;&#xFF0C;&#x800C;&#x662F;&#x5173;&#x8054;&#x540D; + &#x4E3B;&#x952E;&#x540D;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">if</span> (is_null($foreignKey)) {
+    $foreignKey = Str::snake($relation).<span class="hljs-string">&apos;_&apos;</span>.$instance-&gt;getKeyName();
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x63A5;&#x7740;&#x770B; <code>belongsTo</code> &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Builder $query, Model $child, $foreignKey, $ownerKey, $relation)</span>
+</span>{
+    $this-&gt;ownerKey = $ownerKey;
+    $this-&gt;relation = $relation;
+    $this-&gt;foreignKey = $foreignKey;
+
+    $this-&gt;child = $child;
+
+    <span class="hljs-keyword">parent</span>::__construct($query, $child);
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x6B63;&#x5411;&#x5173;&#x8054;&#xFF0C;&#x53CD;&#x5411;&#x5173;&#x8054;&#x9664;&#x4E86;&#x4FDD;&#x5B58;&#x5916;&#x952E;&#x540D;&#x4E0E;&#x4E3B;&#x952E;&#x540D;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x4FDD;&#x5B58;&#x4E86;&#x5173;&#x7CFB;&#x540D;&#x3001;&#x5B50;&#x6A21;&#x578B;&#x3002;&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x53CD;&#x5411;&#x5173;&#x8054;&#x4E2D; <code>related</code> &#x4EE3;&#x8868;&#x7236;&#x6A21;&#x578B;&#xFF0C;<code>parent</code> &#x4EE3;&#x8868;&#x5B50;&#x6A21;&#x578B;&#xFF0C;&#x4E0E;&#x6B63;&#x5411;&#x5173;&#x8054;&#x76F8;&#x53CD;&#x3002;</p>
+<p><code>hasMany</code> &#x7684;&#x6A21;&#x578B;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="http://owql68l6p.bkt.clouddn.com/belongsTo1.png" alt=""></p>
+<p>&#x7EA6;&#x675F;&#x6761;&#x4EF6;&#x4E5F;&#x76F8;&#x5E94;&#x5730;&#x8FDB;&#x884C;&#x53CD;&#x8F6C;&#x6539;&#x53D8;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addConstraints</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">static</span>::$constraints) {
+        $table = $this-&gt;related-&gt;getTable();
+
+        $this-&gt;query-&gt;where($table.<span class="hljs-string">&apos;.&apos;</span>.$this-&gt;ownerKey, <span class="hljs-string">&apos;=&apos;</span>, $this-&gt;child-&gt;{$this-&gt;foreignKey});
+    }
+}
+</code></pre>
+<p>&#x9650;&#x5236;&#x6761;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php">select user where user.id = <span class="hljs-number">1</span> (post.user_id)
+</code></pre>
+<h2 id="belongsmany-&#x591A;&#x5BF9;&#x591A;">belongsMany &#x591A;&#x5BF9;&#x591A;</h2>
+<p>&#x591A;&#x5BF9;&#x591A;&#x5173;&#x7CFB;&#x7531;&#x4E8E;&#x4E2D;&#x95F4;&#x8868;&#x7684;&#x539F;&#x56E0;&#x76F8;&#x5BF9;&#x6765;&#x8BF4;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#xFF0C;&#x6D89;&#x53CA;&#x7684;&#x53C2;&#x6570;&#x4E5F;&#x975E;&#x5E38;&#x591A;&#x3002;&#x6211;&#x4EEC;&#x4EE5;&#x5B98;&#x7F51;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span>
+</span>{
+    <span class="hljs-comment">/**
+     * &#x83B7;&#x5F97;&#x6B64;&#x7528;&#x6237;&#x7684;&#x89D2;&#x8272;&#x3002;
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">roles</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;belongsToMany(<span class="hljs-string">&apos;App\Role&apos;</span>, <span class="hljs-string">&apos;role_user&apos;</span>, <span class="hljs-string">&apos;user_id&apos;</span>, <span class="hljs-string">&apos;role_id&apos;</span>);
+    }
+}
+</code></pre>
+<p><code>User</code> &#x8868;&#x4E0E; <code>role</code> &#x8868;&#x662F;&#x591A;&#x5BF9;&#x591A;&#x5173;&#x7CFB;&#xFF0C;&#x53E6;&#x5916;&#x6709;&#x4E00;&#x4E2D;&#x95F4;&#x8868; <code>user_role</code> &#x8868;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x5B9A;&#x4E49;&#x5173;&#x7CFB;&#x7684;&#x65F6;&#x5019;&#xFF0C;<code>related</code> &#x662F;&#x88AB;&#x5173;&#x8054;&#x6A21;&#x578B;&#xFF0C;<code>table</code> &#x662F;&#x4E2D;&#x95F4;&#x8868;&#xFF0C;<code>foreignPivotKey</code> &#x662F;&#x4E2D;&#x95F4;&#x8868;&#x4E2D;&#x7236;&#x6A21;&#x578B;&#x5916;&#x952E;&#x540D;&#xFF0C;<code>relatedPivotKey</code> &#x662F;&#x4E2D;&#x95F4;&#x8868;&#x4E2D;&#x5B50;&#x6A21;&#x578B;&#x5916;&#x952E;&#x540D;&#xFF0C;<code>parentKey</code> &#x662F;&#x7236;&#x6A21;&#x578B;&#x4E3B;&#x952E;&#x540D;&#xFF0C;<code>relatedKey</code> &#x662F;&#x5B50;&#x6A21;&#x578B;&#x4E3B;&#x952E;&#x540D;&#xFF0C;<code>relation</code> &#x662F;&#x5173;&#x7CFB;&#x540D;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">belongsToMany</span><span class="hljs-params">($related, $table = null, $foreignPivotKey = null, $relatedPivotKey = null, $parentKey = null, $relatedKey = null, $relation = null)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (is_null($relation)) {
+        $relation = $this-&gt;guessBelongsToManyRelation();
+    }
+
+    $instance = $this-&gt;newRelatedInstance($related);
+
+    $foreignPivotKey = $foreignPivotKey ?: $this-&gt;getForeignKey();
+
+    $relatedPivotKey = $relatedPivotKey ?: $instance-&gt;getForeignKey();
+
+    <span class="hljs-keyword">if</span> (is_null($table)) {
+        $table = $this-&gt;joiningTable($related);
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> BelongsToMany(
+        $instance-&gt;newQuery(), $this, $table, $foreignPivotKey,
+        $relatedPivotKey, $parentKey ?: $this-&gt;getKeyName(),
+        $relatedKey ?: $instance-&gt;getKeyName(), $relation
+    );
+}
+</code></pre>
+<p>&#x83B7;&#x53D6;&#x5173;&#x8054;&#x540D;&#x79F0;&#x4ECD;&#x7136;&#x4F7F;&#x7528;&#x7684;&#x662F; <code>debug_backtrace</code> &#x51FD;&#x6570;&#xFF0C;&#x4E0D;&#x540C;&#x4E8E;<code>guessBelongsToRelation</code> &#x51FD;&#x6570;&#x53EA;&#x6709; <code>belongsTo</code> &#x8C03;&#x7528;, <code>guessBelongsToManyRelation</code> &#x51FD;&#x6570;&#x8FD8;&#x53EF;&#x4EE5;&#x88AB; <code>morphedByMany</code> &#x51FD;&#x6570;&#x8C03;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x80FD;&#x5355;&#x7EAF;&#x7684;&#x9650;&#x5236;&#x8FD4;&#x56DE;&#x5806;&#x6808;&#x5E27;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> $manyMethods = [
+    <span class="hljs-string">&apos;belongsToMany&apos;</span>, <span class="hljs-string">&apos;morphToMany&apos;</span>, <span class="hljs-string">&apos;morphedByMany&apos;</span>,
+    <span class="hljs-string">&apos;guessBelongsToManyRelation&apos;</span>, <span class="hljs-string">&apos;findFirstMethodThatIsntRelation&apos;</span>,
+];
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">guessBelongsToManyRelation</span><span class="hljs-params">()</span>
+</span>{
+    $caller = Arr::first(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($trace)</span> </span>{
+        <span class="hljs-keyword">return</span> ! in_array($trace[<span class="hljs-string">&apos;function&apos;</span>], Model::$manyMethods);
+    });
+
+    <span class="hljs-keyword">return</span> ! is_null($caller) ? $caller[<span class="hljs-string">&apos;function&apos;</span>] : <span class="hljs-keyword">null</span>;
+}
+</code></pre>
+<p>&#x9ED8;&#x8BA4;&#x7684;&#x4E2D;&#x95F4;&#x8868;&#x662F;&#x4E24;&#x4E2A;&#x8868;&#x540D;&#x7684;&#x86C7;&#x5F62;&#x53D8;&#x91CF;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">joiningTable</span><span class="hljs-params">($related)</span>
+</span>{
+    $models = [
+        Str::snake(class_basename($related)),
+        Str::snake(class_basename($this)),
+    ];
+
+    sort($models);
+
+    <span class="hljs-keyword">return</span> strtolower(implode(<span class="hljs-string">&apos;_&apos;</span>, $models));
+}
+</code></pre>
+<p><code>BelongsToMany</code> &#x7684;&#x521D;&#x59CB;&#x5316;&#x4E5F;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#x8FD9;&#x4E9B;&#x53D8;&#x91CF;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Builder $query, Model $parent, $table, $foreignPivotKey,
+                                $relatedPivotKey, $parentKey, $relatedKey, $relationName = null)</span>
+</span>{
+    $this-&gt;table = $table;
+    $this-&gt;parentKey = $parentKey;
+    $this-&gt;relatedKey = $relatedKey;
+    $this-&gt;relationName = $relationName;
+    $this-&gt;relatedPivotKey = $relatedPivotKey;
+    $this-&gt;foreignPivotKey = $foreignPivotKey;
+
+    <span class="hljs-keyword">parent</span>::__construct($query, $parent);
+}
+</code></pre>
+<p><code>belongsToMany</code> &#x7684;&#x6A21;&#x578B;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="http://owql68l6p.bkt.clouddn.com/belongsMany1.png" alt=""></p>
+<p>&#x53CD;&#x5411;&#x7684;&#x591A;&#x5BF9;&#x591A;&#x6A21;&#x578B;&#x5173;&#x7CFB;&#xFF1A;</p>
+<p><img src="http://owql68l6p.bkt.clouddn.com/belongsMany2.png" alt=""></p>
+<p>&#x9650;&#x5236;&#x6761;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addConstraints</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;performJoin();
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">static</span>::$constraints) {
+        $this-&gt;addWhereConstraints();
+    }
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">performJoin</span><span class="hljs-params">($query = null)</span>
+</span>{
+    $query = $query ?: $this-&gt;query;
+
+    $baseTable = $this-&gt;related-&gt;getTable();
+
+    $key = $baseTable.<span class="hljs-string">&apos;.&apos;</span>.$this-&gt;relatedKey;
+
+    $query-&gt;join($this-&gt;table, $key, <span class="hljs-string">&apos;=&apos;</span>, $this-&gt;getQualifiedRelatedPivotKeyName());
+
+    <span class="hljs-keyword">return</span> $this;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addWhereConstraints</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;query-&gt;where(
+        $this-&gt;getQualifiedForeignPivotKeyName(), <span class="hljs-string">&apos;=&apos;</span>, $this-&gt;parent-&gt;{$this-&gt;parentKey}
+    );
+
+    <span class="hljs-keyword">return</span> $this;
+}
+</code></pre>
+<p>&#x672C;&#x4F8B;&#x4E2D;&#x7684; where &#x6761;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php">select role join role_user on role_user.role_id = <span class="hljs-number">1</span> (role.id)
+
+select role where role_user.user_id = <span class="hljs-number">1</span> (user.id)
+</code></pre>
+<h2 id="hasmanythrough-&#x8FDC;&#x7A0B;&#x4E00;&#x5BF9;&#x591A;">hasManyThrough &#x8FDC;&#x7A0B;&#x4E00;&#x5BF9;&#x591A;</h2>
+<p>&#x8FDC;&#x5C42;&#x4E00;&#x5BF9;&#x591A; &#x5173;&#x8054;&#x63D0;&#x4F9B;&#x4E86;&#x65B9;&#x4FBF;&#x3001;&#x7B80;&#x77ED;&#x7684;&#x65B9;&#x5F0F;&#x901A;&#x8FC7;&#x4E2D;&#x95F4;&#x7684;&#x5173;&#x8054;&#x6765;&#x83B7;&#x5F97;&#x8FDC;&#x5C42;&#x7684;&#x5173;&#x8054;&#x3002;&#x4EE5;&#x5B98;&#x65B9;&#x4F8B;&#x5B50;&#x6765;&#x770B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Country</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">posts</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;hasManyThrough(
+            <span class="hljs-string">&apos;App\Post&apos;</span>,
+            <span class="hljs-string">&apos;App\User&apos;</span>,
+            <span class="hljs-string">&apos;country_id&apos;</span>, <span class="hljs-comment">// &#x7528;&#x6237;&#x8868;&#x5916;&#x952E;...</span>
+            <span class="hljs-string">&apos;user_id&apos;</span>, <span class="hljs-comment">// &#x6587;&#x7AE0;&#x8868;&#x5916;&#x952E;...</span>
+            <span class="hljs-string">&apos;id&apos;</span>, <span class="hljs-comment">// &#x56FD;&#x5BB6;&#x8868;&#x672C;&#x5730;&#x952E;...</span>
+            <span class="hljs-string">&apos;id&apos;</span> <span class="hljs-comment">// &#x7528;&#x6237;&#x8868;&#x672C;&#x5730;&#x952E;...</span>
+        );
+    }
+}
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x8FDC;&#x7A0B;&#x4E00;&#x5BF9;&#x591A;&#x7684;&#x53C2;&#x6570;&#x6BD4;&#x8F83;&#x591A;&#x3002;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570; <code>related</code> &#x662F;&#x6700;&#x7EC8;&#x88AB;&#x5173;&#x8054;&#x7684;&#x6A21;&#x578B;&#xFF0C;<code>through</code> &#x662F;&#x4E2D;&#x95F4;&#x6A21;&#x578B;&#xFF0C;<code>firstKey</code> &#x662F;&#x4E2D;&#x95F4;&#x6A21;&#x578B;&#x5173;&#x4E8E;&#x7236;&#x6A21;&#x578B;&#x7684;&#x5916;&#x952E;&#xFF0C;<code>secondKey</code> &#x662F;&#x6700;&#x7EC8;&#x88AB;&#x5173;&#x8054;&#x7684;&#x6A21;&#x578B;&#x5173;&#x4E8E;&#x4E2D;&#x95F4;&#x6A21;&#x578B;&#x7684;&#x5916;&#x952E;&#xFF0C;<code>localKey</code> &#x662F;&#x7236;&#x6A21;&#x578B;&#x7684;&#x4E3B;&#x952E;&#xFF0C;<code>secondLocalKey</code> &#x662F;&#x4E2D;&#x95F4;&#x6A21;&#x578B;&#x7684;&#x4E3B;&#x952E;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hasManyThrough</span><span class="hljs-params">($related, $through, $firstKey = null, $secondKey = null, $localKey = null, $secondLocalKey = null)</span>
+</span>{
+    $through = <span class="hljs-keyword">new</span> $through;
+
+    $firstKey = $firstKey ?: $this-&gt;getForeignKey();
+
+    $secondKey = $secondKey ?: $through-&gt;getForeignKey();
+
+    $localKey = $localKey ?: $this-&gt;getKeyName();
+
+    $secondLocalKey = $secondLocalKey ?: $through-&gt;getKeyName();
+
+    $instance = $this-&gt;newRelatedInstance($related);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> HasManyThrough($instance-&gt;newQuery(), $this, $through, $firstKey, $secondKey, $localKey, $secondLocalKey);
+}
+</code></pre>
+<p>HasManyThrough &#x7684;&#x521D;&#x59CB;&#x5316;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Builder $query, Model $farParent, Model $throughParent, $firstKey, $secondKey, $localKey, $secondLocalKey)</span>
+</span>{
+    $this-&gt;localKey = $localKey;
+    $this-&gt;firstKey = $firstKey;
+    $this-&gt;secondKey = $secondKey;
+    $this-&gt;farParent = $farParent;
+    $this-&gt;throughParent = $throughParent;
+    $this-&gt;secondLocalKey = $secondLocalKey;
+
+    <span class="hljs-keyword">parent</span>::__construct($query, $throughParent);
+}
+</code></pre>
+<p><code>hasManyThrough</code> &#x7684;&#x6A21;&#x578B;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="http://owql68l6p.bkt.clouddn.com/HasManyThrough.png" alt=""></p>
+<p>&#x9650;&#x5236;&#x6761;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addConstraints</span><span class="hljs-params">()</span>
+</span>{
+    $localValue = $this-&gt;farParent[$this-&gt;localKey];
+
+    $this-&gt;performJoin();
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">static</span>::$constraints) {
+        $this-&gt;query-&gt;where($this-&gt;getQualifiedFirstKeyName(), <span class="hljs-string">&apos;=&apos;</span>, $localValue);
+    }
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">performJoin</span><span class="hljs-params">(Builder $query = null)</span>
+</span>{
+    $query = $query ?: $this-&gt;query;
+
+    $farKey = $this-&gt;getQualifiedFarKeyName();
+
+    $query-&gt;join($this-&gt;throughParent-&gt;getTable(), $this-&gt;getQualifiedParentKeyName(), <span class="hljs-string">&apos;=&apos;</span>, $farKey);
+
+    <span class="hljs-keyword">if</span> ($this-&gt;throughParentSoftDeletes()) {
+        $query-&gt;whereNull($this-&gt;throughParent-&gt;getQualifiedDeletedAtColumn());
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getQualifiedParentKeyName</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;parent-&gt;getTable().<span class="hljs-string">&apos;.&apos;</span>.$this-&gt;secondLocalKey;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getQualifiedFarKeyName</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;getQualifiedForeignKeyName();
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getQualifiedForeignKeyName</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;related-&gt;getTable().<span class="hljs-string">&apos;.&apos;</span>.$this-&gt;secondKey;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getQualifiedFirstKeyName</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;throughParent-&gt;getTable().<span class="hljs-string">&apos;.&apos;</span>.$this-&gt;firstKey;
+}
+</code></pre>
+<p>&#x672C;&#x4F8B;&#x4E2D;&#x7684;&#x9650;&#x5236;&#x6761;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php">
+select post join user on user.id = post.user_id
+
+select post where user.delete_at is <span class="hljs-keyword">null</span>
+
+select post where user.country_id = <span class="hljs-number">1</span> (country.id)
+</code></pre>
+<h2 id="morphonemorphmany-&#x591A;&#x6001;&#x5173;&#x8054;">morphOne/morphMany &#x591A;&#x6001;&#x5173;&#x8054;</h2>
+<p>&#x591A;&#x6001;&#x5173;&#x8054;&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x5E94;&#x7528;&#x4E00;&#x4E2A;&#x8868;&#x6765;&#x5355;&#x72EC;&#x4F5C;&#x4E3A;&#x591A;&#x4E2A;&#x8868;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x591A;&#x6001;&#x5173;&#x8054;&#x5B58;&#x5728;&#x4E00;&#x5BF9;&#x4E00;&#x3001;&#x4E00;&#x5BF9;&#x591A;&#x3001;&#x591A;&#x5BF9;&#x591A;&#x7684;&#x60C5;&#x5F62;&#x3002;&#x6240;&#x8C13;&#x4E00;&#x5BF9;&#x4E00;&#x3001;&#x4E00;&#x5BF9;&#x591A;&#x662F;&#x6307;&#xFF0C;&#x4E00;&#x4E2A;&#x6A21;&#x578B;&#x53EA;&#x62E5;&#x6709;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x6216;&#x591A;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x4F8B;&#x5982;&#x5B98;&#x7F51;&#x4E2D;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<blockquote>
+<p>&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x300C;&#x8BC4;&#x8BBA;&#x300D;&#x6587;&#x7AE0;&#x548C;&#x89C6;&#x9891;&#x3002;&#x4F7F;&#x7528;&#x591A;&#x6001;&#x5173;&#x8054;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x7528;&#x4E00;&#x4E2A; comments &#x8868;&#x540C;&#x65F6;&#x6EE1;&#x8DB3;&#x8FD9;&#x4E24;&#x4E2A;&#x4F7F;&#x7528;&#x573A;&#x666F;</p>
+</blockquote>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Post</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span>
+</span>{
+    <span class="hljs-comment">/**
+     * &#x83B7;&#x5F97;&#x6B64;&#x6587;&#x7AE0;&#x7684;&#x6240;&#x6709;&#x8BC4;&#x8BBA;&#x3002;
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">comments</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;morphMany(<span class="hljs-string">&apos;App\Comment&apos;</span>, <span class="hljs-string">&apos;commentable&apos;</span>);
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Video</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span>
+</span>{
+    <span class="hljs-comment">/**
+     * &#x83B7;&#x5F97;&#x6B64;&#x89C6;&#x9891;&#x7684;&#x6240;&#x6709;&#x8BC4;&#x8BBA;&#x3002;
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">comments</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;morphMany(<span class="hljs-string">&apos;App\Comment&apos;</span>, <span class="hljs-string">&apos;commentable&apos;</span>);
+    }
+}
+</code></pre>
+<p>&#x8FD9;&#x4E2A; <code>comments</code> &#x8868;&#x5C31;&#x662F;&#x5C5E;&#x6027;&#x8868;&#xFF0C;&#x5F53;&#x6587;&#x7AE0;&#x548C;&#x89C6;&#x9891;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x8BC4;&#x8BBA;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x662F;&#x4E00;&#x5BF9;&#x4E00;&#x591A;&#x6001;&#x5173;&#x8054;&#xFF1B;&#x5982;&#x679C;&#x6587;&#x7AE0;&#x548C;&#x89C6;&#x9891;&#x53EF;&#x4EE5;&#x7531;&#x591A;&#x4E2A;&#x8BC4;&#x8BBA;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x662F;&#x4E00;&#x5BF9;&#x591A;&#x591A;&#x6001;&#x5173;&#x8054;&#x3002;</p>
+<p>&#x8FD9;&#x79CD;&#x5C5E;&#x6027;&#x8868;&#x4E00;&#x822C;&#x4F1A;&#x6709;&#x4E24;&#x4E2A;&#x56FA;&#x5B9A;&#x7684;&#x5B57;&#x6BB5;&#xFF1A;<code>commentable_type</code> &#x7528;&#x4E8E;&#x6807;&#x8BC6;&#x8BE5;&#x6761;&#x8BC4;&#x8BBA;&#x662F;&#x6587;&#x7AE0;&#x7684;&#x8FD8;&#x662F;&#x89C6;&#x9891;&#x7684;&#x3001;<code>commentable_id</code> &#x7528;&#x4E8E;&#x8BB0;&#x5F55;&#x6587;&#x7AE0;&#x6216;&#x89C6;&#x9891;&#x7684;&#x4E3B;&#x952E; <code>id</code>&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;&#x591A;&#x6001;&#x5173;&#x8054;&#x770B;&#x4F5C;&#x666E;&#x901A;&#x7684;&#x4E00;&#x5BF9;&#x4E00;&#x3001;&#x4E00;&#x5BF9;&#x591A;&#x5173;&#x7CFB;&#xFF0C;&#x53EA;&#x662F;&#x5916;&#x952E;&#x53C2;&#x6570;&#x662F; <code>type</code> &#x4E0E; <code>id</code> &#x7684;&#x7EC4;&#x5408;&#x3002;</p>
+<p><code>related</code> &#x662F;&#x5C5E;&#x6027;&#x8868;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8FD9;&#x91CC;&#x7684; <code>comments</code>&#xFF0C;<code>type</code> &#x53C2;&#x6570;&#x662F;&#x5C5E;&#x6027;&#x8868;&#x4E2D;&#x5B58;&#x50A8;&#x7236;&#x6A21;&#x578B;&#x7C7B;&#x578B;&#x7684;&#x5217;&#x540D;(commentable_type)&#xFF0C;<code>id</code> &#x53C2;&#x6570;&#x662F;&#x5C5E;&#x6027;&#x8868;&#x4E2D;&#x5B58;&#x50A8;&#x7236;&#x6A21;&#x578B;&#x4E3B;&#x952E;&#x7684;&#x5217;&#x540D;(commentable_id)&#xFF0C;&#x800C; <code>name</code> &#x4E13;&#x7528;&#x4E8E;&#x7701;&#x7565; <code>type</code> &#x53C2;&#x6570;&#x4E0E; <code>id</code> &#x53C2;&#x6570;&#xFF0C;<code>localKey</code> &#x662F;&#x6307;&#x7236;&#x6A21;&#x578B;&#x7684;&#x4E3B;&#x952E;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">morphOne</span><span class="hljs-params">($related, $name, $type = null, $id = null, $localKey = null)</span>
+</span>{
+    $instance = $this-&gt;newRelatedInstance($related);
+
+    <span class="hljs-keyword">list</span>($type, $id) = $this-&gt;getMorphs($name, $type, $id);
+
+    $table = $instance-&gt;getTable();
+
+    $localKey = $localKey ?: $this-&gt;getKeyName();
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MorphOne($instance-&gt;newQuery(), $this, $table.<span class="hljs-string">&apos;.&apos;</span>.$type, $table.<span class="hljs-string">&apos;.&apos;</span>.$id, $localKey);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">morphMany</span><span class="hljs-params">($related, $name, $type = null, $id = null, $localKey = null)</span>
+</span>{
+    $instance = $this-&gt;newRelatedInstance($related);
+
+    <span class="hljs-keyword">list</span>($type, $id) = $this-&gt;getMorphs($name, $type, $id);
+
+    $table = $instance-&gt;getTable();
+
+    $localKey = $localKey ?: $this-&gt;getKeyName();
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MorphMany($instance-&gt;newQuery(), $this, $table.<span class="hljs-string">&apos;.&apos;</span>.$type, $table.<span class="hljs-string">&apos;.&apos;</span>.$id, $localKey);
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMorphs</span><span class="hljs-params">($name, $type, $id)</span>
+</span>{
+    <span class="hljs-keyword">return</span> [$type ?: $name.<span class="hljs-string">&apos;_type&apos;</span>, $id ?: $name.<span class="hljs-string">&apos;_id&apos;</span>];
+}
+</code></pre>
+<p>&#x4E00;&#x5BF9;&#x4E00;&#x3001;&#x4E00;&#x5BF9;&#x591A;&#x591A;&#x6001;&#x5173;&#x8054;&#x4E3B;&#x8981;&#x4FDD;&#x5B58;&#x5C5E;&#x6027;&#x8868;&#x4E2D;&#x8868;&#x793A;&#x7C7B;&#x578B;&#x7684;&#x5217;&#x540D;&#xFF0C;&#x8FD8;&#x6709;&#x9700;&#x8981;&#x5411;&#x8BE5;&#x7C7B;&#x578B;&#x5217;&#x4E2D;&#x5199;&#x5165;&#x7684;&#x7236;&#x6A21;&#x578B;&#x540D;&#x79F0;&#xFF0C;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x9ED8;&#x8BA4;&#x4F1A;&#x5199;&#x7236;&#x6A21;&#x578B;&#x7684;&#x7C7B;&#x540D;(<code>App\Post</code>&#x3001;<code>App\Video</code>)</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Builder $query, Model $parent, $type, $id, $localKey)</span>
+</span>{
+    $this-&gt;morphType = $type;
+
+    $this-&gt;morphClass = $parent-&gt;getMorphClass();
+
+    <span class="hljs-keyword">parent</span>::__construct($query, $parent, $id, $localKey);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMorphClass</span><span class="hljs-params">()</span>
+</span>{
+    $morphMap = Relation::morphMap();
+
+    <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">empty</span>($morphMap) &amp;&amp; in_array(<span class="hljs-keyword">static</span>::class, $morphMap)) {
+        <span class="hljs-keyword">return</span> array_search(<span class="hljs-keyword">static</span>::class, $morphMap, <span class="hljs-keyword">true</span>);
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">static</span>::class;
+}
+</code></pre>
+<p>&#x4E0D;&#x8FC7;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x5199;&#x5165;&#x7684;&#x503C;&#xFF1A;</p>
+<pre><code class="lang-php">Relation::morphMap([
+    <span class="hljs-string">&apos;posts&apos;</span> =&gt; <span class="hljs-string">&apos;App\Post&apos;</span>,
+    <span class="hljs-string">&apos;videos&apos;</span> =&gt; <span class="hljs-string">&apos;App\Video&apos;</span>,
+]);
+</code></pre>
+<p>&#x8FD9;&#x6837;&#xFF0C;&#x5C31;&#x4F1A;&#x628A; <code>App\Post</code> &#x6362;&#x6210; <code>posts</code>&#xFF0C;<code>App\Video</code> &#x6362;&#x6210; <code>videos</code>&#x3002;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x8FD9;&#x4E2A; <code>&#x591A;&#x6001;&#x6620;&#x5C04;&#x8868;</code> &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">morphMap</span><span class="hljs-params">(array $map = null, $merge = true)</span>
+</span>{
+    $map = <span class="hljs-keyword">static</span>::buildMorphMapFromModels($map);
+
+    <span class="hljs-keyword">if</span> (is_array($map)) {
+        <span class="hljs-keyword">static</span>::$morphMap = $merge &amp;&amp; <span class="hljs-keyword">static</span>::$morphMap
+                        ? array_merge(<span class="hljs-keyword">static</span>::$morphMap, $map) : $map;
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">static</span>::$morphMap;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildMorphMapFromModels</span><span class="hljs-params">(array $models = null)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (is_null($models) || Arr::isAssoc($models)) {
+        <span class="hljs-keyword">return</span> $models;
+    }
+
+    <span class="hljs-keyword">return</span> array_combine(array_map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($model)</span> </span>{
+        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">new</span> $model)-&gt;getTable();
+    }, $models), $models);
+}
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;<code>buildMorphMapFromModels</code> &#x51FD;&#x6570;&#x5C06;&#x5B57;&#x7B26;&#x4E32; <code>App\Post</code> &#x8F6C;&#x4E3A; <code>model</code>&#xFF0C;&#x5E76;&#x5229;&#x7528; <code>array_combine</code> &#x8F6C;&#x4E3A;&#x952E;&#x3002;</p>
+<p><code>morphOne</code> &#x7684;&#x6A21;&#x578B;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="http://owql68l6p.bkt.clouddn.com/morphOne.png" alt=""></p>
+<p><code>morphMany</code> &#x7684;&#x6A21;&#x578B;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="http://owql68l6p.bkt.clouddn.com/morphMany.png" alt=""></p>
+<p>&#x9650;&#x5236;&#x6761;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addConstraints</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">static</span>::$constraints) {
+        <span class="hljs-keyword">parent</span>::addConstraints();
+
+        $this-&gt;query-&gt;where($this-&gt;morphType, $this-&gt;morphClass);
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addConstraints</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">static</span>::$constraints) {
+        $this-&gt;query-&gt;where($this-&gt;foreignKey, <span class="hljs-string">&apos;=&apos;</span>, $this-&gt;getParentKey());
+
+        $this-&gt;query-&gt;whereNotNull($this-&gt;foreignKey);
+    }
+}
+</code></pre>
+<p>&#x672C;&#x4F8B;&#x4E2D;&#x7684;&#x9650;&#x5236;&#x6761;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php">
+select comments where comment.commentable_id = post.id
+
+select comments where comment.commentable_id is not <span class="hljs-keyword">null</span>
+
+select comments where comment.commentable_type = <span class="hljs-string">&apos;App\Post&apos;</span>
+</code></pre>
+<h2 id="morphto-&#x53CD;&#x5411;&#x591A;&#x6001;&#x5173;&#x8054;">morphTo &#x53CD;&#x5411;&#x591A;&#x6001;&#x5173;&#x8054;</h2>
+<p>&#x548C;&#x4E00;&#x5BF9;&#x4E00;&#x3001;&#x4E00;&#x5BF9;&#x591A;&#x7684; <code>belongsTo</code> &#x76F8;&#x4F3C;&#xFF0C;&#x591A;&#x6001;&#x5173;&#x8054;&#x8FD8;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x53CD;&#x5411;&#x5173;&#x8054; <code>morphTo</code>:</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Comment</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span>
+</span>{
+    <span class="hljs-comment">/**
+     * &#x83B7;&#x5F97;&#x62E5;&#x6709;&#x6B64;&#x8BC4;&#x8BBA;&#x7684;&#x6A21;&#x578B;&#x3002;
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">commentable</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;morphTo();
+    }
+}
+</code></pre>
+<p>&#x4E0E; <code>belongsTo</code> &#x7C7B;&#x4F3C;&#xFF0C;<code>morphTo</code> &#x4E5F;&#x662F;&#x5229;&#x7528; <code>debug_backtrace</code> &#x83B7;&#x53D6;&#x5173;&#x8054;&#x540D;&#x79F0;&#x3002;&#x5F53;&#x524D;&#x5982;&#x679C;&#x6B63;&#x5904;&#x4E8E;&#x9884;&#x52A0;&#x8F7D;&#x72B6;&#x6001;&#x7684;&#x65F6;&#x5019;&#xFF0C;<code>Comment</code> &#x4E00;&#x822C;&#x8FD8;&#x6CA1;&#x6709;&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF0C;<code>$this-&gt;{$type}</code> &#x662F;&#x7A7A;&#x503C;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x9700;&#x8981;&#x53BB;&#x9664;&#x9884;&#x52A0;&#x8F7D;&#x6765;&#x521D;&#x59CB;&#x5316;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">morphTo</span><span class="hljs-params">($name = null, $type = null, $id = null)</span>
+</span>{
+    $name = $name ?: $this-&gt;guessBelongsToRelation();
+
+    <span class="hljs-keyword">list</span>($type, $id) = $this-&gt;getMorphs(
+        Str::snake($name), $type, $id
+    );
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">empty</span>($class = $this-&gt;{$type})
+                ? $this-&gt;morphEagerTo($name, $type, $id)
+                : $this-&gt;morphInstanceTo($class, $name, $type, $id);
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">morphEagerTo</span><span class="hljs-params">($name, $type, $id)</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MorphTo(
+        $this-&gt;newQuery()-&gt;setEagerLoads([]), $this, $id, <span class="hljs-keyword">null</span>, $type, $name
+    );
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">morphInstanceTo</span><span class="hljs-params">($target, $name, $type, $id)</span>
+</span>{
+    $instance = $this-&gt;newRelatedInstance(
+        <span class="hljs-keyword">static</span>::getActualClassNameForMorph($target)
+    );
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MorphTo(
+        $instance-&gt;newQuery(), $this, $id, $instance-&gt;getKeyName(), $type, $name
+    );
+}
+</code></pre>
+<p>&#x591A;&#x6001;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF; <code>morphType</code> &#x4EE3;&#x8868;&#x5C5E;&#x6027;&#x8868;&#x7684;&#x7C7B;&#x578B;&#x5217;&#xFF0C;<code>morphClass</code></p>
+<p><code>MorphTo</code> &#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x53EA;&#x6709;&#x4E00;&#x4E2A; <code>morphType</code>:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Builder $query, Model $parent, $foreignKey, $ownerKey, $type, $relation)</span>
+</span>{
+    $this-&gt;morphType = $type;
+
+    <span class="hljs-keyword">parent</span>::__construct($query, $parent, $foreignKey, $ownerKey, $relation);
+}
+</code></pre>
+<p><code>morphTo</code> &#x7684;&#x6A21;&#x578B;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="http://owql68l6p.bkt.clouddn.com/morphTo.png" alt=""></p>
+<p>&#x9650;&#x5236;&#x6761;&#x4EF6;&#x4E0E; <code>belongsTo</code> &#x76F8;&#x540C;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addConstraints</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">static</span>::$constraints) {
+        $table = $this-&gt;related-&gt;getTable();
+
+        $this-&gt;query-&gt;where($table.<span class="hljs-string">&apos;.&apos;</span>.$this-&gt;ownerKey, <span class="hljs-string">&apos;=&apos;</span>, $this-&gt;child-&gt;{$this-&gt;foreignKey});
+    }
+}
+</code></pre>
+<p>&#x672C;&#x4F8B;&#x4E2D;&#x7684;&#x9650;&#x5236;&#x6761;&#x4EF6;</p>
+<pre><code class="lang-php">
+select post where post.id = comments.commentable_id
+</code></pre>
+<h2 id="&#x591A;&#x5BF9;&#x591A;&#x591A;&#x6001;&#x5173;&#x8054;">&#x591A;&#x5BF9;&#x591A;&#x591A;&#x6001;&#x5173;&#x8054;</h2>
+<p>&#x9664;&#x4E86;&#x4F20;&#x7EDF;&#x7684;&#x591A;&#x6001;&#x5173;&#x8054;&#xFF0C;&#x60A8;&#x4E5F;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x300C;&#x591A;&#x5BF9;&#x591A;&#x300D;&#x7684;&#x591A;&#x6001;&#x5173;&#x8054;&#x3002;&#x4F8B;&#x5982;&#xFF0C;Post &#x6A21;&#x578B;&#x548C; Video &#x6A21;&#x578B;&#x53EF;&#x4EE5;&#x5171;&#x4EAB;&#x4E00;&#x4E2A;&#x591A;&#x6001;&#x5173;&#x8054;&#x81F3; Tag &#x6A21;&#x578B;&#x3002; &#x4F7F;&#x7528;&#x591A;&#x5BF9;&#x591A;&#x591A;&#x6001;&#x5173;&#x8054;&#x53EF;&#x4EE5;&#x8BA9;&#x60A8;&#x5728;&#x6587;&#x7AE0;&#x548C;&#x89C6;&#x9891;&#x4E2D;&#x5171;&#x4EAB;&#x552F;&#x4E00;&#x7684;&#x6807;&#x7B7E;&#x5217;&#x8868;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Post</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span>
+</span>{
+    <span class="hljs-comment">/**
+     * &#x83B7;&#x5F97;&#x6B64;&#x6587;&#x7AE0;&#x7684;&#x6240;&#x6709;&#x6807;&#x7B7E;&#x3002;
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tags</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;morphToMany(<span class="hljs-string">&apos;App\Tag&apos;</span>, <span class="hljs-string">&apos;taggable&apos;</span>);
+    }
+}
+</code></pre>
+<p>&#x591A;&#x5BF9;&#x591A;&#x591A;&#x6001;&#x5173;&#x8054;&#x4E0E;&#x591A;&#x5BF9;&#x591A;&#x5173;&#x8054;&#x7684;&#x4EE3;&#x7801;&#x7C7B;&#x4F3C;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x662F;&#x4E2D;&#x95F4;&#x8868;&#x4E0D;&#x518D;&#x662F;&#x4E24;&#x4E2A;&#x7236;&#x6A21;&#x578B;&#x7684;&#x86C7;&#x5F62;&#x53D8;&#x91CF;&#xFF0C;&#x800C;&#x662F; <code>name</code> &#x7684;&#x590D;&#x6570;&#xFF0C;&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F; <code>foreignPivotKey</code> &#x4EE3;&#x8868;&#x4E2D;&#x95F4;&#x8868;&#x4E2D;&#x5BF9;&#x5F53;&#x524D; <code>post</code> &#x6216;&#x8005; <code>video</code> &#x7684;&#x5916;&#x952E;&#xFF0C;&#x4E00;&#x822C;&#x4F1A;&#x653E;&#x5728; <code>taggable_id</code> &#x5B57;&#x6BB5;&#x4E2D;&#xFF0C;<code>relatedPivotKey</code> &#x4EE3;&#x8868;&#x4E2D;&#x95F4;&#x8868;&#x4E2D;&#x5BF9;&#x5C5E;&#x6027;&#x8868; <code>tag</code> &#x7684;&#x5916;&#x952E; <code>tag_id</code>:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">morphToMany</span><span class="hljs-params">($related, $name, $table = null, $foreignPivotKey = null,
+                                $relatedPivotKey = null, $parentKey = null,
+                                $relatedKey = null, $inverse = false)</span>
+</span>{
+    $caller = $this-&gt;guessBelongsToManyRelation();
+
+    $instance = $this-&gt;newRelatedInstance($related);
+
+    $foreignPivotKey = $foreignPivotKey ?: $name.<span class="hljs-string">&apos;_id&apos;</span>;
+
+    $relatedPivotKey = $relatedPivotKey ?: $instance-&gt;getForeignKey();
+
+    $table = $table ?: Str::plural($name);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MorphToMany(
+        $instance-&gt;newQuery(), $this, $name, $table,
+        $foreignPivotKey, $relatedPivotKey, $parentKey ?: $this-&gt;getKeyName(),
+        $relatedKey ?: $instance-&gt;getKeyName(), $caller, $inverse
+    );
+}
+</code></pre>
+<p><code>MorphToMany</code> &#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4F9D;&#x7136;&#x6709; <code>morphType</code> &#x4E0E; <code>morphClass</code>&#xFF0C;<code>morphType</code> &#x6807;&#x8BC6;&#x7740;&#x5F53;&#x524D;&#x4E2D;&#x95F4;&#x8868;&#x7684;&#x8BB0;&#x5F55;&#x7C7B;&#x578B;&#x662F; <code>Post</code>&#xFF0C;&#x8FD8;&#x662F; <code>videos</code>&#xFF0C;<code>morphClass</code> &#x7684;&#x503C;&#x9ED8;&#x8BA4;&#x503C;&#x662F; <code>Post</code> &#x7C7B;&#x6216;&#x8005; <code>videos</code> &#x7684;&#x5168;&#x540D;&#xFF0C;&#x6B63;&#x5411;&#x5173;&#x8054;&#x7684;&#x65F6;&#x5019;&#xFF0C;<code>inverse</code> &#x662F; <code>false</code>&#xFF0C;&#x53CD;&#x5411;&#x5173;&#x8054;&#x7684;&#x65F6;&#x5019;, <code>inverse</code> &#x662F; <code>true</code>&#x3002;</p>
+<pre><code class="lang-php"> <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Builder $query, Model $parent, $name, $table, $foreignPivotKey,
+                                $relatedPivotKey, $parentKey, $relatedKey, $relationName = null, $inverse = false)</span>
+</span>{
+    $this-&gt;inverse = $inverse;
+    $this-&gt;morphType = $name.<span class="hljs-string">&apos;_type&apos;</span>;
+    $this-&gt;morphClass = $inverse ? $query-&gt;getModel()-&gt;getMorphClass() : $parent-&gt;getMorphClass();
+
+    <span class="hljs-keyword">parent</span>::__construct(
+        $query, $parent, $table, $foreignPivotKey,
+        $relatedPivotKey, $parentKey, $relatedKey, $relationName
+    );
+}
+</code></pre>
+<p>&#x6B63;&#x5411;&#x5173;&#x8054;&#x7684;&#x65F6;&#x5019;&#xFF0C;<code>parent</code> &#x7C7B;&#x662F; <code>Post</code> &#x7C7B;&#x6216;&#x8005; <code>videos</code> &#x7C7B;&#xFF0C;&#x53CD;&#x5411;&#x5173;&#x8054;&#x7684;&#x65F6;&#x5019; <code>related</code> &#x662F; <code>Post</code> &#x7C7B;&#x6216;&#x8005; <code>videos</code> &#x7C7B;&#x3002;</p>
+<p>&#x9650;&#x5236;&#x6761;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addWhereConstraints</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">parent</span>::addWhereConstraints();
+
+    $this-&gt;query-&gt;where($this-&gt;table.<span class="hljs-string">&apos;.&apos;</span>.$this-&gt;morphType, $this-&gt;morphClass);
+
+    <span class="hljs-keyword">return</span> $this;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addWhereConstraints</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;query-&gt;where(
+        $this-&gt;getQualifiedForeignPivotKeyName(), <span class="hljs-string">&apos;=&apos;</span>, $this-&gt;parent-&gt;{$this-&gt;parentKey}
+    );
+
+    <span class="hljs-keyword">return</span> $this;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getQualifiedForeignPivotKeyName</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;table.<span class="hljs-string">&apos;.&apos;</span>.$this-&gt;foreignPivotKey;
+}
+</code></pre>
+<p>&#x5B98;&#x7F51;&#x4E2D;&#x4F8B;&#x5B50;&#x9650;&#x5236;&#x6761;&#x4EF6;&#x8F6C;&#x5316;&#x4E3A; <code>sql</code> (&#x5047;&#x8BBE; <code>Post</code> &#x7684;&#x4E3B;&#x952E;&#x4E3A; 1) &#xFF1A;</p>
+<pre><code class="lang-php">where taggables.taggable_id = <span class="hljs-number">1</span>;
+
+where taggables.taggable_type = <span class="hljs-string">&apos;App\Post&apos;</span>
+</code></pre>
+<p><code>morphToMany</code> &#x7684;&#x6A21;&#x578B;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="http://owql68l6p.bkt.clouddn.com/morphToMany.png" alt=""></p>
+<p>&#x9650;&#x5236;&#x6761;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addConstraints</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;performJoin();
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">static</span>::$constraints) {
+        $this-&gt;addWhereConstraints();
+    }
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">performJoin</span><span class="hljs-params">($query = null)</span>
+</span>{
+    $query = $query ?: $this-&gt;query;
+
+    $baseTable = $this-&gt;related-&gt;getTable();
+
+    $key = $baseTable.<span class="hljs-string">&apos;.&apos;</span>.$this-&gt;relatedKey;
+
+    $query-&gt;join($this-&gt;table, $key, <span class="hljs-string">&apos;=&apos;</span>, $this-&gt;getQualifiedRelatedPivotKeyName());
+
+    <span class="hljs-keyword">return</span> $this;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addWhereConstraints</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">parent</span>::addWhereConstraints();
+
+    $this-&gt;query-&gt;where($this-&gt;table.<span class="hljs-string">&apos;.&apos;</span>.$this-&gt;morphType, $this-&gt;morphClass);
+
+    <span class="hljs-keyword">return</span> $this;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addWhereConstraints</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;query-&gt;where(
+        $this-&gt;getQualifiedForeignPivotKeyName(), <span class="hljs-string">&apos;=&apos;</span>, $this-&gt;parent-&gt;{$this-&gt;parentKey}
+    );
+
+    <span class="hljs-keyword">return</span> $this;
+}
+</code></pre>
+<p>&#x672C;&#x4F8B;&#x4E2D;&#x7684;&#x9650;&#x5236;&#x6761;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php">select tag join tagable on tagable.tag_id = tag.id
+
+select tags where tagable.tagables_id = post.id
+
+select tags where tagable.tagables_type = <span class="hljs-string">&apos;App\Tag&apos;</span>
+</code></pre>
+<h2 id="&#x591A;&#x5BF9;&#x591A;&#x591A;&#x6001;&#x53CD;&#x5411;&#x5173;&#x8054;">&#x591A;&#x5BF9;&#x591A;&#x591A;&#x6001;&#x53CD;&#x5411;&#x5173;&#x8054;</h2>
+<p>&#x5B98;&#x65B9;&#x6587;&#x6863;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Tag</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span>
+</span>{
+    <span class="hljs-comment">/**
+     * &#x83B7;&#x5F97;&#x6B64;&#x6807;&#x7B7E;&#x4E0B;&#x6240;&#x6709;&#x7684;&#x6587;&#x7AE0;&#x3002;
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">posts</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;morphedByMany(<span class="hljs-string">&apos;App\Post&apos;</span>, <span class="hljs-string">&apos;taggable&apos;</span>);
+    }
+}
+</code></pre>
+<p>&#x4E0E;&#x6B63;&#x5411;&#x5173;&#x8054;&#x76F8;&#x53CD;&#xFF0C;<code>relatedPivotKey</code> &#x4EE3;&#x8868;&#x4E2D;&#x95F4;&#x8868;&#x4E2D;&#x5BF9; <code>related</code> &#x8868; <code>post</code> &#x6216;&#x8005; <code>video</code> &#x7684;&#x5916;&#x952E;&#xFF0C;&#x4E00;&#x822C;&#x4F1A;&#x653E;&#x5728; <code>taggable_id</code> &#x5B57;&#x6BB5;&#x4E2D;&#xFF0C;<code>foreignPivotKey</code> &#x4EE3;&#x8868;&#x4E2D;&#x95F4;&#x8868;&#x4E2D;&#x5BF9;&#x5F53;&#x524D;&#x5C5E;&#x6027;&#x8868; <code>tag</code> &#x7684;&#x5916;&#x952E; <code>tag_id</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">morphedByMany</span><span class="hljs-params">($related, $name, $table = null, $foreignPivotKey = null,
+                                  $relatedPivotKey = null, $parentKey = null, $relatedKey = null)</span>
+</span>{
+    $foreignPivotKey = $foreignPivotKey ?: $this-&gt;getForeignKey();
+
+    $relatedPivotKey = $relatedPivotKey ?: $name.<span class="hljs-string">&apos;_id&apos;</span>;
+
+    <span class="hljs-keyword">return</span> $this-&gt;morphToMany(
+        $related, $name, $table, $foreignPivotKey,
+        $relatedPivotKey, $parentKey, $relatedKey, <span class="hljs-keyword">true</span>
+    );
+}
+</code></pre>
+<p>&#x5B98;&#x7F51;&#x4E2D;&#x4F8B;&#x5B50;&#x9650;&#x5236;&#x6761;&#x4EF6;&#x8F6C;&#x5316;&#x4E3A; <code>sql</code> (&#x5047;&#x8BBE; <code>Tag</code> &#x7684;&#x4E3B;&#x952E;&#x4E3A; 1) &#xFF1A;</p>
+<pre><code class="lang-php">where taggables.tag_id = <span class="hljs-number">1</span>;
+
+where taggables.taggable_type = <span class="hljs-string">&apos;App\Post&apos;</span>
+</code></pre>
+<p><code>morphedByMany</code> &#x7684;&#x6A21;&#x578B;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="http://owql68l6p.bkt.clouddn.com/morphedByMany.png" alt=""></p>
+<p>&#x9650;&#x5236;&#x6761;&#x4EF6;&#x4E0E; <code>morphToMany</code> &#x4E00;&#x81F4;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addConstraints</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;performJoin();
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">static</span>::$constraints) {
+        $this-&gt;addWhereConstraints();
+    }
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">performJoin</span><span class="hljs-params">($query = null)</span>
+</span>{
+    $query = $query ?: $this-&gt;query;
+
+    $baseTable = $this-&gt;related-&gt;getTable();
+
+    $key = $baseTable.<span class="hljs-string">&apos;.&apos;</span>.$this-&gt;relatedKey;
+
+    $query-&gt;join($this-&gt;table, $key, <span class="hljs-string">&apos;=&apos;</span>, $this-&gt;getQualifiedRelatedPivotKeyName());
+
+    <span class="hljs-keyword">return</span> $this;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addWhereConstraints</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">parent</span>::addWhereConstraints();
+
+    $this-&gt;query-&gt;where($this-&gt;table.<span class="hljs-string">&apos;.&apos;</span>.$this-&gt;morphType, $this-&gt;morphClass);
+
+    <span class="hljs-keyword">return</span> $this;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addWhereConstraints</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;query-&gt;where(
+        $this-&gt;getQualifiedForeignPivotKeyName(), <span class="hljs-string">&apos;=&apos;</span>, $this-&gt;parent-&gt;{$this-&gt;parentKey}
+    );
+
+    <span class="hljs-keyword">return</span> $this;
+}
+</code></pre>
+<p>&#x672C;&#x4F8B;&#x4E2D;&#x7684;&#x9650;&#x5236;&#x6761;&#x4EF6;</p>
+<pre><code class="lang-php">select post join post on post.id = tagables.tagable_id
+
+select post where tagables.tag_id = tag.id
+
+select post where tagables.tagable_type = <span class="hljs-string">&apos;App\Post&apos;</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Laravel Database——Eloquent Model 源码分析（下）.html" class="navigation navigation-prev " aria-label="Previous page: Laravel Database——Eloquent Model 源码分析（下）">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Laravel Database——Eloquent Model 模型关系加载与查询.html" class="navigation navigation-next " aria-label="Next page: Laravel Database——Eloquent Model 模型关系加载与查询">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Laravel Database——Eloquent Model 关联源码分析","level":"1.10.9","depth":2,"next":{"title":"Laravel Database——Eloquent Model 模型关系加载与查询","level":"1.10.10","depth":2,"path":"Laravel Database——Eloquent Model 模型关系加载与查询.md","ref":"Laravel Database——Eloquent Model 模型关系加载与查询.md","articles":[]},"previous":{"title":"Laravel Database——Eloquent Model 源码分析（下）","level":"1.10.8","depth":2,"path":"Laravel Database——Eloquent Model 源码分析（下）.md","ref":"Laravel Database——Eloquent Model 源码分析（下）.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Laravel Database——Eloquent Model 关联源码分析.md","mtime":"2019-01-15T10:29:00.300Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T10:51:52.544Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

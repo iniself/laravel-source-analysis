@@ -1,0 +1,1711 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Laravel Database——Eloquent Model 源码分析（下） · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Laravel Database——Eloquent Model 关联源码分析.html" />
+    
+    
+    <link rel="prev" href="Laravel Database——Eloquent Model 源码分析%28上%29.md" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    PHP Composer 自动加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="PHP Composer——自动加载原理.html">
+            
+                <a href="PHP Composer——自动加载原理.html">
+            
+                    
+                    PHP Composer——自动加载原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="PHP Composer—— 初始化源码分析.html">
+            
+                <a href="PHP Composer—— 初始化源码分析.html">
+            
+                    
+                    PHP Composer—— 初始化源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="PHP Composer-——-注册与运行源码分析.html">
+            
+                <a href="PHP Composer-——-注册与运行源码分析.html">
+            
+                    
+                    PHP Composer-——-注册与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Laravel Facade 门面
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="Laravel Facade——Facade 门面源码分析.html">
+            
+                <a href="Laravel Facade——Facade 门面源码分析.html">
+            
+                    
+                    Laravel Facade——Facade 门面源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Laravel Ioc 容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Laravel Container——IoC 服务容器.html">
+            
+                <a href="Laravel Container——IoC 服务容器.html">
+            
+                    
+                    Laravel Container——IoC 服务容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器绑定)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器解析)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="Laravel Container——服务容器的细节特性.html">
+            
+                <a href="Laravel Container——服务容器的细节特性.html">
+            
+                    
+                    Laravel Container——服务容器的细节特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Laravel Route 路由
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Laravel HTTP——路由.html">
+            
+                <a href="Laravel HTTP——路由.html">
+            
+                    
+                    Laravel HTTP——路由
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="Laravel HTTP——路由加载源码分析.html">
+            
+                <a href="Laravel HTTP——路由加载源码分析.html">
+            
+                    
+                    Laravel HTTP——路由加载源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                <a href="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                    
+                    Laravel HTTP——Pipeline中间件处理源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="Laravel HTTP——路由的正则编译.html">
+            
+                <a href="Laravel HTTP——路由的正则编译.html">
+            
+                    
+                    Laravel HTTP——路由的正则编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                <a href="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                    
+                    Laravel HTTP——路由的匹配与参数绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="Laravel HTTP——路由中间件源码分析.html">
+            
+                <a href="Laravel HTTP——路由中间件源码分析.html">
+            
+                    
+                    Laravel HTTP——路由中间件源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                <a href="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                    
+                    Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                <a href="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                    
+                    Laravel HTTP——控制器方法的参数构建与运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                <a href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP—— RESTFul 风格路由的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                <a href="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP——重定向的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Laravel ENV 环境变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                <a href="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                    
+                    Laravel ENV—— 环境变量的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Laravel Config 配置文件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                <a href="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                    
+                    Laravel Config—— 配置文件的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Laravel Exceptions 异常处理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="Laravel Exceptions——异常与错误处理.html">
+            
+                <a href="Laravel Exceptions——异常与错误处理.html">
+            
+                    
+                    Laravel Exceptions——异常与错误处理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Laravel Providers 服务提供者
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                <a href="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                    
+                    Laravel Providers——服务提供者的注册与启动源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Laravel Database 数据库
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="Laravel Database——数据库服务的启动与连接.html">
+            
+                <a href="Laravel Database——数据库服务的启动与连接.html">
+            
+                    
+                    Laravel Database——数据库服务的启动与连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="Laravel Database——数据库的 CRUD 操作.html">
+            
+                <a href="Laravel Database——数据库的 CRUD 操作.html">
+            
+                    
+                    Laravel Database——数据库的 CRUD 操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="Laravel Database——查询构造器与语法编译器源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="Laravel Database——查询构造器与语法编译器源码分析%28中%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(中)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="Laravel Database——查询构造器与语法编译器源码分析%28下%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="Laravel Database——分页原理与源码分析.html">
+            
+                <a href="Laravel Database——分页原理与源码分析.html">
+            
+                    
+                    Laravel Database——分页原理与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Laravel Database——Eloquent Model 源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.10.8" data-path="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                <a href="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                <a href="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                    
+                    Laravel Database——Eloquent Model 关联源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                <a href="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                    
+                    Laravel Database——Eloquent Model 模型关系加载与查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                <a href="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                    
+                    Laravel Database——Eloquent Model 更新关联模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Laravel Session
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="Laravel Session——session 的启动与运行源码分析.html">
+            
+                <a href="Laravel Session——session 的启动与运行源码分析.html">
+            
+                    
+                    Laravel Session——session 的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    Laravel Event 事件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                <a href="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                    
+                    Laravel Event——事件系统的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    Laravel Queue 队列
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务与分发源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务处理器源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    Laravel 广播系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="Laravel Broadcast——广播系统源码剖析.html">
+            
+                <a href="Laravel Broadcast——广播系统源码剖析.html">
+            
+                    
+                    Laravel Broadcast——广播系统源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    Laravel Passport
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Laravel Database——Eloquent Model 源码分析（下）</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x83B7;&#x53D6;&#x6A21;&#x578B;">&#x83B7;&#x53D6;&#x6A21;&#x578B;</h2>
+<h3 id="get-&#x51FD;&#x6570;">get &#x51FD;&#x6570;</h3>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span><span class="hljs-params">($columns = [<span class="hljs-string">&apos;*&apos;</span>])</span>
+</span>{
+    $builder = $this-&gt;applyScopes();
+
+    <span class="hljs-keyword">if</span> (count($models = $builder-&gt;getModels($columns)) &gt; <span class="hljs-number">0</span>) {
+        $models = $builder-&gt;eagerLoadRelations($models);
+    }
+
+    <span class="hljs-keyword">return</span> $builder-&gt;getModel()-&gt;newCollection($models);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getModels</span><span class="hljs-params">($columns = [<span class="hljs-string">&apos;*&apos;</span>])</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;model-&gt;hydrate(
+        $this-&gt;query-&gt;get($columns)-&gt;all()
+    )-&gt;all();
+}
+</code></pre>
+<p><code>get</code> &#x51FD;&#x6570;&#x4F1A;&#x5C06; <code>QueryBuilder</code> &#x6240;&#x83B7;&#x53D6;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x4E00;&#x6B65;&#x5305;&#x88C5; <code>hydrate</code>&#x3002;<code>hydrate</code> &#x51FD;&#x6570;&#x4F1A;&#x5C06;&#x6570;&#x636E;&#x5E93;&#x53D6;&#x56DE;&#x6765;&#x7684;&#x6570;&#x636E;&#x6253;&#x5305;&#x6210;&#x6570;&#x636E;&#x5E93;&#x6A21;&#x578B;&#x5BF9;&#x8C61; <code>Eloquent Model</code>&#xFF0C;&#x5982;&#x679C;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5230;&#x6570;&#x636E;&#xFF0C;&#x8FD8;&#x4F1A;&#x5229;&#x7528;&#x51FD;&#x6570; <code>eagerLoadRelations</code> &#x6765;&#x9884;&#x52A0;&#x8F7D;&#x5173;&#x7CFB;&#x6A21;&#x578B;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hydrate</span><span class="hljs-params">(array $items)</span>
+</span>{
+    $instance = $this-&gt;newModelInstance();
+
+    <span class="hljs-keyword">return</span> $instance-&gt;newCollection(array_map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($item)</span> <span class="hljs-title">use</span> <span class="hljs-params">($instance)</span> </span>{
+        <span class="hljs-keyword">return</span> $instance-&gt;newFromBuilder($item);
+    }, $items));
+}
+</code></pre>
+<p><code>newModelInstance</code> &#x51FD;&#x6570;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6570;&#x636E;&#x5E93;&#x6A21;&#x578B;&#x5BF9;&#x8C61;&#xFF0C;&#x91CD;&#x8981;&#x7684;&#x662F;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E3A;&#x65B0;&#x7684;&#x6570;&#x636E;&#x5E93;&#x6A21;&#x578B;&#x5BF9;&#x8C61;&#x8D4B;&#x4E88;&#x4E86; <code>connection</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">newModelInstance</span><span class="hljs-params">($attributes = [])</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;model-&gt;newInstance($attributes)-&gt;setConnection(
+        $this-&gt;query-&gt;getConnection()-&gt;getName()
+    );
+}
+</code></pre>
+<p><code>newFromBuilder</code> &#x51FD;&#x6570;&#x4F1A;&#x5C06;&#x6240;&#x6709;&#x6570;&#x636E;&#x5E93;&#x6570;&#x636E;&#x5B58;&#x5165;&#x53E6;&#x4E00;&#x4E2A;&#x65B0;&#x7684; <code>Eloquent Model</code> &#x7684; <code>attributes</code> &#x4E2D;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">newFromBuilder</span><span class="hljs-params">($attributes = [], $connection = null)</span>
+</span>{
+    $model = $this-&gt;newInstance([], <span class="hljs-keyword">true</span>);
+
+    $model-&gt;setRawAttributes((<span class="hljs-keyword">array</span>) $attributes, <span class="hljs-keyword">true</span>);
+
+    $model-&gt;setConnection($connection ?: $this-&gt;getConnectionName());
+
+    $model-&gt;fireModelEvent(<span class="hljs-string">&apos;retrieved&apos;</span>, <span class="hljs-keyword">false</span>);
+
+    <span class="hljs-keyword">return</span> $model;
+}
+</code></pre>
+<p>newInstance &#x51FD;&#x6570;&#x4E13;&#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5BF9;&#x8C61;&#x6A21;&#x578B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">newInstance</span><span class="hljs-params">($attributes = [], $exists = false)</span>
+</span>{
+    $model = <span class="hljs-keyword">new</span> <span class="hljs-keyword">static</span>((<span class="hljs-keyword">array</span>) $attributes);
+
+    $model-&gt;exists = $exists;
+
+    $model-&gt;setConnection(
+        $this-&gt;getConnectionName()
+    );
+
+    <span class="hljs-keyword">return</span> $model;
+}
+</code></pre>
+<p>&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F; <code>newInstance</code> &#x5C06; <code>exist</code> &#x8BBE;&#x7F6E;&#x4E3A; <code>true</code>&#xFF0C;&#x610F;&#x5473;&#x7740;&#x5F53;&#x524D;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x6A21;&#x578B;&#x5BF9;&#x8C61;&#x662F;&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x83B7;&#x53D6;&#x800C;&#x6765;&#xFF0C;&#x5E76;&#x975E;&#x662F;&#x624B;&#x52A8;&#x65B0;&#x5EFA;&#x7684;&#xFF0C;&#x8FD9;&#x4E2A; <code>exist</code> &#x4E3A;&#x771F;&#xFF0C;&#x6211;&#x4EEC;&#x624D;&#x80FD;&#x5BF9;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x5BF9;&#x8C61;&#x8FDB;&#x884C; <code>update</code>&#x3002;</p>
+<p><code>setRawAttributes</code> &#x51FD;&#x6570;&#x4E3A;&#x65B0;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5BF9;&#x8C61;&#x8D4B;&#x4E88;&#x5C5E;&#x6027;&#x503C;&#xFF0C;&#x5E76;&#x4E14;&#x8FDB;&#x884C; <code>sync</code>&#xFF0C;&#x6807;&#x5FD7;&#x7740;&#x5BF9;&#x8C61;&#x7684;&#x539F;&#x59CB;&#x72B6;&#x6001;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setRawAttributes</span><span class="hljs-params">(array $attributes, $sync = false)</span>
+</span>{
+    $this-&gt;attributes = $attributes;
+
+    <span class="hljs-keyword">if</span> ($sync) {
+        $this-&gt;syncOriginal();
+    }
+
+    <span class="hljs-keyword">return</span> $this;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">syncOriginal</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;original = $this-&gt;attributes;
+
+    <span class="hljs-keyword">return</span> $this;
+}
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x539F;&#x59CB;&#x72B6;&#x6001;&#x7684;&#x8BB0;&#x5F55;&#x5341;&#x5206;&#x91CD;&#x8981;&#xFF0C;&#x539F;&#x56E0;&#x662F; <code>save</code> &#x51FD;&#x6570;&#x5C31;&#x662F;&#x5229;&#x7528;&#x539F;&#x59CB;&#x503C; <code>original</code> &#x4E0E;&#x5C5E;&#x6027;&#x503C; <code>attributes</code> &#x7684;&#x5DEE;&#x5F02;&#x6765;&#x51B3;&#x5B9A;&#x66F4;&#x65B0;&#x7684;&#x5B57;&#x6BB5;&#x3002;</p>
+<h3 id="find-&#x51FD;&#x6570;">find &#x51FD;&#x6570;</h3>
+<p><code>find</code> &#x51FD;&#x6570;&#x7528;&#x4E8E;&#x5229;&#x7528;&#x4E3B;&#x952E; <code>id</code> &#x6765;&#x67E5;&#x8BE2;&#x6570;&#x636E;&#xFF0C;<code>find</code> &#x51FD;&#x6570;&#x4E5F;&#x53EF;&#x4EE5;&#x4F20;&#x5165;&#x6570;&#x7EC4;&#xFF0C;&#x67E5;&#x8BE2;&#x591A;&#x4E2A;&#x6570;&#x636E;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">find</span><span class="hljs-params">($id, $columns = [<span class="hljs-string">&apos;*&apos;</span>])</span>
+</span>{
+    <span class="hljs-keyword">if</span> (is_array($id) || $id <span class="hljs-keyword">instanceof</span> Arrayable) {
+        <span class="hljs-keyword">return</span> $this-&gt;findMany($id, $columns);
+    }
+
+    <span class="hljs-keyword">return</span> $this-&gt;whereKey($id)-&gt;first($columns);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findMany</span><span class="hljs-params">($ids, $columns = [<span class="hljs-string">&apos;*&apos;</span>])</span>
+</span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">empty</span>($ids)) {
+        <span class="hljs-keyword">return</span> $this-&gt;model-&gt;newCollection();
+    }
+
+    <span class="hljs-keyword">return</span> $this-&gt;whereKey($ids)-&gt;get($columns);
+}
+</code></pre>
+<h3 id="findorfail">findOrFail</h3>
+<p><code>laravel</code> &#x8FD8;&#x63D0;&#x4F9B; <code>findOrFail</code> &#x51FD;&#x6570;&#xFF0C;&#x4E00;&#x822C;&#x7528;&#x4E8E; <code>controller</code>&#xFF0C;&#x5728;&#x672A;&#x627E;&#x5230;&#x8BB0;&#x5F55;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findOrFail</span><span class="hljs-params">($id, $columns = [<span class="hljs-string">&apos;*&apos;</span>])</span>
+</span>{
+    $result = $this-&gt;find($id, $columns);
+
+    <span class="hljs-keyword">if</span> (is_array($id)) {
+        <span class="hljs-keyword">if</span> (count($result) == count(array_unique($id))) {
+            <span class="hljs-keyword">return</span> $result;
+        }
+    } <span class="hljs-keyword">elseif</span> (! is_null($result)) {
+        <span class="hljs-keyword">return</span> $result;
+    }
+
+    <span class="hljs-keyword">throw</span> (<span class="hljs-keyword">new</span> ModelNotFoundException)-&gt;setModel(
+        get_class($this-&gt;model), $id
+    );
+}
+</code></pre>
+<h3 id="&#x5176;&#x4ED6;&#x67E5;&#x8BE2;&#x4E0E;&#x6570;&#x636E;&#x83B7;&#x53D6;&#x65B9;&#x6CD5;">&#x5176;&#x4ED6;&#x67E5;&#x8BE2;&#x4E0E;&#x6570;&#x636E;&#x83B7;&#x53D6;&#x65B9;&#x6CD5;</h3>
+<p>&#x6240;&#x7528; <code>Query Builder</code> &#x652F;&#x6301;&#x7684;&#x67E5;&#x8BE2;&#x65B9;&#x6CD5;&#xFF0C;&#x4F8B;&#x5982; <code>select</code>&#x3001;<code>selectSub</code>&#x3001;<code>whereDate</code>&#x3001;<code>whereBetween</code> &#x7B49;&#x7B49;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5BF9; <code>Eloquent Model</code> &#x76F4;&#x63A5;&#x4F7F;&#x7528;&#xFF0C;&#x7A0B;&#x5E8F;&#x4F1A;&#x901A;&#x8FC7;&#x9B54;&#x672F;&#x65B9;&#x6CD5;&#x8C03;&#x7528; <code>Query Builder</code> &#x7684;&#x76F8;&#x5173;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> $passthru = [
+    <span class="hljs-string">&apos;insert&apos;</span>, <span class="hljs-string">&apos;insertGetId&apos;</span>, <span class="hljs-string">&apos;getBindings&apos;</span>, <span class="hljs-string">&apos;toSql&apos;</span>,
+    <span class="hljs-string">&apos;exists&apos;</span>, <span class="hljs-string">&apos;count&apos;</span>, <span class="hljs-string">&apos;min&apos;</span>, <span class="hljs-string">&apos;max&apos;</span>, <span class="hljs-string">&apos;avg&apos;</span>, <span class="hljs-string">&apos;sum&apos;</span>, <span class="hljs-string">&apos;getConnection&apos;</span>,
+];
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__call</span><span class="hljs-params">($method, $parameters)</span>
+</span>{
+    ...
+
+    <span class="hljs-keyword">if</span> (in_array($method, $this-&gt;passthru)) {
+        <span class="hljs-keyword">return</span> $this-&gt;toBase()-&gt;{$method}(...$parameters);
+    }
+
+    $this-&gt;query-&gt;{$method}(...$parameters);
+
+    <span class="hljs-keyword">return</span> $this;
+}
+</code></pre>
+<p><code>passthru</code> &#x4E2D;&#x7684;&#x5404;&#x4E2A;&#x51FD;&#x6570;&#x5728;&#x8C03;&#x7528;&#x524D;&#x9700;&#x8981;&#x52A0;&#x8F7D;&#x67E5;&#x8BE2;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x539F;&#x56E0;&#x662F;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x57FA;&#x672C;&#x4E0A;&#x662F; <code>aggregate</code> &#x7684;&#xFF0C;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x641C;&#x7D22;&#x6761;&#x4EF6;&#x624D;&#x80FD;&#x66F4;&#x52A0;&#x7B26;&#x5408;&#x9884;&#x671F;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toBase</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;applyScopes()-&gt;getQuery();
+}
+</code></pre>
+<h2 id="&#x6DFB;&#x52A0;&#x548C;&#x66F4;&#x65B0;&#x6A21;&#x578B;">&#x6DFB;&#x52A0;&#x548C;&#x66F4;&#x65B0;&#x6A21;&#x578B;</h2>
+<h3 id="save-&#x51FD;&#x6570;">save &#x51FD;&#x6570;</h3>
+<p>&#x5728; <code>Eloquent Model</code> &#x4E2D;&#xFF0C;&#x6DFB;&#x52A0;&#x4E0E;&#x66F4;&#x65B0;&#x6A21;&#x578B;&#x53EF;&#x4EE5;&#x7EDF;&#x4E00;&#x7528; <code>save</code> &#x51FD;&#x6570;&#x3002;&#x5728;&#x6DFB;&#x52A0;&#x6A21;&#x578B;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x4E8B;&#x5148;&#x4E3A; <code>model</code> &#x5C5E;&#x6027;&#x8D4B;&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x5355;&#x4E2A;&#x624B;&#x52A8;&#x8D4B;&#x503C;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x6279;&#x91CF;&#x8D4B;&#x503C;&#x3002;&#x5728;&#x66F4;&#x65B0;&#x6A21;&#x578B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x4E8B;&#x5148;&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x53D6;&#x51FA;&#x6A21;&#x578B;&#xFF0C;&#x7136;&#x540E;&#x4FEE;&#x6539;&#x6A21;&#x578B;&#x5C5E;&#x6027;&#xFF0C;&#x6700;&#x540E;&#x6267;&#x884C; <code>save</code> &#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x3002;&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF1A;<a href="https://d.laravel-china.org/docs/5.5/eloquent#inserting-and-updating-models" target="_blank">&#x6DFB;&#x52A0;&#x548C;&#x66F4;&#x65B0;&#x6A21;&#x578B;</a> </p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">save</span><span class="hljs-params">(array $options = [])</span>
+</span>{
+    $query = $this-&gt;newQueryWithoutScopes();
+
+    <span class="hljs-keyword">if</span> ($this-&gt;fireModelEvent(<span class="hljs-string">&apos;saving&apos;</span>) === <span class="hljs-keyword">false</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+
+    <span class="hljs-keyword">if</span> ($this-&gt;exists) {
+        $saved = $this-&gt;isDirty() ?
+                    $this-&gt;performUpdate($query) : <span class="hljs-keyword">true</span>;
+    }
+
+    <span class="hljs-keyword">else</span> {
+        $saved = $this-&gt;performInsert($query);
+
+        <span class="hljs-keyword">if</span> (! $this-&gt;getConnectionName() &amp;&amp;
+            $connection = $query-&gt;getConnection()) {
+            $this-&gt;setConnection($connection-&gt;getName());
+        }
+    }
+
+    <span class="hljs-keyword">if</span> ($saved) {
+        $this-&gt;finishSave($options);
+    }
+
+    <span class="hljs-keyword">return</span> $saved;
+}
+</code></pre>
+<p><code>save</code> &#x51FD;&#x6570;&#x4E0D;&#x4F1A;&#x52A0;&#x8F7D;&#x5168;&#x5C40;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x539F;&#x56E0;&#x662F;&#x51E1;&#x662F;&#x5229;&#x7528; <code>save</code> &#x51FD;&#x6570;&#x8FDB;&#x884C;&#x7684;&#x63D2;&#x5165;&#x6216;&#x8005;&#x66F4;&#x65B0;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x4E0D;&#x4F1A;&#x5B58;&#x5728; <code>where</code> &#x6761;&#x4EF6;&#xFF0C;&#x4EC5;&#x4EC5;&#x5229;&#x7528;&#x81EA;&#x8EAB;&#x7684;&#x4E3B;&#x952E;&#x5C5E;&#x6027;&#x6765;&#x8FDB;&#x884C;&#x66F4;&#x65B0;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981; <code>where</code> &#x6761;&#x4EF6;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>query\builder</code> &#x7684; <code>update</code> &#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x4E0B;&#x9762;&#x4F1A;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">newQueryWithoutScopes</span><span class="hljs-params">()</span>
+</span>{
+    $builder = $this-&gt;newEloquentBuilder($this-&gt;newBaseQueryBuilder());
+
+    <span class="hljs-keyword">return</span> $builder-&gt;setModel($this)
+                -&gt;with($this-&gt;with)
+                -&gt;withCount($this-&gt;withCount);
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">newBaseQueryBuilder</span><span class="hljs-params">()</span>
+</span>{
+    $connection = $this-&gt;getConnection();
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> QueryBuilder(
+        $connection, $connection-&gt;getQueryGrammar(), $connection-&gt;getPostProcessor()
+    );
+}
+</code></pre>
+<p>newQueryWithoutScopes &#x51FD;&#x6570;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5176;&#x4ED6;&#x6761;&#x4EF6;&#x7684; <code>Eloquent\builder</code> &#x7C7B;&#xFF0C;&#x800C; <code>Eloquent\builder</code> &#x7C7B;&#x9700;&#x8981; <code>Query\builder</code> &#x7C7B;&#x4F5C;&#x4E3A;&#x5E95;&#x5C42;&#x67E5;&#x8BE2;&#x6784;&#x9020;&#x5668;&#x3002;</p>
+<h3 id="performupdate-&#x51FD;&#x6570;">performUpdate &#x51FD;&#x6570;</h3>
+<p>&#x5982;&#x679C;&#x5F53;&#x524D;&#x7684;&#x6570;&#x636E;&#x5E93;&#x6A21;&#x578B;&#x5BF9;&#x8C61;&#x662F;&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x53D6;&#x51FA;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x76F4;&#x63A5;&#x6216;&#x95F4;&#x63A5;&#x7684;&#x8C03;&#x7528; <code>get()</code> &#x51FD;&#x6570;&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x83B7;&#x53D6;&#x5230;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5BF9;&#x8C61;&#xFF0C;&#x90A3;&#x4E48;&#x5176; <code>exists</code> &#x5FC5;&#x7136;&#x662F; <code>true</code></p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isDirty</span><span class="hljs-params">($attributes = null)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;hasChanges(
+        $this-&gt;getDirty(), is_array($attributes) ? $attributes : func_get_args()
+    );
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDirty</span><span class="hljs-params">()</span>
+</span>{
+    $dirty = [];
+
+    <span class="hljs-keyword">foreach</span> ($this-&gt;getAttributes() <span class="hljs-keyword">as</span> $key =&gt; $value) {
+        <span class="hljs-keyword">if</span> (! $this-&gt;originalIsEquivalent($key, $value)) {
+            $dirty[$key] = $value;
+        }
+    }
+
+    <span class="hljs-keyword">return</span> $dirty;
+}
+</code></pre>
+<p><code>getDirty</code> &#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x6240;&#x6709;&#x4E0E;&#x539F;&#x59CB;&#x503C;&#x4E0D;&#x540C;&#x7684;&#x5C5E;&#x6027;&#x503C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x9700;&#x8981;&#x66F4;&#x65B0;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5B57;&#x6BB5;&#x3002;&#x5173;&#x952E;&#x51FD;&#x6570;&#x5728;&#x4E8E; <code>originalIsEquivalent</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">originalIsEquivalent</span><span class="hljs-params">($key, $current)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (! array_key_exists($key, $this-&gt;original)) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+
+    $original = $this-&gt;getOriginal($key);
+
+    <span class="hljs-keyword">if</span> ($current === $original) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    } <span class="hljs-keyword">elseif</span> (is_null($current)) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    } <span class="hljs-keyword">elseif</span> ($this-&gt;isDateAttribute($key)) {
+        <span class="hljs-keyword">return</span> $this-&gt;fromDateTime($current) ===
+               $this-&gt;fromDateTime($original);
+    } <span class="hljs-keyword">elseif</span> ($this-&gt;hasCast($key)) {
+        <span class="hljs-keyword">return</span> $this-&gt;castAttribute($key, $current) ===
+               $this-&gt;castAttribute($key, $original);
+    }
+
+    <span class="hljs-keyword">return</span> is_numeric($current) &amp;&amp; is_numeric($original)
+            &amp;&amp; strcmp((string) $current, (string) $original) === <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5BF9;&#x4E8E;&#x6570;&#x636E;&#x5E93;&#x53EF;&#x4EE5;&#x8F6C;&#x5316;&#x7684;&#x5C5E;&#x6027;&#x90FD;&#x8981;&#x5148;&#x8FDB;&#x884C;&#x8F6C;&#x5316;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x5F00;&#x59CB;&#x5BF9;&#x6BD4;&#x3002;&#x6BD4;&#x8F83;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x9700;&#x8981; <code>update</code> &#x7684;&#x5B57;&#x6BB5;&#x3002;</p>
+<p>&#x6267;&#x884C;&#x66F4;&#x65B0;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9664;&#x4E86; <code>getDirty</code> &#x51FD;&#x6570;&#x83B7;&#x5F97;&#x7684;&#x5F85;&#x66F4;&#x65B0;&#x5B57;&#x6BB5;&#xFF0C;&#x8FD8;&#x4F1A;&#x6709; <code>UPDATED_AT</code> &#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">performUpdate</span><span class="hljs-params">(Builder $query)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($this-&gt;fireModelEvent(<span class="hljs-string">&apos;updating&apos;</span>) === <span class="hljs-keyword">false</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+
+    <span class="hljs-keyword">if</span> ($this-&gt;usesTimestamps()) {
+        $this-&gt;updateTimestamps();
+    }
+
+    $dirty = $this-&gt;getDirty();
+
+    <span class="hljs-keyword">if</span> (count($dirty) &gt; <span class="hljs-number">0</span>) {
+        $this-&gt;setKeysForSaveQuery($query)-&gt;update($dirty);
+
+        $this-&gt;fireModelEvent(<span class="hljs-string">&apos;updated&apos;</span>, <span class="hljs-keyword">false</span>);
+
+        $this-&gt;syncChanges();
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateTimestamps</span><span class="hljs-params">()</span>
+</span>{
+    $time = $this-&gt;freshTimestamp();
+
+    <span class="hljs-keyword">if</span> (! is_null(<span class="hljs-keyword">static</span>::UPDATED_AT) &amp;&amp; ! $this-&gt;isDirty(<span class="hljs-keyword">static</span>::UPDATED_AT)) {
+        $this-&gt;setUpdatedAt($time);
+    }
+
+    <span class="hljs-keyword">if</span> (! $this-&gt;exists &amp;&amp; ! $this-&gt;isDirty(<span class="hljs-keyword">static</span>::CREATED_AT)) {
+        $this-&gt;setCreatedAt($time);
+    }
+}
+</code></pre>
+<p>&#x6267;&#x884C;&#x66F4;&#x65B0;&#x7684;&#x65F6;&#x5019;&#xFF0C;<code>where</code> &#x6761;&#x4EF6;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x4E3B;&#x952E; <code>id</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setKeysForSaveQuery</span><span class="hljs-params">(Builder $query)</span>
+</span>{
+    $query-&gt;where($this-&gt;getKeyName(), <span class="hljs-string">&apos;=&apos;</span>, $this-&gt;getKeyForSaveQuery());
+
+    <span class="hljs-keyword">return</span> $query;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getKeyForSaveQuery</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;original[$this-&gt;getKeyName()]
+                    ?? $this-&gt;getKey();
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getKey</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;getAttribute($this-&gt;getKeyName());
+}
+</code></pre>
+<p>&#x6700;&#x540E;&#x4F1A;&#x8C03;&#x7528; <code>EloquentBuilder</code> &#x7684; <code>update</code> &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span><span class="hljs-params">(array $values)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;toBase()-&gt;update($this-&gt;addUpdatedAtColumn($values));
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addUpdatedAtColumn</span><span class="hljs-params">(array $values)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (! $this-&gt;model-&gt;usesTimestamps()) {
+        <span class="hljs-keyword">return</span> $values;
+    }
+
+    <span class="hljs-keyword">return</span> Arr::add(
+        $values, $this-&gt;model-&gt;getUpdatedAtColumn(),
+        $this-&gt;model-&gt;freshTimestampString()
+    );
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">freshTimestampString</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;fromDateTime($this-&gt;freshTimestamp());
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fromDateTime</span><span class="hljs-params">($value)</span>
+</span>{
+    <span class="hljs-keyword">return</span> is_null($value) ? $value : $this-&gt;asDateTime($value)-&gt;format(
+        $this-&gt;getDateFormat()
+    );
+}
+</code></pre>
+<h3 id="performinsert">performInsert</h3>
+<p>&#x5173;&#x4E8E;&#x6570;&#x636E;&#x5E93;&#x5BF9;&#x8C61;&#x7684;&#x63D2;&#x5165;&#xFF0C;&#x5982;&#x679C;&#x6570;&#x636E;&#x5E93;&#x7684;&#x4E3B;&#x952E;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A; <code>increment</code>&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x81EA;&#x589E;&#x7684;&#x8BDD;&#xFF0C;&#x7A0B;&#x5E8F;&#x4F1A;&#x8C03;&#x7528; <code>insertAndSetId</code>&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x4E0D;&#x9700;&#x8981;&#x7ED9;&#x6570;&#x636E;&#x5E93;&#x6A21;&#x578B;&#x5BF9;&#x8C61;&#x624B;&#x52A8;&#x8D4B;&#x503C;&#x4E3B;&#x952E; <code>id</code>&#x3002;&#x82E5;&#x679C;&#x6570;&#x636E;&#x5E93;&#x7684;&#x4E3B;&#x952E;&#x5E76;&#x4E0D;&#x652F;&#x6301;&#x81EA;&#x589E;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x9700;&#x8981;&#x5728;&#x63D2;&#x5165;&#x524D;&#xFF0C;&#x4E3A;&#x6570;&#x636E;&#x5E93;&#x5BF9;&#x8C61;&#x7684;&#x4E3B;&#x952E; <code>id</code> &#x8D4B;&#x503C;&#xFF0C;&#x5426;&#x5219;&#x6570;&#x636E;&#x5E93;&#x4F1A;&#x62A5;&#x9519;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">performInsert</span><span class="hljs-params">(Builder $query)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($this-&gt;fireModelEvent(<span class="hljs-string">&apos;creating&apos;</span>) === <span class="hljs-keyword">false</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+
+    <span class="hljs-keyword">if</span> ($this-&gt;usesTimestamps()) {
+        $this-&gt;updateTimestamps();
+    }
+
+    $attributes = $this-&gt;attributes;
+
+    <span class="hljs-keyword">if</span> ($this-&gt;getIncrementing()) {
+        $this-&gt;insertAndSetId($query, $attributes);
+    }
+    <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">empty</span>($attributes)) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        }
+
+        $query-&gt;insert($attributes);
+    }
+
+    $this-&gt;exists = <span class="hljs-keyword">true</span>;
+
+    $this-&gt;wasRecentlyCreated = <span class="hljs-keyword">true</span>;
+
+    $this-&gt;fireModelEvent(<span class="hljs-string">&apos;created&apos;</span>, <span class="hljs-keyword">false</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+}
+</code></pre>
+<p><code>laravel</code> &#x9ED8;&#x8BA4;&#x6570;&#x636E;&#x5E93;&#x7684;&#x4E3B;&#x952E;&#x652F;&#x6301;&#x81EA;&#x589E;&#x5C5E;&#x6027;&#xFF0C;&#x7A0B;&#x5E8F;&#x8C03;&#x7528;&#x7684;&#x4E5F;&#x662F;&#x51FD;&#x6570; <code>insertAndSetId</code> &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insertAndSetId</span><span class="hljs-params">(Builder $query, $attributes)</span>
+</span>{
+    $id = $query-&gt;insertGetId($attributes, $keyName = $this-&gt;getKeyName());
+
+    $this-&gt;setAttribute($keyName, $id);
+}
+</code></pre>
+<p>&#x63D2;&#x5165;&#x540E;&#xFF0C;&#x4F1A;&#x5C06;&#x63D2;&#x5165;&#x540E;&#x5F97;&#x5230;&#x7684;&#x4E3B;&#x952E; <code>id</code> &#x8FD4;&#x56DE;&#xFF0C;&#x5E76;&#x8D4B;&#x503C;&#x5230;&#x6A21;&#x578B;&#x7684;&#x5C5E;&#x6027;&#x5F53;&#x4E2D;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6570;&#x636E;&#x5E93;&#x4E3B;&#x952E;&#x4E0D;&#x652F;&#x6301;&#x81EA;&#x589E;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5728;&#x6570;&#x636E;&#x5E93;&#x7C7B;&#x4E2D;&#x8981;&#x8BBE;&#x7F6E;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> $incrementing = <span class="hljs-keyword">false</span>;
+</code></pre>
+<p>&#x6BCF;&#x6B21;&#x8FDB;&#x884C;&#x63D2;&#x5165;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x7ED9;&#x4E3B;&#x952E;&#x8D4B;&#x503C;&#x3002;</p>
+<h3 id="update-&#x51FD;&#x6570;">update &#x51FD;&#x6570;</h3>
+<p><code>save</code> &#x51FD;&#x6570;&#x4EC5;&#x4EC5;&#x652F;&#x6301;&#x624B;&#x52A8;&#x7684;&#x5C5E;&#x6027;&#x8D4B;&#x503C;&#xFF0C;&#x65E0;&#x6CD5;&#x6279;&#x91CF;&#x8D4B;&#x503C;&#x3002;<code>laravel</code> &#x7684; <code>Eloquent Model</code> &#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x51FD;&#x6570;: <code>update</code> &#x652F;&#x6301;&#x6279;&#x91CF;&#x5C5E;&#x6027;&#x8D4B;&#x503C;&#x3002;&#x6709;&#x610F;&#x601D;&#x7684;&#x662F;&#xFF0C;<code>Eloquent Builder</code> &#x4E5F;&#x6709;&#x51FD;&#x6570; <code>update</code>&#xFF0C;&#x90A3;&#x4E2A;&#x662F;&#x4E0A;&#x4E00;&#x5C0F;&#x8282;&#x63D0;&#x5230;&#x7684; <code>performUpdate</code> &#x6240;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x4E24;&#x4E2A; <code>update</code> &#x529F;&#x80FD;&#x4E00;&#x81F4;&#xFF0C;&#x53EA;&#x662F; <code>Model</code> &#x7684; <code>update</code> &#x51FD;&#x6570;&#x6BD4;&#x8F83;&#x9002;&#x7528;&#x4E8E;&#x66F4;&#x65B0;&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x53D6;&#x56DE;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5BF9;&#x8C61;&#xFF1A;</p>
+<pre><code class="lang-php">$flight = App\Flight::find(<span class="hljs-number">1</span>);
+
+$flight-&gt;update([<span class="hljs-string">&apos;name&apos;</span> =&gt; <span class="hljs-string">&apos;New Flight Name&apos;</span>,<span class="hljs-string">&apos;desc&apos;</span> =&gt; <span class="hljs-string">&apos;test&apos;</span>]);
+</code></pre>
+<p>&#x800C; <code>Builder</code> &#x7684; <code>update</code> &#x9002;&#x7528;&#x4E8E;&#x591A;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;&#x4E0B;&#x7684;&#x66F4;&#x65B0;&#xFF1A;</p>
+<pre><code class="lang-php">App\Flight::where(<span class="hljs-string">&apos;active&apos;</span>, <span class="hljs-number">1</span>)
+          -&gt;where(<span class="hljs-string">&apos;destination&apos;</span>, <span class="hljs-string">&apos;San Diego&apos;</span>)
+          -&gt;update([<span class="hljs-string">&apos;delayed&apos;</span> =&gt; <span class="hljs-number">1</span>]);
+</code></pre>
+<p>&#x65E0;&#x8BBA;&#x54EA;&#x4E00;&#x79CD;&#xFF0C;&#x90FD;&#x4F1A;&#x81EA;&#x52A8;&#x66F4;&#x65B0; <code>updated_at</code> &#x5B57;&#x6BB5;&#x3002;</p>
+<p><code>Model</code> &#x7684; <code>update</code> &#x51FD;&#x6570;&#x501F;&#x52A9; <code>fill</code> &#x51FD;&#x6570;&#x4E0E; <code>save</code> &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span><span class="hljs-params">(array $attributes = [], array $options = [])</span>
+</span>{
+    <span class="hljs-keyword">if</span> (! $this-&gt;exists) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+
+    <span class="hljs-keyword">return</span> $this-&gt;fill($attributes)-&gt;save($options);
+}
+</code></pre>
+<h3 id="make-&#x51FD;&#x6570;">make &#x51FD;&#x6570;</h3>
+<p>&#x540C;&#x6837;&#x7684;&#xFF0C;<code>save</code> &#x7684;&#x63D2;&#x5165;&#x4E5F;&#x4EC5;&#x4EC5;&#x652F;&#x6301;&#x624B;&#x52A8;&#x5C5E;&#x6027;&#x8D4B;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x5B9E;&#x73B0;&#x6279;&#x91CF;&#x5C5E;&#x6027;&#x8D4B;&#x503C;&#x7684;&#x63D2;&#x5165;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>make</code> &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php">$model = App\Flight::make([<span class="hljs-string">&apos;name&apos;</span> =&gt; <span class="hljs-string">&apos;New Flight Name&apos;</span>,<span class="hljs-string">&apos;desc&apos;</span> =&gt; <span class="hljs-string">&apos;test&apos;</span>]);
+
+$model-&gt;save();
+</code></pre>
+<p><code>make</code> &#x51FD;&#x6570;&#x5B9E;&#x9645;&#x4E0A;&#x4EC5;&#x4EC5;&#x662F;&#x65B0;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A; <code>Eloquent Model</code>&#xFF0C;&#x5E76;&#x6279;&#x91CF;&#x8D4B;&#x4E88;&#x5C5E;&#x6027;&#x503C;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">make</span><span class="hljs-params">(array $attributes = [])</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;newModelInstance($attributes);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">newModelInstance</span><span class="hljs-params">($attributes = [])</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;model-&gt;newInstance($attributes)-&gt;setConnection(
+        $this-&gt;query-&gt;getConnection()-&gt;getName()
+    );
+}
+</code></pre>
+<h3 id="create-&#x51FD;&#x6570;">create &#x51FD;&#x6570;</h3>
+<p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x4E00;&#x6B65;&#x5230;&#x4F4D;&#xFF0C;&#x6279;&#x91CF;&#x8D4B;&#x503C;&#x5C5E;&#x6027;&#x4E0E;&#x63D2;&#x5165;&#x4E00;&#x8D77;&#x64CD;&#x4F5C;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>create</code> &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php">App\Flight::create([<span class="hljs-string">&apos;name&apos;</span> =&gt; <span class="hljs-string">&apos;New Flight Name&apos;</span>,<span class="hljs-string">&apos;desc&apos;</span> =&gt; <span class="hljs-string">&apos;test&apos;</span>]);
+</code></pre>
+<p>&#x76F8;&#x6BD4;&#x8F83; <code>make</code> &#x51FD;&#x6570;&#xFF0C;<code>create</code> &#x51FD;&#x6570;&#x66F4;&#x8FDB;&#x4E00;&#x6B65;&#x8C03;&#x7528;&#x4E86; <code>save</code> &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">create</span><span class="hljs-params">(array $attributes = [])</span>
+</span>{
+    <span class="hljs-keyword">return</span> tap($this-&gt;newModelInstance($attributes), <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($instance)</span> </span>{
+        $instance-&gt;save();
+    });
+}
+</code></pre>
+<p>&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x5C5E;&#x6027;&#x503C;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x6279;&#x91CF;&#x8D4B;&#x503C;&#x9700;&#x8981;&#x53D7; <code>fillable</code> &#x6216; <code>guarded</code> &#x6765;&#x63A7;&#x5236;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x5F3A;&#x5236;&#x6279;&#x91CF;&#x8D4B;&#x503C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>forceCreate</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">forceCreate</span><span class="hljs-params">(array $attributes)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;model-&gt;unguarded(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> <span class="hljs-title">use</span> <span class="hljs-params">($attributes)</span> </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;newModelInstance()-&gt;create($attributes);
+    });
+}
+</code></pre>
+<h3 id="findornew-&#x51FD;&#x6570;">findOrNew &#x51FD;&#x6570;</h3>
+<p><code>laravel</code> &#x63D0;&#x4F9B;&#x4E00;&#x79CD;&#x4E3B;&#x952E;&#x67E5;&#x8BE2;&#x6216;&#x8005;&#x65B0;&#x5EFA;&#x6570;&#x636E;&#x5E93;&#x5BF9;&#x8C61;&#x7684;&#x51FD;&#x6570;&#xFF1A;<code>findOrNew</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findOrNew</span><span class="hljs-params">($id, $columns = [<span class="hljs-string">&apos;*&apos;</span>])</span>
+</span>{
+    <span class="hljs-keyword">if</span> (! is_null($model = $this-&gt;find($id, $columns))) {
+        <span class="hljs-keyword">return</span> $model;
+    }
+
+    <span class="hljs-keyword">return</span> $this-&gt;newModelInstance();
+}
+</code></pre>
+<p>&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5F53;&#x67E5;&#x8BE2;&#x5931;&#x8D25;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5168;&#x65B0;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5BF9;&#x8C61;&#xFF0C;&#x4E0D;&#x542B;&#x6709;&#x4EFB;&#x4F55; <code>attributes</code>&#x3002;</p>
+<h3 id="firstornew-&#x51FD;&#x6570;">firstOrNew &#x51FD;&#x6570;</h3>
+<p><code>laravel</code> &#x63D0;&#x4F9B;&#x4E00;&#x79CD;&#x81EA;&#x5B9A;&#x4E49;&#x67E5;&#x8BE2;&#x6216;&#x8005;&#x65B0;&#x5EFA;&#x6570;&#x636E;&#x5E93;&#x5BF9;&#x8C61;&#x7684;&#x51FD;&#x6570;&#xFF1A;<code>firstOrNew</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">firstOrNew</span><span class="hljs-params">(array $attributes, array $values = [])</span>
+</span>{
+    <span class="hljs-keyword">if</span> (! is_null($instance = $this-&gt;where($attributes)-&gt;first())) {
+        <span class="hljs-keyword">return</span> $instance;
+    }
+
+    <span class="hljs-keyword">return</span> $this-&gt;newModelInstance($attributes + $values);
+}
+</code></pre>
+<p>&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x67E5;&#x8BE2;&#x5931;&#x8D25;&#xFF0C;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x542B;&#x6709; <code>attributes</code> &#x548C; <code>values</code> &#x4E24;&#x8005;&#x5408;&#x5E76;&#x7684;&#x5C5E;&#x6027;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5BF9;&#x8C61;&#x3002;</p>
+<h3 id="firstorcreate-&#x51FD;&#x6570;">firstOrCreate &#x51FD;&#x6570;</h3>
+<p>&#x7C7B;&#x4F3C;&#x4E8E; <code>firstOrNew</code> &#x51FD;&#x6570;&#xFF0C;<code>firstOrCreate</code> &#x51FD;&#x6570;&#x4E5F;&#x7528;&#x4E8E;&#x81EA;&#x5B9A;&#x4E49;&#x67E5;&#x8BE2;&#x6216;&#x8005;&#x65B0;&#x5EFA;&#x6570;&#x636E;&#x5E93;&#x5BF9;&#x8C61;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;<code>firstOrCreate</code> &#x51FD;&#x6570;&#x8FD8;&#x8FDB;&#x4E00;&#x6B65;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x4E86;&#x63D2;&#x5165;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">firstOrCreate</span><span class="hljs-params">(array $attributes, array $values = [])</span>
+</span>{
+    <span class="hljs-keyword">if</span> (! is_null($instance = $this-&gt;where($attributes)-&gt;first())) {
+        <span class="hljs-keyword">return</span> $instance;
+    }
+
+    <span class="hljs-keyword">return</span> tap($this-&gt;newModelInstance($attributes + $values), <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($instance)</span> </span>{
+        $instance-&gt;save();
+    });
+}
+</code></pre>
+<h3 id="updateorcreate-&#x51FD;&#x6570;">updateOrCreate &#x51FD;&#x6570;</h3>
+<p>&#x5728; <code>firstOrCreate</code> &#x51FD;&#x6570;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x9664;&#x4E86;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x67E5;&#x8BE2;&#xFF0C;&#x8FD8;&#x4F1A;&#x5BF9;&#x67E5;&#x8BE2;&#x6210;&#x529F;&#x7684;&#x6570;&#x636E;&#x5229;&#x7528; <code>value</code> &#x8FDB;&#x884C;&#x66F4;&#x65B0;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateOrCreate</span><span class="hljs-params">(array $attributes, array $values = [])</span>
+</span>{
+    <span class="hljs-keyword">return</span> tap($this-&gt;firstOrNew($attributes), <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($instance)</span> <span class="hljs-title">use</span> <span class="hljs-params">($values)</span> </span>{
+        $instance-&gt;fill($values)-&gt;save();
+    });
+}
+</code></pre>
+<h3 id="firstor-&#x51FD;&#x6570;">firstOr &#x51FD;&#x6570;</h3>
+<p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x81EA;&#x5B9A;&#x4E49;&#x67E5;&#x627E;&#x5931;&#x8D25;&#x540E;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>firstOr</code> &#x51FD;&#x6570;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x4F20;&#x5165;&#x95ED;&#x5305;&#x51FD;&#x6570;&#xFF0C;&#x5904;&#x7406;&#x627E;&#x4E0D;&#x5230;&#x6570;&#x636E;&#x7684;&#x60C5;&#x51B5;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">firstOr</span><span class="hljs-params">($columns = [<span class="hljs-string">&apos;*&apos;</span>], Closure $callback = null)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($columns <span class="hljs-keyword">instanceof</span> Closure) {
+        $callback = $columns;
+
+        $columns = [<span class="hljs-string">&apos;*&apos;</span>];
+    }
+
+    <span class="hljs-keyword">if</span> (! is_null($model = $this-&gt;first($columns))) {
+        <span class="hljs-keyword">return</span> $model;
+    }
+
+    <span class="hljs-keyword">return</span> call_user_func($callback);
+}
+</code></pre>
+<h2 id="&#x5220;&#x9664;&#x6A21;&#x578B;">&#x5220;&#x9664;&#x6A21;&#x578B;</h2>
+<p>&#x5220;&#x9664;&#x6A21;&#x578B;&#x4E5F;&#x4F1A;&#x5206;&#x4E3A;&#x4E24;&#x79CD;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x9488;&#x5BF9; <code>Eloquent Model</code> &#x7684;&#x5220;&#x9664;&#xFF0C;&#x8FD9;&#x79CD;&#x5220;&#x9664;&#x5FC5;&#x987B;&#x662F;&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x53D6;&#x51FA;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x8FD8;&#x6709;&#x4E00;&#x79CD;&#x662F; <code>Eloquent Builder</code> &#x7684;&#x5220;&#x9664;&#xFF0C;&#x8FD9;&#x79CD;&#x5220;&#x9664;&#x4E00;&#x822C;&#x4F1A;&#x5E26;&#x6709;&#x591A;&#x4E2A;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;&#x3002;&#x6211;&#x4EEC;&#x8FD9;&#x4E00;&#x5C0F;&#x8282;&#x4E3B;&#x8981;&#x8BB2; <code>model</code> &#x7684;&#x5220;&#x9664;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delete</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> (is_null($this-&gt;getKeyName())) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">&apos;No primary key defined on model.&apos;</span>);
+    }
+
+    <span class="hljs-keyword">if</span> (! $this-&gt;exists) {
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-keyword">if</span> ($this-&gt;fireModelEvent(<span class="hljs-string">&apos;deleting&apos;</span>) === <span class="hljs-keyword">false</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
+
+    $this-&gt;touchOwners();
+
+    $this-&gt;performDeleteOnModel();
+
+    $this-&gt;fireModelEvent(<span class="hljs-string">&apos;deleted&apos;</span>, <span class="hljs-keyword">false</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+}
+</code></pre>
+<p>&#x5220;&#x9664;&#x6A21;&#x578B;&#x65F6;&#xFF0C;&#x6A21;&#x578B;&#x5BF9;&#x8C61;&#x5FC5;&#x7136;&#x8981;&#x6709;&#x4E3B;&#x952E;&#x3002;<code>performDeleteOnModel</code> &#x51FD;&#x6570;&#x6267;&#x884C;&#x5177;&#x4F53;&#x7684;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">performDeleteOnModel</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;setKeysForSaveQuery($this-&gt;newQueryWithoutScopes())-&gt;delete();
+
+    $this-&gt;exists = <span class="hljs-keyword">false</span>;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setKeysForSaveQuery</span><span class="hljs-params">(Builder $query)</span>
+</span>{
+    $query-&gt;where($this-&gt;getKeyName(), <span class="hljs-string">&apos;=&apos;</span>, $this-&gt;getKeyForSaveQuery());
+
+    <span class="hljs-keyword">return</span> $query;
+}
+</code></pre>
+<p>&#x6240;&#x4EE5;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;<code>Model</code> &#x8C03;&#x7528;&#x7684;&#x4E5F;&#x662F; <code>builder</code> &#x7684; <code>delete</code> &#x51FD;&#x6570;&#x3002;</p>
+<h3 id="&#x8F6F;&#x5220;&#x9664;">&#x8F6F;&#x5220;&#x9664;</h3>
+<p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x4F7F;&#x7528;&#x8F6F;&#x5220;&#x9664;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528; <code>Illuminate\Database\Eloquent\SoftDeletes</code> &#x8FD9;&#x4E2A; trait&#x3002;&#x5E76;&#x4E14;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x8F6F;&#x5220;&#x9664;&#x5B57;&#x6BB5;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; <code>deleted_at</code>&#xFF0C;&#x5C06;&#x8F6F;&#x5220;&#x9664;&#x5B57;&#x6BB5;&#x653E;&#x5165; <code>dates</code> &#x4E2D;&#xFF0C;&#x5177;&#x4F53;&#x7528;&#x6CD5;&#x53EF;&#x53C2;&#x8003;&#x5B98;&#x65B9;&#x6587;&#x6863;:<a href="https://d.laravel-china.org/docs/5.5/eloquent#soft-deleting" target="_blank">&#x8F6F;&#x5220;&#x9664;</a></p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Flight</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span>
+</span>{
+    <span class="hljs-keyword">use</span> <span class="hljs-title">SoftDeletes</span>;
+
+    <span class="hljs-comment">/**
+     * &#x9700;&#x8981;&#x88AB;&#x8F6C;&#x6362;&#x6210;&#x65E5;&#x671F;&#x7684;&#x5C5E;&#x6027;&#x3002;
+     *
+     * <span class="hljs-doctag">@var</span> array
+     */</span>
+    <span class="hljs-keyword">protected</span> $dates = [<span class="hljs-string">&apos;deleted_at&apos;</span>];
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x5148;&#x770B;&#x770B;&#x8FD9;&#x4E2A; <code>trait</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">trait</span> SoftDeletes 
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bootSoftDeletes</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">static</span>::addGlobalScope(<span class="hljs-keyword">new</span> SoftDeletingScope);
+    }
+
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x4F7F;&#x7528;&#x4E86;&#x8F6F;&#x5220;&#x9664;&#xFF0C;&#x5728; <code>model</code> &#x7684;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5C31;&#x4F1A;&#x542F;&#x52A8;&#x8F6F;&#x5220;&#x9664;&#x7684;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x3002;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#xFF0C;&#x8F6F;&#x5220;&#x9664;&#x662F;&#x9700;&#x8981;&#x67E5;&#x8BE2;&#x4F5C;&#x7528;&#x57DF;&#x6765;&#x5408;&#x4F5C;&#x53D1;&#x6325;&#x4F5C;&#x7528;&#x7684;&#x3002;&#x6211;&#x4EEC;&#x770B;&#x770B;&#x8FD9;&#x4E2A; <code>SoftDeletingScope</code> :</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SoftDeletingScope</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Scope</span>
+</span>{
+    <span class="hljs-keyword">protected</span> $extensions = [<span class="hljs-string">&apos;Restore&apos;</span>, <span class="hljs-string">&apos;WithTrashed&apos;</span>, <span class="hljs-string">&apos;WithoutTrashed&apos;</span>, <span class="hljs-string">&apos;OnlyTrashed&apos;</span>];
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">apply</span><span class="hljs-params">(Builder $builder, Model $model)</span>
+    </span>{
+        $builder-&gt;whereNull($model-&gt;getQualifiedDeletedAtColumn());
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">extend</span><span class="hljs-params">(Builder $builder)</span>
+    </span>{
+        <span class="hljs-keyword">foreach</span> ($this-&gt;extensions <span class="hljs-keyword">as</span> $extension) {
+            $this-&gt;{<span class="hljs-string">&quot;add{$extension}&quot;</span>}($builder);
+        }
+
+        $builder-&gt;onDelete(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Builder $builder)</span> </span>{
+            $column = $this-&gt;getDeletedAtColumn($builder);
+
+            <span class="hljs-keyword">return</span> $builder-&gt;update([
+                $column =&gt; $builder-&gt;getModel()-&gt;freshTimestampString(),
+            ]);
+        });
+    }
+}
+</code></pre>
+<p><code>apply</code> &#x51FD;&#x6570;&#x662F;&#x52A0;&#x8F7D;&#x5168;&#x5C40;&#x57DF;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x6BCF;&#x6B21;&#x8FDB;&#x884C;&#x67E5;&#x8BE2;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8C03;&#x7528; <code>get</code> &#x51FD;&#x6570;&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;<code>whereNull</code> &#x8FD9;&#x4E2A;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;&#x4F1A;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x5177;&#x4F53;&#x7684; <code>where</code> &#x6761;&#x4EF6;&#x4E2D;&#x3002;<code>deleted_at</code> &#x5B57;&#x6BB5;&#x4E00;&#x822C;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A; <code>null</code>&#xFF0C;&#x5728;&#x6267;&#x884C;&#x8F6F;&#x5220;&#x9664;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8BE5;&#x5B57;&#x6BB5;&#x4F1A;&#x88AB;&#x8D4B;&#x4E88;&#x65F6;&#x95F4;&#x683C;&#x5F0F;&#x7684;&#x503C;&#xFF0C;&#x6807;&#x5FD7;&#x7740;&#x88AB;&#x5220;&#x9664;&#x7684;&#x65F6;&#x95F4;&#x3002;</p>
+<p>&#x5728;&#x52A0;&#x8F7D;&#x5168;&#x5C40;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD8;&#x4F1A;&#x8C03;&#x7528; <code>extend</code> &#x51FD;&#x6570;&#xFF0C;<code>extend</code> &#x51FD;&#x6570;&#x4E3A; <code>model</code> &#x6DFB;&#x52A0;&#x4E86;&#x56DB;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;</p>
+<ul>
+<li>WithTrashed</li>
+</ul>
+<pre><code class="lang-php"> <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addWithTrashed</span><span class="hljs-params">(Builder $builder)</span>
+</span>{
+    $builder-&gt;macro(<span class="hljs-string">&apos;withTrashed&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Builder $builder)</span> </span>{
+        <span class="hljs-keyword">return</span> $builder-&gt;withoutGlobalScope($this);
+    });
+}
+</code></pre>
+<p><code>withTrashed</code> &#x51FD;&#x6570;&#x53D6;&#x6D88;&#x4E86;&#x8F6F;&#x5220;&#x9664;&#x7684;&#x5168;&#x5C40;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x67E5;&#x8BE2;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x67E5;&#x8BE2;&#x5230;&#x6B63;&#x5E38;&#x6570;&#x636E;&#x548C;&#x88AB;&#x8F6F;&#x5220;&#x9664;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<ul>
+<li>withoutTrashed</li>
+</ul>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addWithoutTrashed</span><span class="hljs-params">(Builder $builder)</span>
+</span>{
+    $builder-&gt;macro(<span class="hljs-string">&apos;withoutTrashed&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Builder $builder)</span> </span>{
+        $model = $builder-&gt;getModel();
+
+        $builder-&gt;withoutGlobalScope($this)-&gt;whereNull(
+            $model-&gt;getQualifiedDeletedAtColumn()
+        );
+
+        <span class="hljs-keyword">return</span> $builder;
+    });
+}
+</code></pre>
+<p><code>withTrashed</code> &#x51FD;&#x6570;&#x7740;&#x91CD;&#x5F3A;&#x8C03;&#x4E86;&#x4E0D;&#x8981;&#x83B7;&#x53D6;&#x8F6F;&#x5220;&#x9664;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<ul>
+<li>onlyTrashed</li>
+</ul>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addOnlyTrashed</span><span class="hljs-params">(Builder $builder)</span>
+</span>{
+    $builder-&gt;macro(<span class="hljs-string">&apos;onlyTrashed&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Builder $builder)</span> </span>{
+        $model = $builder-&gt;getModel();
+
+        $builder-&gt;withoutGlobalScope($this)-&gt;whereNotNull(
+            $model-&gt;getQualifiedDeletedAtColumn()
+        );
+
+        <span class="hljs-keyword">return</span> $builder;
+    });
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x53EA;&#x60F3;&#x83B7;&#x53D6;&#x88AB;&#x8F6F;&#x5220;&#x9664;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570; <code>onlyTrashed</code>&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5B83;&#x4F7F;&#x7528;&#x4E86; <code>whereNotNull</code>&#x3002;</p>
+<ul>
+<li>restore</li>
+</ul>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addRestore</span><span class="hljs-params">(Builder $builder)</span>
+</span>{
+    $builder-&gt;macro(<span class="hljs-string">&apos;restore&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(Builder $builder)</span> </span>{
+        $builder-&gt;withTrashed();
+
+        <span class="hljs-keyword">return</span> $builder-&gt;update([$builder-&gt;getModel()-&gt;getDeletedAtColumn() =&gt; <span class="hljs-keyword">null</span>]);
+    });
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x6062;&#x590D;&#x88AB;&#x5220;&#x9664;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>restore</code>&#xFF0C;&#x91CD;&#x65B0;&#x5C06; <code>deleted_at</code> &#x6570;&#x636E;&#x6062;&#x590D;&#x4E3A; null&#x3002;</p>
+<h3 id="performdeleteonmodel">performDeleteOnModel</h3>
+<p>SoftDeletes &#x8FD9;&#x4E2A; trait &#x4F1A;&#x91CD;&#x8F7D; <code>performDeleteOnModel</code> &#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x5C06;&#x4E0D;&#x4F1A;&#x8C03;&#x7528; <code>Eloquent Builder</code> &#x7684; <code>delete</code> &#x65B9;&#x6CD5;&#xFF0C;&#x800C;&#x662F;&#x91C7;&#x7528;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">performDeleteOnModel</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($this-&gt;forceDeleting) {
+        <span class="hljs-keyword">return</span> $this-&gt;newQueryWithoutScopes()-&gt;where($this-&gt;getKeyName(), $this-&gt;getKey())-&gt;forceDelete();
+    }
+
+    <span class="hljs-keyword">return</span> $this-&gt;runSoftDelete();
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">runSoftDelete</span><span class="hljs-params">()</span>
+</span>{
+    $query = $this-&gt;newQueryWithoutScopes()-&gt;where($this-&gt;getKeyName(), $this-&gt;getKey());
+
+    $time = $this-&gt;freshTimestamp();
+
+    $columns = [$this-&gt;getDeletedAtColumn() =&gt; $this-&gt;fromDateTime($time)];
+
+    $this-&gt;{$this-&gt;getDeletedAtColumn()} = $time;
+
+    <span class="hljs-keyword">if</span> ($this-&gt;timestamps) {
+        $this-&gt;{$this-&gt;getUpdatedAtColumn()} = $time;
+
+        $columns[$this-&gt;getUpdatedAtColumn()] = $this-&gt;fromDateTime($time);
+    }
+
+    $query-&gt;update($columns);
+}
+</code></pre>
+<p>&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x4E0D;&#x4EC5;&#x66F4;&#x65B0;&#x4E86; <code>deleted_at</code>&#xFF0C;&#x8FD8;&#x66F4;&#x65B0;&#x4E86; <code>updated_at</code> &#x5B57;&#x6BB5;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Laravel Database——Eloquent Model 源码分析%28上%29.md" class="navigation navigation-prev " aria-label="Previous page: Laravel Database——Eloquent Model 源码分析(上)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Laravel Database——Eloquent Model 关联源码分析.html" class="navigation navigation-next " aria-label="Next page: Laravel Database——Eloquent Model 关联源码分析">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Laravel Database——Eloquent Model 源码分析（下）","level":"1.10.8","depth":2,"next":{"title":"Laravel Database——Eloquent Model 关联源码分析","level":"1.10.9","depth":2,"path":"Laravel Database——Eloquent Model 关联源码分析.md","ref":"Laravel Database——Eloquent Model 关联源码分析.md","articles":[]},"previous":{"title":"Laravel Database——Eloquent Model 源码分析(上)","level":"1.10.7","depth":2,"path":"Laravel Database——Eloquent Model 源码分析%28上%29.md","ref":"Laravel Database——Eloquent Model 源码分析%28上%29.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Laravel Database——Eloquent Model 源码分析（下）.md","mtime":"2019-01-15T10:29:00.304Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T10:51:52.544Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

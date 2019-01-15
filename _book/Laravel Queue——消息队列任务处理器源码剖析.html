@@ -1,0 +1,1758 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Laravel Queue——消息队列任务处理器源码剖析 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="Laravel Queue——消息队列任务与分发源码剖析.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    PHP Composer 自动加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="PHP Composer——自动加载原理.html">
+            
+                <a href="PHP Composer——自动加载原理.html">
+            
+                    
+                    PHP Composer——自动加载原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="PHP Composer—— 初始化源码分析.html">
+            
+                <a href="PHP Composer—— 初始化源码分析.html">
+            
+                    
+                    PHP Composer—— 初始化源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="PHP Composer-——-注册与运行源码分析.html">
+            
+                <a href="PHP Composer-——-注册与运行源码分析.html">
+            
+                    
+                    PHP Composer-——-注册与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Laravel Facade 门面
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="Laravel Facade——Facade 门面源码分析.html">
+            
+                <a href="Laravel Facade——Facade 门面源码分析.html">
+            
+                    
+                    Laravel Facade——Facade 门面源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Laravel Ioc 容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Laravel Container——IoC 服务容器.html">
+            
+                <a href="Laravel Container——IoC 服务容器.html">
+            
+                    
+                    Laravel Container——IoC 服务容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器绑定)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器解析)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="Laravel Container——服务容器的细节特性.html">
+            
+                <a href="Laravel Container——服务容器的细节特性.html">
+            
+                    
+                    Laravel Container——服务容器的细节特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Laravel Route 路由
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Laravel HTTP——路由.html">
+            
+                <a href="Laravel HTTP——路由.html">
+            
+                    
+                    Laravel HTTP——路由
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="Laravel HTTP——路由加载源码分析.html">
+            
+                <a href="Laravel HTTP——路由加载源码分析.html">
+            
+                    
+                    Laravel HTTP——路由加载源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                <a href="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                    
+                    Laravel HTTP——Pipeline中间件处理源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="Laravel HTTP——路由的正则编译.html">
+            
+                <a href="Laravel HTTP——路由的正则编译.html">
+            
+                    
+                    Laravel HTTP——路由的正则编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                <a href="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                    
+                    Laravel HTTP——路由的匹配与参数绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="Laravel HTTP——路由中间件源码分析.html">
+            
+                <a href="Laravel HTTP——路由中间件源码分析.html">
+            
+                    
+                    Laravel HTTP——路由中间件源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                <a href="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                    
+                    Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                <a href="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                    
+                    Laravel HTTP——控制器方法的参数构建与运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                <a href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP—— RESTFul 风格路由的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                <a href="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP——重定向的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Laravel ENV 环境变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                <a href="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                    
+                    Laravel ENV—— 环境变量的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Laravel Config 配置文件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                <a href="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                    
+                    Laravel Config—— 配置文件的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Laravel Exceptions 异常处理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="Laravel Exceptions——异常与错误处理.html">
+            
+                <a href="Laravel Exceptions——异常与错误处理.html">
+            
+                    
+                    Laravel Exceptions——异常与错误处理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Laravel Providers 服务提供者
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                <a href="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                    
+                    Laravel Providers——服务提供者的注册与启动源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Laravel Database 数据库
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="Laravel Database——数据库服务的启动与连接.html">
+            
+                <a href="Laravel Database——数据库服务的启动与连接.html">
+            
+                    
+                    Laravel Database——数据库服务的启动与连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="Laravel Database——数据库的 CRUD 操作.html">
+            
+                <a href="Laravel Database——数据库的 CRUD 操作.html">
+            
+                    
+                    Laravel Database——数据库的 CRUD 操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="Laravel Database——查询构造器与语法编译器源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="Laravel Database——查询构造器与语法编译器源码分析%28中%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(中)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="Laravel Database——查询构造器与语法编译器源码分析%28下%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="Laravel Database——分页原理与源码分析.html">
+            
+                <a href="Laravel Database——分页原理与源码分析.html">
+            
+                    
+                    Laravel Database——分页原理与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Laravel Database——Eloquent Model 源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                <a href="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                <a href="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                    
+                    Laravel Database——Eloquent Model 关联源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                <a href="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                    
+                    Laravel Database——Eloquent Model 模型关系加载与查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                <a href="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                    
+                    Laravel Database——Eloquent Model 更新关联模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Laravel Session
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="Laravel Session——session 的启动与运行源码分析.html">
+            
+                <a href="Laravel Session——session 的启动与运行源码分析.html">
+            
+                    
+                    Laravel Session——session 的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    Laravel Event 事件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                <a href="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                    
+                    Laravel Event——事件系统的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    Laravel Queue 队列
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务与分发源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.13.2" data-path="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务处理器源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    Laravel 广播系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="Laravel Broadcast——广播系统源码剖析.html">
+            
+                <a href="Laravel Broadcast——广播系统源码剖析.html">
+            
+                    
+                    Laravel Broadcast——广播系统源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    Laravel Passport
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Laravel Queue——消息队列任务处理器源码剖析</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="laravel-queue&#x2014;&#x2014;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4EFB;&#x52A1;&#x5904;&#x7406;&#x5668;&#x6E90;&#x7801;&#x5256;&#x6790;">Laravel Queue&#x2014;&#x2014;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4EFB;&#x52A1;&#x5904;&#x7406;&#x5668;&#x6E90;&#x7801;&#x5256;&#x6790;</h1>
+<h2 id="&#x8FD0;&#x884C;&#x961F;&#x5217;&#x5904;&#x7406;&#x5668;">&#x8FD0;&#x884C;&#x961F;&#x5217;&#x5904;&#x7406;&#x5668;</h2>
+<h3 id="&#x961F;&#x5217;&#x5904;&#x7406;&#x5668;&#x7684;&#x8BBE;&#x7F6E;">&#x961F;&#x5217;&#x5904;&#x7406;&#x5668;&#x7684;&#x8BBE;&#x7F6E;</h3>
+<p><code>Laravel</code> &#x5305;&#x542B;&#x4E00;&#x4E2A;&#x961F;&#x5217;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x5F53;&#x65B0;&#x4EFB;&#x52A1;&#x88AB;&#x63A8;&#x5230;&#x961F;&#x5217;&#x4E2D;&#x65F6;&#x5B83;&#x80FD;&#x5904;&#x7406;&#x8FD9;&#x4E9B;&#x4EFB;&#x52A1;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>queue:work</code> &#x547D;&#x4EE4;&#x6765;&#x8FD0;&#x884C;&#x5904;&#x7406;&#x5668;&#x3002;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x4E00;&#x65E6; <code>queue:work</code> &#x547D;&#x4EE4;&#x5F00;&#x59CB;&#xFF0C;&#x5B83;&#x5C06;&#x4E00;&#x76F4;&#x8FD0;&#x884C;&#xFF0C;&#x76F4;&#x5230;&#x4F60;&#x624B;&#x52A8;&#x505C;&#x6B62;&#x6216;&#x8005;&#x4F60;&#x5173;&#x95ED;&#x63A7;&#x5236;&#x53F0;&#xFF1A;</p>
+<pre><code class="lang-php">php artisan queue:work
+</code></pre>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x961F;&#x5217;&#x5904;&#x7406;&#x5668;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x8FDE;&#x63A5;&#x3002;</li>
+</ul>
+<pre><code class="lang-php">php artisan queue:work redis
+</code></pre>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x961F;&#x5217;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x65B9;&#x5F0F;&#x662F;&#x5904;&#x7406;&#x7ED9;&#x5B9A;&#x8FDE;&#x63A5;&#x7684;&#x7279;&#x5B9A;&#x961F;&#x5217;&#x3002;</li>
+</ul>
+<pre><code class="lang-php">php artisan queue:work redis --queue=emails
+</code></pre>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>--once</code> &#x9009;&#x9879;&#x6765;&#x6307;&#x5B9A;&#x4EC5;&#x5BF9;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x5355;&#x4E00;&#x4EFB;&#x52A1;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-php">php artisan queue:work --once
+</code></pre>
+<ul>
+<li>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x5931;&#x8D25;&#x4E86;&#xFF0C;&#x4F1A;&#x88AB;&#x653E;&#x5165;&#x5EF6;&#x65F6;&#x961F;&#x5217;&#x4E2D;&#x53D6;&#xFF0C;<code>--delay</code> &#x9009;&#x9879;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x5931;&#x8D25;&#x4EFB;&#x52A1;&#x7684;&#x5EF6;&#x65F6;&#x65F6;&#x95F4;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-php">php artisan queue:work --delay=<span class="hljs-number">2</span>
+</code></pre>
+<ul>
+<li>&#x5982;&#x679C;&#x60F3;&#x8981;&#x9650;&#x5236;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>--memory</code>:</li>
+</ul>
+<pre><code class="lang-php">php artisan queue:work --memory=<span class="hljs-number">128</span>
+</code></pre>
+<ul>
+<li>&#x5F53;&#x961F;&#x5217;&#x9700;&#x8981;&#x5904;&#x7406;&#x4EFB;&#x52A1;&#x65F6;&#xFF0C;&#x8FDB;&#x7A0B;&#x5C06;&#x7EE7;&#x7EED;&#x5904;&#x7406;&#x4EFB;&#x52A1;&#xFF0C;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x6CA1;&#x6709;&#x5EF6;&#x8FDF;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x65B0;&#x7684;&#x5DE5;&#x4F5C;&#x53EF;&#x7528;&#xFF0C;<code>--sleep</code> &#x53C2;&#x6570;&#x51B3;&#x5B9A;&#x4E86;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;&#x5C06; &#x300C;&#x7761;&#x7720;&#x300D; &#x591A;&#x957F;&#x65F6;&#x95F4;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-php">php artisan queue:work --sleep=<span class="hljs-number">3</span>
+</code></pre>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x6307;&#x5B9A; <code>Laravel</code> &#x961F;&#x5217;&#x5904;&#x7406;&#x5668;&#x6700;&#x591A;&#x6267;&#x884C;&#x591A;&#x957F;&#x65F6;&#x95F4;&#x540E;&#x5C31;&#x5E94;&#x8BE5;&#x88AB;&#x5173;&#x95ED;&#x6389;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-php">php artisan queue:work --timeout=<span class="hljs-number">60</span>
+</code></pre>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x6307;&#x5B9A; <code>Laravel</code> &#x961F;&#x5217;&#x5904;&#x7406;&#x5668;&#x5931;&#x8D25;&#x4EFB;&#x52A1;&#x91CD;&#x8BD5;&#x7684;&#x6B21;&#x6570;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-php">php artisan queue:work --tries=<span class="hljs-number">60</span>
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#xFF0C;&#x961F;&#x5217;&#x5904;&#x7406;&#x5668;&#x7684;&#x8BBE;&#x7F6E;&#x5927;&#x591A;&#x6570;&#x90FD;&#x53EF;&#x4EE5;&#x7531;&#x4EFB;&#x52A1;&#x7C7B;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#xFF0C;&#x4F46;&#x662F;&#x5176;&#x4E2D;&#x4E09;&#x4E2A; <code>sleep</code>&#x3001;<code>delay</code>&#x3001;<code>memory</code> &#x53EA;&#x80FD;&#x7531; <code>artisan</code> &#x6765;&#x8BBE;&#x7F6E;&#x3002;</p>
+<h2 id="workcommand-&#x547D;&#x4EE4;&#x884C;&#x542F;&#x52A8;">WorkCommand &#x547D;&#x4EE4;&#x884C;&#x542F;&#x52A8;</h2>
+<p>&#x4EFB;&#x52A1;&#x5904;&#x7406;&#x5668;&#x8FDB;&#x7A0B;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x6A21;&#x5F0F;&#x4F1A;&#x8C03;&#x7528; <code>Illuminate\Queue\Console\WorkCommand</code>&#xFF0C;&#x8FD9;&#x4E2A;&#x7C7B;&#x5728;&#x521D;&#x59CB;&#x5316;&#x7684;&#x65F6;&#x5019;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x4E86; <code>Illuminate\Queue\Worker</code>:</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WorkCommand</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Command</span>
+</span>{
+    <span class="hljs-keyword">protected</span> $signature = <span class="hljs-string">&apos;queue:work
+                            {connection? : The name of connection}
+                            {--queue= : The queue to listen on}
+                            {--daemon : Run the worker in daemon mode (Deprecated)}
+                            {--once : Only process the next job on the queue}
+                            {--delay=0 : Amount of time to delay failed jobs}
+                            {--force : Force the worker to run even in maintenance mode}
+                            {--memory=128 : The memory limit in megabytes}
+                            {--sleep=3 : Number of seconds to sleep when no job is available}
+                            {--timeout=60 : The number of seconds a child process can run}
+                            {--tries=0 : Number of times to attempt a job before logging it failed}&apos;</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Worker $worker)</span>
+    </span>{
+        <span class="hljs-keyword">parent</span>::__construct();
+
+        $this-&gt;worker = $worker;
+    }                         
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fire</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">if</span> ($this-&gt;downForMaintenance() &amp;&amp; $this-&gt;option(<span class="hljs-string">&apos;once&apos;</span>)) {
+            <span class="hljs-keyword">return</span> $this-&gt;worker-&gt;sleep($this-&gt;option(<span class="hljs-string">&apos;sleep&apos;</span>));
+        }
+
+        $this-&gt;listenForEvents();
+
+        $connection = $this-&gt;argument(<span class="hljs-string">&apos;connection&apos;</span>)
+                        ?: $this-&gt;laravel[<span class="hljs-string">&apos;config&apos;</span>][<span class="hljs-string">&apos;queue.default&apos;</span>];
+
+        $queue = $this-&gt;getQueue($connection);
+
+        $this-&gt;runWorker(
+            $connection, $queue
+        );
+    }
+}
+</code></pre>
+<p>&#x4EFB;&#x52A1;&#x5904;&#x7406;&#x5668;&#x542F;&#x52A8;&#x540E;&#xFF0C;&#x4F1A;&#x8FD0;&#x884C; <code>fire</code> &#x51FD;&#x6570;&#xFF0C;&#x5728;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#x4E4B;&#x524D;&#xFF0C;&#x7A0B;&#x5E8F;&#x9996;&#x5148;&#x4F1A;&#x6CE8;&#x518C;&#x76D1;&#x542C;&#x4E8B;&#x4EF6;&#xFF0C;&#x4E3B;&#x8981;&#x76D1;&#x542C;&#x4EFB;&#x52A1;&#x5B8C;&#x6210;&#x4E0E;&#x4EFB;&#x52A1;&#x5931;&#x8D25;&#x7684;&#x60C5;&#x51B5;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listenForEvents</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;laravel[<span class="hljs-string">&apos;events&apos;</span>]-&gt;listen(JobProcessed::class, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($event)</span> </span>{
+        $this-&gt;writeOutput($event-&gt;job, <span class="hljs-keyword">false</span>);
+    });
+
+    $this-&gt;laravel[<span class="hljs-string">&apos;events&apos;</span>]-&gt;listen(JobFailed::class, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($event)</span> </span>{
+        $this-&gt;writeOutput($event-&gt;job, <span class="hljs-keyword">true</span>);
+
+        $this-&gt;logFailedJob($event);
+    });
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">writeOutput</span><span class="hljs-params">(Job $job, $failed)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($failed) {
+        $this-&gt;output-&gt;writeln(<span class="hljs-string">&apos;&lt;error&gt;[&apos;</span>.Carbon::now()-&gt;format(<span class="hljs-string">&apos;Y-m-d H:i:s&apos;</span>).<span class="hljs-string">&apos;] Failed:&lt;/error&gt; &apos;</span>.$job-&gt;resolveName());
+    } <span class="hljs-keyword">else</span> {
+        $this-&gt;output-&gt;writeln(<span class="hljs-string">&apos;&lt;info&gt;[&apos;</span>.Carbon::now()-&gt;format(<span class="hljs-string">&apos;Y-m-d H:i:s&apos;</span>).<span class="hljs-string">&apos;] Processed:&lt;/info&gt; &apos;</span>.$job-&gt;resolveName());
+    }
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">logFailedJob</span><span class="hljs-params">(JobFailed $event)</span>
+</span>{
+    $this-&gt;laravel[<span class="hljs-string">&apos;queue.failer&apos;</span>]-&gt;log(
+        $event-&gt;connectionName, $event-&gt;job-&gt;getQueue(),
+        $event-&gt;job-&gt;getRawBody(), $event-&gt;exception
+    );
+}
+</code></pre>
+<p>&#x542F;&#x52A8;&#x4EFB;&#x52A1;&#x7BA1;&#x7406;&#x5668; <code>runWorker</code>,&#x8BE5;&#x51FD;&#x6570;&#x9ED8;&#x8BA4;&#x4F1A;&#x8C03;&#x7528; <code>Illuminate\Queue\Worker</code> &#x7684; <code>daemon</code> &#x51FD;&#x6570;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x547D;&#x4EE4;&#x4E2D;&#x5F3A;&#x5236; <code>--once</code> &#x53C2;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x624D;&#x4F1A;&#x6267;&#x884C; <code>runNestJob</code> &#x51FD;&#x6570;:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">runWorker</span><span class="hljs-params">($connection, $queue)</span>
+</span>{
+    $this-&gt;worker-&gt;setCache($this-&gt;laravel[<span class="hljs-string">&apos;cache&apos;</span>]-&gt;driver());
+
+    <span class="hljs-keyword">return</span> $this-&gt;worker-&gt;{$this-&gt;option(<span class="hljs-string">&apos;once&apos;</span>) ? <span class="hljs-string">&apos;runNextJob&apos;</span> : <span class="hljs-string">&apos;daemon&apos;</span>}(
+        $connection, $queue, $this-&gt;gatherWorkerOptions()
+    );
+}
+</code></pre>
+<h2 id="worker-&#x4EFB;&#x52A1;&#x8C03;&#x5EA6;">Worker &#x4EFB;&#x52A1;&#x8C03;&#x5EA6;</h2>
+<p><img src="http://owql68l6p.bkt.clouddn.com/QQ20171209-000154@2x.png" alt=""></p>
+<p>&#x6211;&#x4EEC;&#x63A5;&#x4E0B;&#x6765;&#x63A5;&#x7740;&#x770B; <code>daemon</code> &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">daemon</span><span class="hljs-params">($connectionName, $queue, WorkerOptions $options)</span>
+</span>{
+    $this-&gt;listenForSignals();
+
+    $lastRestart = $this-&gt;getTimestampOfLastQueueRestart();
+
+    <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+        <span class="hljs-keyword">if</span> (! $this-&gt;daemonShouldRun($options)) {
+            $this-&gt;pauseWorker($options, $lastRestart);
+
+            <span class="hljs-keyword">continue</span>;
+        }
+
+        $job = $this-&gt;getNextJob(
+            $this-&gt;manager-&gt;connection($connectionName), $queue
+        );
+
+        $this-&gt;registerTimeoutHandler($job, $options);
+
+        <span class="hljs-keyword">if</span> ($job) {
+            $this-&gt;runJob($job, $connectionName, $options);
+        } <span class="hljs-keyword">else</span> {
+            $this-&gt;sleep($options-&gt;sleep);
+        }
+
+        $this-&gt;stopIfNecessary($options, $lastRestart);
+    }
+}
+</code></pre>
+<h3 id="&#x4FE1;&#x53F7;&#x5904;&#x7406;">&#x4FE1;&#x53F7;&#x5904;&#x7406;</h3>
+<p><code>listenForSignals</code> &#x51FD;&#x6570;&#x7528;&#x4E8E; PHP 7.1 &#x7248;&#x672C;&#x4EE5;&#x4E0A;&#xFF0C;&#x7528;&#x4E8E;&#x811A;&#x672C;&#x7684;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x3002;&#x6240;&#x8C13;&#x7684;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#xFF0C;&#x5C31;&#x662F;&#x7531; <code>Process Monitor</code>&#xFF08;&#x5982; <code>Supervisor</code> &#xFF09;&#x53D1;&#x9001;&#x5E76;&#x4E0E;&#x6211;&#x4EEC;&#x7684;&#x811A;&#x672C;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#x7684;&#x5F02;&#x6B65;&#x901A;&#x77E5;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listenForSignals</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($this-&gt;supportsAsyncSignals()) {
+        pcntl_async_signals(<span class="hljs-keyword">true</span>);
+
+        pcntl_signal(SIGTERM, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+            $this-&gt;shouldQuit = <span class="hljs-keyword">true</span>;
+        });
+
+        pcntl_signal(SIGUSR2, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+            $this-&gt;paused = <span class="hljs-keyword">true</span>;
+        });
+
+        pcntl_signal(SIGCONT, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+            $this-&gt;paused = <span class="hljs-keyword">false</span>;
+        });
+    }
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">supportsAsyncSignals</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> version_compare(PHP_VERSION, <span class="hljs-string">&apos;7.1.0&apos;</span>) &gt;= <span class="hljs-number">0</span> &amp;&amp;
+           extension_loaded(<span class="hljs-string">&apos;pcntl&apos;</span>);
+}
+</code></pre>
+<p><code>pcntl_async_signals()</code> &#x88AB;&#x8C03;&#x7528;&#x6765;&#x542F;&#x7528;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#xFF0C;&#x7136;&#x540E;&#x6211;&#x4EEC;&#x4E3A;&#x591A;&#x4E2A;&#x4FE1;&#x53F7;&#x6CE8;&#x518C;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#xFF1A;</p>
+<ul>
+<li>&#x5F53;&#x811A;&#x672C;&#x88AB; <code>Supervisor</code> &#x6307;&#x793A;&#x5173;&#x95ED;&#x65F6;&#xFF0C;&#x4F1A;&#x5F15;&#x53D1;&#x4FE1;&#x53F7; <code>SIGTERM</code></li>
+<li><code>SIGUSR2</code> &#x662F;&#x7528;&#x6237;&#x5B9A;&#x4E49;&#x7684;&#x4FE1;&#x53F7;&#xFF0C;Laravel&#x7528;&#x6765;&#x8868;&#x793A;&#x811A;&#x672C;&#x5E94;&#x8BE5;&#x6682;&#x505C;&#x3002;</li>
+<li>&#x5F53;&#x6682;&#x505C;&#x7684;&#x811A;&#x672C;&#x88AB; <code>Supervisor</code> &#x6307;&#x793A;&#x7EE7;&#x7EED;&#x8FDB;&#x884C;&#x65F6;&#xFF0C;&#x4F1A;&#x5F15;&#x53D1; <code>SIGCONT</code></li>
+</ul>
+<p>&#x5728;&#x771F;&#x6B63;&#x8FD0;&#x884C;&#x4EFB;&#x52A1;&#x4E4B;&#x524D;&#xFF0C;&#x7A0B;&#x5E8F;&#x8FD8;&#x4ECE; <code>cache</code> &#x4E2D;&#x53D6;&#x4E86;&#x4E00;&#x6B21;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x91CD;&#x542F;&#x7684;&#x65F6;&#x95F4;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getTimestampOfLastQueueRestart</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($this-&gt;cache) {
+        <span class="hljs-keyword">return</span> $this-&gt;cache-&gt;get(<span class="hljs-string">&apos;illuminate:queue:restart&apos;</span>);
+    }
+}
+</code></pre>
+<h3 id="&#x786E;&#x5B9A;-worker-&#x662F;&#x5426;&#x5E94;&#x8BE5;&#x5904;&#x7406;&#x4F5C;&#x4E1A;">&#x786E;&#x5B9A; <code>worker</code> &#x662F;&#x5426;&#x5E94;&#x8BE5;&#x5904;&#x7406;&#x4F5C;&#x4E1A;</h3>
+<p>&#x8FDB;&#x5165;&#x5FAA;&#x73AF;&#x540E;&#xFF0C;&#x9996;&#x5148;&#x8981;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x811A;&#x672C;&#x662F;&#x5E94;&#x8BE5;&#x5904;&#x7406;&#x4EFB;&#x52A1;&#xFF0C;&#x8FD8;&#x662F;&#x5E94;&#x8BE5;&#x6682;&#x505C;&#xFF0C;&#x8FD8;&#x662F;&#x5E94;&#x8BE5;&#x9000;&#x51FA;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">daemonShouldRun</span><span class="hljs-params">(WorkerOptions $options)</span>
+</span>{
+    <span class="hljs-keyword">return</span> ! (($this-&gt;manager-&gt;isDownForMaintenance() &amp;&amp; ! $options-&gt;force) ||
+        $this-&gt;paused ||
+        $this-&gt;events-&gt;until(<span class="hljs-keyword">new</span> Events\Looping) === <span class="hljs-keyword">false</span>);
+}
+</code></pre>
+<p>&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x5FAA;&#x73AF;&#x5C06;&#x4E0D;&#x4F1A;&#x5904;&#x7406;&#x4EFB;&#x52A1;&#xFF1A;</p>
+<ul>
+<li>&#x811A;&#x672C;&#x5904;&#x4E8E; <code>&#x7EF4;&#x62A4;&#x6A21;&#x5F0F;</code> &#x5E76;&#x4E14;&#x6CA1;&#x6709; <code>--force</code> &#x9009;&#x9879;</li>
+<li>&#x811A;&#x672C;&#x88AB; <code>supervisor</code> &#x6682;&#x505C;</li>
+<li>&#x811A;&#x672C;&#x7684; <code>looping</code> &#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#x8FD4;&#x56DE; <code>false</code></li>
+</ul>
+<p><code>looping</code> &#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#x5728;&#x6BCF;&#x6B21;&#x5FAA;&#x73AF;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x88AB;&#x542F;&#x52A8;&#xFF0C;&#x5982;&#x679C;&#x8FD4;&#x56DE; <code>false</code>&#xFF0C;&#x90A3;&#x4E48;&#x5F53;&#x524D;&#x7684;&#x5FAA;&#x73AF;&#x5C06;&#x4F1A;&#x88AB;&#x6682;&#x505C;&#xFF1A;<code>pauseWorker</code>:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pauseWorker</span><span class="hljs-params">(WorkerOptions $options, $lastRestart)</span>
+</span>{
+    $this-&gt;sleep($options-&gt;sleep &gt; <span class="hljs-number">0</span> ? $options-&gt;sleep : <span class="hljs-number">1</span>);
+
+    $this-&gt;stopIfNecessary($options, $lastRestart);
+}
+</code></pre>
+<p>&#x811A;&#x672C;&#x5728; <code>sleep</code> &#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x8981;&#x91CD;&#x65B0;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x811A;&#x672C;&#x662F;&#x5426;&#x9700;&#x8981; <code>stop</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">stopIfNecessary</span><span class="hljs-params">(WorkerOptions $options, $lastRestart)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($this-&gt;shouldQuit) {
+        $this-&gt;kill();
+    }
+
+    <span class="hljs-keyword">if</span> ($this-&gt;memoryExceeded($options-&gt;memory)) {
+        $this-&gt;stop(<span class="hljs-number">12</span>);
+    } <span class="hljs-keyword">elseif</span> ($this-&gt;queueShouldRestart($lastRestart)) {
+        $this-&gt;stop();
+    }
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">queueShouldRestart</span><span class="hljs-params">($lastRestart)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;getTimestampOfLastQueueRestart() != $lastRestart;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getTimestampOfLastQueueRestart</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($this-&gt;cache) {
+        <span class="hljs-keyword">return</span> $this-&gt;cache-&gt;get(<span class="hljs-string">&apos;illuminate:queue:restart&apos;</span>);
+    }
+}
+</code></pre>
+<p>&#x4EE5;&#x4E0B;&#x60C5;&#x51B5;&#x811A;&#x672C;&#x5C06;&#x4F1A;&#x88AB; <code>stop</code>&#xFF1A;</p>
+<ul>
+<li>&#x811A;&#x672C;&#x88AB; <code>supervisor</code> &#x9000;&#x51FA;</li>
+<li>&#x5185;&#x5B58;&#x8D85;&#x9650;</li>
+<li>&#x811A;&#x672C;&#x88AB;&#x91CD;&#x542F;&#x8FC7;</li>
+</ul>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">kill</span><span class="hljs-params">($status = <span class="hljs-number">0</span>)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (extension_loaded(<span class="hljs-string">&apos;posix&apos;</span>)) {
+        posix_kill(getmypid(), SIGKILL);
+    }
+
+    <span class="hljs-keyword">exit</span>($status);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">stop</span><span class="hljs-params">($status = <span class="hljs-number">0</span>)</span>
+</span>{
+    $this-&gt;events-&gt;fire(<span class="hljs-keyword">new</span> Events\WorkerStopping);
+
+    <span class="hljs-keyword">exit</span>($status);
+}
+</code></pre>
+<p>&#x811A;&#x672C;&#x88AB;&#x91CD;&#x542F;&#xFF0C;&#x5F53;&#x524D;&#x7684;&#x8FDB;&#x7A0B;&#x9700;&#x8981;&#x9000;&#x51FA;&#x5E76;&#x4E14;&#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#x3002;</p>
+<h3 id="&#x83B7;&#x53D6;&#x4E0B;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;">&#x83B7;&#x53D6;&#x4E0B;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;</h3>
+<p>&#x5F53;&#x542B;&#x6709;&#x591A;&#x4E2A;&#x961F;&#x5217;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x547D;&#x4EE4;&#x884C;&#x53EF;&#x4EE5;&#x7528; <code>,</code> &#x8FDE;&#x63A5;&#x591A;&#x4E2A;&#x961F;&#x5217;&#x7684;&#x540D;&#x5B57;&#xFF0C;&#x4F4D;&#x4E8E;&#x524D;&#x9762;&#x7684;&#x961F;&#x5217;&#x4F18;&#x5148;&#x7EA7;&#x66F4;&#x9AD8;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNextJob</span><span class="hljs-params">($connection, $queue)</span>
+</span>{
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">foreach</span> (explode(<span class="hljs-string">&apos;,&apos;</span>, $queue) <span class="hljs-keyword">as</span> $queue) {
+            <span class="hljs-keyword">if</span> (! is_null($job = $connection-&gt;pop($queue))) {
+                <span class="hljs-keyword">return</span> $job;
+            }
+        }
+    } <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
+        $this-&gt;exceptions-&gt;report($e);
+    } <span class="hljs-keyword">catch</span> (Throwable $e) {
+        $this-&gt;exceptions-&gt;report(<span class="hljs-keyword">new</span> FatalThrowableError($e));
+    }
+}
+</code></pre>
+<p><code>$connection</code> &#x662F;&#x5177;&#x4F53;&#x7684;&#x9A71;&#x52A8;&#xFF0C;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x662F; <code>Illuminate\Queue\RedisQueue</code>:</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RedisQueue</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Queue</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">QueueContract</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pop</span><span class="hljs-params">($queue = null)</span>
+    </span>{
+        $this-&gt;migrate($prefixed = $this-&gt;getQueue($queue));
+
+        <span class="hljs-keyword">list</span>($job, $reserved) = $this-&gt;retrieveNextJob($prefixed);
+
+        <span class="hljs-keyword">if</span> ($reserved) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> RedisJob(
+                $this-&gt;container, $this, $job,
+                $reserved, $this-&gt;connectionName, $queue ?: $this-&gt;default
+            );
+        }
+    }
+&#x3011;
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getQueue</span><span class="hljs-params">($queue)</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;queues:&apos;</span>.($queue ?: $this-&gt;default);
+}
+</code></pre>
+<p>&#x5728;&#x4ECE;&#x961F;&#x5217;&#x4E2D;&#x53D6;&#x51FA;&#x4EFB;&#x52A1;&#x4E4B;&#x524D;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x5C06; <code>delay</code> &#x961F;&#x5217;&#x548C; <code>reserved</code> &#x961F;&#x5217;&#x4E2D;&#x5DF2;&#x7ECF;&#x5230;&#x65F6;&#x95F4;&#x7684;&#x4EFB;&#x52A1;&#x653E;&#x5230;&#x4E3B;&#x961F;&#x5217;&#x4E2D;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">migrate</span><span class="hljs-params">($queue)</span>
+</span>{
+    $this-&gt;migrateExpiredJobs($queue.<span class="hljs-string">&apos;:delayed&apos;</span>, $queue);
+
+    <span class="hljs-keyword">if</span> (! is_null($this-&gt;retryAfter)) {
+        $this-&gt;migrateExpiredJobs($queue.<span class="hljs-string">&apos;:reserved&apos;</span>, $queue);
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">migrateExpiredJobs</span><span class="hljs-params">($from, $to)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;getConnection()-&gt;eval(
+        LuaScripts::migrateExpiredJobs(), <span class="hljs-number">2</span>, $from, $to, $this-&gt;currentTime()
+    );
+}
+</code></pre>
+<p>&#x7531;&#x4E8E;&#x4ECE;&#x961F;&#x5217;&#x53D6;&#x51FA;&#x4EFB;&#x52A1;&#x3001;&#x5728;&#x961F;&#x5217;&#x5220;&#x9664;&#x4EFB;&#x52A1;&#x3001;&#x538B;&#x5165;&#x4E3B;&#x961F;&#x5217;&#x662F;&#x4E09;&#x4E2A;&#x64CD;&#x4F5C;&#xFF0C;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x5E76;&#x53D1;&#xFF0C;&#x7A0B;&#x5E8F;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x4E86; <code>LUA</code> &#x811A;&#x672C;&#xFF0C;&#x4FDD;&#x8BC1;&#x4E09;&#x4E2A;&#x64CD;&#x4F5C;&#x7684;&#x539F;&#x5B50;&#x6027;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">migrateExpiredJobs</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&lt;&lt;&lt;&apos;LUA&apos;
+          -- Get all of the jobs with an expired &quot;score&quot;...
+        local val = redis.call(&apos;zrangebyscore&apos;, KEYS[1], &apos;-inf&apos;, ARGV[1])
+
+        -- If we have values in the array, we will remove them from the first queue
+        -- and add them onto the destination queue in chunks of 100, which moves
+        -- all of the appropriate jobs onto the destination queue very safely.
+        if(next(val) ~= nil) then
+          redis.call(&apos;zremrangebyrank&apos;, KEYS[1], 0, #val - 1)
+
+          for i = 1, #val, 100 do
+            redis.call(&apos;rpush&apos;, KEYS[2], unpack(val, i, math.min(i+99, #val)))
+          end
+        end
+
+      return val
+    LUA;
+}
+</span></code></pre>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x5C31;&#x8981;&#x4ECE;&#x4E3B;&#x961F;&#x5217;&#x4E2D;&#x83B7;&#x53D6;&#x4E0B;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#xFF0C;&#x5728;&#x53D6;&#x51FA;&#x4E0B;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x4E4B;&#x540E;&#xFF0C;&#x8FD8;&#x8981;&#x5C06;&#x4EFB;&#x52A1;&#x653E;&#x5165; <code>reserved</code> &#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x5F53;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5931;&#x8D25;&#x540E;&#xFF0C;&#x8BE5;&#x4EFB;&#x52A1;&#x4F1A;&#x8FDB;&#x884C;&#x91CD;&#x8BD5;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">retrieveNextJob</span><span class="hljs-params">($queue)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;getConnection()-&gt;eval(
+        LuaScripts::pop(), <span class="hljs-number">2</span>, $queue, $queue.<span class="hljs-string">&apos;:reserved&apos;</span>,
+        $this-&gt;availableAt($this-&gt;retryAfter)
+    );
+}
+
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&lt;&lt;&lt;&apos;LUA&apos;
+        -- Pop the first job off of the queue...
+        local job = redis.call(&apos;lpop&apos;, KEYS[1])
+        local reserved = false
+
+        if(job ~= false) then
+            -- Increment the attempt count and place job on the reserved queue...
+            reserved = cjson.decode(job)
+            reserved[&apos;attempts&apos;] = reserved[&apos;attempts&apos;] + 1
+            reserved = cjson.encode(reserved)
+            redis.call(&apos;zadd&apos;, KEYS[2], ARGV[1], reserved)
+        end
+
+        return {job, reserved}
+    LUA;
+}
+</span></code></pre>
+<p>&#x4ECE; <code>redis</code> &#x4E2D;&#x83B7;&#x53D6;&#x5230; <code>job</code> &#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x5C06;&#x5176;&#x5305;&#x88C5;&#x6210; <code>RedisJob</code> &#x7C7B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Container $container, RedisQueue $redis, $job, $reserved, $connectionName, $queue)</span>
+</span>{
+    $this-&gt;job = $job;
+    $this-&gt;redis = $redis;
+    $this-&gt;queue = $queue;
+    $this-&gt;reserved = $reserved;
+    $this-&gt;container = $container;
+    $this-&gt;connectionName = $connectionName;
+
+    $this-&gt;decoded = $this-&gt;payload();
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">payload</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> json_decode($this-&gt;getRawBody(), <span class="hljs-keyword">true</span>);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRawBody</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;job;
+}
+</code></pre>
+<h3 id="&#x8D85;&#x65F6;&#x5904;&#x7406;">&#x8D85;&#x65F6;&#x5904;&#x7406;</h3>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x811A;&#x672C;&#x8D85;&#x65F6;&#xFF0C; <code>pcntl_alarm</code> &#x5C06;&#x4F1A;&#x542F;&#x52A8;&#x5E76;&#x6740;&#x6B7B;&#x5F53;&#x524D;&#x7684; <code>work</code> &#x8FDB;&#x7A0B;&#x3002;&#x6740;&#x6B7B;&#x8FDB;&#x7A0B;&#x540E;&#xFF0C; <code>work</code> &#x8FDB;&#x7A0B;&#x5C06;&#x4F1A;&#x88AB;&#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x91CD;&#x542F;&#xFF0C;&#x7EE7;&#x7EED;&#x8FDB;&#x884C;&#x4E0B;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registerTimeoutHandler</span><span class="hljs-params">($job, WorkerOptions $options)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($options-&gt;timeout &gt; <span class="hljs-number">0</span> &amp;&amp; $this-&gt;supportsAsyncSignals()) {
+        pcntl_signal(SIGALRM, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+            $this-&gt;kill(<span class="hljs-number">1</span>);
+        });
+
+        pcntl_alarm($this-&gt;timeoutForJob($job, $options) + $options-&gt;sleep);
+    }
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">timeoutForJob</span><span class="hljs-params">($job, WorkerOptions $options)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $job &amp;&amp; ! is_null($job-&gt;timeout()) ? $job-&gt;timeout() : $options-&gt;timeout;
+}
+</code></pre>
+<h2 id="&#x4EFB;&#x52A1;&#x4E8B;&#x52A1;">&#x4EFB;&#x52A1;&#x4E8B;&#x52A1;</h2>
+<p>&#x8FD0;&#x884C;&#x4EFB;&#x52A1;&#x524D;&#x540E;&#x4F1A;&#x542F;&#x52A8;&#x4E24;&#x4E2A;&#x4E8B;&#x4EF6; <code>JobProcessing</code> &#x4E0E; <code>JobProcessed</code>&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x4E8B;&#x4EF6;&#x9700;&#x8981;&#x4E8B;&#x5148;&#x6CE8;&#x518C;&#x76D1;&#x542C;&#x8005;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">runJob</span><span class="hljs-params">($job, $connectionName, WorkerOptions $options)</span>
+</span>{
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">return</span> $this-&gt;process($connectionName, $job, $options);
+    } <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
+        $this-&gt;exceptions-&gt;report($e);
+    } <span class="hljs-keyword">catch</span> (Throwable $e) {
+        $this-&gt;exceptions-&gt;report(<span class="hljs-keyword">new</span> FatalThrowableError($e));
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">process</span><span class="hljs-params">($connectionName, $job, WorkerOptions $options)</span>
+</span>{
+    <span class="hljs-keyword">try</span> {
+        $this-&gt;raiseBeforeJobEvent($connectionName, $job);
+
+        $this-&gt;markJobAsFailedIfAlreadyExceedsMaxAttempts(
+            $connectionName, $job, (int) $options-&gt;maxTries
+        );
+
+        $job-&gt;fire();
+
+        $this-&gt;raiseAfterJobEvent($connectionName, $job);
+    } <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
+        $this-&gt;handleJobException($connectionName, $job, $options, $e);
+    } <span class="hljs-keyword">catch</span> (Throwable $e) {
+        $this-&gt;handleJobException(
+            $connectionName, $job, $options, <span class="hljs-keyword">new</span> FatalThrowableError($e)
+        );
+    }
+}
+</code></pre>
+<h3 id="&#x4EFB;&#x52A1;&#x524D;&#x4E0E;&#x4EFB;&#x52A1;&#x540E;&#x4E8B;&#x4EF6;">&#x4EFB;&#x52A1;&#x524D;&#x4E0E;&#x4EFB;&#x52A1;&#x540E;&#x4E8B;&#x4EF6;</h3>
+<p><code>raiseBeforeJobEvent</code> &#x51FD;&#x6570;&#x7528;&#x4E8E;&#x89E6;&#x53D1;&#x4EFB;&#x52A1;&#x5904;&#x7406;&#x524D;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;<code>raiseAfterJobEvent</code> &#x51FD;&#x6570;&#x7528;&#x4E8E;&#x89E6;&#x53D1;&#x4EFB;&#x52A1;&#x5904;&#x7406;&#x540E;&#x7684;&#x4E8B;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">raiseBeforeJobEvent</span><span class="hljs-params">($connectionName, $job)</span>
+</span>{
+    $this-&gt;events-&gt;fire(<span class="hljs-keyword">new</span> Events\JobProcessing(
+        $connectionName, $job
+    ));
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">raiseAfterJobEvent</span><span class="hljs-params">($connectionName, $job)</span>
+</span>{
+    $this-&gt;events-&gt;fire(<span class="hljs-keyword">new</span> Events\JobProcessed(
+        $connectionName, $job
+    ));
+}
+</code></pre>
+<h2 id="&#x4EFB;&#x52A1;&#x5F02;&#x5E38;&#x5904;&#x7406;">&#x4EFB;&#x52A1;&#x5F02;&#x5E38;&#x5904;&#x7406;</h2>
+<p><img src="http://owql68l6p.bkt.clouddn.com/QQ20171209-003432@2x.png" alt=""></p>
+<p>&#x4EFB;&#x52A1;&#x5728;&#x8FD0;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F1A;&#x9047;&#x5230;&#x5F02;&#x5E38;&#x60C5;&#x51B5;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x5C31;&#x8981;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x4EFB;&#x52A1;&#x7684;&#x5931;&#x8D25;&#x6B21;&#x6570;&#x662F;&#x4E0D;&#x662F;&#x8D85;&#x8FC7;&#x9650;&#x5236;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8D85;&#x8FC7;&#x9650;&#x5236;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x628A;&#x5F53;&#x524D;&#x4EFB;&#x52A1;&#x91CD;&#x65B0;&#x653E;&#x56DE;&#x961F;&#x5217;&#x5F53;&#x4E2D;&#xFF1B;&#x5982;&#x679C;&#x8D85;&#x8FC7;&#x4E86;&#x9650;&#x5236;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x8981;&#x6807;&#x8BB0;&#x5F53;&#x524D;&#x4EFB;&#x52A1;&#x4E3A;&#x5931;&#x8D25;&#x4EFB;&#x52A1;&#xFF0C;&#x5E76;&#x4E14;&#x5C06;&#x4EFB;&#x52A1;&#x4ECE; <code>reserved</code> &#x961F;&#x5217;&#x4E2D;&#x5220;&#x9664;&#x3002;</p>
+<h3 id="&#x4EFB;&#x52A1;&#x5931;&#x8D25;">&#x4EFB;&#x52A1;&#x5931;&#x8D25;</h3>
+<p><code>markJobAsFailedIfAlreadyExceedsMaxAttempts</code> &#x51FD;&#x6570;&#x7528;&#x4E8E;&#x4EFB;&#x52A1;&#x8FD0;&#x884C;&#x524D;&#xFF0C;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x4EFB;&#x52A1;&#x662F;&#x5426;&#x91CD;&#x8BD5;&#x6B21;&#x6570;&#x8D85;&#x8FC7;&#x9650;&#x5236;:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">markJobAsFailedIfAlreadyExceedsMaxAttempts</span><span class="hljs-params">($connectionName, $job, $maxTries)</span>
+</span>{
+    $maxTries = ! is_null($job-&gt;maxTries()) ? $job-&gt;maxTries() : $maxTries;
+
+    <span class="hljs-keyword">if</span> ($maxTries === <span class="hljs-number">0</span> || $job-&gt;attempts() &lt;= $maxTries) {
+        <span class="hljs-keyword">return</span>;
+    }
+
+    $this-&gt;failJob($connectionName, $job, $e = <span class="hljs-keyword">new</span> MaxAttemptsExceededException(
+        <span class="hljs-string">&apos;A queued job has been attempted too many times. The job may have previously timed out.&apos;</span>
+    ));
+
+    <span class="hljs-keyword">throw</span> $e;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maxTries</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> array_get($this-&gt;payload(), <span class="hljs-string">&apos;maxTries&apos;</span>);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">attempts</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> Arr::get($this-&gt;decoded, <span class="hljs-string">&apos;attempts&apos;</span>) + <span class="hljs-number">1</span>;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">failJob</span><span class="hljs-params">($connectionName, $job, $e)</span>
+</span>{
+    <span class="hljs-keyword">return</span> FailingJob::handle($connectionName, $job, $e);
+}
+</code></pre>
+<p>&#x5F53;&#x9047;&#x5230;&#x91CD;&#x8BD5;&#x6B21;&#x6570;&#x5927;&#x4E8E;&#x9650;&#x5236;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;<code>work</code> &#x8FDB;&#x7A0B;&#x5C31;&#x4F1A;&#x8C03;&#x7528; <code>FailingJob</code>:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">failJob</span><span class="hljs-params">($connectionName, $job, $e)</span>
+</span>{
+    <span class="hljs-keyword">return</span> FailingJob::handle($connectionName, $job, $e);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handle</span><span class="hljs-params">($connectionName, $job, $e = null)</span>
+</span>{
+    $job-&gt;markAsFailed();
+
+    <span class="hljs-keyword">if</span> ($job-&gt;isDeleted()) {
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-keyword">try</span> {
+        $job-&gt;delete();
+
+        $job-&gt;failed($e);
+    } <span class="hljs-keyword">finally</span> {
+        <span class="hljs-keyword">static</span>::events()-&gt;fire(<span class="hljs-keyword">new</span> JobFailed(
+            $connectionName, $job, $e ?: <span class="hljs-keyword">new</span> ManuallyFailedException
+        ));
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">markAsFailed</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;failed = <span class="hljs-keyword">true</span>;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delete</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">parent</span>::delete();
+
+    $this-&gt;redis-&gt;deleteReserved($this-&gt;queue, $this);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isDeleted</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;deleted;
+}
+</code></pre>
+<p><code>FailingJob</code> &#x4F1A;&#x6807;&#x8BB0;&#x5F53;&#x524D;&#x4EFB;&#x52A1; <code>failed</code>&#x3001;<code>deleted</code>&#xFF0C;&#x5E76;&#x4E14;&#x4F1A;&#x5C06;&#x5F53;&#x524D;&#x4EFB;&#x52A1;&#x79FB;&#x9664; <code>reserved</code> &#x961F;&#x5217;&#xFF0C;&#x4E0D;&#x4F1A;&#x518D;&#x91CD;&#x8BD5;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteReserved</span><span class="hljs-params">($queue, $job)</span>
+</span>{
+    $this-&gt;getConnection()-&gt;zrem($this-&gt;getQueue($queue).<span class="hljs-string">&apos;:reserved&apos;</span>, $job-&gt;getReservedJob());
+}
+</code></pre>
+<p><code>FailingJob</code> &#x8FD8;&#x4F1A;&#x8C03;&#x7528; <code>RedisJob</code> &#x7684; <code>failed</code> &#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x4E14;&#x89E6;&#x53D1; <code>JobFailed</code> &#x4E8B;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">failed</span><span class="hljs-params">($e)</span>
+</span>{
+    $this-&gt;markAsFailed();
+
+    $payload = $this-&gt;payload();
+
+    <span class="hljs-keyword">list</span>($class, $method) = JobName::parse($payload[<span class="hljs-string">&apos;job&apos;</span>]);
+
+    <span class="hljs-keyword">if</span> (method_exists($this-&gt;instance = $this-&gt;resolve($class), <span class="hljs-string">&apos;failed&apos;</span>)) {
+        $this-&gt;instance-&gt;failed($payload[<span class="hljs-string">&apos;data&apos;</span>], $e);
+    }
+}
+</code></pre>
+<p>&#x7A0B;&#x5E8F;&#x4F1A;&#x89E3;&#x6790; <code>job</code> &#x7C7B;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x524D;&#x5728; <code>redis</code> &#x4E2D;&#x5DF2;&#x7ECF;&#x5B58;&#x50A8;&#x4E86;&#xFF1A;</p>
+<pre><code class="lang-php">[
+    <span class="hljs-string">&apos;job&apos;</span> =&gt; <span class="hljs-string">&apos;Illuminate\Queue\CallQueuedHandler@call&apos;</span>,
+    <span class="hljs-string">&apos;maxTries&apos;</span> =&gt; <span class="hljs-keyword">isset</span>($job-&gt;tries) ? $job-&gt;tries : <span class="hljs-keyword">null</span>,
+    <span class="hljs-string">&apos;timeout&apos;</span> =&gt; <span class="hljs-keyword">isset</span>($job-&gt;timeout) ? $job-&gt;timeout : <span class="hljs-keyword">null</span>,
+    <span class="hljs-string">&apos;data&apos;</span> =&gt; [
+        <span class="hljs-string">&apos;commandName&apos;</span> =&gt; get_class($job),
+        <span class="hljs-string">&apos;command&apos;</span> =&gt; serialize(<span class="hljs-keyword">clone</span> $job),
+    ],
+];
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x63A5;&#x7740;&#x770B; <code>failed</code> &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">failed</span><span class="hljs-params">(array $data, $e)</span>
+</span>{
+    $command = unserialize($data[<span class="hljs-string">&apos;command&apos;</span>]);
+
+    <span class="hljs-keyword">if</span> (method_exists($command, <span class="hljs-string">&apos;failed&apos;</span>)) {
+        $command-&gt;failed($e);
+    }
+}
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x6700;&#x540E;&#x7A0B;&#x5E8F;&#x8C03;&#x7528;&#x4E86;&#x4EFB;&#x52A1;&#x7C7B;&#x7684; <code>failed</code> &#x51FD;&#x6570;&#x3002;</p>
+<h3 id="&#x5F02;&#x5E38;&#x5904;&#x7406;">&#x5F02;&#x5E38;&#x5904;&#x7406;</h3>
+<p>&#x5F53;&#x4EFB;&#x52A1;&#x9047;&#x5230;&#x5F02;&#x5E38;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7A0B;&#x5E8F;&#x4ECD;&#x7136;&#x4F1A;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x4EFB;&#x52A1;&#x7684;&#x91CD;&#x8BD5;&#x6B21;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x672C;&#x6B21;&#x4EFB;&#x52A1;&#x7684;&#x91CD;&#x8BD5;&#x6B21;&#x6570;&#x5DF2;&#x7ECF;&#x5927;&#x4E8E;&#x6216;&#x7B49;&#x4E8E;&#x9650;&#x5236;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x505C;&#x6B62;&#x91CD;&#x8BD5;&#xFF0C;&#x6807;&#x8BB0;&#x4E3A;&#x5931;&#x8D25;&#xFF1B;&#x5426;&#x5219;&#x5C31;&#x4F1A;&#x91CD;&#x65B0;&#x653E;&#x5165;&#x961F;&#x5217;&#xFF0C;&#x8BB0;&#x5F55;&#x65E5;&#x5FD7;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleJobException</span><span class="hljs-params">($connectionName, $job, WorkerOptions $options, $e)</span>
+</span>{
+    <span class="hljs-keyword">try</span> {
+        $this-&gt;markJobAsFailedIfWillExceedMaxAttempts(
+            $connectionName, $job, (int) $options-&gt;maxTries, $e
+        );
+
+        $this-&gt;raiseExceptionOccurredJobEvent(
+            $connectionName, $job, $e
+        );
+    } <span class="hljs-keyword">finally</span> {
+        <span class="hljs-keyword">if</span> (! $job-&gt;isDeleted()) {
+            $job-&gt;release($options-&gt;delay);
+        }
+    }
+
+    <span class="hljs-keyword">throw</span> $e;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">markJobAsFailedIfWillExceedMaxAttempts</span><span class="hljs-params">($connectionName, $job, $maxTries, $e)</span>
+</span>{
+    $maxTries = ! is_null($job-&gt;maxTries()) ? $job-&gt;maxTries() : $maxTries;
+
+    <span class="hljs-keyword">if</span> ($maxTries &gt; <span class="hljs-number">0</span> &amp;&amp; $job-&gt;attempts() &gt;= $maxTries) {
+        $this-&gt;failJob($connectionName, $job, $e);
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">release</span><span class="hljs-params">($delay = <span class="hljs-number">0</span>)</span>
+</span>{
+    <span class="hljs-keyword">parent</span>::release($delay);
+
+    $this-&gt;redis-&gt;deleteAndRelease($this-&gt;queue, $this, $delay);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteAndRelease</span><span class="hljs-params">($queue, $job, $delay)</span>
+</span>{
+    $queue = $this-&gt;getQueue($queue);
+
+    $this-&gt;getConnection()-&gt;eval(
+        LuaScripts::release(), <span class="hljs-number">2</span>, $queue.<span class="hljs-string">&apos;:delayed&apos;</span>, $queue.<span class="hljs-string">&apos;:reserved&apos;</span>,
+        $job-&gt;getReservedJob(), $this-&gt;availableAt($delay)
+    );
+}
+</code></pre>
+<p>&#x4E00;&#x65E6;&#x4EFB;&#x52A1;&#x51FA;&#x73B0;&#x5F02;&#x5E38;&#x9519;&#x8BEF;&#x3002;&#x90A3;&#x4E48;&#x8BE5;&#x4EFB;&#x52A1;&#x5C06;&#x4F1A;&#x7ACB;&#x523B;&#x4ECE; <code>reserved</code> &#x961F;&#x5217;&#x653E;&#x5165; <code>delayed</code> &#x961F;&#x5217;&#xFF0C;&#x5E76;&#x4E14;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#xFF0C;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x540E;&#xFF0C;&#x7A0B;&#x5E8F;&#x4F1A;&#x5C06;&#x5176;&#x8BB0;&#x5F55;&#x5728;&#x65E5;&#x5FD7;&#x4E2D;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">release</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&lt;&lt;&lt;&apos;LUA&apos;
+        -- Remove the job from the current queue...
+        redis.call(&apos;zrem&apos;, KEYS[2], ARGV[1])
+
+        -- Add the job onto the &quot;delayed&quot; queue...
+        redis.call(&apos;zadd&apos;, KEYS[1], ARGV[2], ARGV[1])
+
+        return true
+    LUA;
+}
+</span></code></pre>
+<h2 id="&#x4EFB;&#x52A1;&#x7684;&#x8FD0;&#x884C;">&#x4EFB;&#x52A1;&#x7684;&#x8FD0;&#x884C;</h2>
+<p>&#x4EFB;&#x52A1;&#x7684;&#x8FD0;&#x884C;&#x9996;&#x5148;&#x4F1A;&#x8C03;&#x7528; <code>CallQueuedHandler</code> &#x7684; <code>call</code> &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fire</span><span class="hljs-params">()</span>
+</span>{
+    $payload = $this-&gt;payload();
+
+    <span class="hljs-keyword">list</span>($class, $method) = JobName::parse($payload[<span class="hljs-string">&apos;job&apos;</span>]);
+
+    with($this-&gt;instance = $this-&gt;resolve($class))-&gt;{$method}($this, $payload[<span class="hljs-string">&apos;data&apos;</span>]);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">call</span><span class="hljs-params">(Job $job, array $data)</span>
+</span>{
+    $command = $this-&gt;setJobInstanceIfNecessary(
+        $job, unserialize($data[<span class="hljs-string">&apos;command&apos;</span>])
+    );
+
+    $this-&gt;dispatcher-&gt;dispatchNow(
+        $command, $handler = $this-&gt;resolveHandler($job, $command)
+    );
+
+    <span class="hljs-keyword">if</span> (! $job-&gt;isDeletedOrReleased()) {
+        $job-&gt;delete();
+    }
+}
+</code></pre>
+<p><code>setJobInstanceIfNecessary</code> &#x51FD;&#x6570;&#x7528;&#x4E8E;&#x4E3A;&#x4EFB;&#x52A1;&#x7C7B;&#x7684; <code>trait</code>: <code>InteractsWithQueue</code> &#x7684;&#x8BBE;&#x7F6E;&#x4EFB;&#x52A1;&#x7C7B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setJobInstanceIfNecessary</span><span class="hljs-params">(Job $job, $instance)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (in_array(InteractsWithQueue::class, class_uses_recursive(get_class($instance)))) {
+        $instance-&gt;setJob($job);
+    }
+
+    <span class="hljs-keyword">return</span> $instance;
+}
+
+<span class="hljs-keyword">trait</span> InteractsWithQueue
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setJob</span><span class="hljs-params">(JobContract $job)</span>
+    </span>{
+        $this-&gt;job = $job;
+
+        <span class="hljs-keyword">return</span> $this;
+    }
+}
+</code></pre>
+<p>&#x63A5;&#x7740;&#x4EFB;&#x52A1;&#x7684;&#x8FD0;&#x884C;&#x5C31;&#x8981;&#x4EA4;&#x7ED9; <code>dispatch</code> :</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatchNow</span><span class="hljs-params">($command, $handler = null)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($handler || $handler = $this-&gt;getCommandHandler($command)) {
+        $callback = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($command)</span> <span class="hljs-title">use</span> <span class="hljs-params">($handler)</span> </span>{
+            <span class="hljs-keyword">return</span> $handler-&gt;handle($command);
+        };
+    } <span class="hljs-keyword">else</span> {
+        $callback = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($command)</span> </span>{
+            <span class="hljs-keyword">return</span> $this-&gt;container-&gt;call([$command, <span class="hljs-string">&apos;handle&apos;</span>]);
+        };
+    }
+
+    <span class="hljs-keyword">return</span> $this-&gt;pipeline-&gt;send($command)-&gt;through($this-&gt;pipes)-&gt;then($callback);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCommandHandler</span><span class="hljs-params">($command)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($this-&gt;hasCommandHandler($command)) {
+        <span class="hljs-keyword">return</span> $this-&gt;container-&gt;make($this-&gt;handlers[get_class($command)]);
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hasCommandHandler</span><span class="hljs-params">($command)</span>
+</span>{
+    <span class="hljs-keyword">return</span> array_key_exists(get_class($command), $this-&gt;handlers);
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x4E0D;&#x5BF9; <code>dispatcher</code> &#x7C7B;&#x8FDB;&#x884C;&#x4EFB;&#x4F55; <code>map</code> &#x51FD;&#x6570;&#x8BBE;&#x7F6E;&#xFF0C;<code>getCommandHandler</code> &#x5C06;&#x4F1A;&#x8FD4;&#x56DE; <code>null</code>&#xFF0C;&#x6B64;&#x65F6;&#x5C31;&#x4F1A;&#x8C03;&#x7528;&#x4EFB;&#x52A1;&#x7C7B;&#x7684; <code>handle</code> &#x51FD;&#x6570;&#xFF0C;&#x8FDB;&#x884C;&#x5177;&#x4F53;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x3002;</p>
+<p>&#x4EFB;&#x52A1;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x8C03;&#x7528; <code>delete</code> &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delete</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">parent</span>::delete();
+
+    $this-&gt;redis-&gt;deleteReserved($this-&gt;queue, $this);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteReserved</span><span class="hljs-params">($queue, $job)</span>
+</span>{
+    $this-&gt;getConnection()-&gt;zrem($this-&gt;getQueue($queue).<span class="hljs-string">&apos;:reserved&apos;</span>, $job-&gt;getReservedJob());
+}
+</code></pre>
+<p>&#x8FD9;&#x6837;&#xFF0C;&#x8FD0;&#x884C;&#x6210;&#x529F;&#x7684;&#x4EFB;&#x52A1;&#x4F1A;&#x4ECE; <code>reserved</code> &#x4E2D;&#x5220;&#x9664;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Laravel Queue——消息队列任务与分发源码剖析.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Laravel Queue——消息队列任务与分发源码剖析">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Laravel Queue——消息队列任务处理器源码剖析","level":"1.13.2","depth":2,"next":{"title":"Laravel 广播系统","level":"1.14","depth":1,"ref":"","articles":[{"title":"Laravel Broadcast——广播系统源码剖析","level":"1.14.1","depth":2,"path":"Laravel Broadcast——广播系统源码剖析.md","ref":"Laravel Broadcast——广播系统源码剖析.md","articles":[]}]},"previous":{"title":"Laravel Queue——消息队列任务与分发源码剖析","level":"1.13.1","depth":2,"path":"Laravel Queue——消息队列任务与分发源码剖析.md","ref":"Laravel Queue——消息队列任务与分发源码剖析.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Laravel Queue——消息队列任务处理器源码剖析.md","mtime":"2019-01-15T10:29:00.325Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T10:51:52.544Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

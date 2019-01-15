@@ -1,0 +1,1364 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Laravel Broadcast——广播系统源码剖析 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    PHP Composer 自动加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="PHP Composer——自动加载原理.html">
+            
+                <a href="PHP Composer——自动加载原理.html">
+            
+                    
+                    PHP Composer——自动加载原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="PHP Composer—— 初始化源码分析.html">
+            
+                <a href="PHP Composer—— 初始化源码分析.html">
+            
+                    
+                    PHP Composer—— 初始化源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="PHP Composer-——-注册与运行源码分析.html">
+            
+                <a href="PHP Composer-——-注册与运行源码分析.html">
+            
+                    
+                    PHP Composer-——-注册与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Laravel Facade 门面
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="Laravel Facade——Facade 门面源码分析.html">
+            
+                <a href="Laravel Facade——Facade 门面源码分析.html">
+            
+                    
+                    Laravel Facade——Facade 门面源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Laravel Ioc 容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Laravel Container——IoC 服务容器.html">
+            
+                <a href="Laravel Container——IoC 服务容器.html">
+            
+                    
+                    Laravel Container——IoC 服务容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器绑定)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器解析)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="Laravel Container——服务容器的细节特性.html">
+            
+                <a href="Laravel Container——服务容器的细节特性.html">
+            
+                    
+                    Laravel Container——服务容器的细节特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Laravel Route 路由
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Laravel HTTP——路由.html">
+            
+                <a href="Laravel HTTP——路由.html">
+            
+                    
+                    Laravel HTTP——路由
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="Laravel HTTP——路由加载源码分析.html">
+            
+                <a href="Laravel HTTP——路由加载源码分析.html">
+            
+                    
+                    Laravel HTTP——路由加载源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                <a href="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                    
+                    Laravel HTTP——Pipeline中间件处理源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="Laravel HTTP——路由的正则编译.html">
+            
+                <a href="Laravel HTTP——路由的正则编译.html">
+            
+                    
+                    Laravel HTTP——路由的正则编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                <a href="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                    
+                    Laravel HTTP——路由的匹配与参数绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="Laravel HTTP——路由中间件源码分析.html">
+            
+                <a href="Laravel HTTP——路由中间件源码分析.html">
+            
+                    
+                    Laravel HTTP——路由中间件源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                <a href="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                    
+                    Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                <a href="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                    
+                    Laravel HTTP——控制器方法的参数构建与运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                <a href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP—— RESTFul 风格路由的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                <a href="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP——重定向的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Laravel ENV 环境变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                <a href="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                    
+                    Laravel ENV—— 环境变量的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Laravel Config 配置文件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                <a href="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                    
+                    Laravel Config—— 配置文件的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Laravel Exceptions 异常处理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="Laravel Exceptions——异常与错误处理.html">
+            
+                <a href="Laravel Exceptions——异常与错误处理.html">
+            
+                    
+                    Laravel Exceptions——异常与错误处理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Laravel Providers 服务提供者
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                <a href="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                    
+                    Laravel Providers——服务提供者的注册与启动源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Laravel Database 数据库
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="Laravel Database——数据库服务的启动与连接.html">
+            
+                <a href="Laravel Database——数据库服务的启动与连接.html">
+            
+                    
+                    Laravel Database——数据库服务的启动与连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="Laravel Database——数据库的 CRUD 操作.html">
+            
+                <a href="Laravel Database——数据库的 CRUD 操作.html">
+            
+                    
+                    Laravel Database——数据库的 CRUD 操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="Laravel Database——查询构造器与语法编译器源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="Laravel Database——查询构造器与语法编译器源码分析%28中%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(中)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="Laravel Database——查询构造器与语法编译器源码分析%28下%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="Laravel Database——分页原理与源码分析.html">
+            
+                <a href="Laravel Database——分页原理与源码分析.html">
+            
+                    
+                    Laravel Database——分页原理与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Laravel Database——Eloquent Model 源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                <a href="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                <a href="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                    
+                    Laravel Database——Eloquent Model 关联源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                <a href="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                    
+                    Laravel Database——Eloquent Model 模型关系加载与查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                <a href="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                    
+                    Laravel Database——Eloquent Model 更新关联模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Laravel Session
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="Laravel Session——session 的启动与运行源码分析.html">
+            
+                <a href="Laravel Session——session 的启动与运行源码分析.html">
+            
+                    
+                    Laravel Session——session 的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    Laravel Event 事件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                <a href="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                    
+                    Laravel Event——事件系统的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    Laravel Queue 队列
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务与分发源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务处理器源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    Laravel 广播系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.14.1" data-path="Laravel Broadcast——广播系统源码剖析.html">
+            
+                <a href="Laravel Broadcast——广播系统源码剖析.html">
+            
+                    
+                    Laravel Broadcast——广播系统源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    Laravel Passport
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Laravel Broadcast——广播系统源码剖析</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="laravel-broadcast&#x2014;&#x2014;&#x5E7F;&#x64AD;&#x7CFB;&#x7EDF;&#x6E90;&#x7801;&#x5256;&#x6790;">Laravel Broadcast&#x2014;&#x2014;&#x5E7F;&#x64AD;&#x7CFB;&#x7EDF;&#x6E90;&#x7801;&#x5256;&#x6790;</h1>
+<h2 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h2>
+<p>&#x5728;&#x73B0;&#x4EE3;&#x7684; <code>web</code> &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;<code>WebSockets</code> &#x88AB;&#x7528;&#x6765;&#x5B9E;&#x73B0;&#x9700;&#x8981;&#x5B9E;&#x65F6;&#x3001;&#x5373;&#x65F6;&#x66F4;&#x65B0;&#x7684;&#x63A5;&#x53E3;&#x3002;&#x5F53;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x7684;&#x6570;&#x636E;&#x88AB;&#x66F4;&#x65B0;&#x540E;&#xFF0C;&#x66F4;&#x65B0;&#x4FE1;&#x606F;&#x5C06;&#x901A;&#x8FC7; <code>WebSocket</code> &#x8FDE;&#x63A5;&#x53D1;&#x9001;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#x7B49;&#x5F85;&#x5904;&#x7406;&#x3002;&#x76F8;&#x6BD4;&#x4E8E;&#x4E0D;&#x505C;&#x5730;&#x8F6E;&#x8BE2;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;<code>WebSocket</code> &#x662F;&#x4E00;&#x79CD;&#x66F4;&#x52A0;&#x53EF;&#x9760;&#x548C;&#x9AD8;&#x6548;&#x7684;&#x9009;&#x62E9;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x5148;&#x7528;&#x4E00;&#x4E2A;&#x7535;&#x5B50;&#x5546;&#x52A1;&#x7F51;&#x7AD9;&#x4F5C;&#x4E3A;&#x4F8B;&#x5B50;&#x6765;&#x6982;&#x89C8;&#x4E00;&#x4E0B;&#x4E8B;&#x4EF6;&#x5E7F;&#x64AD;&#x3002;&#x5F53;&#x7528;&#x6237;&#x5728;&#x67E5;&#x770B;&#x81EA;&#x5DF1;&#x7684;&#x8BA2;&#x5355;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x5E0C;&#x671B;&#x4ED6;&#x4EEC;&#x5FC5;&#x987B;&#x901A;&#x8FC7;&#x5237;&#x65B0;&#x9875;&#x9762;&#x624D;&#x80FD;&#x770B;&#x5230;&#x72B6;&#x6001;&#x66F4;&#x65B0;&#x3002;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x4E00;&#x65E6;&#x6709;&#x66F4;&#x65B0;&#x65F6;&#x5C31;&#x4E3B;&#x52A8;&#x5C06;&#x66F4;&#x65B0;&#x4FE1;&#x606F;&#x5E7F;&#x64AD;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#x3002;</p>
+<p><code>laravel</code> &#x7684;&#x5E7F;&#x64AD;&#x7CFB;&#x7EDF;&#x548C;&#x961F;&#x5217;&#x7CFB;&#x7EDF;&#x7C7B;&#x4F3C;&#xFF0C;&#x9700;&#x8981;&#x4E24;&#x4E2A;&#x8FDB;&#x7A0B;&#x534F;&#x4F5C;&#xFF0C;&#x4E00;&#x4E2A;&#x662F; <code>laravel</code> &#x7684; <code>web</code> &#x540E;&#x53F0;&#x7CFB;&#x7EDF;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x662F; <code>Socket.IO</code> &#x670D;&#x52A1;&#x5668;&#x7CFB;&#x7EDF;&#x3002;&#x5177;&#x4F53;&#x7684;&#x6D41;&#x7A0B;&#x662F;&#x9875;&#x9762;&#x52A0;&#x8F7D;&#x65F6;&#xFF0C;&#x7F51;&#x9875; <code>js</code> &#x7A0B;&#x5E8F; <code>Laravel Echo</code> &#x4E0E; <code>Socket.IO</code> &#x670D;&#x52A1;&#x5668;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#xFF0C; <code>laravel</code> &#x53D1;&#x8D77;&#x901A;&#x8FC7;&#x9A71;&#x52A8;&#x53D1;&#x5E03;&#x5E7F;&#x64AD;&#xFF0C;<code>Socket.IO</code> &#x670D;&#x52A1;&#x5668;&#x63A5;&#x53D7;&#x5E7F;&#x64AD;&#x5185;&#x5BB9;&#xFF0C;&#x5BF9;&#x8FDE;&#x63A5;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x7F51;&#x9875;&#x63A8;&#x9001;&#x4FE1;&#x606F;&#xFF0C;&#x4EE5;&#x8FBE;&#x5230;&#x7F51;&#x9875;&#x5B9E;&#x65F6;&#x66F4;&#x65B0;&#x7684;&#x76EE;&#x7684;&#x3002;</p>
+<p><code>laravel</code> &#x53D1;&#x8D77;&#x5E7F;&#x64AD;&#x7684;&#x65B9;&#x5F0F;&#x6709;&#x4E24;&#x79CD;&#xFF0C;<code>redis</code> &#x4E0E; <code>pusher</code>&#x3002;&#x5BF9;&#x4E8E; <code>redis</code> &#x6765;&#x8BF4;&#xFF0C;&#x9700;&#x8981;&#x652F;&#x6301; <code>Socket.IO</code> &#x670D;&#x52A1;&#x5668;&#x7CFB;&#x7EDF;&#xFF0C;&#x5B98;&#x65B9;&#x63A8;&#x8350; <code>nodejs</code> &#x4E3A;&#x5E95;&#x5C42;&#x7684; <code>tlaverdure/laravel-echo-server</code>&#x3002;&#x5BF9;&#x4E8E; <code>pusher</code> &#x6765;&#x8BF4;&#xFF0C;&#x8BE5;&#x7B2C;&#x4E09;&#x65B9;&#x670D;&#x52A1;&#x5305;&#x542B;&#x4E86;&#x9A71;&#x52A8;&#x4E0E; <code>Socket.IO</code> &#x670D;&#x52A1;&#x5668;&#x3002;</p>
+<p>&#x672C;&#x6587;&#x5C06;&#x4F1A;&#x4ECB;&#x7ECD; <code>redis</code> &#x4E3A;&#x9A71;&#x52A8;&#x7684;&#x5E7F;&#x64AD;&#x6E90;&#x7801;&#xFF0C;&#x7531;&#x4E8E; <code>laravel-echo-server</code> &#x662F; <code>nodejs</code> &#x7F16;&#x5199;&#xFF0C;&#x672C;&#x6587;&#x4E5F;&#x65E0;&#x6CD5;&#x4ECB;&#x7ECD; <code>Socket.IO</code> &#x65B9;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<h2 id="&#x5E7F;&#x64AD;&#x7CFB;&#x7EDF;&#x670D;&#x52A1;&#x7684;&#x542F;&#x52A8;">&#x5E7F;&#x64AD;&#x7CFB;&#x7EDF;&#x670D;&#x52A1;&#x7684;&#x542F;&#x52A8;</h2>
+<p>&#x548C;&#x5176;&#x4ED6;&#x670D;&#x52A1;&#x7C7B;&#x4F3C;&#xFF0C;&#x5E7F;&#x64AD;&#x7CFB;&#x7EDF;&#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;&#x5B9E;&#x8D28;&#x4E0A;&#x5C31;&#x662F;&#x5BF9; <code>Ioc</code> &#x5BB9;&#x5668;&#x6CE8;&#x518C;&#x95E8;&#x9762;&#x7C7B;&#xFF0C;&#x5E7F;&#x64AD;&#x7CFB;&#x7EDF;&#x7684;&#x95E8;&#x9762;&#x7C7B;&#x662F; <code>BroadcastManager</code>:</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BroadcastServiceProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceProvider</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">register</span><span class="hljs-params">()</span>
+    </span>{
+        $this-&gt;app-&gt;singleton(BroadcastManager::class, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app)</span> </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> BroadcastManager($app);
+        });
+
+        $this-&gt;app-&gt;singleton(BroadcasterContract::class, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app)</span> </span>{
+            <span class="hljs-keyword">return</span> $app-&gt;make(BroadcastManager::class)-&gt;connection();
+        });
+
+        $this-&gt;app-&gt;alias(
+            BroadcastManager::class, BroadcastingFactory::class
+        );
+    }
+}
+</code></pre>
+<p>&#x9664;&#x4E86;&#x6CE8;&#x518C; <code>BroadcastManager</code>&#xFF0C;<code>BroadcastServiceProvider</code> &#x8FD8;&#x8FDB;&#x884C;&#x4E86;&#x5E7F;&#x64AD;&#x9A71;&#x52A8;&#x7684;&#x542F;&#x52A8;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">connection</span><span class="hljs-params">($driver = null)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;driver($driver);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">driver</span><span class="hljs-params">($name = null)</span>
+</span>{
+    $name = $name ?: $this-&gt;getDefaultDriver();
+
+    <span class="hljs-keyword">return</span> $this-&gt;drivers[$name] = $this-&gt;get($name);
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span><span class="hljs-params">($name)</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">isset</span>($this-&gt;drivers[$name]) ? $this-&gt;drivers[$name] : $this-&gt;resolve($name);
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resolve</span><span class="hljs-params">($name)</span>
+</span>{
+    $config = $this-&gt;getConfig($name);
+
+    <span class="hljs-keyword">if</span> (is_null($config)) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InvalidArgumentException(<span class="hljs-string">&quot;Broadcaster [{$name}] is not defined.&quot;</span>);
+    }
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($this-&gt;customCreators[$config[<span class="hljs-string">&apos;driver&apos;</span>]])) {
+        <span class="hljs-keyword">return</span> $this-&gt;callCustomCreator($config);
+    }
+
+    $driverMethod = <span class="hljs-string">&apos;create&apos;</span>.ucfirst($config[<span class="hljs-string">&apos;driver&apos;</span>]).<span class="hljs-string">&apos;Driver&apos;</span>;
+
+    <span class="hljs-keyword">if</span> (! method_exists($this, $driverMethod)) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InvalidArgumentException(<span class="hljs-string">&quot;Driver [{$config[&apos;driver&apos;]}] is not supported.&quot;</span>);
+    }
+
+    <span class="hljs-keyword">return</span> $this-&gt;{$driverMethod}($config);
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createRedisDriver</span><span class="hljs-params">(array $config)</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> RedisBroadcaster(
+        $this-&gt;app-&gt;make(<span class="hljs-string">&apos;redis&apos;</span>), Arr::get($config, <span class="hljs-string">&apos;connection&apos;</span>)
+    );
+}
+</code></pre>
+<h2 id="&#x5E7F;&#x64AD;&#x4FE1;&#x606F;&#x7684;&#x53D1;&#x5E03;">&#x5E7F;&#x64AD;&#x4FE1;&#x606F;&#x7684;&#x53D1;&#x5E03;</h2>
+<p>&#x5E7F;&#x64AD;&#x4FE1;&#x606F;&#x7684;&#x53D1;&#x5E03;&#x4E0E;&#x4E8B;&#x4EF6;&#x7684;&#x53D1;&#x5E03;&#x5927;&#x81F4;&#x76F8;&#x540C;&#xFF0C;&#x8981;&#x544A;&#x77E5; <code>Laravel</code> &#x4E00;&#x4E2A;&#x7ED9;&#x5B9A;&#x7684;&#x4E8B;&#x4EF6;&#x662F;&#x5E7F;&#x64AD;&#x7C7B;&#x578B;&#xFF0C;&#x53EA;&#x9700;&#x5728;&#x4E8B;&#x4EF6;&#x7C7B;&#x4E2D;&#x5B9E;&#x73B0; <code>Illuminate\Contracts\Broadcasting\ShouldBroadcast</code> &#x63A5;&#x53E3;&#x5373;&#x53EF;&#x3002;&#x8BE5;&#x63A5;&#x53E3;&#x5DF2;&#x7ECF;&#x88AB;&#x5BFC;&#x5165;&#x5230;&#x6240;&#x6709;&#x7531;&#x6846;&#x67B6;&#x751F;&#x6210;&#x7684;&#x4E8B;&#x4EF6;&#x7C7B;&#x4E2D;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x5730;&#x5C06;&#x5B83;&#x6DFB;&#x52A0;&#x5230;&#x81EA;&#x5DF1;&#x7684;&#x4E8B;&#x4EF6;&#x4E2D;&#x3002;</p>
+<p><code>ShouldBroadcast</code> &#x63A5;&#x53E3;&#x8981;&#x6C42;&#x4F60;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;<code>broadcastOn</code>. <code>broadcastOn</code> &#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x9891;&#x9053;&#x6216;&#x4E00;&#x4E2A;&#x9891;&#x9053;&#x6570;&#x7EC4;&#xFF0C;&#x4E8B;&#x4EF6;&#x4F1A;&#x88AB;&#x5E7F;&#x64AD;&#x5230;&#x8FD9;&#x4E9B;&#x9891;&#x9053;&#x3002;&#x9891;&#x9053;&#x5FC5;&#x987B;&#x662F; <code>Channel</code>&#x3001;<code>PrivateChannel</code> &#x6216; <code>PresenceChannel</code> &#x7684;&#x5B9E;&#x4F8B;&#x3002;<code>Channel</code> &#x5B9E;&#x4F8B;&#x8868;&#x793A;&#x4EFB;&#x4F55;&#x7528;&#x6237;&#x90FD;&#x53EF;&#x4EE5;&#x8BA2;&#x9605;&#x7684;&#x516C;&#x5F00;&#x9891;&#x9053;&#xFF0C;&#x800C; <code>PrivateChannels</code> &#x548C; <code>PresenceChannels</code> &#x5219;&#x8868;&#x793A;&#x9700;&#x8981; &#x9891;&#x9053;&#x6388;&#x6743; &#x7684;&#x79C1;&#x6709;&#x9891;&#x9053;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServerCreated</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ShouldBroadcast</span>
+</span>{
+    <span class="hljs-keyword">use</span> <span class="hljs-title">SerializesModels</span>;
+
+    <span class="hljs-keyword">public</span> $user;
+
+    <span class="hljs-comment">//&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x5E7F;&#x64AD;&#x4E8B;&#x4EF6;&#x90FD;&#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x9ED8;&#x8BA4;&#x7684;&#x961F;&#x5217;&#x4E0A;&#xFF0C;&#x9ED8;&#x8BA4;&#x7684;&#x961F;&#x5217;&#x8FDE;&#x63A5;&#x5728; queue.php &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x6307;&#x5B9A;&#x3002;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5728;&#x4E8B;&#x4EF6;&#x7C7B;&#x4E2D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A; broadcastQueue &#x5C5E;&#x6027;&#x6765;&#x81EA;&#x5B9A;&#x4E49;&#x5E7F;&#x64AD;&#x5668;&#x4F7F;&#x7528;&#x7684;&#x961F;&#x5217;&#x3002;&#x8BE5;&#x5C5E;&#x6027;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x5E7F;&#x64AD;&#x4F7F;&#x7528;&#x7684;&#x961F;&#x5217;&#x540D;&#x79F0;&#xFF1A;</span>
+    <span class="hljs-keyword">public</span> $broadcastQueue = <span class="hljs-string">&apos;your-queue-name&apos;</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(User $user)</span>
+    </span>{
+        $this-&gt;user = $user;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">broadcastOn</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> PrivateChannel(<span class="hljs-string">&apos;user.&apos;</span>.$this-&gt;user-&gt;id);
+    }
+
+    <span class="hljs-comment">//Laravel &#x9ED8;&#x8BA4;&#x4F1A;&#x4F7F;&#x7528;&#x4E8B;&#x4EF6;&#x7684;&#x7C7B;&#x540D;&#x4F5C;&#x4E3A;&#x5E7F;&#x64AD;&#x540D;&#x79F0;&#x6765;&#x5E7F;&#x64AD;&#x4E8B;&#x4EF6;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#xFF1A;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">broadcastAs</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;server.created&apos;</span>;
+    }
+
+    <span class="hljs-comment">//&#x60F3;&#x66F4;&#x7EC6;&#x7C92;&#x5EA6;&#x5730;&#x63A7;&#x5236;&#x5E7F;&#x64AD;&#x6570;&#x636E;:</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">broadcastWith</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> [<span class="hljs-string">&apos;id&apos;</span> =&gt; $this-&gt;user-&gt;id];
+    }
+
+    <span class="hljs-comment">//&#x6709;&#x65F6;&#xFF0C;&#x60F3;&#x5728;&#x7ED9;&#x5B9A;&#x6761;&#x4EF6;&#x4E3A; true &#xFF0C;&#x624D;&#x5E7F;&#x64AD;&#x4E8B;&#x4EF6;:</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">broadcastWhen</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;value &gt; <span class="hljs-number">100</span>;
+    }
+}
+</code></pre>
+<p>&#x7136;&#x540E;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x50CF;&#x5E73;&#x65F6;&#x90A3;&#x6837;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#x3002;&#x4E00;&#x65E6;&#x4E8B;&#x4EF6;&#x88AB;&#x89E6;&#x53D1;&#xFF0C;&#x4E00;&#x4E2A;&#x961F;&#x5217;&#x4EFB;&#x52A1;&#x4F1A;&#x81EA;&#x52A8;&#x5E7F;&#x64AD;&#x4E8B;&#x4EF6;&#x5230;&#x4F60;&#x6307;&#x5B9A;&#x7684;&#x5E7F;&#x64AD;&#x9A71;&#x52A8;&#x5668;&#x4E0A;&#x3002;</p>
+<p>&#x5F53;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x88AB;&#x5E7F;&#x64AD;&#x65F6;&#xFF0C;&#x5B83;&#x6240;&#x6709;&#x7684; <code>public</code> &#x5C5E;&#x6027;&#x4F1A;&#x81EA;&#x52A8;&#x88AB;&#x5E8F;&#x5217;&#x5316;&#x4E3A;&#x5E7F;&#x64AD;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x5141;&#x8BB8;&#x4F60;&#x5728;&#x4F60;&#x7684; <code>JavaScript</code> &#x5E94;&#x7528;&#x4E2D;&#x8BBF;&#x95EE;&#x4E8B;&#x4EF6;&#x7684;&#x516C;&#x6709;&#x6570;&#x636E;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684;&#x4E8B;&#x4EF6;&#x6709;&#x4E00;&#x4E2A;&#x516C;&#x6709;&#x7684; <code>$user</code> &#x5C5E;&#x6027;&#xFF0C;&#x5B83;&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E2A; <code>Elouqent</code> &#x6A21;&#x578B;&#xFF0C;&#x90A3;&#x4E48;&#x4E8B;&#x4EF6;&#x7684;&#x5E7F;&#x64AD;&#x6570;&#x636E;&#x4F1A;&#x662F;&#xFF1A;</p>
+<pre><code class="lang-php">{
+    <span class="hljs-string">&quot;user&quot;</span>: {
+        <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Patrick Stewart&quot;</span>
+        ...
+    }
+}
+</code></pre>
+<h2 id="&#x5E7F;&#x64AD;&#x53D1;&#x5E03;&#x7684;&#x6E90;&#x7801;">&#x5E7F;&#x64AD;&#x53D1;&#x5E03;&#x7684;&#x6E90;&#x7801;</h2>
+<p>&#x5E7F;&#x64AD;&#x7684;&#x53D1;&#x5E03;&#x4E0E;&#x4E8B;&#x4EF6;&#x7684;&#x89E6;&#x53D1;&#x662F;&#x4E00;&#x4F53;&#x7684;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x6D41;&#x7A0B;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5728; <code>event</code> &#x7684;&#x6E90;&#x7801;&#x4E2D;&#x4ECB;&#x7ECD;&#x6E05;&#x695A;&#x4E86;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x552F;&#x4E00;&#x7684;&#x4E0D;&#x540C;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatch</span><span class="hljs-params">($event, $payload = [], $halt = false)</span>
+    </span>{
+        <span class="hljs-keyword">list</span>($event, $payload) = $this-&gt;parseEventAndPayload(
+            $event, $payload
+        );
+
+        <span class="hljs-keyword">if</span> ($this-&gt;shouldBroadcast($payload)) {
+            $this-&gt;broadcastEvent($payload[<span class="hljs-number">0</span>]);
+        }
+
+        ...
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shouldBroadcast</span><span class="hljs-params">(array $payload)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">isset</span>($payload[<span class="hljs-number">0</span>]) &amp;&amp; $payload[<span class="hljs-number">0</span>] <span class="hljs-keyword">instanceof</span> ShouldBroadcast;
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">broadcastEvent</span><span class="hljs-params">($event)</span>
+    </span>{
+        $this-&gt;container-&gt;make(BroadcastFactory::class)-&gt;queue($event);
+    }
+</code></pre>
+<p>&#x53EF;&#x89C1;&#xFF0C;&#x5173;&#x952E;&#x4E4B;&#x5904;&#x5728;&#x4E8E; <code>BroadcastManager</code> &#x7684; <code>quene</code> &#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">queue</span><span class="hljs-params">($event)</span>
+</span>{
+    $connection = $event <span class="hljs-keyword">instanceof</span> ShouldBroadcastNow ? <span class="hljs-string">&apos;sync&apos;</span> : <span class="hljs-keyword">null</span>;
+
+    <span class="hljs-keyword">if</span> (is_null($connection) &amp;&amp; <span class="hljs-keyword">isset</span>($event-&gt;connection)) {
+        $connection = $event-&gt;connection;
+    }
+
+    $queue = <span class="hljs-keyword">null</span>;
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($event-&gt;broadcastQueue)) {
+        $queue = $event-&gt;broadcastQueue;
+    } <span class="hljs-keyword">elseif</span> (<span class="hljs-keyword">isset</span>($event-&gt;queue)) {
+        $queue = $event-&gt;queue;
+    }
+
+    $this-&gt;app-&gt;make(<span class="hljs-string">&apos;queue&apos;</span>)-&gt;connection($connection)-&gt;pushOn(
+        $queue, <span class="hljs-keyword">new</span> BroadcastEvent(<span class="hljs-keyword">clone</span> $event)
+    );
+}
+</code></pre>
+<p>&#x53EF;&#x89C1;&#xFF0C;<code>quene</code> &#x65B9;&#x6CD5;&#x5C06;&#x5E7F;&#x64AD;&#x4E8B;&#x4EF6;&#x5305;&#x88C5;&#x4E3A;&#x4E8B;&#x4EF6;&#x7C7B;&#xFF0C;&#x5E76;&#x4E14;&#x901A;&#x8FC7;&#x961F;&#x5217;&#x53D1;&#x5E03;&#xFF0C;&#x6211;&#x4EEC;&#x63A5;&#x4E0B;&#x6765;&#x770B;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x7C7B;&#x7684;&#x5904;&#x7406;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BroadcastEvent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ShouldQueue</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handle</span><span class="hljs-params">(Broadcaster $broadcaster)</span>
+    </span>{
+        $name = method_exists($this-&gt;event, <span class="hljs-string">&apos;broadcastAs&apos;</span>)
+                ? $this-&gt;event-&gt;broadcastAs() : get_class($this-&gt;event);
+
+        $broadcaster-&gt;broadcast(
+            array_wrap($this-&gt;event-&gt;broadcastOn()), $name,
+            $this-&gt;getPayloadFromEvent($this-&gt;event)
+        );
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPayloadFromEvent</span><span class="hljs-params">($event)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (method_exists($event, <span class="hljs-string">&apos;broadcastWith&apos;</span>)) {
+            <span class="hljs-keyword">return</span> array_merge(
+                $event-&gt;broadcastWith(), [<span class="hljs-string">&apos;socket&apos;</span> =&gt; data_get($event, <span class="hljs-string">&apos;socket&apos;</span>)]
+            );
+        }
+
+        $payload = [];
+
+        <span class="hljs-keyword">foreach</span> ((<span class="hljs-keyword">new</span> ReflectionClass($event))-&gt;getProperties(ReflectionProperty::IS_PUBLIC) <span class="hljs-keyword">as</span> $property) {
+            $payload[$property-&gt;getName()] = $this-&gt;formatProperty($property-&gt;getValue($event));
+        }
+
+        <span class="hljs-keyword">return</span> $payload;
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatProperty</span><span class="hljs-params">($value)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> ($value <span class="hljs-keyword">instanceof</span> Arrayable) {
+            <span class="hljs-keyword">return</span> $value-&gt;toArray();
+        }
+
+        <span class="hljs-keyword">return</span> $value;
+    }
+}
+</code></pre>
+<p>&#x53EF;&#x89C1;&#x8BE5;&#x4E8B;&#x4EF6;&#x4E3B;&#x8981;&#x8C03;&#x7528; <code>broadcaster</code> &#x7684; <code>broadcast</code> &#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x8BB2; <code>redis</code> &#x7684;&#x53D1;&#x5E03;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RedisBroadcaster</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Broadcaster</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">broadcast</span><span class="hljs-params">(array $channels, $event, array $payload = [])</span>
+    </span>{
+        $connection = $this-&gt;redis-&gt;connection($this-&gt;connection);
+
+        $payload = json_encode([
+            <span class="hljs-string">&apos;event&apos;</span> =&gt; $event,
+            <span class="hljs-string">&apos;data&apos;</span> =&gt; $payload,
+            <span class="hljs-string">&apos;socket&apos;</span> =&gt; Arr::pull($payload, <span class="hljs-string">&apos;socket&apos;</span>),
+        ]);
+
+        <span class="hljs-keyword">foreach</span> ($this-&gt;formatChannels($channels) <span class="hljs-keyword">as</span> $channel) {
+            $connection-&gt;publish($channel, $payload);
+        }
+    }
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatChannels</span><span class="hljs-params">(array $channels)</span>
+</span>{
+    <span class="hljs-keyword">return</span> array_map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($channel)</span> </span>{
+        <span class="hljs-keyword">return</span> (string) $channel;
+    }, $channels);
+}
+</code></pre>
+<p><code>broadcast</code> &#x65B9;&#x6CD5;&#x8FD0;&#x7528;&#x4E86; <code>redis</code> &#x7684; <code>publish</code> &#x65B9;&#x6CD5;&#xFF0C;&#x5BF9; <code>redis</code> &#x8FDB;&#x884C;&#x4E86;&#x9891;&#x9053;&#x7684;&#x4FE1;&#x606F;&#x53D1;&#x5E03;&#x3002;</p>
+<h2 id="&#x9891;&#x9053;&#x6388;&#x6743;">&#x9891;&#x9053;&#x6388;&#x6743;</h2>
+<p>&#x5BF9;&#x4E8E;&#x79C1;&#x6709;&#x9891;&#x9053;&#xFF0C;&#x7528;&#x6237;&#x53EA;&#x6709;&#x88AB;&#x6388;&#x6743;&#x540E;&#x624D;&#x80FD;&#x76D1;&#x542C;&#x3002;&#x5B9E;&#x73B0;&#x8FC7;&#x7A0B;&#x662F;&#x7528;&#x6237;&#x5411; <code>Laravel</code> &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x53D1;&#x8D77;&#x4E00;&#x4E2A;&#x643A;&#x5E26;&#x9891;&#x9053;&#x540D;&#x79F0;&#x7684; <code>HTTP</code> &#x8BF7;&#x6C42;&#xFF0C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5224;&#x65AD;&#x8BE5;&#x7528;&#x6237;&#x662F;&#x5426;&#x80FD;&#x591F;&#x76D1;&#x542C;&#x8BE5;&#x9891;&#x9053;&#x3002;&#x5728;&#x4F7F;&#x7528; <code>Laravel Echo</code> &#x65F6;&#xFF0C;&#x4E0A;&#x8FF0; <code>HTTP</code> &#x8BF7;&#x6C42;&#x4F1A;&#x88AB;&#x81EA;&#x52A8;&#x53D1;&#x9001;&#xFF1B;&#x5C3D;&#x7BA1;&#x5982;&#x6B64;&#xFF0C;&#x4ECD;&#x7136;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x9002;&#x5F53;&#x7684;&#x8DEF;&#x7531;&#x6765;&#x54CD;&#x5E94;&#x8FD9;&#x4E9B;&#x8BF7;&#x6C42;&#x3002;</p>
+<h3 id="&#x5B9A;&#x4E49;&#x6388;&#x6743;&#x8DEF;&#x7531;">&#x5B9A;&#x4E49;&#x6388;&#x6743;&#x8DEF;&#x7531;</h3>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728; Laravel &#x91CC;&#x5F88;&#x5BB9;&#x6613;&#x5730;&#x5B9A;&#x4E49;&#x8DEF;&#x7531;&#x6765;&#x54CD;&#x5E94;&#x9891;&#x9053;&#x6388;&#x6743;&#x8BF7;&#x6C42;&#x3002;</p>
+<pre><code class="lang-php">Broadcast::routes();
+</code></pre>
+<p><code>Broadcast::routes</code> &#x65B9;&#x6CD5;&#x4F1A;&#x81EA;&#x52A8;&#x628A;&#x5B83;&#x7684;&#x8DEF;&#x7531;&#x653E;&#x8FDB; <code>web</code> &#x4E2D;&#x95F4;&#x4EF6;&#x7EC4;&#x4E2D;&#xFF1B;&#x53E6;&#x5916;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x5BF9;&#x4E00;&#x4E9B;&#x5C5E;&#x6027;&#x81EA;&#x5B9A;&#x4E49;&#xFF0C;&#x53EF;&#x4EE5;&#x5411;&#x8BE5;&#x65B9;&#x6CD5;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x5305;&#x542B;&#x8DEF;&#x7531;&#x5C5E;&#x6027;&#x7684;&#x6570;&#x7EC4;</p>
+<pre><code class="lang-php">Broadcast::routes($attributes);
+</code></pre>
+<h3 id="&#x5B9A;&#x4E49;&#x6388;&#x6743;&#x56DE;&#x8C03;">&#x5B9A;&#x4E49;&#x6388;&#x6743;&#x56DE;&#x8C03;</h3>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x771F;&#x6B63;&#x7528;&#x4E8E;&#x5904;&#x7406;&#x9891;&#x9053;&#x6388;&#x6743;&#x7684;&#x903B;&#x8F91;&#x3002;&#x8FD9;&#x662F;&#x5728; <code>routes/channels.php</code> &#x6587;&#x4EF6;&#x4E2D;&#x5B8C;&#x6210;&#x3002;&#x5728;&#x8BE5;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x7528; <code>Broadcast::channel</code> &#x65B9;&#x6CD5;&#x6765;&#x6CE8;&#x518C;&#x9891;&#x9053;&#x6388;&#x6743;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php">Broadcast::channel(<span class="hljs-string">&apos;order.{orderId}&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($user, $orderId)</span> </span>{
+    <span class="hljs-keyword">return</span> $user-&gt;id === Order::findOrNew($orderId)-&gt;user_id;
+});
+</code></pre>
+<p><code>channel</code> &#x65B9;&#x6CD5;&#x63A5;&#x6536;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;&#x9891;&#x9053;&#x540D;&#x79F0;&#x548C;&#x4E00;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x8BE5;&#x56DE;&#x8C03;&#x901A;&#x8FC7;&#x8FD4;&#x56DE; <code>true</code> &#x6216; <code>false</code> &#x6765;&#x8868;&#x793A;&#x7528;&#x6237;&#x662F;&#x5426;&#x88AB;&#x6388;&#x6743;&#x76D1;&#x542C;&#x8BE5;&#x9891;&#x9053;&#x3002;</p>
+<p>&#x6240;&#x6709;&#x7684;&#x6388;&#x6743;&#x56DE;&#x8C03;&#x63A5;&#x6536;&#x5F53;&#x524D;&#x88AB;&#x8BA4;&#x8BC1;&#x7684;&#x7528;&#x6237;&#x4F5C;&#x4E3A;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x4EFB;&#x4F55;&#x989D;&#x5916;&#x7684;&#x901A;&#x914D;&#x7B26;&#x53C2;&#x6570;&#x4F5C;&#x4E3A;&#x540E;&#x7EED;&#x53C2;&#x6570;&#x3002;&#x5728;&#x672C;&#x4F8B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528; <code>{orderId}</code> &#x5360;&#x4F4D;&#x7B26;&#x6765;&#x8868;&#x793A;&#x9891;&#x9053;&#x540D;&#x79F0;&#x7684;&#x300C;ID&#x300D;&#x90E8;&#x5206;&#x662F;&#x901A;&#x914D;&#x7B26;&#x3002;</p>
+<h3 id="&#x6388;&#x6743;&#x56DE;&#x8C03;&#x6A21;&#x578B;&#x7ED1;&#x5B9A;">&#x6388;&#x6743;&#x56DE;&#x8C03;&#x6A21;&#x578B;&#x7ED1;&#x5B9A;</h3>
+<p>&#x5C31;&#x50CF; <code>HTTP</code> &#x8DEF;&#x7531;&#x4E00;&#x6837;&#xFF0C;&#x9891;&#x9053;&#x8DEF;&#x7531;&#x4E5F;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x663E;&#x5F0F;&#x6216;&#x9690;&#x5F0F; &#x8DEF;&#x7531;&#x6A21;&#x578B;&#x7ED1;&#x5B9A;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x76F8;&#x6BD4;&#x4E8E;&#x63A5;&#x6536;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x6216;&#x6570;&#x5B57;&#x7C7B;&#x578B;&#x7684; <code>order ID</code>&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x8BF7;&#x6C42;&#x4E00;&#x4E2A;&#x771F;&#x6B63;&#x7684; <code>Order</code> &#x6A21;&#x578B;&#x5B9E;&#x4F8B;:</p>
+<pre><code class="lang-php">Broadcast::channel(<span class="hljs-string">&apos;order.{order}&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($user, Order $order)</span> </span>{
+    <span class="hljs-keyword">return</span> $user-&gt;id === $order-&gt;user_id;
+});
+</code></pre>
+<h2 id="&#x9891;&#x9053;&#x6388;&#x6743;&#x6E90;&#x7801;&#x5206;&#x6790;">&#x9891;&#x9053;&#x6388;&#x6743;&#x6E90;&#x7801;&#x5206;&#x6790;</h2>
+<h3 id="&#x6388;&#x6743;&#x8DEF;&#x7531;">&#x6388;&#x6743;&#x8DEF;&#x7531;</h3>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BroadcastManager</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">FactoryContract</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">routes</span><span class="hljs-params">(array $attributes = null)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> ($this-&gt;app-&gt;routesAreCached()) {
+            <span class="hljs-keyword">return</span>;
+        }
+
+        $attributes = $attributes ?: [<span class="hljs-string">&apos;middleware&apos;</span> =&gt; [<span class="hljs-string">&apos;web&apos;</span>]];
+
+        $this-&gt;app[<span class="hljs-string">&apos;router&apos;</span>]-&gt;group($attributes, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($router)</span> </span>{
+            $router-&gt;post(<span class="hljs-string">&apos;/broadcasting/auth&apos;</span>, BroadcastController::class.<span class="hljs-string">&apos;@authenticate&apos;</span>);
+        });
+    }
+}
+</code></pre>
+<p>&#x9891;&#x9053;&#x4E13;&#x95E8;&#x6709; <code>Controller</code> &#x6765;&#x5904;&#x7406;&#x6388;&#x6743;&#x670D;&#x52A1;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BroadcastController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">authenticate</span><span class="hljs-params">(Request $request)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> Broadcast::auth($request);
+    }
+}
+</code></pre>
+<p>&#x5F53; <code>Socket Io</code> &#x670D;&#x52A1;&#x5668;&#x5BF9; <code>javascript</code> &#x7A0B;&#x5E8F;&#x63A8;&#x9001;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9996;&#x5148;&#x4F1A;&#x7ECF;&#x8FC7;&#x8BE5; <code>controller</code> &#x8FDB;&#x884C;&#x6388;&#x6743;&#x9A8C;&#x8BC1;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">auth</span><span class="hljs-params">($request)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (Str::startsWith($request-&gt;channel_name, [<span class="hljs-string">&apos;private-&apos;</span>, <span class="hljs-string">&apos;presence-&apos;</span>]) &amp;&amp;
+        ! $request-&gt;user()) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> HttpException(<span class="hljs-number">403</span>);
+    }
+
+    $channelName = Str::startsWith($request-&gt;channel_name, <span class="hljs-string">&apos;private-&apos;</span>)
+                        ? Str::replaceFirst(<span class="hljs-string">&apos;private-&apos;</span>, <span class="hljs-string">&apos;&apos;</span>, $request-&gt;channel_name)
+                        : Str::replaceFirst(<span class="hljs-string">&apos;presence-&apos;</span>, <span class="hljs-string">&apos;&apos;</span>, $request-&gt;channel_name);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">parent</span>::verifyUserCanAccessChannel(
+        $request, $channelName
+    );
+}
+</code></pre>
+<p><code>verifyUserCanAccessChannel</code> &#x6839;&#x636E;&#x9891;&#x9053;&#x4E0E;&#x5176;&#x7ED1;&#x5B9A;&#x7684;&#x95ED;&#x5305;&#x51FD;&#x6570;&#x6765;&#x9A8C;&#x8BC1;&#x8BE5;&#x9891;&#x9053;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6388;&#x6743;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">verifyUserCanAccessChannel</span><span class="hljs-params">($request, $channel)</span>
+</span>{
+    <span class="hljs-keyword">foreach</span> ($this-&gt;channels <span class="hljs-keyword">as</span> $pattern =&gt; $callback) {
+        <span class="hljs-keyword">if</span> (! Str::is(preg_replace(<span class="hljs-string">&apos;/\{(.*?)\}/&apos;</span>, <span class="hljs-string">&apos;*&apos;</span>, $pattern), $channel)) {
+            <span class="hljs-keyword">continue</span>;
+        }
+
+        $parameters = $this-&gt;extractAuthParameters($pattern, $channel, $callback);
+
+        <span class="hljs-keyword">if</span> ($result = $callback($request-&gt;user(), ...$parameters)) {
+            <span class="hljs-keyword">return</span> $this-&gt;validAuthenticationResponse($request, $result);
+        }
+    }
+
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> HttpException(<span class="hljs-number">403</span>);
+}
+</code></pre>
+<p>&#x7531;&#x4E8E;&#x9891;&#x9053;&#x7684;&#x547D;&#x540D;&#x7ECF;&#x5E38;&#x5E26;&#x6709; <code>userid</code> &#x7B49;&#x53C2;&#x6570;&#xFF0C;&#x56E0;&#x6B64;&#x5224;&#x65AD;&#x9891;&#x9053;&#x4E4B;&#x524D;&#x9996;&#x5148;&#x8981;&#x628A; <code>channels</code> &#x4E2D;&#x7684;&#x9891;&#x9053;&#x540D;&#x8F6C;&#x4E3A;&#x901A;&#x914D;&#x7B26; <code>*</code>&#xFF0C;&#x4F8B;&#x5982; <code>order.{userid}</code> &#x8F6C;&#x4E3A; order.*&#xFF0C;&#x4E4B;&#x540E;&#x8FDB;&#x884C;&#x6B63;&#x5219;&#x5339;&#x914D;&#x3002;</p>
+<p><code>extractAuthParameters</code> &#x7528;&#x4E8E;&#x63D0;&#x53D6;&#x9891;&#x9053;&#x7684;&#x95ED;&#x5305;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5408;&#x5E76; <code>$request-&gt;user()</code> &#x4E4B;&#x540E;&#x8C03;&#x7528;&#x95ED;&#x5305;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">extractAuthParameters</span><span class="hljs-params">($pattern, $channel, $callback)</span>
+</span>{
+    $callbackParameters = (<span class="hljs-keyword">new</span> ReflectionFunction($callback))-&gt;getParameters();
+
+    <span class="hljs-keyword">return</span> collect($this-&gt;extractChannelKeys($pattern, $channel))-&gt;reject(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($value, $key)</span> </span>{
+        <span class="hljs-keyword">return</span> is_numeric($key);
+    })-&gt;map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($value, $key)</span> <span class="hljs-title">use</span> <span class="hljs-params">($callbackParameters)</span> </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;resolveBinding($key, $value, $callbackParameters);
+    })-&gt;values()-&gt;all();
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">extractChannelKeys</span><span class="hljs-params">($pattern, $channel)</span>
+</span>{
+    preg_match(<span class="hljs-string">&apos;/^&apos;</span>.preg_replace(<span class="hljs-string">&apos;/\{(.*?)\}/&apos;</span>, <span class="hljs-string">&apos;(?&lt;$1&gt;[^\.]+)&apos;</span>, $pattern).<span class="hljs-string">&apos;/&apos;</span>, $channel, $keys);
+
+    <span class="hljs-keyword">return</span> $keys;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validAuthenticationResponse</span><span class="hljs-params">($request, $result)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (is_bool($result)) {
+        <span class="hljs-keyword">return</span> json_encode($result);
+    }
+
+    <span class="hljs-keyword">return</span> json_encode([<span class="hljs-string">&apos;channel_data&apos;</span> =&gt; [
+        <span class="hljs-string">&apos;user_id&apos;</span> =&gt; $request-&gt;user()-&gt;getKey(),
+        <span class="hljs-string">&apos;user_info&apos;</span> =&gt; $result,
+    ]]);
+}
+</code></pre>
+<p><code>extractChannelKeys</code> &#x7528;&#x4E8E;&#x5C06; <code>order.{userid}</code> &#x4E0E; <code>order.23</code> &#x4E2D; <code>userid</code> &#x548C; <code>23</code> &#x5EFA;&#x7ACB; <code>key</code>&#x3001;<code>value</code> &#x5173;&#x8054;&#x3002;&#x5982;&#x679C; <code>userid</code> &#x662F; <code>User</code> &#x7684;&#x4E3B;&#x952E;&#xFF0C;<code>resolveBinding</code> &#x8FD8;&#x53EF;&#x4EE5;&#x4E3A;&#x5176;&#x81EA;&#x52A8;&#x8FDB;&#x884C;&#x8DEF;&#x7531;&#x6A21;&#x578B;&#x7ED1;&#x5B9A;&#x3002; </p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Laravel Broadcast——广播系统源码剖析","level":"1.14.1","depth":2,"next":{"title":"Laravel Passport","level":"1.15","depth":1,"ref":"","articles":[{"title":"Laravel Passport——OAuth2 API 认证系统源码解析","level":"1.15.1","depth":2,"path":"Laravel Passport——OAuth2 API 认证系统源码解析.md","ref":"Laravel Passport——OAuth2 API 认证系统源码解析.md","articles":[]},{"title":"Laravel Passport——OAuth2 API 认证系统源码解析(下)","level":"1.15.2","depth":2,"path":"Laravel Passport——OAuth2 API 认证系统源码解析（下）.md","ref":"Laravel Passport——OAuth2 API 认证系统源码解析（下）.md","articles":[]}]},"previous":{"title":"Laravel 广播系统","level":"1.14","depth":1,"ref":"","articles":[{"title":"Laravel Broadcast——广播系统源码剖析","level":"1.14.1","depth":2,"path":"Laravel Broadcast——广播系统源码剖析.md","ref":"Laravel Broadcast——广播系统源码剖析.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Laravel Broadcast——广播系统源码剖析.md","mtime":"2019-01-15T10:29:00.297Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T10:51:52.544Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

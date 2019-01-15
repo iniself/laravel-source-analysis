@@ -1,0 +1,1386 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Laravel Event——事件系统的启动与运行源码分析 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    PHP Composer 自动加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="PHP Composer——自动加载原理.html">
+            
+                <a href="PHP Composer——自动加载原理.html">
+            
+                    
+                    PHP Composer——自动加载原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="PHP Composer—— 初始化源码分析.html">
+            
+                <a href="PHP Composer—— 初始化源码分析.html">
+            
+                    
+                    PHP Composer—— 初始化源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="PHP Composer-——-注册与运行源码分析.html">
+            
+                <a href="PHP Composer-——-注册与运行源码分析.html">
+            
+                    
+                    PHP Composer-——-注册与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Laravel Facade 门面
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="Laravel Facade——Facade 门面源码分析.html">
+            
+                <a href="Laravel Facade——Facade 门面源码分析.html">
+            
+                    
+                    Laravel Facade——Facade 门面源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Laravel Ioc 容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Laravel Container——IoC 服务容器.html">
+            
+                <a href="Laravel Container——IoC 服务容器.html">
+            
+                    
+                    Laravel Container——IoC 服务容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器绑定)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器解析)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="Laravel Container——服务容器的细节特性.html">
+            
+                <a href="Laravel Container——服务容器的细节特性.html">
+            
+                    
+                    Laravel Container——服务容器的细节特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Laravel Route 路由
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Laravel HTTP——路由.html">
+            
+                <a href="Laravel HTTP——路由.html">
+            
+                    
+                    Laravel HTTP——路由
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="Laravel HTTP——路由加载源码分析.html">
+            
+                <a href="Laravel HTTP——路由加载源码分析.html">
+            
+                    
+                    Laravel HTTP——路由加载源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                <a href="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                    
+                    Laravel HTTP——Pipeline中间件处理源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="Laravel HTTP——路由的正则编译.html">
+            
+                <a href="Laravel HTTP——路由的正则编译.html">
+            
+                    
+                    Laravel HTTP——路由的正则编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                <a href="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                    
+                    Laravel HTTP——路由的匹配与参数绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="Laravel HTTP——路由中间件源码分析.html">
+            
+                <a href="Laravel HTTP——路由中间件源码分析.html">
+            
+                    
+                    Laravel HTTP——路由中间件源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                <a href="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                    
+                    Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                <a href="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                    
+                    Laravel HTTP——控制器方法的参数构建与运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                <a href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP—— RESTFul 风格路由的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                <a href="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP——重定向的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Laravel ENV 环境变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                <a href="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                    
+                    Laravel ENV—— 环境变量的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Laravel Config 配置文件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                <a href="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                    
+                    Laravel Config—— 配置文件的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Laravel Exceptions 异常处理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="Laravel Exceptions——异常与错误处理.html">
+            
+                <a href="Laravel Exceptions——异常与错误处理.html">
+            
+                    
+                    Laravel Exceptions——异常与错误处理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Laravel Providers 服务提供者
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                <a href="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                    
+                    Laravel Providers——服务提供者的注册与启动源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Laravel Database 数据库
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="Laravel Database——数据库服务的启动与连接.html">
+            
+                <a href="Laravel Database——数据库服务的启动与连接.html">
+            
+                    
+                    Laravel Database——数据库服务的启动与连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="Laravel Database——数据库的 CRUD 操作.html">
+            
+                <a href="Laravel Database——数据库的 CRUD 操作.html">
+            
+                    
+                    Laravel Database——数据库的 CRUD 操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="Laravel Database——查询构造器与语法编译器源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="Laravel Database——查询构造器与语法编译器源码分析%28中%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(中)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="Laravel Database——查询构造器与语法编译器源码分析%28下%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="Laravel Database——分页原理与源码分析.html">
+            
+                <a href="Laravel Database——分页原理与源码分析.html">
+            
+                    
+                    Laravel Database——分页原理与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Laravel Database——Eloquent Model 源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                <a href="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                <a href="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                    
+                    Laravel Database——Eloquent Model 关联源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                <a href="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                    
+                    Laravel Database——Eloquent Model 模型关系加载与查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                <a href="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                    
+                    Laravel Database——Eloquent Model 更新关联模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Laravel Session
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="Laravel Session——session 的启动与运行源码分析.html">
+            
+                <a href="Laravel Session——session 的启动与运行源码分析.html">
+            
+                    
+                    Laravel Session——session 的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    Laravel Event 事件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.12.1" data-path="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                <a href="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                    
+                    Laravel Event——事件系统的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    Laravel Queue 队列
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务与分发源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务处理器源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    Laravel 广播系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="Laravel Broadcast——广播系统源码剖析.html">
+            
+                <a href="Laravel Broadcast——广播系统源码剖析.html">
+            
+                    
+                    Laravel Broadcast——广播系统源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    Laravel Passport
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Laravel Event——事件系统的启动与运行源码分析</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="laravel-event&#x2014;&#x2014;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x542F;&#x52A8;&#x4E0E;&#x8FD0;&#x884C;&#x6E90;&#x7801;&#x5206;&#x6790;">Laravel Event&#x2014;&#x2014;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x542F;&#x52A8;&#x4E0E;&#x8FD0;&#x884C;&#x6E90;&#x7801;&#x5206;&#x6790;</h1>
+<h2 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h2>
+<p><code>Laravel</code> &#x7684;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#xFF0C;&#x4E3B;&#x8981;&#x76EE;&#x7684;&#x662F;&#x7528;&#x4E8E;&#x4EE3;&#x7801;&#x7684;&#x89E3;&#x8026;&#xFF0C;&#x53EF;&#x4EE5;&#x9632;&#x6B62;&#x4E0D;&#x540C;&#x529F;&#x80FD;&#x7684;&#x4EE3;&#x7801;&#x8026;&#x5408;&#x5728;&#x4E00;&#x8D77;&#x3002;<code>laravel</code> &#x4E2D;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;&#x7531;&#x4E24;&#x90E8;&#x5206;&#x6784;&#x6210;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x4E8B;&#x4EF6;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x4E8B;&#x4EF6;&#x7684;&#x540D;&#x79F0;&#x53EF;&#x4EE5;&#x662F;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4F8B;&#x5982; <code>event.email</code>&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x7C7B;&#xFF0C;&#x4F8B;&#x5982; <code>App\Events\OrderShipped</code>&#xFF1B;&#x53E6;&#x4E00;&#x4E2A;&#x662F;&#x4E8B;&#x4EF6;&#x7684; <code>listener</code>&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E2A;&#x95ED;&#x5305;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x662F;&#x76D1;&#x542C;&#x7C7B;&#xFF0C;&#x4F8B;&#x5982; <code>App\Listeners\SendShipmentNotification</code>&#x3002;</p>
+<h2 id="&#x4E8B;&#x4EF6;&#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;">&#x4E8B;&#x4EF6;&#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;</h2>
+<p>&#x4E8B;&#x4EF6;&#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;&#x5206;&#x4E3A;&#x4E24;&#x90E8;&#x5206;&#xFF0C;&#x4E00;&#x4E2A;&#x662F; <code>Application</code> &#x542F;&#x52A8;&#x65F6;&#x6240;&#x8C03;&#x7528;&#x7684; <code>registerBaseServiceProviders</code> &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registerBaseServiceProviders</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;register(<span class="hljs-keyword">new</span> EventServiceProvider($this));
+
+    $this-&gt;register(<span class="hljs-keyword">new</span> LogServiceProvider($this));
+
+    $this-&gt;register(<span class="hljs-keyword">new</span> RoutingServiceProvider($this));
+}
+</code></pre>
+<p>&#x5176;&#x4E2D;&#x7684; <code>EventServiceProvider</code> &#x662F; <code>/Illuminate/Events/EventServiceProvider</code>:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">register</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;app-&gt;singleton(<span class="hljs-string">&apos;events&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app)</span> </span>{
+        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">new</span> Dispatcher($app))-&gt;setQueueResolver(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> <span class="hljs-title">use</span> <span class="hljs-params">($app)</span> </span>{
+            <span class="hljs-keyword">return</span> $app-&gt;make(QueueFactoryContract::class);
+        });
+    });
+}
+</code></pre>
+<p>&#x8FD9;&#x90E8;&#x5206;&#x4E3A; <code>Ioc</code> &#x5BB9;&#x5668;&#x6CE8;&#x518C;&#x4E86; <code>events</code> &#x5B9E;&#x4F8B;&#xFF0C;<code>Dispatcher</code> &#x5C31;&#x662F; <code>events</code> &#x771F;&#x6B63;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x3002;<code>QueueResolver</code> &#x662F;&#x961F;&#x5217;&#x5316;&#x4E8B;&#x4EF6;&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x53E6;&#x4E00;&#x4E2A;&#x6CE8;&#x518C;&#x662F;&#x666E;&#x901A;&#x6CE8;&#x518C;&#x7C7B; <code>/app/Providers/EventServiceProvider</code> :</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventServiceProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceProvider</span>
+</span>{
+    <span class="hljs-keyword">protected</span> $listen = [
+        <span class="hljs-string">&apos;App\Events\SomeEvent&apos;</span> =&gt; [
+            <span class="hljs-string">&apos;App\Listeners\EventListener&apos;</span>,
+        ],
+    ];
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">boot</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">parent</span>::boot();
+        <span class="hljs-comment">//</span>
+    }
+}
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x6CE8;&#x518C;&#x7C7B;&#x7684;&#x4E3B;&#x8981;&#x4F5C;&#x7528;&#x662F;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x542F;&#x52A8;&#xFF0C;&#x8FD9;&#x4E2A;&#x7C7B;&#x7EE7;&#x627F;&#x81EA; <code>/Illuminate/Foundation/Support/Providers/EventServiceProvider</code>:</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventServiceProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceProvider</span>
+</span>{
+    <span class="hljs-keyword">protected</span> $listen = [];
+
+    <span class="hljs-keyword">protected</span> $subscribe = [];
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">boot</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">foreach</span> ($this-&gt;listens() <span class="hljs-keyword">as</span> $event =&gt; $listeners) {
+            <span class="hljs-keyword">foreach</span> ($listeners <span class="hljs-keyword">as</span> $listener) {
+                Event::listen($event, $listener);
+            }
+        }
+
+        <span class="hljs-keyword">foreach</span> ($this-&gt;subscribe <span class="hljs-keyword">as</span> $subscriber) {
+            Event::subscribe($subscriber);
+        }
+    }
+}
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x542F;&#x52A8;&#x4E3B;&#x8981;&#x662F;&#x8FDB;&#x884C;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x76D1;&#x542C;&#x4E0E;&#x8BA2;&#x9605;&#x3002;</p>
+<h2 id="&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x76D1;&#x542C;-listen">&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x76D1;&#x542C; listen</h2>
+<p>&#x6240;&#x8C13;&#x7684;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#xFF0C;&#x5C31;&#x662F;&#x5C06;&#x4E8B;&#x4EF6;&#x540D;&#x4E0E;&#x95ED;&#x5305;&#x51FD;&#x6570;&#xFF0C;&#x6216;&#x8005;&#x4E8B;&#x4EF6;&#x7C7B;&#x4E0E;&#x76D1;&#x542C;&#x7C7B;&#x4E4B;&#x95F4;&#x5EFA;&#x7ACB;&#x5173;&#x8054;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listen</span><span class="hljs-params">($events, $listener)</span>
+</span>{
+    <span class="hljs-keyword">foreach</span> ((<span class="hljs-keyword">array</span>) $events <span class="hljs-keyword">as</span> $event) {
+        <span class="hljs-keyword">if</span> (Str::contains($event, <span class="hljs-string">&apos;*&apos;</span>)) {
+            $this-&gt;setupWildcardListen($event, $listener);
+        } <span class="hljs-keyword">else</span> {
+            $this-&gt;listeners[$event][] = $this-&gt;makeListener($listener);
+        }
+    }
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setupWildcardListen</span><span class="hljs-params">($event, $listener)</span>
+</span>{
+    $this-&gt;wildcards[$event][] = $this-&gt;makeListener($listener, <span class="hljs-keyword">true</span>);
+}
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x6709;&#x901A;&#x914D;&#x7B26;&#x7684;&#x4E8B;&#x4EF6;&#x540D;&#xFF0C;&#x4F1A;&#x7EDF;&#x4E00;&#x653E;&#x5165; <code>wildcards</code> &#x6570;&#x7EC4;&#x4E2D;&#xFF0C;<code>makeListener</code> &#x662F;&#x521B;&#x5EFA;&#x4E8B;&#x4EF6;&#x7684;&#x5173;&#x952E;:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeListener</span><span class="hljs-params">($listener, $wildcard = false)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (is_string($listener)) {
+        <span class="hljs-keyword">return</span> $this-&gt;createClassListener($listener, $wildcard);
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($event, $payload)</span> <span class="hljs-title">use</span> <span class="hljs-params">($listener, $wildcard)</span> </span>{
+        <span class="hljs-keyword">if</span> ($wildcard) {
+            <span class="hljs-keyword">return</span> $listener($event, $payload);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> $listener(...array_values($payload));
+        }
+    };
+}
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x76D1;&#x542C;&#x8005;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x5224;&#x65AD;&#x76D1;&#x542C;&#x5BF9;&#x8C61;&#x662F;&#x76D1;&#x542C;&#x7C7B;&#x8FD8;&#x662F;&#x95ED;&#x5305;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x95ED;&#x5305;&#x76D1;&#x542C;&#x6765;&#x8BF4;&#xFF0C;<code>makeListener</code> &#x4F1A;&#x518D;&#x5305;&#x4E0A;&#x4E00;&#x5C42;&#x95ED;&#x5305;&#x51FD;&#x6570;&#xFF0C;&#x6839;&#x636E;&#x662F;&#x5426;&#x542B;&#x6709;&#x901A;&#x914D;&#x7B26;&#x6765;&#x786E;&#x5B9A;&#x5177;&#x4F53;&#x7684;&#x53C2;&#x6570;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x76D1;&#x542C;&#x7C7B;&#x6765;&#x8BF4;&#xFF0C;&#x4F1A;&#x7EE7;&#x7EED; <code>createClassListener</code>:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createClassListener</span><span class="hljs-params">($listener, $wildcard = false)</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($event, $payload)</span> <span class="hljs-title">use</span> <span class="hljs-params">($listener, $wildcard)</span> </span>{
+        <span class="hljs-keyword">if</span> ($wildcard) {
+            <span class="hljs-keyword">return</span> call_user_func($this-&gt;createClassCallable($listener), $event, $payload);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> call_user_func_array(
+                $this-&gt;createClassCallable($listener), $payload
+            );
+        }
+    };
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createClassCallable</span><span class="hljs-params">($listener)</span>
+</span>{
+    <span class="hljs-keyword">list</span>($class, $method) = $this-&gt;parseClassCallable($listener);
+
+    <span class="hljs-keyword">if</span> ($this-&gt;handlerShouldBeQueued($class)) {
+        <span class="hljs-keyword">return</span> $this-&gt;createQueuedHandlerCallable($class, $method);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> [$this-&gt;container-&gt;make($class), $method];
+    }
+}
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x76D1;&#x542C;&#x7C7B;&#x6765;&#x8BF4;&#xFF0C;&#x7A0B;&#x5E8F;&#x9996;&#x5148;&#x4F1A;&#x5224;&#x65AD;&#x76D1;&#x542C;&#x7C7B;&#x5BF9;&#x5E94;&#x7684;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseClassCallable</span><span class="hljs-params">($listener)</span>
+</span>{
+    <span class="hljs-keyword">return</span> Str::parseCallback($listener, <span class="hljs-string">&apos;handle&apos;</span>);
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x672A;&#x6307;&#x5B9A;&#x76D1;&#x542C;&#x7C7B;&#x7684;&#x5BF9;&#x5E94;&#x51FD;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x9ED8;&#x8BA4; <code>handle</code> &#x51FD;&#x6570;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5F53;&#x524D;&#x76D1;&#x542C;&#x7C7B;&#x662F;&#x961F;&#x5217;&#x7684;&#x8BDD;&#xFF0C;&#x4F1A;&#x5C06;&#x4EFB;&#x52A1;&#x63A8;&#x9001;&#x7ED9;&#x961F;&#x5217;&#x3002;</p>
+<h2 id="&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;">&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;</h2>
+<p>&#x4E8B;&#x4EF6;&#x7684;&#x89E6;&#x53D1;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x4E8B;&#x4EF6;&#x540D;&#xFF0C;&#x6216;&#x8005;&#x4E8B;&#x4EF6;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatch</span><span class="hljs-params">($event, $payload = [], $halt = false)</span>
+</span>{
+    <span class="hljs-keyword">list</span>($event, $payload) = $this-&gt;parseEventAndPayload(
+        $event, $payload
+    );
+
+    <span class="hljs-keyword">if</span> ($this-&gt;shouldBroadcast($payload)) {
+        $this-&gt;broadcastEvent($payload[<span class="hljs-number">0</span>]);
+    }
+
+    $responses = [];
+
+    <span class="hljs-keyword">foreach</span> ($this-&gt;getListeners($event) <span class="hljs-keyword">as</span> $listener) {
+        $response = $listener($event, $payload);
+
+        <span class="hljs-keyword">if</span> (! is_null($response) &amp;&amp; $halt) {
+            <span class="hljs-keyword">return</span> $response;
+        }
+
+        <span class="hljs-keyword">if</span> ($response === <span class="hljs-keyword">false</span>) {
+            <span class="hljs-keyword">break</span>;
+        }
+
+        $responses[] = $response;
+    }
+
+    <span class="hljs-keyword">return</span> $halt ? <span class="hljs-keyword">null</span> : $responses;
+}
+</code></pre>
+<p><code>parseEventAndPayload</code> &#x51FD;&#x6570;&#x5229;&#x7528;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x662F;&#x4E8B;&#x4EF6;&#x540D;&#x8FD8;&#x662F;&#x4E8B;&#x4EF6;&#x7C7B;&#x5B9E;&#x4F8B;&#x6765;&#x786E;&#x5B9A;&#x76D1;&#x542C;&#x7C7B;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseEventAndPayload</span><span class="hljs-params">($event, $payload)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (is_object($event)) {
+        <span class="hljs-keyword">list</span>($payload, $event) = [[$event], get_class($event)];
+    }
+
+    <span class="hljs-keyword">return</span> [$event, array_wrap($payload)];
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x662F;&#x4E8B;&#x4EF6;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x90A3;&#x4E48;&#x76D1;&#x542C;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x4E8B;&#x4EF6;&#x7C7B;&#x81EA;&#x8EAB;&#xFF1B;&#x5982;&#x679C;&#x662F;&#x4E8B;&#x4EF6;&#x7C7B;&#x540D;&#xFF0C;&#x90A3;&#x4E48;&#x76D1;&#x542C;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#x65F6;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#x3002;</p>
+<p>&#x83B7;&#x5F97;&#x4E8B;&#x4EF6;&#x4E0E;&#x53C2;&#x6570;&#x540E;&#xFF0C;&#x5C31;&#x8981;&#x83B7;&#x53D6;&#x76D1;&#x542C;&#x7C7B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getListeners</span><span class="hljs-params">($eventName)</span>
+</span>{
+    $listeners = <span class="hljs-keyword">isset</span>($this-&gt;listeners[$eventName]) ? $this-&gt;listeners[$eventName] : [];
+
+    $listeners = array_merge(
+        $listeners, $this-&gt;getWildcardListeners($eventName)
+    );
+
+    <span class="hljs-keyword">return</span> class_exists($eventName, <span class="hljs-keyword">false</span>)
+                ? $this-&gt;addInterfaceListeners($eventName, $listeners)
+                : $listeners;
+}
+</code></pre>
+<p>&#x5BFB;&#x627E;&#x76D1;&#x542C;&#x7C7B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E5F;&#x8981;&#x4ECE;&#x901A;&#x914D;&#x7B26;&#x76D1;&#x542C;&#x5668;&#x4E2D;&#x5BFB;&#x627E;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getWildcardListeners</span><span class="hljs-params">($eventName)</span>
+</span>{
+    $wildcards = [];
+
+    <span class="hljs-keyword">foreach</span> ($this-&gt;wildcards <span class="hljs-keyword">as</span> $key =&gt; $listeners) {
+        <span class="hljs-keyword">if</span> (Str::is($key, $eventName)) {
+            $wildcards = array_merge($wildcards, $listeners);
+        }
+    }
+
+    <span class="hljs-keyword">return</span> $wildcards;
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x76D1;&#x542C;&#x7C7B;&#x7EE7;&#x627F;&#x81EA;&#x5176;&#x4ED6;&#x7C7B;&#xFF0C;&#x90A3;&#x4E48;&#x7236;&#x7C7B;&#x4E5F;&#x4F1A;&#x4E00;&#x5E76;&#x5F53;&#x505A;&#x76D1;&#x542C;&#x7C7B;&#x8FD4;&#x56DE;&#x3002;</p>
+<p>&#x83B7;&#x5F97;&#x4E86;&#x76D1;&#x542C;&#x7C7B;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x8981;&#x8C03;&#x7528;&#x76D1;&#x542C;&#x7C7B;&#x76F8;&#x5E94;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#x65F6;&#x6709;&#x4E00;&#x4E2A;&#x53C2;&#x6570; <code>halt</code>&#xFF0C;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x5982;&#x679C;&#x662F; <code>true</code> &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EA;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x76D1;&#x542C;&#x7C7B;&#x8FD4;&#x56DE;&#x4E86;&#x7ED3;&#x679C;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x7ACB;&#x523B;&#x8FD4;&#x56DE;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testHaltingEventExecution</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">unset</span>($_SERVER[<span class="hljs-string">&apos;__event.test&apos;</span>]);
+    $d = <span class="hljs-keyword">new</span> Dispatcher;
+    $d-&gt;listen(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($foo)</span> </span>{
+        $this-&gt;assertTrue(<span class="hljs-keyword">true</span>);
+
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;here&apos;</span>;
+    });
+    $d-&gt;listen(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($foo)</span> </span>{
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">&apos;should not be called&apos;</span>);
+    });
+    $d-&gt;until(<span class="hljs-string">&apos;foo&apos;</span>, [<span class="hljs-string">&apos;bar&apos;</span>]);
+}
+</code></pre>
+<p>&#x591A;&#x4E2A;&#x76D1;&#x542C;&#x7C7B;&#x5728;&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EA;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x8FD4;&#x56DE;&#x4E86; <code>false</code>&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x4E2D;&#x65AD;&#x4E8B;&#x4EF6;&#x3002;</p>
+<h3 id="push-&#x51FD;&#x6570;">push &#x51FD;&#x6570;</h3>
+<p><code>push</code> &#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x5C06;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#x7684;&#x53C2;&#x6570;&#x4E8B;&#x5148;&#x8BBE;&#x7F6E;&#x597D;&#xFF0C;&#x8FD9;&#x6837;&#x89E6;&#x53D1;&#x7684;&#x65F6;&#x5019;&#x53EA;&#x8981;&#x5199;&#x5165;&#x4E8B;&#x4EF6;&#x540D;&#x5373;&#x53EF;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testQueuedEventsAreFired</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">unset</span>($_SERVER[<span class="hljs-string">&apos;__event.test&apos;</span>]);
+    $d = <span class="hljs-keyword">new</span> Dispatcher;
+    $d-&gt;push(<span class="hljs-string">&apos;update&apos;</span>, [<span class="hljs-string">&apos;name&apos;</span> =&gt; <span class="hljs-string">&apos;taylor&apos;</span>]);
+    $d-&gt;listen(<span class="hljs-string">&apos;update&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($name)</span> </span>{
+        $_SERVER[<span class="hljs-string">&apos;__event.test&apos;</span>] = $name;
+    });
+
+    $this-&gt;assertFalse(<span class="hljs-keyword">isset</span>($_SERVER[<span class="hljs-string">&apos;__event.test&apos;</span>]));
+    $d-&gt;flush(<span class="hljs-string">&apos;update&apos;</span>);
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;taylor&apos;</span>, $_SERVER[<span class="hljs-string">&apos;__event.test&apos;</span>]);
+}
+</code></pre>
+<p>&#x539F;&#x7406;&#x4E5F;&#x5F88;&#x7B80;&#x5355;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">push</span><span class="hljs-params">($event, $payload = [])</span>
+</span>{
+    $this-&gt;listen($event.<span class="hljs-string">&apos;_pushed&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> <span class="hljs-title">use</span> <span class="hljs-params">($event, $payload)</span> </span>{
+        $this-&gt;dispatch($event, $payload);
+    });
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flush</span><span class="hljs-params">($event)</span>
+</span>{
+    $this-&gt;dispatch($event.<span class="hljs-string">&apos;_pushed&apos;</span>);
+}
+</code></pre>
+<h2 id="&#x6570;&#x636E;&#x5E93;-eloquent-&#x7684;&#x4E8B;&#x4EF6;">&#x6570;&#x636E;&#x5E93; Eloquent &#x7684;&#x4E8B;&#x4EF6;</h2>
+<p>&#x6570;&#x636E;&#x5E93;&#x6A21;&#x578B;&#x7684;&#x4E8B;&#x4EF6;&#x7684;&#x6CE8;&#x518C;&#x9664;&#x4E86;&#x4EE5;&#x4E0A;&#x7684;&#x65B9;&#x6CD5;&#x8FD8;&#x6709;&#x53E6;&#x5916;&#x4E24;&#x79CD;&#xFF0C;&#x5177;&#x4F53;&#x8BE6;&#x60C5;&#x53EF;&#x4EE5;&#x770B;&#xFF1A;<a href="https://laravel-china.org/articles/5465/event-realization-principle-of-laravel-model" target="_blank">Laravel &#x6A21;&#x578B;&#x4E8B;&#x4EF6;&#x5B9E;&#x73B0;&#x539F;&#x7406;</a> ;</p>
+<h3 id="&#x4E8B;&#x4EF6;&#x6CE8;&#x518C;">&#x4E8B;&#x4EF6;&#x6CE8;&#x518C;</h3>
+<ul>
+<li>&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;</li>
+</ul>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventServiceProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceProvider</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">boot</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">parent</span>::boot();
+
+        User::saved(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(User$user)</span> </span>{
+
+        });
+
+        User::saved(<span class="hljs-string">&apos;UserSavedListener@saved&apos;</span>);
+    }
+}
+</code></pre>
+<ul>
+<li>&#x89C2;&#x5BDF;&#x8005;</li>
+</ul>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserObserver</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">created</span><span class="hljs-params">(User $user)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">saved</span><span class="hljs-params">(User $user)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+    }
+}
+</code></pre>
+<p>&#x7136;&#x540E;&#x5728;&#x67D0;&#x4E2A;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x7684;boot&#x65B9;&#x6CD5;&#x4E2D;&#x6CE8;&#x518C;&#x89C2;&#x5BDF;&#x8005;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppServiceProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceProvider</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">boot</span><span class="hljs-params">()</span>
+    </span>{
+        User::observe(UserObserver::class);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">register</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+    }
+}
+</code></pre>
+<p>&#x8FD9;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x90FD;&#x662F;&#x5411;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;&#x6CE8;&#x518C;&#x4E8B;&#x4EF6;&#x540D; <code>eloquent.{$event}: {static::class}</code>:</p>
+<ul>
+<li>&#x9759;&#x6001;&#x65B9;&#x6CD5;</li>
+</ul>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">saved</span><span class="hljs-params">($callback)</span>
+</span>{
+    <span class="hljs-keyword">static</span>::registerModelEvent(<span class="hljs-string">&apos;saved&apos;</span>, $callback);
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registerModelEvent</span><span class="hljs-params">($event, $callback)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-keyword">static</span>::$dispatcher)) {
+        $name = <span class="hljs-keyword">static</span>::class;
+
+        <span class="hljs-keyword">static</span>::$dispatcher-&gt;listen(<span class="hljs-string">&quot;eloquent.{$event}: {$name}&quot;</span>, $callback);
+    }
+}
+</code></pre>
+<ul>
+<li>&#x89C2;&#x5BDF;&#x8005;</li>
+</ul>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">observe</span><span class="hljs-params">($class)</span>
+</span>{
+    $instance = <span class="hljs-keyword">new</span> <span class="hljs-keyword">static</span>;
+
+    $className = is_string($class) ? $class : get_class($class);
+
+    <span class="hljs-keyword">foreach</span> ($instance-&gt;getObservableEvents() <span class="hljs-keyword">as</span> $event) {
+        <span class="hljs-keyword">if</span> (method_exists($class, $event)) {
+            <span class="hljs-keyword">static</span>::registerModelEvent($event, $className.<span class="hljs-string">&apos;@&apos;</span>.$event);
+        }
+    }
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getObservableEvents</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> array_merge(
+        [
+            <span class="hljs-string">&apos;creating&apos;</span>, <span class="hljs-string">&apos;created&apos;</span>, <span class="hljs-string">&apos;updating&apos;</span>, <span class="hljs-string">&apos;updated&apos;</span>,
+            <span class="hljs-string">&apos;deleting&apos;</span>, <span class="hljs-string">&apos;deleted&apos;</span>, <span class="hljs-string">&apos;saving&apos;</span>, <span class="hljs-string">&apos;saved&apos;</span>,
+            <span class="hljs-string">&apos;restoring&apos;</span>, <span class="hljs-string">&apos;restored&apos;</span>,
+        ],
+        $this-&gt;observables
+    );
+}
+</code></pre>
+<h3 id="&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;">&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;</h3>
+<p>&#x6A21;&#x578B;&#x4E8B;&#x4EF6;&#x7684;&#x89E6;&#x53D1;&#x9700;&#x8981;&#x8C03;&#x7528;  <code>fireModelEvent</code> &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fireModelEvent</span><span class="hljs-params">($event, $halt = true)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">isset</span>(<span class="hljs-keyword">static</span>::$dispatcher)) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+
+    $method = $halt ? <span class="hljs-string">&apos;until&apos;</span> : <span class="hljs-string">&apos;fire&apos;</span>;
+
+    $result = $this-&gt;fireCustomModelEvent($event, $method);
+
+    <span class="hljs-keyword">return</span> ! is_null($result) ? $result : <span class="hljs-keyword">static</span>::$dispatcher-&gt;{$method}(
+        <span class="hljs-string">&quot;eloquent.{$event}: &quot;</span>.<span class="hljs-keyword">static</span>::class, $this
+    );
+}
+</code></pre>
+<p><code>fireCustomModelEvent</code> &#x662F;&#x6211;&#x4EEC;&#x672C;&#x6587;&#x4E2D;&#x7740;&#x91CD;&#x8BB2;&#x7684;&#x4E8B;&#x4EF6;&#x7C7B;&#x4E0E;&#x76D1;&#x542C;&#x7C7B;&#x7684;&#x89E6;&#x53D1;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fireCustomModelEvent</span><span class="hljs-params">($event, $method)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">isset</span>($this-&gt;events[$event])) {
+        <span class="hljs-keyword">return</span>;
+    }
+
+    $result = <span class="hljs-keyword">static</span>::$dispatcher-&gt;$method(<span class="hljs-keyword">new</span> $this-&gt;events[$event]($this));
+
+    <span class="hljs-keyword">if</span> (! is_null($result)) {
+        <span class="hljs-keyword">return</span> $result;
+    }
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x4E8B;&#x4EF6;&#x540E;&#xFF0C;&#x4F1A;&#x7EE7;&#x7EED;&#x5229;&#x7528;&#x4E8B;&#x4EF6;&#x540D;&#x8FDB;&#x884C;&#x89E6;&#x53D1;&#x3002;</p>
+<p><code>until</code> &#x662F;&#x6211;&#x4EEC;&#x4E0A;&#x4E00;&#x8282;&#x8BB2;&#x7684;&#x5982;&#x679C;&#x4EFB;&#x610F;&#x4E8B;&#x4EF6;&#x8FD4;&#x56DE;&#x6B63;&#x786E;&#x7ED3;&#x679C;&#xFF0C;&#x5C31;&#x4F1A;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#xFF0C;&#x4E0D;&#x4F1A;&#x7EE7;&#x7EED;&#x8FDB;&#x884C;&#x4E0B;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Laravel Event——事件系统的启动与运行源码分析","level":"1.12.1","depth":2,"next":{"title":"Laravel Queue 队列","level":"1.13","depth":1,"ref":"","articles":[{"title":"Laravel Queue——消息队列任务与分发源码剖析","level":"1.13.1","depth":2,"path":"Laravel Queue——消息队列任务与分发源码剖析.md","ref":"Laravel Queue——消息队列任务与分发源码剖析.md","articles":[]},{"title":"Laravel Queue——消息队列任务处理器源码剖析","level":"1.13.2","depth":2,"path":"Laravel Queue——消息队列任务处理器源码剖析.md","ref":"Laravel Queue——消息队列任务处理器源码剖析.md","articles":[]}]},"previous":{"title":"Laravel Event 事件系统","level":"1.12","depth":1,"ref":"","articles":[{"title":"Laravel Event——事件系统的启动与运行源码分析","level":"1.12.1","depth":2,"path":"Laravel Event——事件系统的启动与运行源码分析.md","ref":"Laravel Event——事件系统的启动与运行源码分析.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Laravel Event——事件系统的启动与运行源码分析.md","mtime":"2019-01-15T10:29:00.313Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T10:51:52.544Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,1447 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Laravel HTTP——重定向的使用与源码分析 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    PHP Composer 自动加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="PHP Composer——自动加载原理.html">
+            
+                <a href="PHP Composer——自动加载原理.html">
+            
+                    
+                    PHP Composer——自动加载原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="PHP Composer—— 初始化源码分析.html">
+            
+                <a href="PHP Composer—— 初始化源码分析.html">
+            
+                    
+                    PHP Composer—— 初始化源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="PHP Composer-——-注册与运行源码分析.html">
+            
+                <a href="PHP Composer-——-注册与运行源码分析.html">
+            
+                    
+                    PHP Composer-——-注册与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Laravel Facade 门面
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="Laravel Facade——Facade 门面源码分析.html">
+            
+                <a href="Laravel Facade——Facade 门面源码分析.html">
+            
+                    
+                    Laravel Facade——Facade 门面源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Laravel Ioc 容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Laravel Container——IoC 服务容器.html">
+            
+                <a href="Laravel Container——IoC 服务容器.html">
+            
+                    
+                    Laravel Container——IoC 服务容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器绑定)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器解析)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="Laravel Container——服务容器的细节特性.html">
+            
+                <a href="Laravel Container——服务容器的细节特性.html">
+            
+                    
+                    Laravel Container——服务容器的细节特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Laravel Route 路由
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Laravel HTTP——路由.html">
+            
+                <a href="Laravel HTTP——路由.html">
+            
+                    
+                    Laravel HTTP——路由
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="Laravel HTTP——路由加载源码分析.html">
+            
+                <a href="Laravel HTTP——路由加载源码分析.html">
+            
+                    
+                    Laravel HTTP——路由加载源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                <a href="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                    
+                    Laravel HTTP——Pipeline中间件处理源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="Laravel HTTP——路由的正则编译.html">
+            
+                <a href="Laravel HTTP——路由的正则编译.html">
+            
+                    
+                    Laravel HTTP——路由的正则编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                <a href="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                    
+                    Laravel HTTP——路由的匹配与参数绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="Laravel HTTP——路由中间件源码分析.html">
+            
+                <a href="Laravel HTTP——路由中间件源码分析.html">
+            
+                    
+                    Laravel HTTP——路由中间件源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                <a href="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                    
+                    Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                <a href="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                    
+                    Laravel HTTP——控制器方法的参数构建与运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                <a href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP—— RESTFul 风格路由的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.10" data-path="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                <a href="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP——重定向的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Laravel ENV 环境变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                <a href="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                    
+                    Laravel ENV—— 环境变量的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Laravel Config 配置文件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                <a href="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                    
+                    Laravel Config—— 配置文件的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Laravel Exceptions 异常处理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="Laravel Exceptions——异常与错误处理.html">
+            
+                <a href="Laravel Exceptions——异常与错误处理.html">
+            
+                    
+                    Laravel Exceptions——异常与错误处理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Laravel Providers 服务提供者
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                <a href="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                    
+                    Laravel Providers——服务提供者的注册与启动源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Laravel Database 数据库
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="Laravel Database——数据库服务的启动与连接.html">
+            
+                <a href="Laravel Database——数据库服务的启动与连接.html">
+            
+                    
+                    Laravel Database——数据库服务的启动与连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="Laravel Database——数据库的 CRUD 操作.html">
+            
+                <a href="Laravel Database——数据库的 CRUD 操作.html">
+            
+                    
+                    Laravel Database——数据库的 CRUD 操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="Laravel Database——查询构造器与语法编译器源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="Laravel Database——查询构造器与语法编译器源码分析%28中%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(中)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="Laravel Database——查询构造器与语法编译器源码分析%28下%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="Laravel Database——分页原理与源码分析.html">
+            
+                <a href="Laravel Database——分页原理与源码分析.html">
+            
+                    
+                    Laravel Database——分页原理与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Laravel Database——Eloquent Model 源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                <a href="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                <a href="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                    
+                    Laravel Database——Eloquent Model 关联源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                <a href="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                    
+                    Laravel Database——Eloquent Model 模型关系加载与查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                <a href="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                    
+                    Laravel Database——Eloquent Model 更新关联模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Laravel Session
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="Laravel Session——session 的启动与运行源码分析.html">
+            
+                <a href="Laravel Session——session 的启动与运行源码分析.html">
+            
+                    
+                    Laravel Session——session 的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    Laravel Event 事件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                <a href="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                    
+                    Laravel Event——事件系统的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    Laravel Queue 队列
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务与分发源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务处理器源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    Laravel 广播系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="Laravel Broadcast——广播系统源码剖析.html">
+            
+                <a href="Laravel Broadcast——广播系统源码剖析.html">
+            
+                    
+                    Laravel Broadcast——广播系统源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    Laravel Passport
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Laravel HTTP——重定向的使用与源码分析</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h1>
+<p><code>laravel</code> &#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4FBF;&#x643A;&#x7684;&#x91CD;&#x5B9A;&#x5411;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x4EE5;&#x7531;&#x95E8;&#x9762; <code>Redirect</code>&#xFF0C;&#x6216;&#x8005;&#x5168;&#x5C40;&#x51FD;&#x6570; <code>redirect()</code> &#x6765;&#x542F;&#x7528;&#xFF0C;&#x672C;&#x7BC7;&#x6587;&#x7AE0;&#x5C06;&#x4F1A;&#x4ECB;&#x7ECD;&#x91CD;&#x5B9A;&#x5411;&#x529F;&#x80FD;&#x7684;&#x5177;&#x4F53;&#x7EC6;&#x8282;&#x53CA;&#x6E90;&#x7801;&#x5206;&#x6790;&#x3002;</p>
+<h1 id="uri-&#x91CD;&#x5B9A;&#x5411;">URI &#x91CD;&#x5B9A;&#x5411;</h1>
+<p>&#x91CD;&#x5B9A;&#x5411;&#x529F;&#x80FD;&#x662F;&#x7531;&#x7C7B; <code>UrlGenerator</code> &#x6240;&#x5B9E;&#x73B0;&#xFF0C;&#x8FD9;&#x4E2A;&#x7C7B;&#x9700;&#x8981; <code>request</code> &#x6765;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#xFF1A;</p>
+<pre><code class="lang-php"> $url = <span class="hljs-keyword">new</span> UrlGenerator(
+    $routes = <span class="hljs-keyword">new</span> RouteCollection,
+    $request = Request::create(<span class="hljs-string">&apos;http://www.foo.com/&apos;</span>)
+);
+</code></pre>
+<h2 id="&#x91CD;&#x5B9A;&#x5411;&#x5230;-uri">&#x91CD;&#x5B9A;&#x5411;&#x5230; uri</h2>
+<ul>
+<li>&#x5F53;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x91CD;&#x5B9A;&#x5411;&#x5230;&#x67D0;&#x4E2A;&#x5730;&#x5740;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>to</code> &#x51FD;&#x6570;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-php">$this-&gt;assertEquals(<span class="hljs-string">&apos;http://www.foo.com/foo/bar&apos;</span>, $url-&gt;to(<span class="hljs-string">&apos;foo/bar&apos;</span>));
+</code></pre>
+<ul>
+<li>&#x5F53;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x6DFB;&#x52A0;&#x989D;&#x5916;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x6570;&#x7EC4;&#x8D4B;&#x7ED9;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-php">$this-&gt;assertEquals(<span class="hljs-string">&apos;https://www.foo.com/foo/bar/baz/boom&apos;</span>, $url-&gt;to(<span class="hljs-string">&apos;foo/bar&apos;</span>, [<span class="hljs-string">&apos;baz&apos;</span>, <span class="hljs-string">&apos;boom&apos;</span>], <span class="hljs-keyword">true</span>));
+$this-&gt;assertEquals(<span class="hljs-string">&apos;https://www.foo.com/foo/bar/baz?foo=bar&apos;</span>, $url-&gt;to(<span class="hljs-string">&apos;foo/bar?foo=bar&apos;</span>, [<span class="hljs-string">&apos;baz&apos;</span>], <span class="hljs-keyword">true</span>));
+</code></pre>
+<h2 id="&#x5F3A;&#x5236;-https">&#x5F3A;&#x5236; https</h2>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x91CD;&#x5B9A;&#x5411;&#x5230; <code>https</code> &#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x4E3A; <code>true</code> :</p>
+<pre><code class="lang-php">$this-&gt;assertEquals(<span class="hljs-string">&apos;https://www.foo.com/foo/bar&apos;</span>, $url-&gt;to(<span class="hljs-string">&apos;foo/bar&apos;</span>, [], <span class="hljs-keyword">true</span>));
+</code></pre>
+<p>&#x6216;&#x8005;&#x4F7F;&#x7528; <code>forceScheme</code> &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php">$url-&gt;forceScheme(<span class="hljs-string">&apos;https&apos;</span>);
+
+$this-&gt;assertEquals(<span class="hljs-string">&apos;https://www.foo.com/foo/bar&apos;</span>, $url-&gt;to(<span class="hljs-string">&apos;foo/bar&apos;</span>);
+</code></pre>
+<h2 id="&#x5F3A;&#x5236;&#x57DF;&#x540D;">&#x5F3A;&#x5236;&#x57DF;&#x540D;</h2>
+<pre><code class="lang-php">$url-&gt;forceRootUrl(<span class="hljs-string">&apos;https://www.bar.com&apos;</span>);
+
+$this-&gt;assertEquals(<span class="hljs-string">&apos;https://www.bar.com/foo/bar&apos;</span>, $url-&gt;to(<span class="hljs-string">&apos;foo/bar&apos;</span>);
+</code></pre>
+<h2 id="&#x8DEF;&#x5F84;&#x81EA;&#x5B9A;&#x4E49;">&#x8DEF;&#x5F84;&#x81EA;&#x5B9A;&#x4E49;</h2>
+<pre><code class="lang-php">$url-&gt;formatPathUsing(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($path)</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;/something&apos;</span>.$path;
+});
+
+$this-&gt;assertEquals(<span class="hljs-string">&apos;http://www.foo.com/something/foo/bar&apos;</span>, $url-&gt;to(<span class="hljs-string">&apos;foo/bar&apos;</span>));
+</code></pre>
+<h1 id="&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411;">&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411;</h1>
+<p>&#x91CD;&#x5B9A;&#x5411;&#x53E6;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x7684;&#x529F;&#x80FD;&#x662F;&#x91CD;&#x5B9A;&#x5411;&#x5230;&#x8DEF;&#x7531;&#x6240;&#x5728;&#x7684;&#x5730;&#x5740;&#x4E2D;&#x53BB;&#xFF1A;</p>
+<pre><code class="lang-php">$route = <span class="hljs-keyword">new</span> Route([<span class="hljs-string">&apos;GET&apos;</span>], <span class="hljs-string">&apos;/named-route&apos;</span>, [<span class="hljs-string">&apos;as&apos;</span> =&gt; <span class="hljs-string">&apos;plain&apos;</span>]);
+$routes-&gt;add($route);
+
+$this-&gt;assertEquals(<span class="hljs-string">&apos;http:/www.bar.com/named-route&apos;</span>, $url-&gt;route(<span class="hljs-string">&apos;plain&apos;</span>));
+</code></pre>
+<h2 id="&#x975E;&#x57DF;&#x540D;&#x8DEF;&#x5F84;">&#x975E;&#x57DF;&#x540D;&#x8DEF;&#x5F84;</h2>
+<p><code>laravel</code> &#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x91CD;&#x5B9A;&#x5411;&#x540E;&#x7684;&#x5730;&#x5740;&#x662F;&#x5426;&#x4ECD;&#x7136;&#x5E26;&#x6709;&#x57DF;&#x540D;&#xFF0C;&#x8FD9;&#x4E2A;&#x7279;&#x6027;&#x7531;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x51B3;&#x5B9A;&#xFF1A;</p>
+<pre><code class="lang-php">$route = <span class="hljs-keyword">new</span> Route([<span class="hljs-string">&apos;GET&apos;</span>], <span class="hljs-string">&apos;/named-route&apos;</span>, [<span class="hljs-string">&apos;as&apos;</span> =&gt; <span class="hljs-string">&apos;plain&apos;</span>]);
+$routes-&gt;add($route);
+
+$this-&gt;assertEquals(<span class="hljs-string">&apos;/named-route&apos;</span>, $url-&gt;route(<span class="hljs-string">&apos;plain&apos;</span>, [], <span class="hljs-keyword">false</span>));
+</code></pre>
+<h2 id="&#x91CD;&#x5B9A;&#x5411;&#x7AEF;&#x53E3;&#x53F7;">&#x91CD;&#x5B9A;&#x5411;&#x7AEF;&#x53E3;&#x53F7;</h2>
+<p>&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411;&#x53EF;&#x4EE5;&#x5141;&#x8BB8;&#x5E26;&#x6709; <code>request</code> &#x81EA;&#x5DF1;&#x7684;&#x7AEF;&#x53E3;&#xFF1A;</p>
+<pre><code class="lang-php">$url = <span class="hljs-keyword">new</span> UrlGenerator(
+    $routes = <span class="hljs-keyword">new</span> RouteCollection,
+    $request = Request::create(<span class="hljs-string">&apos;http://www.foo.com:8080/&apos;</span>)
+);
+
+$route = <span class="hljs-keyword">new</span> Route([<span class="hljs-string">&apos;GET&apos;</span>], <span class="hljs-string">&apos;foo/bar/{baz}&apos;</span>, [<span class="hljs-string">&apos;as&apos;</span> =&gt; <span class="hljs-string">&apos;bar&apos;</span>, <span class="hljs-string">&apos;domain&apos;</span> =&gt; <span class="hljs-string">&apos;sub.{foo}.com&apos;</span>]);
+$routes-&gt;add($route);
+
+$this-&gt;assertEquals(<span class="hljs-string">&apos;http://sub.taylor.com:8080/foo/bar/otwell&apos;</span>, $url-&gt;route(<span class="hljs-string">&apos;bar&apos;</span>, [<span class="hljs-string">&apos;taylor&apos;</span>, <span class="hljs-string">&apos;otwell&apos;</span>]));
+</code></pre>
+<h2 id="&#x91CD;&#x5B9A;&#x5411;&#x8DEF;&#x5F84;&#x53C2;&#x6570;&#x7ED1;&#x5B9A;">&#x91CD;&#x5B9A;&#x5411;&#x8DEF;&#x5F84;&#x53C2;&#x6570;&#x7ED1;&#x5B9A;</h2>
+<p>&#x5982;&#x679C;&#x8DEF;&#x7531;&#x4E2D;&#x542B;&#x6709;&#x53C2;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x9700;&#x8981;&#x7684;&#x53C2;&#x6570;&#x8D4B;&#x7ED9; <code>route</code> &#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php">$route = <span class="hljs-keyword">new</span> Route([<span class="hljs-string">&apos;GET&apos;</span>], <span class="hljs-string">&apos;foo/bar/{baz}&apos;</span>, [<span class="hljs-string">&apos;as&apos;</span> =&gt; <span class="hljs-string">&apos;foobar&apos;</span>]);
+$routes-&gt;add($route);
+
+$this-&gt;assertEquals(<span class="hljs-string">&apos;http://www.foo.com/foo/bar/taylor&apos;</span>, $url-&gt;route(<span class="hljs-string">&apos;foobar&apos;</span>, <span class="hljs-string">&apos;taylor&apos;</span>));
+</code></pre>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x53C2;&#x6570;&#x7684;&#x547D;&#x540D;&#x6765;&#x6307;&#x5B9A;&#x53C2;&#x6570;&#x7ED1;&#x5B9A;&#xFF1A;</p>
+<pre><code class="lang-php">$route = <span class="hljs-keyword">new</span> Route([<span class="hljs-string">&apos;GET&apos;</span>], <span class="hljs-string">&apos;foo/bar/{baz}/breeze/{boom}&apos;</span>, [<span class="hljs-string">&apos;as&apos;</span> =&gt; <span class="hljs-string">&apos;bar&apos;</span>]);
+$routes-&gt;add($route);
+
+$this-&gt;assertEquals(<span class="hljs-string">&apos;http://www.foo.com/foo/bar/otwell/breeze/taylor&apos;</span>, $url-&gt;route(<span class="hljs-string">&apos;bar&apos;</span>, [<span class="hljs-string">&apos;boom&apos;</span> =&gt; <span class="hljs-string">&apos;taylor&apos;</span>, <span class="hljs-string">&apos;baz&apos;</span> =&gt; <span class="hljs-string">&apos;otwell&apos;</span>]));
+</code></pre>
+<p>&#x8FD8;&#x53EF;&#x4EE5;&#x5229;&#x7528; <code>defaults</code> &#x51FD;&#x6570;&#x4E3A;&#x91CD;&#x5B9A;&#x5411;&#x63D0;&#x4F9B;&#x9ED8;&#x8BA4;&#x7684;&#x53C2;&#x6570;&#x6765;&#x7ED1;&#x5B9A;&#xFF1A;</p>
+<pre><code class="lang-php">$url-&gt;defaults([<span class="hljs-string">&apos;locale&apos;</span> =&gt; <span class="hljs-string">&apos;en&apos;</span>]);
+$route = <span class="hljs-keyword">new</span> Route([<span class="hljs-string">&apos;GET&apos;</span>], <span class="hljs-string">&apos;foo&apos;</span>, [<span class="hljs-string">&apos;as&apos;</span> =&gt; <span class="hljs-string">&apos;defaults&apos;</span>, <span class="hljs-string">&apos;domain&apos;</span> =&gt; <span class="hljs-string">&apos;{locale}.example.com&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+}]);
+$routes-&gt;add($route);
+
+$this-&gt;assertEquals(<span class="hljs-string">&apos;http://en.example.com/foo&apos;</span>, $url-&gt;route(<span class="hljs-string">&apos;defaults&apos;</span>));
+</code></pre>
+<h2 id="&#x91CD;&#x5B9A;&#x5411;&#x8DEF;&#x7531;-querystring-&#x6DFB;&#x52A0;">&#x91CD;&#x5B9A;&#x5411;&#x8DEF;&#x7531; querystring &#x6DFB;&#x52A0;</h2>
+<p>&#x5F53;&#x5728; <code>route</code> &#x51FD;&#x6570;&#x4E2D;&#x8D4B;&#x7ED9;&#x7684;&#x53C2;&#x6570;&#x591A;&#x4E8E;&#x8DEF;&#x5F84;&#x53C2;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x591A;&#x4F59;&#x7684;&#x53C2;&#x6570;&#x4F1A;&#x88AB;&#x6DFB;&#x52A0;&#x5230; <code>querystring</code> &#x4E2D;&#xFF1A;</p>
+<pre><code class="lang-php">$route = <span class="hljs-keyword">new</span> Route([<span class="hljs-string">&apos;GET&apos;</span>], <span class="hljs-string">&apos;foo/bar/{baz}/breeze/{boom}&apos;</span>, [<span class="hljs-string">&apos;as&apos;</span> =&gt; <span class="hljs-string">&apos;bar&apos;</span>]);
+$routes-&gt;add($route);
+
+$this-&gt;assertEquals(<span class="hljs-string">&apos;http://www.foo.com/foo/bar/taylor/breeze/otwell?fly=wall&apos;</span>, $url-&gt;route(<span class="hljs-string">&apos;bar&apos;</span>, [<span class="hljs-string">&apos;taylor&apos;</span>, <span class="hljs-string">&apos;otwell&apos;</span>, <span class="hljs-string">&apos;fly&apos;</span> =&gt; <span class="hljs-string">&apos;wall&apos;</span>]));
+</code></pre>
+<h2 id="fragment-&#x91CD;&#x5B9A;&#x5411;">fragment &#x91CD;&#x5B9A;&#x5411;</h2>
+<pre><code class="lang-php">$route = <span class="hljs-keyword">new</span> Route([<span class="hljs-string">&apos;GET&apos;</span>], <span class="hljs-string">&apos;foo/bar#derp&apos;</span>, [<span class="hljs-string">&apos;as&apos;</span> =&gt; <span class="hljs-string">&apos;fragment&apos;</span>]);
+$routes-&gt;add($route);
+
+$this-&gt;assertEquals(<span class="hljs-string">&apos;/foo/bar?baz=%C3%A5%CE%B1%D1%84#derp&apos;</span>, $url-&gt;route(<span class="hljs-string">&apos;fragment&apos;</span>, [<span class="hljs-string">&apos;baz&apos;</span> =&gt; <span class="hljs-string">&apos;&#xE5;&#x3B1;&#x444;&apos;</span>], <span class="hljs-keyword">false</span>));
+</code></pre>
+<h2 id="&#x8DEF;&#x7531;-action-&#x91CD;&#x5B9A;&#x5411;">&#x8DEF;&#x7531; action &#x91CD;&#x5B9A;&#x5411;</h2>
+<p>&#x6211;&#x4EEC;&#x4E0D;&#x4EC5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8DEF;&#x7531;&#x7684;&#x522B;&#x540D;&#x6765;&#x91CD;&#x5B9A;&#x5411;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x8DEF;&#x7531;&#x7684;&#x63A7;&#x5236;&#x5668;&#x65B9;&#x6CD5;&#x6765;&#x91CD;&#x5B9A;&#x5411;&#xFF1A;</p>
+<pre><code class="lang-php">$route = <span class="hljs-keyword">new</span> Route([<span class="hljs-string">&apos;GET&apos;</span>], <span class="hljs-string">&apos;foo/bam&apos;</span>, [<span class="hljs-string">&apos;controller&apos;</span> =&gt; <span class="hljs-string">&apos;foo@bar&apos;</span>]);
+$routes-&gt;add($route);
+
+$this-&gt;assertEquals(<span class="hljs-string">&apos;http://www.foo.com/foo/bam&apos;</span>, $url-&gt;action(<span class="hljs-string">&apos;foo@bar&apos;</span>));
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x8BBE;&#x5B9A;&#x91CD;&#x5B9A;&#x5411;&#x63A7;&#x5236;&#x5668;&#x7684;&#x9ED8;&#x8BA4;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF1A;</p>
+<pre><code class="lang-php">$url-&gt;setRootControllerNamespace(<span class="hljs-string">&apos;namespace&apos;</span>);
+
+$route = <span class="hljs-keyword">new</span> Route([<span class="hljs-string">&apos;GET&apos;</span>], <span class="hljs-string">&apos;foo/bar&apos;</span>, [<span class="hljs-string">&apos;controller&apos;</span> =&gt; <span class="hljs-string">&apos;namespace\foo@bar&apos;</span>]);
+        $routes-&gt;add($route);
+
+$route = <span class="hljs-keyword">new</span> Route([<span class="hljs-string">&apos;GET&apos;</span>], <span class="hljs-string">&apos;something/else&apos;</span>, [<span class="hljs-string">&apos;controller&apos;</span> =&gt; <span class="hljs-string">&apos;something\foo@bar&apos;</span>]);
+$routes-&gt;add($route);
+
+$this-&gt;assertEquals(<span class="hljs-string">&apos;http://www.foo.com/foo/bar&apos;</span>, $url-&gt;action(<span class="hljs-string">&apos;foo@bar&apos;</span>));
+$this-&gt;assertEquals(<span class="hljs-string">&apos;http://www.foo.com/something/else&apos;</span>, $url-&gt;action(<span class="hljs-string">&apos;\something\foo@bar&apos;</span>));
+</code></pre>
+<h2 id="urlroutable-&#x53C2;&#x6570;&#x7ED1;&#x5B9A;">UrlRoutable &#x53C2;&#x6570;&#x7ED1;&#x5B9A;</h2>
+<p>&#x53EF;&#x4EE5;&#x4E3A;&#x91CD;&#x5B9A;&#x5411;&#x4F20;&#x5165; <code>UrlRoutable</code> &#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x91CD;&#x5B9A;&#x5411;&#x4F1A;&#x901A;&#x8FC7;&#x7C7B;&#x65B9;&#x6CD5; <code>getRouteKey</code> &#x6765;&#x83B7;&#x53D6;&#x5BF9;&#x8C61;&#x7684;&#x67D0;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x8FDB;&#x800C;&#x7ED1;&#x5B9A;&#x5230;&#x8DEF;&#x7531;&#x7684;&#x53C2;&#x6570;&#x4E2D;&#x53BB;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testRoutableInterfaceRoutingWithSingleParameter</span><span class="hljs-params">()</span>
+</span>{
+    $url = <span class="hljs-keyword">new</span> UrlGenerator(
+        $routes = <span class="hljs-keyword">new</span> RouteCollection,
+        $request = Request::create(<span class="hljs-string">&apos;http://www.foo.com/&apos;</span>)
+    );
+
+    $route = <span class="hljs-keyword">new</span> Route([<span class="hljs-string">&apos;GET&apos;</span>], <span class="hljs-string">&apos;foo/{bar}&apos;</span>, [<span class="hljs-string">&apos;as&apos;</span> =&gt; <span class="hljs-string">&apos;routable&apos;</span>]);
+    $routes-&gt;add($route);
+
+    $model = <span class="hljs-keyword">new</span> RoutableInterfaceStub;
+    $model-&gt;key = <span class="hljs-string">&apos;routable&apos;</span>;
+
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;/foo/routable&apos;</span>, $url-&gt;route(<span class="hljs-string">&apos;routable&apos;</span>, $model, <span class="hljs-keyword">false</span>));
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RoutableInterfaceStub</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">UrlRoutable</span>
+</span>{
+    <span class="hljs-keyword">public</span> $key;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRouteKey</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;{$this-&gt;getRouteKeyName()};
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRouteKeyName</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;key&apos;</span>;
+    }
+}
+</code></pre>
+<h1 id="uri-&#x91CD;&#x5B9A;&#x5411;&#x6E90;&#x7801;&#x5206;&#x6790;">URI &#x91CD;&#x5B9A;&#x5411;&#x6E90;&#x7801;&#x5206;&#x6790;</h1>
+<p>&#x5728;&#x8BF4;&#x91CD;&#x5B9A;&#x5411;&#x7684;&#x6E90;&#x7801;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#x4E00;&#x822C;&#x7684; <code>uri</code> &#x57FA;&#x672C;&#x7EC4;&#x6210;&#xFF1A;</p>
+<p><code>scheme://domain:port/path?queryString</code></p>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x4E00;&#x822C; <code>uri</code> &#x7531;&#x4E94;&#x90E8;&#x5206;&#x6784;&#x6210;&#x3002;&#x91CD;&#x5B9A;&#x5411;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x6309;&#x7167;&#x5404;&#x79CD;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#x4EE5;&#x53CA;&#x5C5E;&#x6027;&#x7684;&#x8BBE;&#x7F6E;&#x6765;&#x91CD;&#x65B0;&#x751F;&#x6210;&#x4E0A;&#x9762;&#x7684;&#x4E94;&#x90E8;&#x5206;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">to</span><span class="hljs-params">($path, $extra = [], $secure = null)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($this-&gt;isValidUrl($path)) {
+        <span class="hljs-keyword">return</span> $path;
+    }
+
+    $tail = implode(<span class="hljs-string">&apos;/&apos;</span>, array_map(
+        <span class="hljs-string">&apos;rawurlencode&apos;</span>, (<span class="hljs-keyword">array</span>) $this-&gt;formatParameters($extra))
+    );
+
+    $root = $this-&gt;formatRoot($this-&gt;formatScheme($secure));
+
+    <span class="hljs-keyword">list</span>($path, $query) = $this-&gt;extractQueryString($path);
+
+    <span class="hljs-keyword">return</span> $this-&gt;format(
+        $root, <span class="hljs-string">&apos;/&apos;</span>.trim($path.<span class="hljs-string">&apos;/&apos;</span>.$tail, <span class="hljs-string">&apos;/&apos;</span>)
+    ).$query;
+}
+</code></pre>
+<h2 id="&#x91CD;&#x5B9A;&#x5411;-scheme">&#x91CD;&#x5B9A;&#x5411; scheme</h2>
+<p>&#x91CD;&#x5B9A;&#x5411;&#x7684; <code>scheme</code> &#x7531;&#x51FD;&#x6570; <code>formatScheme</code> &#x751F;&#x6210;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatScheme</span><span class="hljs-params">($secure)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (! is_null($secure)) {
+        <span class="hljs-keyword">return</span> $secure ? <span class="hljs-string">&apos;https://&apos;</span> : <span class="hljs-string">&apos;http://&apos;</span>;
+    }
+
+    <span class="hljs-keyword">if</span> (is_null($this-&gt;cachedSchema)) {
+        $this-&gt;cachedSchema = $this-&gt;forceScheme ?: $this-&gt;request-&gt;getScheme().<span class="hljs-string">&apos;://&apos;</span>;
+    }
+
+    <span class="hljs-keyword">return</span> $this-&gt;cachedSchema;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">forceScheme</span><span class="hljs-params">($schema)</span>
+</span>{
+    $this-&gt;cachedSchema = <span class="hljs-keyword">null</span>;
+
+    $this-&gt;forceScheme = $schema.<span class="hljs-string">&apos;://&apos;</span>;
+}
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#xFF0C; <code>scheme</code> &#x7684;&#x751F;&#x6210;&#x5B58;&#x5728;&#x4F18;&#x5148;&#x7EA7;&#xFF1A;</p>
+<ul>
+<li>&#x7531; <code>to</code> &#x4F20;&#x5165;&#x7684; <code>secure</code> &#x53C2;&#x6570;</li>
+<li>&#x7531; <code>forceScheme</code> &#x8BBE;&#x7F6E;&#x7684; <code>schema</code> &#x53C2;&#x6570;</li>
+<li><code>request</code> &#x81EA;&#x5E26;&#x7684; <code>scheme</code></li>
+</ul>
+<h2 id="&#x91CD;&#x5B9A;&#x5411;-domain">&#x91CD;&#x5B9A;&#x5411; domain</h2>
+<p>&#x91CD;&#x5B9A;&#x5411;&#x7684; <code>domain</code> &#x7531;&#x51FD;&#x6570; <code>formatRoot</code> &#x751F;&#x6210;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatRoot</span><span class="hljs-params">($scheme, $root = null)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (is_null($root)) {
+        <span class="hljs-keyword">if</span> (is_null($this-&gt;cachedRoot)) {
+            $this-&gt;cachedRoot = $this-&gt;forcedRoot ?: $this-&gt;request-&gt;root();
+        }
+
+        $root = $this-&gt;cachedRoot;
+    }
+
+    $start = Str::startsWith($root, <span class="hljs-string">&apos;http://&apos;</span>) ? <span class="hljs-string">&apos;http://&apos;</span> : <span class="hljs-string">&apos;https://&apos;</span>;
+
+    <span class="hljs-keyword">return</span> preg_replace(<span class="hljs-string">&apos;~&apos;</span>.$start.<span class="hljs-string">&apos;~&apos;</span>, $scheme, $root, <span class="hljs-number">1</span>);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">forceRootUrl</span><span class="hljs-params">($root)</span>
+</span>{
+    $this-&gt;forcedRoot = rtrim($root, <span class="hljs-string">&apos;/&apos;</span>);
+
+    $this-&gt;cachedRoot = <span class="hljs-keyword">null</span>;
+}
+</code></pre>
+<p>&#x4E0E; <code>scheme</code> &#x7C7B;&#x4F3C;&#xFF0C;<code>root</code> &#x7684;&#x751F;&#x6210;&#x4E5F;&#x5B58;&#x5728;&#x4F18;&#x5148;&#x7EA7;&#xFF1A;</p>
+<ul>
+<li>&#x7531; <code>to</code> &#x4F20;&#x5165;&#x7684; <code>root</code> &#x53C2;&#x6570;</li>
+<li>&#x7531; <code>forceRootUrl</code> &#x8BBE;&#x7F6E;&#x7684; <code>root</code> &#x53C2;&#x6570;</li>
+<li><code>request</code> &#x81EA;&#x5E26;&#x7684; <code>root</code></li>
+</ul>
+<h2 id="&#x91CD;&#x5B9A;&#x5411;-path">&#x91CD;&#x5B9A;&#x5411; path</h2>
+<p>&#x91CD;&#x5B9A;&#x5411;&#x7684; <code>path</code> &#x7531;&#x4E09;&#x90E8;&#x5206;&#x6784;&#x6210;&#xFF0C;&#x4E00;&#x90E8;&#x5206;&#x662F; <code>request</code> &#x81EA;&#x5E26;&#x7684; <code>path</code>&#xFF0C;&#x4E00;&#x90E8;&#x5206;&#x662F;&#x51FD;&#x6570; <code>to</code> &#x539F;&#x6709;&#x7684; <code>path</code> &#xFF0C;&#x53E6;&#x4E00;&#x90E8;&#x5206;&#x662F;&#x51FD;&#x6570; <code>to</code> &#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatParameters</span><span class="hljs-params">($parameters)</span>
+</span>{
+    $parameters = array_wrap($parameters);
+
+    <span class="hljs-keyword">foreach</span> ($parameters <span class="hljs-keyword">as</span> $key =&gt; $parameter) {
+        <span class="hljs-keyword">if</span> ($parameter <span class="hljs-keyword">instanceof</span> UrlRoutable) {
+            $parameters[$key] = $parameter-&gt;getRouteKey();
+        }
+    }
+
+    <span class="hljs-keyword">return</span> $parameters;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">extractQueryString</span><span class="hljs-params">($path)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (($queryPosition = strpos($path, <span class="hljs-string">&apos;?&apos;</span>)) !== <span class="hljs-keyword">false</span>) {
+        <span class="hljs-keyword">return</span> [
+            substr($path, <span class="hljs-number">0</span>, $queryPosition),
+            substr($path, $queryPosition),
+        ];
+    }
+
+    <span class="hljs-keyword">return</span> [$path, <span class="hljs-string">&apos;&apos;</span>];
+}
+</code></pre>
+<h1 id="&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411;&#x6E90;&#x7801;&#x5206;&#x6790;">&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411;&#x6E90;&#x7801;&#x5206;&#x6790;</h1>
+<p>&#x76F8;&#x5BF9;&#x4E8E; <code>uri</code> &#x7684;&#x91CD;&#x5B9A;&#x5411;&#x6765;&#x8BF4;&#xFF0C;&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411;&#x7684; <code>scheme</code>&#x3001;<code>root</code> &#x3001;<code>path</code>&#x3001;<code>queryString</code> &#x90FD;&#x8981;&#x4EE5;&#x8DEF;&#x7531;&#x81EA;&#x8EAB;&#x7684;&#x5C5E;&#x6027;&#x4E3A;&#x7B2C;&#x4E00;&#x4F18;&#x5148;&#x7EA7;&#xFF0C;&#x6B64;&#x5916;&#x8FD8;&#x8981;&#x5229;&#x7528;&#x989D;&#x5916;&#x53C2;&#x6570;&#x6765;&#x7ED1;&#x5B9A;&#x8DEF;&#x7531;&#x7684; <code>uri</code> &#x53C2;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"> <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">route</span><span class="hljs-params">($name, $parameters = [], $absolute = true)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (! is_null($route = $this-&gt;routes-&gt;getByName($name))) {
+        <span class="hljs-keyword">return</span> $this-&gt;toRoute($route, $parameters, $absolute);
+    }
+
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InvalidArgumentException(<span class="hljs-string">&quot;Route [{$name}] not defined.&quot;</span>);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">to</span><span class="hljs-params">($route, $parameters = [], $absolute = false)</span>
+</span>{
+    $domain = $this-&gt;getRouteDomain($route, $parameters);
+
+    $uri = $this-&gt;addQueryString($this-&gt;url-&gt;format(
+        $root = $this-&gt;replaceRootParameters($route, $domain, $parameters),
+        $this-&gt;replaceRouteParameters($route-&gt;uri(), $parameters)
+    ), $parameters);
+
+    <span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&apos;/\{.*?\}/&apos;</span>, $uri)) {
+        <span class="hljs-keyword">throw</span> UrlGenerationException::forMissingParameters($route);
+    }
+
+    $uri = strtr(rawurlencode($uri), $this-&gt;dontEncode);
+
+    <span class="hljs-keyword">if</span> (! $absolute) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;/&apos;</span>.ltrim(str_replace($root, <span class="hljs-string">&apos;&apos;</span>, $uri), <span class="hljs-string">&apos;/&apos;</span>);
+    }
+
+    <span class="hljs-keyword">return</span> $uri;
+}
+</code></pre>
+<h2 id="&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411;-scheme">&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411; scheme</h2>
+<p>&#x8DEF;&#x7531;&#x7684;&#x91CD;&#x5B9A;&#x5411; <code>scheme</code> &#x9700;&#x8981;&#x5148;&#x5224;&#x65AD;&#x8DEF;&#x7531;&#x7684; <code>scheme</code> &#x5C5E;&#x6027;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRouteScheme</span><span class="hljs-params">($route)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($route-&gt;httpOnly()) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;http://&apos;</span>;
+    } <span class="hljs-keyword">elseif</span> ($route-&gt;httpsOnly()) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;https://&apos;</span>;
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> $this-&gt;url-&gt;formatScheme(<span class="hljs-keyword">null</span>);
+    }
+}
+</code></pre>
+<h2 id="&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411;-domain">&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411; domain</h2>
+<pre><code class="lang-php">
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">to</span><span class="hljs-params">($route, $parameters = [], $absolute = false)</span>
+</span>{
+    $domain = $this-&gt;getRouteDomain($route, $parameters);
+
+    $uri = $this-&gt;addQueryString($this-&gt;url-&gt;format(
+        $root = $this-&gt;replaceRootParameters($route, $domain, $parameters),
+        $this-&gt;replaceRouteParameters($route-&gt;uri(), $parameters)
+    ), $parameters);
+    ...
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRouteDomain</span><span class="hljs-params">($route, &amp;$parameters)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $route-&gt;domain() ? $this-&gt;formatDomain($route, $parameters) : <span class="hljs-keyword">null</span>;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatDomain</span><span class="hljs-params">($route, &amp;$parameters)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;addPortToDomain(
+        $this-&gt;getRouteScheme($route).$route-&gt;domain()
+    );
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addPortToDomain</span><span class="hljs-params">($domain)</span>
+</span>{
+    $secure = $this-&gt;request-&gt;isSecure();
+
+    $port = (int) $this-&gt;request-&gt;getPort();
+
+    <span class="hljs-keyword">return</span> ($secure &amp;&amp; $port === <span class="hljs-number">443</span>) || (! $secure &amp;&amp; $port === <span class="hljs-number">80</span>)
+            ? $domain : $domain.<span class="hljs-string">&apos;:&apos;</span>.$port;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">replaceRootParameters</span><span class="hljs-params">($route, $domain, &amp;$parameters)</span>
+</span>{
+    $scheme = $this-&gt;getRouteScheme($route);
+
+    <span class="hljs-keyword">return</span> $this-&gt;replaceRouteParameters(
+        $this-&gt;url-&gt;formatRoot($scheme, $domain), $parameters
+    );
+}
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411;&#x65F6;&#xFF0C;&#x57DF;&#x540D;&#x7684;&#x751F;&#x6210;&#x4E3B;&#x8981;&#x5148;&#x7ECF;&#x8FC7;&#x51FD;&#x6570; <code>getRouteDomain</code>, &#x5224;&#x65AD;&#x8DEF;&#x7531;&#x662F;&#x5426;&#x6709; <code>domain</code> &#x5C5E;&#x6027;,&#x5982;&#x679C;&#x6709;&#x57DF;&#x540D;&#x5C5E;&#x6027;&#xFF0C;&#x5219;&#x5C06;&#x4F1A;&#x4F5C;&#x4E3A; <code>formatRoot</code> &#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x4F20;&#x5165;&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x4F1A;&#x9ED8;&#x8BA4;&#x542F;&#x52A8; 1<code>uri</code> &#x91CD;&#x5B9A;&#x5411;&#x7684;&#x57DF;&#x540D;&#x751F;&#x6210;&#x65B9;&#x6CD5;&#x3002;</p>
+<h2 id="&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411;&#x53C2;&#x6570;&#x7ED1;&#x5B9A;">&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411;&#x53C2;&#x6570;&#x7ED1;&#x5B9A;</h2>
+<p>&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x51FD;&#x6570; <code>replaceRootParameters</code> &#x5728;&#x57DF;&#x540D;&#x5F53;&#x4E2D;&#x53C2;&#x6570;&#x7ED1;&#x5B9A;&#xFF0C;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x8DEF;&#x5F84;&#x5F53;&#x4E2D;&#x5229;&#x7528;&#x51FD;&#x6570; <code>replaceRouteParameters</code> &#x8FDB;&#x884C;&#x53C2;&#x6570;&#x7ED1;&#x5B9A;&#x3002;&#x53C2;&#x6570;&#x7ED1;&#x5B9A;&#x5206;&#x4E3A;&#x547D;&#x540D;&#x53C2;&#x6570;&#x7ED1;&#x5B9A;&#x4E0E;&#x533F;&#x540D;&#x53C2;&#x6570;&#x7ED1;&#x5B9A;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">replaceRouteParameters</span><span class="hljs-params">($path, array &amp;$parameters)</span>
+</span>{
+    $path = $this-&gt;replaceNamedParameters($path, $parameters);
+
+    $path = preg_replace_callback(<span class="hljs-string">&apos;/\{.*?\}/&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($match)</span> <span class="hljs-title">use</span> <span class="hljs-params">(&amp;$parameters)</span> </span>{
+        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">empty</span>($parameters) &amp;&amp; ! Str::endsWith($match[<span class="hljs-number">0</span>], <span class="hljs-string">&apos;?}&apos;</span>))
+                    ? $match[<span class="hljs-number">0</span>]
+                    : array_shift($parameters);
+    }, $path);
+
+    <span class="hljs-keyword">return</span> trim(preg_replace(<span class="hljs-string">&apos;/\{.*?\?\}/&apos;</span>, <span class="hljs-string">&apos;&apos;</span>, $path), <span class="hljs-string">&apos;/&apos;</span>);
+}
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x547D;&#x540D;&#x53C2;&#x6570;&#x7ED1;&#x5B9A;,&#x7A0B;&#x5E8F;&#x4F1A;&#x5206;&#x522B;&#x4ECE;&#x53D8;&#x91CF;&#x5217;&#x8868;&#x3001;&#x9ED8;&#x8BA4;&#x53D8;&#x91CF;&#x5217;&#x8868;&#x4E2D;&#x83B7;&#x53D6;&#x5E76;&#x66FF;&#x6362;&#x8DEF;&#x7531;&#x53C2;&#x6570;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x503C;&#xFF0C;&#x82E5;&#x4E0D;&#x5B58;&#x5728;&#x8BE5;&#x53C2;&#x6570;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">replaceNamedParameters</span><span class="hljs-params">($path, &amp;$parameters)</span>
+</span>{
+    <span class="hljs-keyword">return</span> preg_replace_callback(<span class="hljs-string">&apos;/\{(.*?)\??\}/&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($m)</span> <span class="hljs-title">use</span> <span class="hljs-params">(&amp;$parameters)</span> </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($parameters[$m[<span class="hljs-number">1</span>]])) {
+            <span class="hljs-keyword">return</span> Arr::pull($parameters, $m[<span class="hljs-number">1</span>]);
+        } <span class="hljs-keyword">elseif</span> (<span class="hljs-keyword">isset</span>($this-&gt;defaultParameters[$m[<span class="hljs-number">1</span>]])) {
+            <span class="hljs-keyword">return</span> $this-&gt;defaultParameters[$m[<span class="hljs-number">1</span>]];
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> $m[<span class="hljs-number">0</span>];
+        }
+    }, $path);
+}
+</code></pre>
+<p>&#x547D;&#x540D;&#x53C2;&#x6570;&#x7ED1;&#x5B9A;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x5269;&#x4E0B;&#x7684;&#x672A;&#x88AB;&#x66FF;&#x6362;&#x7684;&#x8DEF;&#x7531;&#x53C2;&#x6570;&#x5C06;&#x4F1A;&#x88AB;&#x672A;&#x547D;&#x540D;&#x7684;&#x53D8;&#x91CF;&#x6309;&#x987A;&#x5E8F;&#x6765;&#x66FF;&#x6362;&#x3002;</p>
+<h2 id="&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411;-querystring">&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411; queryString</h2>
+<p>&#x5982;&#x679C;&#x53D8;&#x91CF;&#x5217;&#x8868;&#x5728;&#x7ED1;&#x5B9A;&#x8DEF;&#x7531;&#x540E;&#x4ECD;&#x7136;&#x6709;&#x5269;&#x4F59;&#xFF0C;&#x90A3;&#x4E48;&#x53D8;&#x91CF;&#x5C06;&#x4F1A;&#x4F5C;&#x4E3A;&#x8DEF;&#x7531;&#x7684; <code>queryString</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addQueryString</span><span class="hljs-params">($uri, array $parameters)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (! is_null($fragment = parse_url($uri, PHP_URL_FRAGMENT))) {
+        $uri = preg_replace(<span class="hljs-string">&apos;/#.*/&apos;</span>, <span class="hljs-string">&apos;&apos;</span>, $uri);
+    }
+
+    $uri .= $this-&gt;getRouteQueryString($parameters);
+
+    <span class="hljs-keyword">return</span> is_null($fragment) ? $uri : $uri.<span class="hljs-string">&quot;#{$fragment}&quot;</span>;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRouteQueryString</span><span class="hljs-params">(array $parameters)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (count($parameters) == <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;&apos;</span>;
+    }
+
+    $query = http_build_query(
+        $keyed = $this-&gt;getStringParameters($parameters)
+    );
+
+
+    <span class="hljs-keyword">if</span> (count($keyed) &lt; count($parameters)) {
+        $query .= <span class="hljs-string">&apos;&amp;&apos;</span>.implode(
+            <span class="hljs-string">&apos;&amp;&apos;</span>, $this-&gt;getNumericParameters($parameters)
+        );
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;?&apos;</span>.trim($query, <span class="hljs-string">&apos;&amp;&apos;</span>);
+}
+</code></pre>
+<h2 id="&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411;&#x7ED3;&#x675F;">&#x8DEF;&#x7531;&#x91CD;&#x5B9A;&#x5411;&#x7ED3;&#x675F;</h2>
+<p>&#x8DEF;&#x7531; <code>uri</code> &#x6784;&#x5EFA;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x5C06;&#x4F1A;&#x7EE7;&#x7EED;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5B58;&#x5728;&#x8FDD;&#x80CC;&#x7ED1;&#x5B9A;&#x7684;&#x8DEF;&#x7531;&#x53C2;&#x6570;&#xFF0C;&#x662F;&#x5426;&#x663E;&#x793A; <code>absolute</code> &#x7684;&#x8DEF;&#x7531;&#x5730;&#x5740;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">to</span><span class="hljs-params">($route, $parameters = [], $absolute = false)</span>
+</span>{
+    ...
+    <span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&apos;/\{.*?\}/&apos;</span>, $uri)) {
+        <span class="hljs-keyword">throw</span> UrlGenerationException::forMissingParameters($route);
+    }
+
+    $uri = strtr(rawurlencode($uri), $this-&gt;dontEncode);
+
+    <span class="hljs-keyword">if</span> (! $absolute) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;/&apos;</span>.ltrim(str_replace($root, <span class="hljs-string">&apos;&apos;</span>, $uri), <span class="hljs-string">&apos;/&apos;</span>);
+    }
+
+    <span class="hljs-keyword">return</span> $uri;
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Laravel HTTP—— RESTFul 风格路由的使用与源码分析">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Laravel HTTP——重定向的使用与源码分析","level":"1.5.10","depth":2,"next":{"title":"Laravel ENV 环境变量","level":"1.6","depth":1,"ref":"","articles":[{"title":"Laravel ENV—— 环境变量的加载与源码解析","level":"1.6.1","depth":2,"path":"Laravel ENV—— 环境变量的加载与源码解析.md","ref":"Laravel ENV—— 环境变量的加载与源码解析.md","articles":[]}]},"previous":{"title":"Laravel HTTP—— RESTFul 风格路由的使用与源码分析","level":"1.5.9","depth":2,"path":"Laravel HTTP—— RESTFul 风格路由的使用与源码分析.md","ref":"Laravel HTTP—— RESTFul 风格路由的使用与源码分析.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Laravel HTTP——重定向的使用与源码分析.md","mtime":"2019-01-15T10:29:00.322Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T10:51:52.544Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

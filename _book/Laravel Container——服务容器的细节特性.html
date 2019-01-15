@@ -1,0 +1,1469 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Laravel Container——服务容器的细节特性 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    PHP Composer 自动加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="PHP Composer——自动加载原理.html">
+            
+                <a href="PHP Composer——自动加载原理.html">
+            
+                    
+                    PHP Composer——自动加载原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="PHP Composer—— 初始化源码分析.html">
+            
+                <a href="PHP Composer—— 初始化源码分析.html">
+            
+                    
+                    PHP Composer—— 初始化源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="PHP Composer-——-注册与运行源码分析.html">
+            
+                <a href="PHP Composer-——-注册与运行源码分析.html">
+            
+                    
+                    PHP Composer-——-注册与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Laravel Facade 门面
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="Laravel Facade——Facade 门面源码分析.html">
+            
+                <a href="Laravel Facade——Facade 门面源码分析.html">
+            
+                    
+                    Laravel Facade——Facade 门面源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Laravel Ioc 容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Laravel Container——IoC 服务容器.html">
+            
+                <a href="Laravel Container——IoC 服务容器.html">
+            
+                    
+                    Laravel Container——IoC 服务容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器绑定)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器解析)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.4" data-path="Laravel Container——服务容器的细节特性.html">
+            
+                <a href="Laravel Container——服务容器的细节特性.html">
+            
+                    
+                    Laravel Container——服务容器的细节特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Laravel Route 路由
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Laravel HTTP——路由.html">
+            
+                <a href="Laravel HTTP——路由.html">
+            
+                    
+                    Laravel HTTP——路由
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="Laravel HTTP——路由加载源码分析.html">
+            
+                <a href="Laravel HTTP——路由加载源码分析.html">
+            
+                    
+                    Laravel HTTP——路由加载源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                <a href="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                    
+                    Laravel HTTP——Pipeline中间件处理源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="Laravel HTTP——路由的正则编译.html">
+            
+                <a href="Laravel HTTP——路由的正则编译.html">
+            
+                    
+                    Laravel HTTP——路由的正则编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                <a href="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                    
+                    Laravel HTTP——路由的匹配与参数绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="Laravel HTTP——路由中间件源码分析.html">
+            
+                <a href="Laravel HTTP——路由中间件源码分析.html">
+            
+                    
+                    Laravel HTTP——路由中间件源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                <a href="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                    
+                    Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                <a href="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                    
+                    Laravel HTTP——控制器方法的参数构建与运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                <a href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP—— RESTFul 风格路由的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                <a href="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP——重定向的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Laravel ENV 环境变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                <a href="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                    
+                    Laravel ENV—— 环境变量的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Laravel Config 配置文件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                <a href="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                    
+                    Laravel Config—— 配置文件的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Laravel Exceptions 异常处理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="Laravel Exceptions——异常与错误处理.html">
+            
+                <a href="Laravel Exceptions——异常与错误处理.html">
+            
+                    
+                    Laravel Exceptions——异常与错误处理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Laravel Providers 服务提供者
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                <a href="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                    
+                    Laravel Providers——服务提供者的注册与启动源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Laravel Database 数据库
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="Laravel Database——数据库服务的启动与连接.html">
+            
+                <a href="Laravel Database——数据库服务的启动与连接.html">
+            
+                    
+                    Laravel Database——数据库服务的启动与连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="Laravel Database——数据库的 CRUD 操作.html">
+            
+                <a href="Laravel Database——数据库的 CRUD 操作.html">
+            
+                    
+                    Laravel Database——数据库的 CRUD 操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="Laravel Database——查询构造器与语法编译器源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="Laravel Database——查询构造器与语法编译器源码分析%28中%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(中)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="Laravel Database——查询构造器与语法编译器源码分析%28下%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="Laravel Database——分页原理与源码分析.html">
+            
+                <a href="Laravel Database——分页原理与源码分析.html">
+            
+                    
+                    Laravel Database——分页原理与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Laravel Database——Eloquent Model 源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                <a href="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                <a href="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                    
+                    Laravel Database——Eloquent Model 关联源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                <a href="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                    
+                    Laravel Database——Eloquent Model 模型关系加载与查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                <a href="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                    
+                    Laravel Database——Eloquent Model 更新关联模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Laravel Session
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="Laravel Session——session 的启动与运行源码分析.html">
+            
+                <a href="Laravel Session——session 的启动与运行源码分析.html">
+            
+                    
+                    Laravel Session——session 的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    Laravel Event 事件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                <a href="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                    
+                    Laravel Event——事件系统的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    Laravel Queue 队列
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务与分发源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务处理器源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    Laravel 广播系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="Laravel Broadcast——广播系统源码剖析.html">
+            
+                <a href="Laravel Broadcast——广播系统源码剖析.html">
+            
+                    
+                    Laravel Broadcast——广播系统源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    Laravel Passport
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Laravel Container——服务容器的细节特性</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h1>
+<p>&#x5728;&#x524D;&#x9762;&#x51E0;&#x4E2A;&#x535A;&#x5BA2;&#x4E2D;&#xFF0C;&#x6211;&#x8BE6;&#x7EC6;&#x8BB2;&#x4E86; Ioc &#x5BB9;&#x5668;&#x5404;&#x4E2A;&#x529F;&#x80FD;&#x7684;&#x4F7F;&#x7528;&#x3001;&#x7ED1;&#x5B9A;&#x7684;&#x6E90;&#x7801;&#x3001;&#x89E3;&#x6790;&#x7684;&#x6E90;&#x7801;&#xFF0C;&#x4ECA;&#x5929;&#x8FD9;&#x7BC7;&#x535A;&#x5BA2;&#x4F1A;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD; Ioc &#x5BB9;&#x5668;&#x7684;&#x4E00;&#x4E9B;&#x7EC6;&#x8282;&#xFF0C;&#x4E00;&#x4E9B;&#x7279;&#x6027;&#xFF0C;&#x4EE5;&#x4FBF;&#x66F4;&#x597D;&#x5730;&#x638C;&#x63E1;&#x5BB9;&#x5668;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x6CE8;&#xFF1A;&#x672C;&#x6587;&#x4F7F;&#x7528;&#x7684;&#x6D4B;&#x8BD5;&#x7C7B;&#x4E0E;&#x6D4B;&#x8BD5;&#x5BF9;&#x8C61;&#x90FD;&#x53D6;&#x81EA; laravel &#x7684;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x6587;&#x4EF6;src/illuminate/tests/Container/ContainerTest.php</p>
+<h1 id="rebind&#x7ED1;&#x5B9A;&#x7279;&#x6027;">rebind&#x7ED1;&#x5B9A;&#x7279;&#x6027;</h1>
+<h2 id="rebind-&#x5728;&#x7ED1;&#x5B9A;&#x4E4B;&#x524D;">rebind &#x5728;&#x7ED1;&#x5B9A;&#x4E4B;&#x524D;</h2>
+<p>instance &#x548C; &#x666E;&#x901A; bind &#x7ED1;&#x5B9A;&#x4E00;&#x6837;&#xFF0C;&#x5F53;&#x91CD;&#x65B0;&#x7ED1;&#x5B9A;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x8C03;&#x7528; rebind &#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x8DA3;&#x7684;&#x662F;&#xFF0C;&#x5BF9;&#x4E8E;&#x666E;&#x901A; bind &#x7ED1;&#x5B9A;&#x6765;&#x8BF4;&#xFF0C;rebind &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x6761;&#x4EF6;&#x662F;&#x5F53;&#x524D;&#x63A5;&#x53E3;&#x88AB;&#x89E3;&#x6790;&#x8FC7;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testReboundListeners</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">unset</span>($_SERVER[<span class="hljs-string">&apos;__test.rebind&apos;</span>]);
+
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;rebinding(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        $_SERVER[<span class="hljs-string">&apos;__test.rebind&apos;</span>] = <span class="hljs-keyword">true</span>;
+    });
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    });
+    $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>);
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    });
+
+    $this-&gt;assertTrue($_SERVER[<span class="hljs-string">&apos;__test.rebind&apos;</span>]);
+}
+</code></pre>
+<p>&#x6240;&#x4EE5;&#x9047;&#x5230;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x7684;&#x60C5;&#x51B5;,rebinding &#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x662F;&#x4E0D;&#x4F1A;&#x8C03;&#x7528;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testReboundListeners</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">unset</span>($_SERVER[<span class="hljs-string">&apos;__test.rebind&apos;</span>]);
+
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;rebinding(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        $_SERVER[<span class="hljs-string">&apos;__test.rebind&apos;</span>] = <span class="hljs-keyword">true</span>;
+    });
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    });
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    });
+
+    $this-&gt;assertFalse(<span class="hljs-keyword">isset</span>($_SERVER[<span class="hljs-string">&apos;__test.rebind&apos;</span>]));
+}
+</code></pre>
+<p>&#x6709;&#x8DA3;&#x7684;&#x662F;&#x5BF9;&#x4E8E; instance &#x7ED1;&#x5B9A;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testReboundListeners</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">unset</span>($_SERVER[<span class="hljs-string">&apos;__test.rebind&apos;</span>]);
+
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;rebinding(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        $_SERVER[<span class="hljs-string">&apos;__test.rebind&apos;</span>] = <span class="hljs-keyword">true</span>;
+    });
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    });
+    $container-&gt;instance(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    });
+
+    $this-&gt;assertTrue(<span class="hljs-keyword">isset</span>($_SERVER[<span class="hljs-string">&apos;__test.rebind&apos;</span>]));
+}
+</code></pre>
+<p>rebinding &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x5374;&#x662F;&#x53EF;&#x4EE5;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x3002;&#x5176;&#x5B9E;&#x539F;&#x56E0;&#x5C31;&#x662F; instance &#x6E90;&#x7801;&#x4E2D; rebinding &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x7684;&#x6761;&#x4EF6;&#x662F; rebound &#x4E3A;&#x771F;&#xFF0C;&#x800C;&#x666E;&#x901A; bind &#x51FD;&#x6570;&#x8C03;&#x7528; rebinding &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x7684;&#x6761;&#x4EF6;&#x662F; resolved &#x4E3A;&#x771F;. &#x76EE;&#x524D;&#x7B14;&#x8005;&#x4E0D;&#x662F;&#x5F88;&#x6E05;&#x695A;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x5BF9; instance &#x548C; bind &#x533A;&#x522B;&#x5BF9;&#x5F85;&#xFF0C;&#x5E0C;&#x671B;&#x6709;&#x5927;&#x725B;&#x6307;&#x5BFC;&#x3002;</p>
+<h2 id="rebind-&#x5728;&#x7ED1;&#x5B9A;&#x4E4B;&#x540E;">rebind &#x5728;&#x7ED1;&#x5B9A;&#x4E4B;&#x540E;</h2>
+<p>&#x4E3A;&#x4E86;&#x4F7F;&#x5F97; rebind &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x5728;&#x4E0B;&#x4E00;&#x6B21;&#x7684;&#x7ED1;&#x5B9A;&#x4E2D;&#x88AB;&#x6FC0;&#x6D3B;&#xFF0C;&#x5728; rebind &#x51FD;&#x6570;&#x7684;&#x6E90;&#x7801;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x5DF2;&#x7ECF;&#x7ED1;&#x5B9A;&#x8FC7;&#xFF0C;&#x90A3;&#x4E48;&#x5C06;&#x4F1A;&#x7ACB;&#x5373;&#x89E3;&#x6790;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">rebinding</span><span class="hljs-params">($abstract, Closure $callback)</span>
+</span>{
+    $this-&gt;reboundCallbacks[$abstract = $this-&gt;getAlias($abstract)][] = $callback;
+
+    <span class="hljs-keyword">if</span> ($this-&gt;bound($abstract)) {
+        <span class="hljs-keyword">return</span> $this-&gt;make($abstract);
+    }
+}
+</code></pre>
+<p>&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testReboundListeners1</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">unset</span>($_SERVER[<span class="hljs-string">&apos;__test.rebind&apos;</span>]);
+
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;foo&apos;</span>;
+    });
+
+    $container-&gt;resolving(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        $_SERVER[<span class="hljs-string">&apos;__test.rebind&apos;</span>] = <span class="hljs-keyword">true</span>;
+    });
+
+    $container-&gt;rebinding(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($container,$object)</span> </span>{<span class="hljs-comment">//&#x4F1A;&#x7ACB;&#x5373;&#x89E3;&#x6790;</span>
+        $container[<span class="hljs-string">&apos;foobar&apos;</span>] = $object.<span class="hljs-string">&apos;bar&apos;</span>;
+    });
+
+    $this-&gt;assertTrue($_SERVER[<span class="hljs-string">&apos;__test.rebind&apos;</span>]);
+
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    });
+
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;bar&apos;</span>, $container[<span class="hljs-string">&apos;foobar&apos;</span>]);
+}
+</code></pre>
+<h1 id="resolving-&#x7279;&#x6027;">resolving &#x7279;&#x6027;</h1>
+<h2 id="resolving-&#x56DE;&#x8C03;&#x7684;&#x7C7B;&#x578B;">resolving &#x56DE;&#x8C03;&#x7684;&#x7C7B;&#x578B;</h2>
+<p>resolving &#x4E0D;&#x4EC5;&#x53EF;&#x4EE5;&#x9488;&#x5BF9;&#x63A5;&#x53E3;&#x6267;&#x884C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x9488;&#x5BF9;&#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x7684;&#x7C7B;&#x578B;&#x8FDB;&#x884C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testResolvingCallbacksAreCalledForType</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;resolving(<span class="hljs-string">&apos;StdClass&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($object)</span> </span>{
+        <span class="hljs-keyword">return</span> $object-&gt;name = <span class="hljs-string">&apos;taylor&apos;</span>;
+    });
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+          <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> StdClass;
+    });
+    $instance = $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>);
+
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;taylor&apos;</span>, $instance-&gt;name);
+}
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testResolvingCallbacksShouldBeFiredWhenCalledWithAliases</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;alias(<span class="hljs-string">&apos;StdClass&apos;</span>, <span class="hljs-string">&apos;std&apos;</span>);
+    $container-&gt;resolving(<span class="hljs-string">&apos;std&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($object)</span> </span>{
+        <span class="hljs-keyword">return</span> $object-&gt;name = <span class="hljs-string">&apos;taylor&apos;</span>;
+    });
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> StdClass;
+    });
+    $instance = $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>);
+
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;taylor&apos;</span>, $instance-&gt;name);
+}
+</code></pre>
+<h2 id="resolving-&#x56DE;&#x8C03;&#x4E0E;-instance">resolving &#x56DE;&#x8C03;&#x4E0E; instance</h2>
+<p>&#x524D;&#x9762;&#x8BB2;&#x8FC7;&#xFF0C;&#x5BF9;&#x4E8E; singleton &#x7ED1;&#x5B9A;&#x6765;&#x8BF4;&#xFF0C;resolving &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4EC5;&#x4EC5;&#x8FD0;&#x884C;&#x4E00;&#x6B21;&#xFF0C;&#x53EA;&#x5728; singleton &#x7B2C;&#x4E00;&#x6B21;&#x89E3;&#x6790;&#x7684;&#x65F6;&#x5019;&#x624D;&#x4F1A;&#x8C03;&#x7528;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5229;&#x7528; instance &#x76F4;&#x63A5;&#x7ED1;&#x5B9A;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x89E3;&#x6790;&#xFF0C;&#x90A3;&#x4E48; resolving &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x5C06;&#x4E0D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testResolvingCallbacksAreCalledForSpecificAbstracts</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;resolving(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($object)</span> </span>{
+        <span class="hljs-keyword">return</span> $object-&gt;name = <span class="hljs-string">&apos;taylor&apos;</span>;
+    });
+    $obj = <span class="hljs-keyword">new</span> StdClass;
+    $container-&gt;instance(<span class="hljs-string">&apos;foo&apos;</span>, $obj);
+    $instance = $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>);
+
+    $this-&gt;assertFalse(<span class="hljs-keyword">isset</span>($instance-&gt;name));
+}
+</code></pre>
+<h1 id="extend-&#x6269;&#x5C55;&#x7279;&#x6027;">extend &#x6269;&#x5C55;&#x7279;&#x6027;</h1>
+<p>extend &#x7528;&#x4E8E;&#x6269;&#x5C55;&#x7ED1;&#x5B9A;&#x5BF9;&#x8C61;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5BF9;&#x4E8E;&#x666E;&#x901A;&#x7ED1;&#x5B9A;&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x4F4D;&#x7F6E;&#x5F88;&#x7075;&#x6D3B;&#xFF1A;</p>
+<h2 id="&#x5728;&#x7ED1;&#x5B9A;&#x524D;&#x6269;&#x5C55;">&#x5728;&#x7ED1;&#x5B9A;&#x524D;&#x6269;&#x5C55;</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testExtendIsLazyInitialized</span><span class="hljs-params">()</span>
+</span>{
+    ContainerLazyExtendStub::$initialized = <span class="hljs-keyword">false</span>;
+
+    $container = <span class="hljs-keyword">new</span> Container;      
+    $container-&gt;extend(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerLazyExtendStub&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($obj, $container)</span> </span>{
+        $obj-&gt;init();
+        <span class="hljs-keyword">return</span> $obj;   
+    });    
+    $container-&gt;bind(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerLazyExtendStub&apos;</span>); 
+
+    $this-&gt;assertFalse(ContainerLazyExtendStub::$initialized);   
+    $container-&gt;make(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerLazyExtendStub&apos;</span>);   
+    $this-&gt;assertTrue(ContainerLazyExtendStub::$initialized);
+}
+</code></pre>
+<h2 id="&#x5728;&#x7ED1;&#x5B9A;&#x540E;&#x89E3;&#x6790;&#x524D;&#x6269;&#x5C55;">&#x5728;&#x7ED1;&#x5B9A;&#x540E;&#x89E3;&#x6790;&#x524D;&#x6269;&#x5C55;</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testExtendIsLazyInitialized</span><span class="hljs-params">()</span>
+</span>{
+    ContainerLazyExtendStub::$initialized = <span class="hljs-keyword">false</span>;
+
+    $container = <span class="hljs-keyword">new</span> Container;   
+    $container-&gt;bind(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerLazyExtendStub&apos;</span>);    
+    $container-&gt;extend(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerLazyExtendStub&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($obj, $container)</span> </span>{
+        $obj-&gt;init();
+        <span class="hljs-keyword">return</span> $obj;   
+    });    
+
+    $this-&gt;assertFalse(ContainerLazyExtendStub::$initialized);   
+    $container-&gt;make(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerLazyExtendStub&apos;</span>);   
+    $this-&gt;assertTrue(ContainerLazyExtendStub::$initialized);
+}
+</code></pre>
+<h2 id="&#x5728;&#x89E3;&#x6790;&#x540E;&#x6269;&#x5C55;">&#x5728;&#x89E3;&#x6790;&#x540E;&#x6269;&#x5C55;</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testExtendIsLazyInitialized</span><span class="hljs-params">()</span>
+</span>{
+    ContainerLazyExtendStub::$initialized = <span class="hljs-keyword">false</span>;
+
+    $container = <span class="hljs-keyword">new</span> Container;   
+    $container-&gt;bind(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerLazyExtendStub&apos;</span>);         
+
+    $container-&gt;make(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerLazyExtendStub&apos;</span>); 
+    $this-&gt;assertFalse(ContainerLazyExtendStub::$initialized);
+
+    $container-&gt;extend(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerLazyExtendStub&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($obj, $container)</span> </span>{
+        $obj-&gt;init();
+        <span class="hljs-keyword">return</span> $obj;   
+    });
+    $this-&gt;assertFalse(ContainerLazyExtendStub::$initialized);  
+
+    $container-&gt;make(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerLazyExtendStub&apos;</span>); 
+    $this-&gt;assertTrue(ContainerLazyExtendStub::$initialized);
+}
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x65E0;&#x8BBA;&#x5728;&#x54EA;&#x4E2A;&#x4F4D;&#x7F6E;&#xFF0C;extend &#x6269;&#x5C55;&#x90FD;&#x6709; lazy &#x521D;&#x59CB;&#x5316;&#x7684;&#x7279;&#x70B9;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4F7F;&#x7528; extend &#x51FD;&#x6570;&#x5E76;&#x4E0D;&#x4F1A;&#x7ACB;&#x5373;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x800C;&#x662F;&#x8981;&#x7B49;&#x5230; make &#x89E3;&#x6790;&#x624D;&#x4F1A;&#x6FC0;&#x6D3B;&#x3002;</p>
+<h2 id="extend-&#x4E0E;-instance-&#x7ED1;&#x5B9A;">extend &#x4E0E; instance &#x7ED1;&#x5B9A;</h2>
+<p>&#x5BF9;&#x4E8E; instance &#x7ED1;&#x5B9A;&#x6765;&#x8BF4;&#xFF0C;&#x6682;&#x65F6; extend &#x7684;&#x4F4D;&#x7F6E;&#x9700;&#x8981;&#x4F4D;&#x4E8E; instance &#x4E4B;&#x540E;&#x624D;&#x4F1A;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x5E76;&#x4E14;&#x4F1A;&#x7ACB;&#x5373;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x6CA1;&#x6709; lazy &#x7684;&#x7279;&#x70B9;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testExtendInstancesArePreserved</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+
+    $obj = <span class="hljs-keyword">new</span> StdClass;
+    $obj-&gt;foo = <span class="hljs-string">&apos;foo&apos;</span>;
+    $container-&gt;instance(<span class="hljs-string">&apos;foo&apos;</span>, $obj);
+    $container-&gt;extend(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($obj, $container)</span> </span>{
+        $obj-&gt;bar = <span class="hljs-string">&apos;baz&apos;</span>;
+
+        <span class="hljs-keyword">return</span> $obj;
+    });
+
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;foo&apos;</span>, $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>)-&gt;foo);
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;baz&apos;</span>, $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>)-&gt;bar);
+}
+</code></pre>
+<h2 id="extend-&#x7ED1;&#x5B9A;&#x4E0E;-rebind-&#x56DE;&#x8C03;">extend &#x7ED1;&#x5B9A;&#x4E0E; rebind &#x56DE;&#x8C03;</h2>
+<p>&#x65E0;&#x8BBA;&#x6269;&#x5C55;&#x5BF9;&#x8C61;&#x662F; instance &#x7ED1;&#x5B9A;&#x8FD8;&#x662F; bind &#x7ED1;&#x5B9A;&#xFF0C;extend &#x90FD;&#x4F1A;&#x542F;&#x52A8; rebind &#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testExtendReBindingInstance</span><span class="hljs-params">()</span>
+</span>{
+    $_SERVER[<span class="hljs-string">&apos;_test_rebind&apos;</span>] = <span class="hljs-keyword">false</span>;
+
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;rebinding(<span class="hljs-string">&apos;foo&apos;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span></span>{
+        $_SERVER[<span class="hljs-string">&apos;_test_rebind&apos;</span>] = <span class="hljs-keyword">true</span>;
+    });
+
+    $obj = <span class="hljs-keyword">new</span> StdClass;
+    $container-&gt;instance(<span class="hljs-string">&apos;foo&apos;</span>,$obj);
+
+    $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>);
+
+    $container-&gt;extend(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($obj, $container)</span> </span>{
+        <span class="hljs-keyword">return</span> $obj;
+    });
+
+    this-&gt;assertTrue($_SERVER[<span class="hljs-string">&apos;_test_rebind&apos;</span>]);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testExtendReBinding</span><span class="hljs-params">()</span>
+</span>{
+    $_SERVER[<span class="hljs-string">&apos;_test_rebind&apos;</span>] = <span class="hljs-keyword">false</span>;
+
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;rebinding(<span class="hljs-string">&apos;foo&apos;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span></span>{
+        $_SERVER[<span class="hljs-string">&apos;_test_rebind&apos;</span>] = <span class="hljs-keyword">true</span>;
+    });
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span></span>{
+        $obj = <span class="hljs-keyword">new</span> StdClass;
+
+        <span class="hljs-keyword">return</span> $obj;
+    });
+
+    $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>);
+
+    $container-&gt;extend(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($obj, $container)</span> </span>{
+        <span class="hljs-keyword">return</span> $obj;
+    });
+
+    this-&gt;assertFalse($_SERVER[<span class="hljs-string">&apos;_test_rebind&apos;</span>]);
+}
+</code></pre>
+<h1 id="contextual-&#x7ED1;&#x5B9A;&#x7279;&#x6027;">contextual &#x7ED1;&#x5B9A;&#x7279;&#x6027;</h1>
+<h2 id="contextual-&#x5728;&#x7ED1;&#x5B9A;&#x524D;">contextual &#x5728;&#x7ED1;&#x5B9A;&#x524D;</h2>
+<p>contextual &#x7ED1;&#x5B9A;&#x4E0D;&#x4EC5;&#x53EF;&#x4EE5;&#x4E0E; bind &#x7ED1;&#x5B9A;&#x5408;&#x4F5C;&#xFF0C;&#x76F8;&#x4E92;&#x4E0D;&#x5E72;&#x6270;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x4E0E; instance &#x7ED1;&#x5B9A;&#x76F8;&#x4E92;&#x5408;&#x4F5C;&#x3002;&#x800C;&#x4E14; instance &#x7684;&#x4F4D;&#x7F6E;&#x4E5F;&#x5F88;&#x7075;&#x6D3B;&#xFF0C;&#x53EF;&#x4EE5;&#x5728; contextual &#x7ED1;&#x5B9A;&#x524D;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;contextual &#x7ED1;&#x5B9A;&#x540E;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testContextualBindingWorksForExistingInstancedBindings</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+
+    $container-&gt;instance(<span class="hljs-string">&apos;Illuminate\Tests\Container\IContainerContractStub&apos;</span>, <span class="hljs-keyword">new</span> ContainerImplementationStub);
+
+    $container-&gt;when(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestContextInjectOne&apos;</span>)-&gt;needs(<span class="hljs-string">&apos;Illuminate\Tests\Container\IContainerContractStub&apos;</span>)-&gt;give(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStubTwo&apos;</span>);
+
+    $this-&gt;assertInstanceOf(
+             <span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStubTwo&apos;</span>,
+             $container-&gt;make(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestContextInjectOne&apos;</span>)-&gt;impl
+     );
+}
+</code></pre>
+<h2 id="contextual-&#x5728;&#x7ED1;&#x5B9A;&#x540E;">contextual &#x5728;&#x7ED1;&#x5B9A;&#x540E;</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testContextualBindingWorksForNewlyInstancedBindings</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+
+    $container-&gt;when(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestContextInjectOne&apos;</span>)-&gt;needs(<span class="hljs-string">&apos;Illuminate\Tests\Container\IContainerContractStub&apos;</span>)-&gt;give(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStubTwo&apos;</span>);
+
+    $container-&gt;instance(<span class="hljs-string">&apos;Illuminate\Tests\Container\IContainerContractStub&apos;</span>, <span class="hljs-keyword">new</span> ContainerImplementationStub);
+
+    $this-&gt;assertInstanceOf(
+            <span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStubTwo&apos;</span>,
+        $container-&gt;make(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestContextInjectOne&apos;</span>)-&gt;impl
+    );
+}
+</code></pre>
+<h2 id="contextual-&#x7ED1;&#x5B9A;&#x4E0E;&#x522B;&#x540D;">contextual &#x7ED1;&#x5B9A;&#x4E0E;&#x522B;&#x540D;</h2>
+<p>contextual &#x7ED1;&#x5B9A;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x522B;&#x540D;&#x4E0A;&#x8FDB;&#x884C;&#xFF0C;&#x65E0;&#x8BBA;&#x8D4B;&#x4E88;&#x522B;&#x540D;&#x7684;&#x4F4D;&#x7F6E;&#x662F; contextual &#x7684;&#x524D;&#x9762;&#x8FD8;&#x662F;&#x540E;&#x9762;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testContextualBindingDoesntOverrideNonContextualResolution</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+
+    $container-&gt;instance(<span class="hljs-string">&apos;stub&apos;</span>, <span class="hljs-keyword">new</span> ContainerImplementationStub);
+    $container-&gt;alias(<span class="hljs-string">&apos;stub&apos;</span>, <span class="hljs-string">&apos;Illuminate\Tests\Container\IContainerContractStub&apos;</span>);
+
+    $container-&gt;when(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestContextInjectTwo&apos;</span>)-&gt;needs(<span class="hljs-string">&apos;Illuminate\Tests\Container\IContainerContractStub&apos;</span>)-&gt;give(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStubTwo&apos;</span>);
+
+    $this-&gt;assertInstanceOf(
+            <span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStubTwo&apos;</span>,
+            $container-&gt;make(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestContextInjectTwo&apos;</span>)-&gt;impl
+        );
+
+    $this-&gt;assertInstanceOf(
+            <span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStub&apos;</span>,
+            $container-&gt;make(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestContextInjectOne&apos;</span>)-&gt;impl
+    );
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testContextualBindingWorksOnNewAliasedBindings</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+
+    $container-&gt;when(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestContextInjectOne&apos;</span>)-&gt;needs(<span class="hljs-string">&apos;Illuminate\Tests\Container\IContainerContractStub&apos;</span>)-&gt;give(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStubTwo&apos;</span>);
+
+    $container-&gt;bind(<span class="hljs-string">&apos;stub&apos;</span>, ContainerImplementationStub::class);
+    $container-&gt;alias(<span class="hljs-string">&apos;stub&apos;</span>, <span class="hljs-string">&apos;Illuminate\Tests\Container\IContainerContractStub&apos;</span>);
+
+    $this-&gt;assertInstanceOf(
+          <span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStubTwo&apos;</span>,
+          $container-&gt;make(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestContextInjectOne&apos;</span>)-&gt;impl
+    );
+}
+</code></pre>
+<h2 id="&#x4E89;&#x8BAE;">&#x4E89;&#x8BAE;</h2>
+<p>&#x76EE;&#x524D;&#x6BD4;&#x8F83;&#x6709;&#x4E89;&#x8BAE;&#x7684;&#x662F;&#x4E0B;&#x9762;&#x7684;&#x60C5;&#x51B5;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testContextualBindingWorksOnExistingAliasedInstances</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+
+    $container-&gt;alias(<span class="hljs-string">&apos;Illuminate\Tests\Container\IContainerContractStub&apos;</span>, <span class="hljs-string">&apos;stub&apos;</span>);
+    $container-&gt;instance(<span class="hljs-string">&apos;stub&apos;</span>, <span class="hljs-keyword">new</span> ContainerImplementationStub);
+
+    $container-&gt;when(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestContextInjectOne&apos;</span>)-&gt;needs(<span class="hljs-string">&apos;stub&apos;</span>)-&gt;give(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStubTwo&apos;</span>);
+
+    $this-&gt;assertInstanceOf(
+        <span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStubTwo&apos;</span>,
+        $container-&gt;make(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestContextInjectOne&apos;</span>)-&gt;impl
+    ); 
+}
+</code></pre>
+<p>&#x7531;&#x4E8E;instance&#x7684;&#x7279;&#x6027;&#xFF0C;&#x5F53;&#x522B;&#x540D;&#x88AB;&#x7ED1;&#x5B9A;&#x5230;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x4E0A;&#x65F6;&#xFF0C;&#x522B;&#x540D; stub &#x5DF2;&#x7ECF;&#x5931;&#x53BB;&#x4E86;&#x4E0E; Illuminate\Tests\Container\IContainerContractStub &#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x80FD;&#x4F7F;&#x7528; stub &#x4EE3;&#x66FF;&#x4F5C;&#x4E0A;&#x4E0B;&#x6587;&#x7ED1;&#x5B9A;&#x3002;
+&#x4F46;&#x662F;&#x53E6;&#x4E00;&#x65B9;&#x9762;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testContextualBindingWorksOnBoundAlias</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+
+    $container-&gt;alias(<span class="hljs-string">&apos;Illuminate\Tests\Container\IContainerContractStub&apos;</span>, <span class="hljs-string">&apos;stub&apos;</span>);
+    $container-&gt;bind(<span class="hljs-string">&apos;stub&apos;</span>, ContainerImplementationStub::class);
+
+    $container-&gt;when(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestContextInjectOne&apos;</span>)-&gt;needs(<span class="hljs-string">&apos;stub&apos;</span>)-&gt;give(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStubTwo&apos;</span>);
+
+    $this-&gt;assertInstanceOf(
+        <span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerImplementationStubTwo&apos;</span>,
+        $container-&gt;make(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestContextInjectOne&apos;</span>)-&gt;impl
+    ); 
+}
+</code></pre>
+<p>&#x4EE3;&#x7801;&#x53EA;&#x662F;&#x4ECE; instance &#x7ED1;&#x5B9A;&#x6539;&#x4E3A; bind &#x7ED1;&#x5B9A;&#xFF0C;&#x7531;&#x4E8E; bind &#x7ED1;&#x5B9A;&#x53EA;&#x5207;&#x65AD;&#x4E86;&#x522B;&#x540D;&#x4E2D;&#x7684; alias &#x6570;&#x7EC4;&#x7684;&#x8054;&#x7CFB;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x65AD;&#x7EDD;abstractAlias&#x6570;&#x7EC4;&#x7684;&#x8054;&#x7CFB;&#xFF0C;&#x56E0;&#x6B64;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x5374;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#xFF0C;&#x5F88;&#x8BA9;&#x4EBA;&#x96BE;&#x4EE5;&#x7406;&#x89E3;&#x3002;&#x672C;&#x4EBA;&#x5728;&#x7ED9; Taylor Otwell &#x63D0;&#x51FA; PR &#x65F6;&#xFF0C;&#x4F5C;&#x8005;&#x539F;&#x8BDD;&#x4E3A;&#x201C;I&apos;m not making any of these changes to the container on a patch release.&#x201D;&#x3002;&#x4E5F;&#x8BB8;&#xFF0C;&#x5728;&#x4EE5;&#x540E;(5.5&#x6216;&#x4EE5;&#x540E;)&#x7248;&#x672C;&#x4F5C;&#x8005;&#x4F1A;&#x66F4;&#x65B0;&#x8FD9;&#x91CC;&#x7684;&#x903B;&#x8F91;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x770B;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x5BF9;&#x522B;&#x540D;&#x7ED1;&#x5B9A;&#x7684;&#x6001;&#x5EA6;&#x4E86;&#xFF0C;&#x5927;&#x5BB6;&#x4E5F;&#x6700;&#x597D;&#x4E0D;&#x8981;&#x8FD9;&#x6837;&#x7528;&#x3002;</p>
+<h1 id="&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x4E2D;&#x7684;&#x95ED;&#x5305;&#x51FD;&#x6570;&#x53C2;&#x6570;">&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x4E2D;&#x7684;&#x95ED;&#x5305;&#x51FD;&#x6570;&#x53C2;&#x6570;</h1>
+<p>&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x4E2D;&#x5F88;&#x591A;&#x51FD;&#x6570;&#x90FD;&#x6709;&#x95ED;&#x5305;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E9B;&#x95ED;&#x5305;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x653E;&#x5165;&#x7279;&#x5B9A;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5728;&#x7ED1;&#x5B9A;&#x6216;&#x8005;&#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x4F1A;&#x88AB;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x81EA;&#x52A8;&#x5E26;&#x5165;&#x5404;&#x79CD;&#x7C7B;&#x5BF9;&#x8C61;&#x6216;&#x8005;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x5B9E;&#x4F8B;&#x3002;</p>
+<h2 id="bind-&#x95ED;&#x5305;&#x53C2;&#x6570;">bind &#x95ED;&#x5305;&#x53C2;&#x6570;</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testAliasesWithArrayOfParameters</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;    
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app, $config)</span> </span>{
+        <span class="hljs-keyword">return</span> $config;    
+    });    
+
+    $container-&gt;alias(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-string">&apos;baz&apos;</span>);    
+    $this-&gt;assertEquals([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], $container-&gt;makeWith(<span class="hljs-string">&apos;baz&apos;</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]));
+}
+</code></pre>
+<h2 id="extend-&#x95ED;&#x5305;&#x53C2;&#x6570;">extend &#x95ED;&#x5305;&#x53C2;&#x6570;</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testExtendedBindings</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;    
+    $container[<span class="hljs-string">&apos;foo&apos;</span>] = <span class="hljs-string">&apos;foo&#x2019;;    
+    $container-&gt;extend(&apos;</span>foo<span class="hljs-string">&apos;, function ($old, $container) {
+        return $old.&apos;</span>bar&#x2019;;    
+    });
+
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;foobar&apos;</span>, $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>));
+
+    $container = <span class="hljs-keyword">new</span> Container;
+
+    $container-&gt;singleton(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> (object) [<span class="hljs-string">&apos;name&apos;</span> =&gt; <span class="hljs-string">&apos;taylor&apos;</span>];    
+    });    
+    $container-&gt;extend(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($old, $container)</span> </span>{
+        $old-&gt;age = <span class="hljs-number">26</span>;
+        <span class="hljs-keyword">return</span> $old;    
+    });
+
+    $result = $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>);
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;taylor&apos;</span>, $result-&gt;name);    
+    $this-&gt;assertEquals(<span class="hljs-number">26</span>, $result-&gt;age);   
+    $this-&gt;assertSame($result, $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>));
+}
+</code></pre>
+<h2 id="bindmethod-&#x95ED;&#x5305;&#x53C2;&#x6570;">bindmethod &#x95ED;&#x5305;&#x53C2;&#x6570;</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testCallWithBoundMethod</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;bindMethod(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestCallStub@unresolvable&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($stub,$container)</span> </span>{
+        $container[<span class="hljs-string">&apos;foo&apos;</span>] = <span class="hljs-string">&apos;foo&apos;</span>;
+        <span class="hljs-keyword">return</span> $stub-&gt;unresolvable(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-string">&apos;bar&apos;</span>);
+    });
+    $result = $container-&gt;call(<span class="hljs-string">&apos;Illuminate\Tests\Container\ContainerTestCallStub@unresolvable&apos;</span>);
+    $this-&gt;assertEquals([<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-string">&apos;bar&apos;</span>], $result);
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;foo&apos;</span>,$container[<span class="hljs-string">&apos;foo&apos;</span>]);
+}
+</code></pre>
+<h2 id="resolve-&#x95ED;&#x5305;&#x53C2;&#x6570;">resolve &#x95ED;&#x5305;&#x53C2;&#x6570;</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testResolvingCallbacksAreCalledForSpecificAbstracts</span><span class="hljs-params">()</span>
+</span>{
+     $container = <span class="hljs-keyword">new</span> Container;
+     $container-&gt;resolving(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($object&#xFF0C;$container)</span> </span>{
+         <span class="hljs-keyword">return</span> $object-&gt;name = <span class="hljs-string">&apos;taylor&apos;</span>;
+     });
+
+     $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> StdClass;
+     });
+     $instance = $container-&gt;make(<span class="hljs-string">&apos;foo&apos;</span>);
+
+     $this-&gt;assertEquals(<span class="hljs-string">&apos;taylor&apos;</span>, $instance-&gt;name);
+}
+</code></pre>
+<h2 id="rebinding-&#x95ED;&#x5305;&#x53C2;&#x6570;">rebinding &#x95ED;&#x5305;&#x53C2;&#x6570;</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testReboundListeners</span><span class="hljs-params">()</span>
+</span>{
+    $container = <span class="hljs-keyword">new</span> Container;
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;foo&apos;</span>;
+    });
+
+    $container-&gt;rebinding(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($container,$object)</span> </span>{
+         $container[<span class="hljs-string">&apos;bar&apos;</span>] = $object.<span class="hljs-string">&apos;bar&apos;</span>;
+    });
+
+    $container-&gt;bind(<span class="hljs-string">&apos;foo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    });
+
+    $this-&gt;assertEquals(<span class="hljs-string">&apos;bar&apos;</span>,$container[<span class="hljs-string">&apos;foobar&apos;</span>]);
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Laravel Container——IoC 服务容器源码解析(服务器解析)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Laravel Container——服务容器的细节特性","level":"1.4.4","depth":2,"next":{"title":"Laravel Route 路由","level":"1.5","depth":1,"ref":"","articles":[{"title":"Laravel HTTP——路由","level":"1.5.1","depth":2,"path":"Laravel HTTP——路由.md","ref":"Laravel HTTP——路由.md","articles":[]},{"title":"Laravel HTTP——路由加载源码分析","level":"1.5.2","depth":2,"path":"Laravel HTTP——路由加载源码分析.md","ref":"Laravel HTTP——路由加载源码分析.md","articles":[]},{"title":"Laravel HTTP——Pipeline中间件处理源码分析","level":"1.5.3","depth":2,"path":"Laravel HTTP——Pipeline中间件处理源码分析.md","ref":"Laravel HTTP——Pipeline中间件处理源码分析.md","articles":[]},{"title":"Laravel HTTP——路由的正则编译","level":"1.5.4","depth":2,"path":"Laravel HTTP——路由的正则编译.md","ref":"Laravel HTTP——路由的正则编译.md","articles":[]},{"title":"Laravel HTTP——路由的匹配与参数绑定","level":"1.5.5","depth":2,"path":"Laravel HTTP——路由的匹配与参数绑定.md","ref":"Laravel HTTP——路由的匹配与参数绑定.md","articles":[]},{"title":"Laravel HTTP——路由中间件源码分析","level":"1.5.6","depth":2,"path":"Laravel HTTP——路由中间件源码分析.md","ref":"Laravel HTTP——路由中间件源码分析.md","articles":[]},{"title":"Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析","level":"1.5.7","depth":2,"path":"Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.md","ref":"Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.md","articles":[]},{"title":"Laravel HTTP——控制器方法的参数构建与运行","level":"1.5.8","depth":2,"path":"Laravel HTTP——控制器方法的参数构建与运行.md","ref":"Laravel HTTP——控制器方法的参数构建与运行.md","articles":[]},{"title":"Laravel HTTP—— RESTFul 风格路由的使用与源码分析","level":"1.5.9","depth":2,"path":"Laravel HTTP—— RESTFul 风格路由的使用与源码分析.md","ref":"Laravel HTTP—— RESTFul 风格路由的使用与源码分析.md","articles":[]},{"title":"Laravel HTTP——重定向的使用与源码分析","level":"1.5.10","depth":2,"path":"Laravel HTTP——重定向的使用与源码分析.md","ref":"Laravel HTTP——重定向的使用与源码分析.md","articles":[]}]},"previous":{"title":"Laravel Container——IoC 服务容器源码解析(服务器解析)","level":"1.4.3","depth":2,"path":"Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md","ref":"Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Laravel Container——服务容器的细节特性.md","mtime":"2019-01-15T10:29:00.299Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T10:51:52.544Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

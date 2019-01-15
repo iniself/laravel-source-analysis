@@ -1,0 +1,1796 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Laravel HTTP——路由加载源码分析 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Laravel HTTP——Pipeline中间件处理源码分析.html" />
+    
+    
+    <link rel="prev" href="Laravel HTTP——路由.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    PHP Composer 自动加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="PHP Composer——自动加载原理.html">
+            
+                <a href="PHP Composer——自动加载原理.html">
+            
+                    
+                    PHP Composer——自动加载原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="PHP Composer—— 初始化源码分析.html">
+            
+                <a href="PHP Composer—— 初始化源码分析.html">
+            
+                    
+                    PHP Composer—— 初始化源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="PHP Composer-——-注册与运行源码分析.html">
+            
+                <a href="PHP Composer-——-注册与运行源码分析.html">
+            
+                    
+                    PHP Composer-——-注册与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Laravel Facade 门面
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="Laravel Facade——Facade 门面源码分析.html">
+            
+                <a href="Laravel Facade——Facade 门面源码分析.html">
+            
+                    
+                    Laravel Facade——Facade 门面源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Laravel Ioc 容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Laravel Container——IoC 服务容器.html">
+            
+                <a href="Laravel Container——IoC 服务容器.html">
+            
+                    
+                    Laravel Container——IoC 服务容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器绑定)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器解析)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="Laravel Container——服务容器的细节特性.html">
+            
+                <a href="Laravel Container——服务容器的细节特性.html">
+            
+                    
+                    Laravel Container——服务容器的细节特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Laravel Route 路由
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Laravel HTTP——路由.html">
+            
+                <a href="Laravel HTTP——路由.html">
+            
+                    
+                    Laravel HTTP——路由
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.2" data-path="Laravel HTTP——路由加载源码分析.html">
+            
+                <a href="Laravel HTTP——路由加载源码分析.html">
+            
+                    
+                    Laravel HTTP——路由加载源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                <a href="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                    
+                    Laravel HTTP——Pipeline中间件处理源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="Laravel HTTP——路由的正则编译.html">
+            
+                <a href="Laravel HTTP——路由的正则编译.html">
+            
+                    
+                    Laravel HTTP——路由的正则编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                <a href="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                    
+                    Laravel HTTP——路由的匹配与参数绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="Laravel HTTP——路由中间件源码分析.html">
+            
+                <a href="Laravel HTTP——路由中间件源码分析.html">
+            
+                    
+                    Laravel HTTP——路由中间件源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                <a href="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                    
+                    Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                <a href="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                    
+                    Laravel HTTP——控制器方法的参数构建与运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                <a href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP—— RESTFul 风格路由的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                <a href="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP——重定向的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Laravel ENV 环境变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                <a href="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                    
+                    Laravel ENV—— 环境变量的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Laravel Config 配置文件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                <a href="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                    
+                    Laravel Config—— 配置文件的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Laravel Exceptions 异常处理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="Laravel Exceptions——异常与错误处理.html">
+            
+                <a href="Laravel Exceptions——异常与错误处理.html">
+            
+                    
+                    Laravel Exceptions——异常与错误处理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Laravel Providers 服务提供者
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                <a href="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                    
+                    Laravel Providers——服务提供者的注册与启动源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Laravel Database 数据库
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="Laravel Database——数据库服务的启动与连接.html">
+            
+                <a href="Laravel Database——数据库服务的启动与连接.html">
+            
+                    
+                    Laravel Database——数据库服务的启动与连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="Laravel Database——数据库的 CRUD 操作.html">
+            
+                <a href="Laravel Database——数据库的 CRUD 操作.html">
+            
+                    
+                    Laravel Database——数据库的 CRUD 操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="Laravel Database——查询构造器与语法编译器源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="Laravel Database——查询构造器与语法编译器源码分析%28中%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(中)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="Laravel Database——查询构造器与语法编译器源码分析%28下%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="Laravel Database——分页原理与源码分析.html">
+            
+                <a href="Laravel Database——分页原理与源码分析.html">
+            
+                    
+                    Laravel Database——分页原理与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Laravel Database——Eloquent Model 源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                <a href="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                <a href="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                    
+                    Laravel Database——Eloquent Model 关联源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                <a href="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                    
+                    Laravel Database——Eloquent Model 模型关系加载与查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                <a href="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                    
+                    Laravel Database——Eloquent Model 更新关联模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Laravel Session
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="Laravel Session——session 的启动与运行源码分析.html">
+            
+                <a href="Laravel Session——session 的启动与运行源码分析.html">
+            
+                    
+                    Laravel Session——session 的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    Laravel Event 事件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                <a href="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                    
+                    Laravel Event——事件系统的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    Laravel Queue 队列
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务与分发源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务处理器源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    Laravel 广播系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="Laravel Broadcast——广播系统源码剖析.html">
+            
+                <a href="Laravel Broadcast——广播系统源码剖析.html">
+            
+                    
+                    Laravel Broadcast——广播系统源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    Laravel Passport
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Laravel HTTP——路由加载源码分析</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h1>
+<p>&#x4F5C;&#x4E3A; <code>laravel</code> &#x6781;&#x5176;&#x91CD;&#x8981;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;<code>route</code> &#x529F;&#x80FD;&#x8D2F;&#x7A7F;&#x7740;&#x6574;&#x4E2A;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#xFF0C;&#x662F; <code>request</code> &#x751F;&#x547D;&#x5468;&#x671F;&#x7684;&#x4E3B;&#x5E72;&#x3002;&#x672C;&#x6587;&#x4E3B;&#x8981;&#x8BB2;&#x8FF0; <code>route</code> &#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;&#x4E0E;&#x542F;&#x52A8;&#x3001;&#x8DEF;&#x7531;&#x7684;&#x5C5E;&#x6027;&#x6CE8;&#x518C;&#x3002;&#x672C;&#x7BC7;&#x5185;&#x5BB9;&#x76F8;&#x5BF9;&#x7B80;&#x5355;&#xFF0C;&#x66F4;&#x591A;&#x7684;&#x662F;&#x6846;&#x67B6;&#x6DFB;&#x52A0;&#x8DEF;&#x7531;&#x7684;&#x6574;&#x4F53;&#x8BBE;&#x8BA1;&#x6D41;&#x7A0B;&#x3002;</p>
+<h1 id="route-&#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;">route &#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;</h1>
+<p><code>laravel</code> &#x5728;&#x63A5;&#x53D7;&#x5230;&#x8BF7;&#x6C42;&#x540E;&#xFF0C;&#x5148;&#x8FDB;&#x884C;&#x4E86;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x4E0E; <code>http</code> &#x6838;&#x5FC3;&#x7684;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x518D;&#x8FDB;&#x884C;&#x4E86;&#x8BF7;&#x6C42; <code>request</code> &#x7684;&#x6784;&#x9020;&#x4E0E;&#x5206;&#x53D1;&#x3002;</p>
+<p><code>route</code> &#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;&#x2014;&#x2014; <code>RoutingServiceProvider</code> &#x53D1;&#x751F;&#x5728;&#x670D;&#x52A1;&#x5BB9;&#x5668; <code>container</code> &#x7684;&#x521D;&#x59CB;&#x5316;&#x4E0A;;</p>
+<p><code>route</code> &#x670D;&#x52A1;&#x7684;&#x542F;&#x52A8;&#x4E0E;&#x52A0;&#x8F7D;&#x2014;&#x2014; <code>RouteServiceProvider</code> &#x53D1;&#x751F;&#x5728; <code>request</code> &#x7684;&#x5206;&#x53D1;&#x4E0A;&#x3002;</p>
+<h2 id="route-&#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;&#x2014;&#x2014;routingserviceprovider">route &#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;&#x2014;&#x2014;RoutingServiceProvider</h2>
+<p>&#x6240;&#x6709;&#x9700;&#x8981; <code>laravel</code> &#x670D;&#x52A1;&#x7684;&#x8BF7;&#x6C42;&#x90FD;&#x4F1A;&#x52A0;&#x8F7D;&#x5165;&#x53E3;&#x6587;&#x4EF6; <code>index.php</code>:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">&apos;/../bootstrap/autoload.php&apos;</span>;
+
+$app = <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">&apos;/../bootstrap/app.php&apos;</span>;
+</code></pre>
+<p>&#x7B2C;&#x4E00;&#x53E5;&#x6211;&#x4EEC;&#x5728;&#x4E4B;&#x524D;&#x7684;&#x535A;&#x5BA2;&#x63D0;&#x8FC7;&#xFF0C;&#x662F;&#x5B9E;&#x73B0; <code>PSR0</code>    &#x3001;<code>PSR4</code>&#x6807;&#x51C6;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x7684;&#x529F;&#x80FD;&#x6A21;&#x5757;&#xFF0C;&#x7B2C;&#x4E8C;&#x53E5;&#x5C31;&#x662F;&#x4ECA;&#x5929;&#x8BF4;&#x7684; <code>container</code> &#x7684;&#x521D;&#x59CB;&#x5316;&#xFF1A;</p>
+<pre><code class="lang-php">$app = <span class="hljs-keyword">new</span> Illuminate\Foundation\Application(
+    realpath(<span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">&apos;/../&apos;</span>)
+);
+</code></pre>
+<p><code>Application</code> :</p>
+<pre><code class="lang-php"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Foundation</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Application</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Container</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ApplicationContract</span>, <span class="hljs-title">HttpKernelInterface</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($basePath = null)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> ($basePath) {
+            $this-&gt;setBasePath($basePath);
+        }
+
+        $this-&gt;registerBaseBindings();
+
+        $this-&gt;registerBaseServiceProviders();
+
+        $this-&gt;registerCoreContainerAliases();
+    }
+}
+</code></pre>
+<p>&#x8DEF;&#x7531;&#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;&#x5C31;&#x5728; <code>registerBaseServiceProviders()</code> &#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E2D;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registerBaseServiceProviders</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;register(<span class="hljs-keyword">new</span> EventServiceProvider($this));
+
+    $this-&gt;register(<span class="hljs-keyword">new</span> LogServiceProvider($this));
+
+    $this-&gt;register(<span class="hljs-keyword">new</span> RoutingServiceProvider($this));
+}
+</code></pre>
+<p><code>RoutingServiceProvider</code> :</p>
+<pre><code class="lang-php"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Routing</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RoutingServiceProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceProvider</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">register</span><span class="hljs-params">()</span>
+    </span>{
+        $this-&gt;registerRouter();
+
+        ...
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registerRouter</span><span class="hljs-params">()</span>
+    </span>{
+        $this-&gt;app-&gt;singleton(<span class="hljs-string">&apos;router&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app)</span> </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Router($app[<span class="hljs-string">&apos;events&apos;</span>], $app);
+        });
+    }
+
+    ...
+
+}
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;<code>RoutingServiceProvider</code> &#x505A;&#x7684;&#x4E8B;&#x60C5;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x5C31;&#x662F;&#x5411;&#x670D;&#x52A1;&#x5BB9;&#x6613;&#x4E2D;&#x6CE8;&#x518C; <code>router</code>&#x3002;</p>
+<h2 id="route-&#x670D;&#x52A1;&#x7684;&#x542F;&#x52A8;&#x4E0E;&#x52A0;&#x8F7D;&#x2014;&#x2014;routeserviceprovider"><code>route</code> &#x670D;&#x52A1;&#x7684;&#x542F;&#x52A8;&#x4E0E;&#x52A0;&#x8F7D;&#x2014;&#x2014;RouteServiceProvider</h2>
+<p><code>laravel</code> &#x5728;&#x521D;&#x59CB;&#x5316; <code>Application</code> &#x540E;&#xFF0C;&#x5C31;&#x8981;&#x8FDB;&#x884C; <code>http/Kernel</code> &#x7684;&#x6784;&#x9020;&#xFF1A; </p>
+<pre><code class="lang-php">$kernel = $app-&gt;make(Illuminate\Contracts\Http\Kernel::class);
+
+$response = $kernel-&gt;handle(
+    $request = Illuminate\Http\Request::capture()
+);
+</code></pre>
+<p>&#x521D;&#x59CB;&#x5316;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x8C03;&#x7528; <code>handle</code> &#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7528;&#x4E8E; <code>laravel</code> &#x5404;&#x4E2A;&#x529F;&#x80FD;&#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;&#x542F;&#x52A8;&#xFF0C;&#x8FD8;&#x6709; <code>request</code> &#x7684;&#x5206;&#x53D1;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handle</span><span class="hljs-params">($request)</span>
+</span>{
+    <span class="hljs-keyword">try</span> {
+        $request-&gt;enableHttpMethodParameterOverride();
+
+        $response = $this-&gt;sendRequestThroughRouter($request);
+    } 
+
+    <span class="hljs-keyword">return</span> $response;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sendRequestThroughRouter</span><span class="hljs-params">($request)</span>
+</span>{
+    $this-&gt;app-&gt;instance(<span class="hljs-string">&apos;request&apos;</span>, $request);
+
+    Facade::clearResolvedInstance(<span class="hljs-string">&apos;request&apos;</span>);
+
+    $this-&gt;bootstrap();<span class="hljs-comment">//&#x5404;&#x79CD;&#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;&#x4E0E;&#x542F;&#x52A8;</span>
+
+    <span class="hljs-keyword">return</span> (<span class="hljs-keyword">new</span> Pipeline($this-&gt;app))<span class="hljs-comment">//&#x8BF7;&#x6C42;&#x7684;&#x5206;&#x53D1;</span>
+                -&gt;send($request)
+                -&gt;through($this-&gt;app-&gt;shouldSkipMiddleware() ? [] : $this-&gt;middleware)
+                -&gt;then($this-&gt;dispatchToRouter());
+    }
+</code></pre>
+<p>&#x8DEF;&#x7531;&#x670D;&#x52A1;&#x7684;&#x542F;&#x52A8;&#x4E0E;&#x52A0;&#x8F7D;&#x5C31;&#x5728;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4E2D; <code>bootstrap</code>&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x5404;&#x79CD;&#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;&#x4E0E;&#x542F;&#x52A8;&#xFF0C;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x673A;&#x4F1A;&#x5728;&#x4EE5;&#x540E;&#x5355;&#x72EC;&#x6765;&#x8BF4;&#x3002;</p>
+<p>&#x603B;&#x4E4B;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4F1A;&#x8C03;&#x7528; <code>RouteServiceProvider</code> &#x8FD9;&#x4E2A;&#x7C7B;&#x7684;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#xFF1A; &#x6CE8;&#x518C;&#x2014;&#x2014;<code>register</code>&#x3001;&#x542F;&#x52A8;&#x2014;&#x2014;<code>boot</code>&#x3002;</p>
+<p>&#x7531;&#x4E8E; <code>route</code> &#x7684;&#x6CE8;&#x518C;&#x5DE5;&#x4F5C;&#x7531;&#x4E4B;&#x524D; <code>RoutingServiceProvider</code> &#x5B8C;&#x6210;&#xFF0C;&#x6240;&#x4EE5; <code>RouteServiceProvider</code> &#x7684; <code>register</code> &#x662F;&#x7A7A;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x5B83;&#x53EA;&#x8D1F;&#x8D23;&#x8DEF;&#x7531;&#x7684;&#x542F;&#x52A8;&#x4E0E;&#x52A0;&#x8F7D;&#x5DE5;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x4E3B;&#x8981;&#x770B; <code>boot</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Foundation</span>\<span class="hljs-title">Support</span>\<span class="hljs-title">Providers</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RouteServiceProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceProvider</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">register</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">boot</span><span class="hljs-params">()</span>
+    </span>{
+        $this-&gt;setRootControllerNamespace();
+
+        <span class="hljs-keyword">if</span> ($this-&gt;app-&gt;routesAreCached()) {
+            $this-&gt;loadCachedRoutes();
+        } <span class="hljs-keyword">else</span> {
+            $this-&gt;loadRoutes();
+
+            $this-&gt;app-&gt;booted(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+                $this-&gt;app[<span class="hljs-string">&apos;router&apos;</span>]-&gt;getRoutes()-&gt;refreshNameLookups();
+                $this-&gt;app[<span class="hljs-string">&apos;router&apos;</span>]-&gt;getRoutes()-&gt;refreshActionLookups();
+            });
+        }
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadCachedRoutes</span><span class="hljs-params">()</span>
+    </span>{
+        $this-&gt;app-&gt;booted(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">require</span> $this-&gt;app-&gt;getCachedRoutesPath();
+        });
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadRoutes</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (method_exists($this, <span class="hljs-string">&apos;map&apos;</span>)) {
+            $this-&gt;app-&gt;call([$this, <span class="hljs-string">&apos;map&apos;</span>]);
+        }
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Application</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Container</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ApplicationContract</span>, <span class="hljs-title">HttpKernelInterface</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">routesAreCached</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this[<span class="hljs-string">&apos;files&apos;</span>]-&gt;exists($this-&gt;getCachedRoutesPath());
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCachedRoutesPath</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;bootstrapPath().<span class="hljs-string">&apos;/cache/routes.php&apos;</span>;
+    }
+}
+</code></pre>
+<p>&#x4ECE; <code>boot</code> &#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;<code>laravel</code> &#x9996;&#x5148;&#x53BB;&#x5BFB;&#x627E;&#x8DEF;&#x7531;&#x7684;&#x7F13;&#x5B58;&#x6587;&#x4EF6;&#xFF0C;&#x6CA1;&#x6709;&#x7F13;&#x5B58;&#x6587;&#x4EF6;&#x518D;&#x53BB;&#x8FDB;&#x884C;&#x52A0;&#x8F7D;&#x8DEF;&#x7531;&#x3002;&#x7F13;&#x5B58;&#x6587;&#x4EF6;&#x4E00;&#x822C;&#x5728; <code>bootstrap/cache/routes.php</code> &#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
+<p>&#x52A0;&#x8F7D;&#x8DEF;&#x7531;&#x4E3B;&#x8981;&#x8C03;&#x7528; <code>map</code> &#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E00;&#x822C;&#x5728; <code>App\Providers\RouteServiceProvider</code> &#x8FD9;&#x4E2A;&#x7C7B;&#x4E2D;&#xFF0C;&#x8FD9;&#x4E2A;&#x7C7B;&#x7EE7;&#x627F;&#x4E0A;&#x9762;&#x7684; <code>Illuminate\Foundation\Support\Providers\RouteServiceProvider</code>:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Foundation</span>\<span class="hljs-title">Support</span>\<span class="hljs-title">Providers</span>\<span class="hljs-title">RouteServiceProvider</span> <span class="hljs-title">as</span> <span class="hljs-title">ServiceProvider</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RouteServiceProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceProvider</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">map</span><span class="hljs-params">()</span>
+    </span>{
+        $this-&gt;mapApiRoutes();
+
+        $this-&gt;mapWebRoutes();
+
+        <span class="hljs-comment">//</span>
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mapWebRoutes</span><span class="hljs-params">()</span>
+    </span>{
+        Route::middleware(<span class="hljs-string">&apos;web&apos;</span>)
+             -&gt;namespace($this-&gt;namespace)
+             -&gt;group(base_path(<span class="hljs-string">&apos;routes/web.php&apos;</span>));
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mapApiRoutes</span><span class="hljs-params">()</span>
+    </span>{
+        Route::prefix(<span class="hljs-string">&apos;api&apos;</span>)
+             -&gt;middleware(<span class="hljs-string">&apos;api&apos;</span>)
+             -&gt;namespace($this-&gt;namespace)
+             -&gt;group(base_path(<span class="hljs-string">&apos;routes/api.php&apos;</span>));
+    }
+}
+</code></pre>
+<p><code>laravle</code> &#x5C06;&#x8DEF;&#x7531;&#x5206;&#x4E3A;&#x4E24;&#x4E2A;&#x5927;&#x7EC4;&#xFF1A;<code>api</code>&#x3001;<code>web</code>&#x3002;&#x8FD9;&#x4E24;&#x4E2A;&#x90E8;&#x5206;&#x7684;&#x8DEF;&#x7531;&#x5206;&#x522B;&#x5199;&#x5728;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#xFF1A;<code>routes/web.php</code>&#x3001;<code>routes/api.php</code>&#x3002;</p>
+<h2 id="&#x8DEF;&#x7531;&#x7684;&#x52A0;&#x8F7D;">&#x8DEF;&#x7531;&#x7684;&#x52A0;&#x8F7D;</h2>
+<p>&#x6240;&#x8C13;&#x7684;&#x8DEF;&#x7531;&#x52A0;&#x8F7D;&#xFF0C;&#x5C31;&#x662F;&#x5C06;&#x5B9A;&#x4E49;&#x8DEF;&#x7531;&#x65F6;&#x6DFB;&#x52A0;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x4F8B;&#x5982; &apos;name&apos;&#x3001;&apos;domain&apos;&#x3001;&apos;scheme&apos; &#x7B49;&#x7B49;&#x4FDD;&#x5B58;&#x8D77;&#x6765;&#xFF0C;&#x4EE5;&#x5F85;&#x540E;&#x7528;&#x3002;</p>
+<ul>
+<li><code>laravel</code> &#x5B9A;&#x4E49;&#x8DEF;&#x7531;&#x7684;&#x5C5E;&#x6027;&#x7684;&#x65B9;&#x6CD5;&#x5F88;&#x7075;&#x6D3B;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x5728;&#x8DEF;&#x7531;&#x7FA4;&#x7EC4;&#x524D;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-php">Route::domain(<span class="hljs-string">&apos;route.domain.name&apos;</span>)
+     -&gt;group(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+            Route::get(<span class="hljs-string">&apos;foo&apos;</span>,<span class="hljs-string">&apos;controller@method&apos;</span>);
+     })
+</code></pre>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x5728;&#x8DEF;&#x7531;&#x7FA4;&#x7EC4;&#x4E2D;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-php">Route::group(<span class="hljs-string">&apos;domain&apos;</span> =&gt; <span class="hljs-string">&apos;group.domain.name&apos;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+            Route::get(<span class="hljs-string">&apos;foo&apos;</span>,<span class="hljs-string">&apos;controller@method&apos;</span>);
+    })
+</code></pre>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x5728; <code>method</code> &#x7684;&#x524D;&#x9762;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-php">Route::domain(<span class="hljs-string">&apos;route.domain.name&apos;</span>)
+     -&gt;get(<span class="hljs-string">&apos;foo&apos;</span>,<span class="hljs-string">&apos;controller@method&apos;</span>);
+</code></pre>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x5728; <code>method</code> &#x4E2D;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-php">Route::get(<span class="hljs-string">&apos;foo&apos;</span>,[<span class="hljs-string">&apos;domain&apos;</span> =&gt; <span class="hljs-string">&apos;route.domain.name&apos;</span>,<span class="hljs-string">&apos;use&apos;</span> =&gt; <span class="hljs-string">&apos;controller@method&apos;</span>]);
+</code></pre>
+<ul>
+<li>&#x8FD8;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x5728; <code>method</code> &#x540E;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-php"> Route::get(<span class="hljs-string">&apos;{one}&apos;</span>, <span class="hljs-string">&apos;use&apos;</span> =&gt; <span class="hljs-string">&apos;controller@method&apos;</span>)
+      -&gt;where(<span class="hljs-string">&apos;one&apos;</span>, <span class="hljs-string">&apos;(.+)&apos;</span>);
+</code></pre>
+<p>&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x8DEF;&#x7531;&#x7684;&#x52A0;&#x8F7D;&#x529F;&#x80FD;&#x4E3B;&#x8981;&#x6709;&#x4E09;&#x4E2A;&#x7C7B;&#x8D1F;&#x8D23;&#xFF1A; <code>Illuminate\Routing\Router</code>&#x3001;<code>Illuminate\Routing\Route</code>&#x3001;<code>Illuminate\Routing\RouteRegistrar</code>&#x3002;</p>
+<p><code>Router</code> &#x5728;&#x6574;&#x4E2A;&#x8DEF;&#x7531;&#x529F;&#x80FD;&#x4E2D;&#x90FD;&#x662F;&#x8D77;&#x7740;&#x4E2D;&#x67A2;&#x7684;&#x4F5C;&#x7528;&#xFF0C; <code>RouteRegistrar</code> &#x4E3B;&#x8981;&#x8D1F;&#x8D23;&#x4F4D;&#x4E8E; <code>group</code>&#x3001;<code>method</code> &#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x4E4B;&#x524D;&#x7684;&#x5C5E;&#x6027;&#x6CE8;&#x518C;&#xFF0C;&#x4F8B;&#x5982;&#x4E0A;&#x9762;&#x7684;&#x7B2C;&#x4E00;&#x79CD;&#x548C;&#x7B2C;&#x4E09;&#x79CD;&#xFF0C;<code>route</code> &#x4E3B;&#x8981;&#x8D1F;&#x8D23;&#x4F4D;&#x4E8E; <code>group</code>&#x3001;<code>method</code> &#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x4E4B;&#x540E;&#x7684;&#x5C5E;&#x6027;&#x6CE8;&#x518C;&#xFF0C;&#x4F8B;&#x5982;&#x7B2C;&#x4E94;&#x79CD;&#x3002;</p>
+<h1 id="routeregistrar-&#x8DEF;&#x7531;&#x52A0;&#x8F7D;">RouteRegistrar &#x8DEF;&#x7531;&#x52A0;&#x8F7D;</h1>
+<h2 id="&#x5C5E;&#x6027;&#x6CE8;&#x518C;">&#x5C5E;&#x6027;&#x6CE8;&#x518C;</h2>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x5728; <code>Route</code> &#x540E;&#x9762;&#x76F4;&#x63A5;&#x5229;&#x7528; <code>domain()</code>&#x3001;<code>name()</code> &#x7B49;&#x51FD;&#x6570;&#x6765;&#x4E3A;&#x8DEF;&#x7531;&#x6CE8;&#x518C;&#x5C5E;&#x6027;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x5B9E;&#x9645;&#x8C03;&#x7528;&#x7684;&#x662F; <code>router</code> &#x7684;&#x9B54;&#x672F;&#x65B9;&#x6CD5; <code>__call()</code>:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Routing</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Router</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RegistrarContract</span>, <span class="hljs-title">BindingRegistrar</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__call</span><span class="hljs-params">($method, $parameters)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">static</span>::hasMacro($method)) {
+            <span class="hljs-keyword">return</span> $this-&gt;macroCall($method, $parameters);
+        }
+
+        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">new</span> RouteRegistrar($this))-&gt;attribute($method, $parameters[<span class="hljs-number">0</span>]);
+    }
+}
+</code></pre>
+<p>&#x5728;&#x7C7B; <code>RouteRegistrar</code> &#x4E2D;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RouteRegistrar</span>
+</span>{
+    <span class="hljs-keyword">protected</span> $allowedAttributes = [
+        <span class="hljs-string">&apos;as&apos;</span>, <span class="hljs-string">&apos;domain&apos;</span>, <span class="hljs-string">&apos;middleware&apos;</span>, <span class="hljs-string">&apos;name&apos;</span>, <span class="hljs-string">&apos;namespace&apos;</span>, <span class="hljs-string">&apos;prefix&apos;</span>,
+    ];
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">attribute</span><span class="hljs-params">($key, $value)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (! in_array($key, $this-&gt;allowedAttributes)) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InvalidArgumentException(<span class="hljs-string">&quot;Attribute [{$key}] does not exist.&quot;</span>);
+        }
+
+        $this-&gt;attributes[array_get($this-&gt;aliases, $key, $key)] = $value;
+
+        <span class="hljs-keyword">return</span> $this;
+    }
+}
+</code></pre>
+<h2 id="&#x6DFB;&#x52A0;&#x8DEF;&#x7531;">&#x6DFB;&#x52A0;&#x8DEF;&#x7531;</h2>
+<p>&#x6CE8;&#x518C;&#x5C5E;&#x6027;&#x4E4B;&#x540E;&#xFF0C;&#x521B;&#x5EFA;&#x8DEF;&#x7531;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x4EC5;&#x4EC5;&#x63D0;&#x4F9B; <code>uri</code>&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B; <code>uri</code> &#x4E0E; &#x95ED;&#x5305;&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B; <code>uri</code> &#x4E0E; &#x63A7;&#x5236;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B; <code>uri</code> &#x4E0E;&#x6570;&#x7EC4;&#xFF1A;</p>
+<pre><code class="lang-php">Route::as(<span class="hljs-string">&apos;Foo&apos;</span>)
+     -&gt;namespace(<span class="hljs-string">&apos;Namespace\\Example\\&apos;</span>)
+     -&gt;get(<span class="hljs-string">&apos;foo/bar&apos;</span>);<span class="hljs-comment">//&#x4EC5;&#x4EC5; uri</span>
+
+Route::as(<span class="hljs-string">&apos;Foo&apos;</span>)
+     -&gt;namespace(<span class="hljs-string">&apos;Namespace\\Example\\&apos;</span>)
+     -&gt;get(<span class="hljs-string">&apos;foo/bar&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+       }); <span class="hljs-comment">//uri &#x4E0E;&#x95ED;&#x5305;</span>
+
+Route::as(<span class="hljs-string">&apos;Foo&apos;</span>)
+     -&gt;namespace(<span class="hljs-string">&apos;Namespace\\Example\\&apos;</span>)
+     -&gt;get(<span class="hljs-string">&apos;foo/bar&apos;</span>, <span class="hljs-string">&apos;controller@method&apos;</span>);<span class="hljs-comment">//uri &#x4E0E;&#x63A7;&#x5236;&#x5668;     </span>
+
+Route::as(<span class="hljs-string">&apos;Foo&apos;</span>)
+     -&gt;namespace(<span class="hljs-string">&apos;Namespace\\Example\\&apos;</span>)
+     -&gt;get(<span class="hljs-string">&apos;foo/bar&apos;</span>, [<span class="hljs-string">&apos;as&apos;</span>=&gt; <span class="hljs-string">&apos;foo&apos;</span>,<span class="hljs-string">&apos;use&apos;</span> =&gt;<span class="hljs-string">&apos;controller@method&apos;</span>]);<span class="hljs-comment">//uri &#x4E0E;&#x6570;&#x7EC4;</span>
+</code></pre>
+<p>&#x5229;&#x7528; <code>get</code>&#x3001;<code>post</code> &#x7B49;&#x65B9;&#x6CD5;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x8DEF;&#x7531;&#x65F6;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;&#x7C7B; <code>RouteRegistrar</code> &#x4E2D;&#x7684;&#x9B54;&#x672F;&#x65B9;&#x6CD5; <code>__call()</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RouteRegistrar</span>
+</span>{
+    <span class="hljs-keyword">protected</span> $passthru = [
+        <span class="hljs-string">&apos;get&apos;</span>, <span class="hljs-string">&apos;post&apos;</span>, <span class="hljs-string">&apos;put&apos;</span>, <span class="hljs-string">&apos;patch&apos;</span>, <span class="hljs-string">&apos;delete&apos;</span>, <span class="hljs-string">&apos;options&apos;</span>, <span class="hljs-string">&apos;any&apos;</span>,
+    ];
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__call</span><span class="hljs-params">($method, $parameters)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (in_array($method, $this-&gt;passthru)) {
+            <span class="hljs-keyword">return</span> $this-&gt;registerRoute($method, ...$parameters);
+        }
+
+        <span class="hljs-keyword">if</span> (in_array($method, $this-&gt;allowedAttributes)) {
+            <span class="hljs-keyword">return</span> $this-&gt;attribute($method, $parameters[<span class="hljs-number">0</span>]);
+        }
+
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> BadMethodCallException(<span class="hljs-string">&quot;Method [{$method}] does not exist.&quot;</span>);
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registerRoute</span><span class="hljs-params">($method, $uri, $action = null)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (! is_array($action)) {
+            $action = array_merge($this-&gt;attributes, $action ? [<span class="hljs-string">&apos;uses&apos;</span> =&gt; $action] : []);
+        }
+
+        <span class="hljs-keyword">return</span> $this-&gt;router-&gt;{$method}($uri, $this-&gt;compileAction($action));
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compileAction</span><span class="hljs-params">($action)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (is_null($action)) {
+            <span class="hljs-keyword">return</span> $this-&gt;attributes;
+        }
+
+        <span class="hljs-keyword">if</span> (is_string($action) || $action <span class="hljs-keyword">instanceof</span> Closure) {
+            $action = [<span class="hljs-string">&apos;uses&apos;</span> =&gt; $action];
+        }
+
+        <span class="hljs-keyword">return</span> array_merge($this-&gt;attributes, $action);
+    }
+}
+</code></pre>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;<code>RouteRegistrar</code> &#x5728;&#x8FD9;&#x91CC;&#x4F1A;&#x4E3A;&#x95ED;&#x5305;&#x6216;&#x63A7;&#x5236;&#x5668;&#x7B49;&#x6240;&#x6709;&#x975E;&#x6570;&#x7EC4;&#x7684; <code>action</code> &#x6DFB;&#x52A0; <code>use</code> &#x952E;&#xFF0C;&#x7136;&#x540E;&#x624D;&#x4F1A;&#x53BB; <code>router</code> &#x4E2D;&#x521B;&#x5EFA;&#x8DEF;&#x7531;&#x3002;</p>
+<h2 id="&#x6DFB;&#x52A0;&#x8DEF;&#x7531;&#x7FA4;&#x7EC4;">&#x6DFB;&#x52A0;&#x8DEF;&#x7531;&#x7FA4;&#x7EC4;</h2>
+<p>&#x6CE8;&#x518C;&#x5C5E;&#x6027;&#x4E4B;&#x540E;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x8DEF;&#x7531;&#x7FA4;&#x7EC4;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x65F6;&#x8DEF;&#x7531;&#x7FA4;&#x7EC4;&#x4E0D;&#x5141;&#x8BB8;&#x6DFB;&#x52A0;&#x5C5E;&#x6027; <code>action</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RouteRegistrar</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">group</span><span class="hljs-params">($callback)</span>
+    </span>{
+        $this-&gt;router-&gt;group($this-&gt;attributes, $callback);
+    }
+}
+</code></pre>
+<h1 id="router-&#x8DEF;&#x7531;&#x7FA4;&#x7EC4;&#x52A0;&#x8F7D;">Router &#x8DEF;&#x7531;&#x7FA4;&#x7EC4;&#x52A0;&#x8F7D;</h1>
+<p>&#x8DEF;&#x7531;&#x7FA4;&#x7EC4;&#x7684;&#x529F;&#x80FD;&#x53EF;&#x4EE5;&#x4E0D;&#x65AD;&#x53E0;&#x52A0;&#x9012;&#x5F52;&#xFF0C;&#x56E0;&#x6B64;&#x6BCF;&#x6B21;&#x8C03;&#x7528; <code>group</code> &#xFF0C;&#x90FD;&#x8981;&#x7528;&#x65B0;&#x8DEF;&#x7531;&#x7FA4;&#x7EC4;&#x7684;&#x5C5E;&#x6027;&#x4E0E;&#x65E7;&#x8DEF;&#x7531;&#x7FA4;&#x7EC4;&#x5C5E;&#x6027;&#x5408;&#x5E76;&#xFF0C;&#x4EE5;&#x5F85;&#x65B0;&#x7684;&#x8DEF;&#x7531;&#x53BB;&#x7EE7;&#x627F;&#x3002; <code>group</code> &#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x662F;&#x95ED;&#x5305;&#x51FD;&#x6570;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x5305;&#x542B;&#x5B9A;&#x4E49;&#x8DEF;&#x7531;&#x7684;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">group</span><span class="hljs-params">(array $attributes, $routes)</span>
+</span>{
+    $this-&gt;updateGroupStack($attributes);
+
+    $this-&gt;loadRoutes($routes);
+
+    array_pop($this-&gt;groupStack);
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateGroupStack</span><span class="hljs-params">(array $attributes)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">empty</span>($this-&gt;groupStack)) {
+        $attributes = RouteGroup::merge($attributes, end($this-&gt;groupStack));
+    }
+
+    $this-&gt;groupStack[] = $attributes;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadRoutes</span><span class="hljs-params">($routes)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($routes <span class="hljs-keyword">instanceof</span> Closure) {
+        $routes($this);
+    } <span class="hljs-keyword">else</span> {
+        $router = $this;
+
+        <span class="hljs-keyword">require</span> $routes;
+    }
+}
+</code></pre>
+<p>&#x5173;&#x4E8E;&#x8DEF;&#x7531;&#x7FA4;&#x7EC4;&#x5C5E;&#x6027;&#x7684;&#x5408;&#x5E76;, </p>
+<ul>
+<li><code>prefix</code>&#x3001;<code>as</code>&#x3001;<code>namespace</code> &#x8FD9;&#x51E0;&#x4E2A;&#x5C5E;&#x6027;&#x4F1A;&#x8FDE;&#x63A5;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x4F8B;&#x5982; <code>prefix1/prefix2/prefix3</code>&#xFF0C;</li>
+<li><code>where</code> &#x5C5E;&#x6027;&#x6570;&#x7EC4;&#x76F8;&#x540C;&#x7684;&#x4F1A;&#x88AB;&#x66FF;&#x6362;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x4F1A;&#x88AB;&#x5408;&#x5E76;&#x3002;</li>
+<li><code>domain</code> &#x5C5E;&#x6027;&#x4F1A;&#x88AB;&#x66FF;&#x6362;&#x3002;</li>
+<li>&#x5176;&#x4ED6;&#x5C5E;&#x6027;&#xFF0C;&#x4F8B;&#x5982; <code>middleware</code> &#x6570;&#x7EC4;&#x4F1A;&#x76F4;&#x63A5;&#x88AB;&#x5408;&#x5E76;&#xFF0C;&#x5373;&#x4F7F;&#x5B58;&#x5728;&#x76F8;&#x540C;&#x7684;&#x5143;&#x7D20;&#x3002;</li>
+</ul>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RouteGroup</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">merge</span><span class="hljs-params">($new, $old)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($new[<span class="hljs-string">&apos;domain&apos;</span>])) {
+            <span class="hljs-keyword">unset</span>($old[<span class="hljs-string">&apos;domain&apos;</span>]);
+        }
+
+        $new = array_merge(<span class="hljs-keyword">static</span>::formatAs($new, $old), [
+            <span class="hljs-string">&apos;namespace&apos;</span> =&gt; <span class="hljs-keyword">static</span>::formatNamespace($new, $old),
+            <span class="hljs-string">&apos;prefix&apos;</span> =&gt; <span class="hljs-keyword">static</span>::formatPrefix($new, $old),
+            <span class="hljs-string">&apos;where&apos;</span> =&gt; <span class="hljs-keyword">static</span>::formatWhere($new, $old),
+        ]);
+
+        <span class="hljs-keyword">return</span> array_merge_recursive(Arr::except(
+            $old, [<span class="hljs-string">&apos;namespace&apos;</span>, <span class="hljs-string">&apos;prefix&apos;</span>, <span class="hljs-string">&apos;where&apos;</span>, <span class="hljs-string">&apos;as&apos;</span>]
+        ), $new);
+    }
+}
+</code></pre>
+<h1 id="router-&#x8DEF;&#x7531;&#x52A0;&#x8F7D;">Router &#x8DEF;&#x7531;&#x52A0;&#x8F7D;</h1>
+<p>&#x6DFB;&#x52A0;&#x8DEF;&#x7531;&#x9700;&#x8981;&#x5F88;&#x591A;&#x6B65;&#x9AA4;&#xFF0C;&#x9700;&#x8981;&#x5C06;&#x8DEF;&#x7531;&#x672C;&#x8EAB;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x8DEF;&#x7531;&#x7FA4;&#x7EC4;&#x7684;&#x5C5E;&#x6027;&#x76F8;&#x7ED3;&#x5408;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span><span class="hljs-params">($uri, $action = null)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;addRoute([<span class="hljs-string">&apos;GET&apos;</span>, <span class="hljs-string">&apos;HEAD&apos;</span>], $uri, $action);
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addRoute</span><span class="hljs-params">($methods, $uri, $action)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;routes-&gt;add($this-&gt;createRoute($methods, $uri, $action));
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createRoute</span><span class="hljs-params">($methods, $uri, $action)</span>
+</span>{
+
+    <span class="hljs-keyword">if</span> ($this-&gt;actionReferencesController($action)) {
+        $action = $this-&gt;convertToControllerAction($action);
+    }
+
+    $route = $this-&gt;newRoute(
+        $methods, $this-&gt;prefix($uri), $action
+    );
+
+    <span class="hljs-keyword">if</span> ($this-&gt;hasGroupStack()) {
+        $this-&gt;mergeGroupAttributesIntoRoute($route);
+    }
+
+    $this-&gt;addWhereClausesToRoute($route);
+
+    <span class="hljs-keyword">return</span> $route;
+}
+</code></pre>
+<p>&#x4ECE;&#x4E0A;&#x9762;&#x6765;&#x770B;&#xFF0C;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x8DEF;&#x7531;&#x9700;&#x8981;&#xFF1A;</p>
+<ul>
+<li>&#x7ED9;&#x8DEF;&#x7531;&#x7684;&#x63A7;&#x5236;&#x5668;&#x6DFB;&#x52A0; <code>group</code> &#x7684; <code>namespace</code></li>
+<li>&#x7ED9;&#x8DEF;&#x7531;&#x7684; <code>uri</code> &#x6DFB;&#x52A0; <code>group</code> &#x7684; <code>prefix</code> &#x524D;&#x7F00;</li>
+<li>&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x8DEF;&#x7531;</li>
+<li>&#x66F4;&#x65B0;&#x8DEF;&#x7531;&#x7684;&#x5C5E;&#x6027;&#x4FE1;&#x606F;</li>
+<li>&#x4E3A;&#x8DEF;&#x7531;&#x6DFB;&#x52A0; <code>router</code>-<code>pattern</code> &#x6B63;&#x5219;&#x7EA6;&#x675F;</li>
+<li>&#x8DEF;&#x7531;&#x6DFB;&#x52A0;&#x5230; <code>RouteCollection</code> &#x4E2D;</li>
+</ul>
+<h2 id="&#x63A7;&#x5236;&#x5668;-namespace">&#x63A7;&#x5236;&#x5668; namespace</h2>
+<p>&#x8DEF;&#x7531;&#x63A7;&#x5236;&#x5668;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4E00;&#x822C;&#x4E0D;&#x7528;&#x7279;&#x522B;&#x6307;&#x5B9A;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x662F; <code>\App\Http\Controllers</code>&#xFF0C;&#x6BCF;&#x6B21;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x8DEF;&#x7531;&#xFF0C;&#x90FD;&#x8981;&#x5C06;&#x9ED8;&#x8BA4;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x6DFB;&#x52A0;&#x5230;&#x63A7;&#x5236;&#x5668;&#x4E2D;&#x53BB;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">actionReferencesController</span><span class="hljs-params">($action)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (! $action <span class="hljs-keyword">instanceof</span> Closure) {
+        <span class="hljs-keyword">return</span> is_string($action) || (<span class="hljs-keyword">isset</span>($action[<span class="hljs-string">&apos;uses&apos;</span>]) &amp;&amp; is_string($action[<span class="hljs-string">&apos;uses&apos;</span>]));
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToControllerAction</span><span class="hljs-params">($action)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (is_string($action)) {
+        $action = [<span class="hljs-string">&apos;uses&apos;</span> =&gt; $action];
+    }
+
+    <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">empty</span>($this-&gt;groupStack)) {
+        $action[<span class="hljs-string">&apos;uses&apos;</span>] = $this-&gt;prependGroupNamespace($action[<span class="hljs-string">&apos;uses&apos;</span>]);
+    }
+
+    $action[<span class="hljs-string">&apos;controller&apos;</span>] = $action[<span class="hljs-string">&apos;uses&apos;</span>];
+
+    <span class="hljs-keyword">return</span> $action;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">prependGroupNamespace</span><span class="hljs-params">($class)</span>
+</span>{
+    $group = end($this-&gt;groupStack);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">isset</span>($group[<span class="hljs-string">&apos;namespace&apos;</span>]) &amp;&amp; strpos($class, <span class="hljs-string">&apos;\\&apos;</span>) !== <span class="hljs-number">0</span>
+            ? $group[<span class="hljs-string">&apos;namespace&apos;</span>].<span class="hljs-string">&apos;\\&apos;</span>.$class : $class;
+}
+</code></pre>
+<h2 id="uri-&#x524D;&#x7F00;">uri &#x524D;&#x7F00;</h2>
+<p>&#x5728;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x8DEF;&#x7531;&#x524D;&#xFF0C;&#x9700;&#x8981;&#x5C06;&#x8DEF;&#x7531;&#x7FA4;&#x7EC4;&#x7684; <code>prefix</code> &#x6DFB;&#x52A0;&#x5230;&#x8DEF;&#x7531;&#x7684; <code>uri</code> &#x4E2D;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">prefix</span><span class="hljs-params">($uri)</span>
+</span>{
+    <span class="hljs-keyword">return</span> trim(trim($this-&gt;getLastGroupPrefix(), <span class="hljs-string">&apos;/&apos;</span>).<span class="hljs-string">&apos;/&apos;</span>.trim($uri, <span class="hljs-string">&apos;/&apos;</span>), <span class="hljs-string">&apos;/&apos;</span>) ?: <span class="hljs-string">&apos;/&apos;</span>;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLastGroupPrefix</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">empty</span>($this-&gt;groupStack)) {
+        $last = end($this-&gt;groupStack);
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">isset</span>($last[<span class="hljs-string">&apos;prefix&apos;</span>]) ? $last[<span class="hljs-string">&apos;prefix&apos;</span>] : <span class="hljs-string">&apos;&apos;</span>;
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;&apos;</span>;
+}
+</code></pre>
+<h2 id="&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x8DEF;&#x7531;">&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x8DEF;&#x7531;</h2>
+<p>&#x8DEF;&#x7531;&#x7684;&#x521B;&#x5EFA;&#x9700;&#x8981; <code>Route</code> &#x7C7B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">newRoute</span><span class="hljs-params">($methods, $uri, $action)</span>
+</span>{
+    <span class="hljs-keyword">return</span> (<span class="hljs-keyword">new</span> Route($methods, $uri, $action))
+                -&gt;setRouter($this)
+                -&gt;setContainer($this-&gt;container);
+}
+</code></pre>
+<p>&#x5173;&#x4E8E; <code>Router</code> &#x7C7B;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x8DEF;&#x7531;&#x6211;&#x4EEC;&#x5728;&#x4E0B;&#x4E00;&#x90E8;&#x5206;&#x8BE6;&#x7EC6;&#x8BF4;&#x3002;</p>
+<h2 id="&#x66F4;&#x65B0;&#x8DEF;&#x7531;&#x5C5E;&#x6027;&#x4FE1;&#x606F;">&#x66F4;&#x65B0;&#x8DEF;&#x7531;&#x5C5E;&#x6027;&#x4FE1;&#x606F;</h2>
+<p>&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x8DEF;&#x7531;&#x4E4B;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x5C06;&#x8DEF;&#x7531;&#x672C;&#x8EAB;&#x7684;&#x5C5E;&#x6027; <code>action</code> &#x4E0E;&#x8DEF;&#x7531;&#x7FA4;&#x7EC4;&#x7684;&#x5C5E;&#x6027;&#x7ED3;&#x5408;&#x5728;&#x4E00;&#x8D77;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hasGroupStack</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> ! <span class="hljs-keyword">empty</span>($this-&gt;groupStack);
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mergeGroupAttributesIntoRoute</span><span class="hljs-params">($route)</span>
+</span>{
+    $route-&gt;setAction($this-&gt;mergeWithLastGroup($route-&gt;getAction()));
+}
+</code></pre>
+<h2 id="&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x6B63;&#x5219;&#x7EA6;&#x675F;&#x5230;&#x8DEF;&#x7531;">&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x6B63;&#x5219;&#x7EA6;&#x675F;&#x5230;&#x8DEF;&#x7531;</h2>
+<p>&#x4E0A;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x6211;&#x4EEC;&#x8BF4;&#x8FC7;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4E3A;&#x8DEF;&#x7531;&#x901A;&#x8FC7; <code>pattern</code> &#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x7684;&#x53C2;&#x6570;&#x6B63;&#x5219;&#x7EA6;&#x675F;&#xFF0C;&#x6240;&#x6709;&#x6BCF;&#x6B21;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x8DEF;&#x7531;&#x90FD;&#x8981;&#x5C06;&#x8FD9;&#x4E2A;&#x5168;&#x5C40;&#x6B63;&#x5219;&#x7EA6;&#x675F;&#x6DFB;&#x52A0;&#x5230;&#x8DEF;&#x7531;&#x4E2D;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pattern</span><span class="hljs-params">($key, $pattern)</span>
+</span>{
+    $this-&gt;patterns[$key] = $pattern;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addWhereClausesToRoute</span><span class="hljs-params">($route)</span>
+</span>{
+    $route-&gt;where(array_merge(
+        $this-&gt;patterns, <span class="hljs-keyword">isset</span>($route-&gt;getAction()[<span class="hljs-string">&apos;where&apos;</span>]) ? $route-&gt;getAction()[<span class="hljs-string">&apos;where&apos;</span>] : []
+    ));
+
+    <span class="hljs-keyword">return</span> $route;
+}
+</code></pre>
+<h1 id="route-&#x8DEF;&#x7531;&#x52A0;&#x8F7D;">Route &#x8DEF;&#x7531;&#x52A0;&#x8F7D;</h1>
+<p>&#x524D;&#x9762;&#x8BF4;&#x8FC7;&#xFF0C;&#x8DEF;&#x7531;&#x7684;&#x521B;&#x5EFA;&#x662F;&#x7531; <code>Route</code> &#x8FD9;&#x4E2A;&#x7C7B;&#x5B8C;&#x6210;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-php"> <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($methods, $uri, $action)</span>
+</span>{
+    $this-&gt;uri = $uri;
+    $this-&gt;methods = (<span class="hljs-keyword">array</span>) $methods;
+    $this-&gt;action = $this-&gt;parseAction($action);
+
+    <span class="hljs-keyword">if</span> (in_array(<span class="hljs-string">&apos;GET&apos;</span>, $this-&gt;methods) &amp;&amp; ! in_array(<span class="hljs-string">&apos;HEAD&apos;</span>, $this-&gt;methods)) {
+        $this-&gt;methods[] = <span class="hljs-string">&apos;HEAD&apos;</span>;
+    }
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($this-&gt;action[<span class="hljs-string">&apos;prefix&apos;</span>])) {
+        $this-&gt;prefix($this-&gt;action[<span class="hljs-string">&apos;prefix&apos;</span>]);
+    }
+}
+</code></pre>
+<p>&#x7531;&#x6B64;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x8DEF;&#x7531;&#x7684;&#x521B;&#x5EFA;&#x4E3B;&#x8981;&#x662F;&#x8DEF;&#x7531;&#x7684;&#x5404;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5176;&#x4E2D;&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x6709;&#x4E24;&#x4E2A;&#xFF1A; <code>action</code> &#x4E0E; <code>prefix</code></p>
+<h2 id="action-&#x89E3;&#x6790;">action &#x89E3;&#x6790;</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseAction</span><span class="hljs-params">($action)</span>
+</span>{
+    <span class="hljs-keyword">return</span> RouteAction::parse($this-&gt;uri, $action);
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x8DEF;&#x7531;&#x65F6;&#xFF0C; <code>action</code> &#x5C5E;&#x6027;&#x9700;&#x8981;&#x5229;&#x7528; <code>RouteAction</code> &#x7C7B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RouteAction</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parse</span><span class="hljs-params">($uri, $action)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (is_null($action)) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">static</span>::missingAction($uri);
+        }
+
+        <span class="hljs-keyword">if</span> (is_callable($action)) {
+            <span class="hljs-keyword">return</span> [<span class="hljs-string">&apos;uses&apos;</span> =&gt; $action];
+        }
+
+        <span class="hljs-keyword">elseif</span> (! <span class="hljs-keyword">isset</span>($action[<span class="hljs-string">&apos;uses&apos;</span>])) {
+            $action[<span class="hljs-string">&apos;uses&apos;</span>] = <span class="hljs-keyword">static</span>::findCallable($action);
+        }
+
+        <span class="hljs-keyword">if</span> (is_string($action[<span class="hljs-string">&apos;uses&apos;</span>]) &amp;&amp; ! Str::contains($action[<span class="hljs-string">&apos;uses&apos;</span>], <span class="hljs-string">&apos;@&apos;</span>)) {
+            $action[<span class="hljs-string">&apos;uses&apos;</span>] = <span class="hljs-keyword">static</span>::makeInvokable($action[<span class="hljs-string">&apos;uses&apos;</span>]);
+        }
+
+        <span class="hljs-keyword">return</span> $action;
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findCallable</span><span class="hljs-params">(array $action)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> Arr::first($action, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($value, $key)</span> </span>{
+            <span class="hljs-keyword">return</span> is_callable($value) &amp;&amp; is_numeric($key);
+        });
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeInvokable</span><span class="hljs-params">($action)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (! method_exists($action, <span class="hljs-string">&apos;__invoke&apos;</span>)) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UnexpectedValueException(<span class="hljs-string">&quot;Invalid route action: [{$action}].&quot;</span>);
+        }
+
+        <span class="hljs-keyword">return</span> $action.<span class="hljs-string">&apos;@__invoke&apos;</span>;
+    }
+}
+</code></pre>
+<p>&#x524D;&#x9762;&#x7684;&#x535A;&#x5BA2;&#x6211;&#x4EEC;&#x8BF4;&#x8FC7;&#xFF0C;&#x521B;&#x5EFA;&#x8DEF;&#x7531;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9664;&#x4E86;&#x4E3A;&#x8DEF;&#x7531;&#x5206;&#x914D;&#x63A7;&#x5236;&#x5668;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x4E3A;&#x8DEF;&#x7531;&#x5206;&#x914D;&#x95ED;&#x5305;&#x51FD;&#x6570;&#xFF0C;&#x8FD8;&#x6709;&#x7C7B;&#x51FD;&#x6570;&#xFF0C;&#x4F8B;&#x5982;&#x4E4B;&#x524D;&#x8BF4;&#x7684;&#x5355;&#x52A8;&#x4F5C;&#x63A7;&#x5236;&#x5668;&#xFF1A;</p>
+<pre><code class="lang-php">
+
+$router-&gt;get(<span class="hljs-string">&apos;foo/bar2&apos;</span>, [&#x2018;domain&#x2019; =&gt; <span class="hljs-string">&apos;www.example.com&apos;</span>, <span class="hljs-string">&apos;Illuminate\Tests\Routing\ActionStub&apos;</span>]);
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ActionStub</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__invoke</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;hello&apos;</span>;
+    }
+}
+</code></pre>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x89E3;&#x6790; <code>action</code> &#x4E3B;&#x8981;&#x505A;&#x4E24;&#x4EF6;&#x4E8B;&#xFF1A;</p>
+<ul>
+<li><p>&#x4E3A;&#x95ED;&#x5305;&#x51FD;&#x6570;&#x6DFB;&#x52A0; <code>use</code> &#x952E;&#x3002;&#x5BF9;&#x4E8E;&#x6B64;&#x65F6;&#x6CA1;&#x6709; <code>use</code> &#x952E;&#x7684;&#x8DEF;&#x7531;&#xFF0C;&#x7531;&#x4E8E;&#x4E4B;&#x524D;&#x5728; <code>Router</code> &#x4E2D;&#x5DF2;&#x7ECF;&#x4E3A;&#x63A7;&#x5236;&#x5668;&#x6DFB;&#x52A0; <code>use</code> &#x952E;&#xFF0C;&#x56E0;&#x6B64;&#x8FD9;&#x65F6;&#x6CA1;&#x6709; <code>use</code> &#x952E;&#x7684;&#xFF0C;&#x5FC5;&#x7136;&#x662F;&#x95ED;&#x5305;&#x51FD;&#x6570;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x76F4;&#x63A5;&#x6216;&#x8005;&#x5728; <code>action</code> &#x4E2D;&#x5BFB;&#x627E;&#x95ED;&#x5305;&#x51FD;&#x6570;&#x540E;&#xFF0C;&#x4E3A;&#x95ED;&#x5305;&#x51FD;&#x6570;&#x6DFB;&#x52A0; <code>use</code> &#x952E;&#x3002;</p>
+</li>
+<li><p>&#x5355;&#x52A8;&#x4F5C;&#x63A7;&#x5236;&#x5668;&#x6DFB;&#x52A0; <code>__invoke</code>&#x3002;&#x5BF9;&#x4E8E;&#x5355;&#x52A8;&#x4F5C;&#x63A7;&#x5236;&#x5668;&#x6765;&#x8BF4;&#xFF0C;&#x6B64;&#x65F6;&#x5DF2;&#x7ECF;&#x548C;&#x63A7;&#x5236;&#x5668;&#x4E00;&#x6837;&#x62E5;&#x6709; &apos;use&apos; &#x952E;&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x6CA1;&#x6709; <code>@</code> &#x7B26;&#x53F7;&#xFF0C;&#x6B64;&#x65F6;&#x5C31;&#x4F1A;&#x8C03;&#x7528; <code>makeInvokable</code> &#x51FD;&#x6570;&#x6765;&#x5C06; <code>__invoke</code> &#x6DFB;&#x52A0;&#x5230;&#x540E;&#x9762;&#x3002;</p>
+</li>
+</ul>
+<h2 id="prefix-&#x524D;&#x7F00;">prefix &#x524D;&#x7F00;</h2>
+<p>&#x8DEF;&#x7531;&#x81EA;&#x8EAB;&#x4E5F;&#x6709; <code>prefix</code> &#x5C5E;&#x6027;&#xFF0C;&#x800C;&#x4E14;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x8981;&#x52A0;&#x5728;&#x5176;&#x4ED6; <code>prefix</code> &#x7684;&#x6700;&#x524D;&#x9762;,&#x4F5C;&#x4E3A;&#x8DEF;&#x7531;&#x7684; <code>uri</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">prefix</span><span class="hljs-params">($prefix)</span>
+</span>{
+    $uri = rtrim($prefix, <span class="hljs-string">&apos;/&apos;</span>).<span class="hljs-string">&apos;/&apos;</span>.ltrim($this-&gt;uri, <span class="hljs-string">&apos;/&apos;</span>);
+
+    $this-&gt;uri = trim($uri, <span class="hljs-string">&apos;/&apos;</span>);
+
+    <span class="hljs-keyword">return</span> $this;
+}
+</code></pre>
+<h1 id="route-&#x8DEF;&#x7531;&#x5C5E;&#x6027;&#x52A0;&#x8F7D;">Route &#x8DEF;&#x7531;&#x5C5E;&#x6027;&#x52A0;&#x8F7D;</h1>
+<p>&#x9664;&#x4E86; <code>RouteRegistrar</code> &#x4E4B;&#x5916;&#xFF0C;<code>Route</code> &#x4E5F;&#x53EF;&#x4EE5;&#x4E3A;&#x8DEF;&#x7531;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#xFF1A;</p>
+<h2 id="prefix-&#x524D;&#x7F00;">prefix &#x524D;&#x7F00;</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">prefix</span><span class="hljs-params">($prefix)</span>
+</span>{
+    $uri = rtrim($prefix, <span class="hljs-string">&apos;/&apos;</span>).<span class="hljs-string">&apos;/&apos;</span>.ltrim($this-&gt;uri, <span class="hljs-string">&apos;/&apos;</span>);
+
+    $this-&gt;uri = trim($uri, <span class="hljs-string">&apos;/&apos;</span>);
+
+    <span class="hljs-keyword">return</span> $this;
+}
+</code></pre>
+<h2 id="where-&#x6B63;&#x5219;&#x7EA6;&#x675F;">where &#x6B63;&#x5219;&#x7EA6;&#x675F;</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">where</span><span class="hljs-params">($name, $expression = null)</span>
+</span>{
+    <span class="hljs-keyword">foreach</span> ($this-&gt;parseWhere($name, $expression) <span class="hljs-keyword">as</span> $name =&gt; $expression) {
+        $this-&gt;wheres[$name] = $expression;
+    }
+
+     <span class="hljs-keyword">return</span> $this;
+}     
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseWhere</span><span class="hljs-params">($name, $expression)</span>
+</span>{
+    <span class="hljs-keyword">return</span> is_array($name) ? $name : [$name =&gt; $expression];
+}
+</code></pre>
+<h2 id="middleware-&#x4E2D;&#x95F4;&#x4EF6;">middleware &#x4E2D;&#x95F4;&#x4EF6;</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">middleware</span><span class="hljs-params">($middleware = null)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (is_null($middleware)) {
+        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">array</span>) Arr::get($this-&gt;action, <span class="hljs-string">&apos;middleware&apos;</span>, []);
+    }
+
+    <span class="hljs-keyword">if</span> (is_string($middleware)) {
+        $middleware = func_get_args();
+    }
+
+    $this-&gt;action[<span class="hljs-string">&apos;middleware&apos;</span>] = array_merge(
+        (<span class="hljs-keyword">array</span>) Arr::get($this-&gt;action, <span class="hljs-string">&apos;middleware&apos;</span>, []), $middleware
+    );
+
+    <span class="hljs-keyword">return</span> $this;
+}
+</code></pre>
+<h2 id="uses-&#x63A7;&#x5236;&#x5668;">uses &#x63A7;&#x5236;&#x5668;</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">uses</span><span class="hljs-params">($action)</span>
+</span>{
+    $action = is_string($action) ? $this-&gt;addGroupNamespaceToStringUses($action) : $action;
+
+    <span class="hljs-keyword">return</span> $this-&gt;setAction(array_merge($this-&gt;action, $this-&gt;parseAction([
+        <span class="hljs-string">&apos;uses&apos;</span> =&gt; $action,
+        <span class="hljs-string">&apos;controller&apos;</span> =&gt; $action,
+    ])));
+}
+</code></pre>
+<h2 id="name-&#x547D;&#x540D;">name &#x547D;&#x540D;</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">name</span><span class="hljs-params">($name)</span>
+</span>{
+    $this-&gt;action[<span class="hljs-string">&apos;as&apos;</span>] = <span class="hljs-keyword">isset</span>($this-&gt;action[<span class="hljs-string">&apos;as&apos;</span>]) ? $this-&gt;action[<span class="hljs-string">&apos;as&apos;</span>].$name : $name;
+
+    <span class="hljs-keyword">return</span> $this;
+}
+</code></pre>
+<h1 id="routecollection-&#x6DFB;&#x52A0;&#x8DEF;&#x7531;">RouteCollection &#x6DFB;&#x52A0;&#x8DEF;&#x7531;</h1>
+<p>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x6DFB;&#x52A0;&#x8DEF;&#x7531;&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addRoute</span><span class="hljs-params">($methods, $uri, $action)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;routes-&gt;add($this-&gt;createRoute($methods, $uri, $action));
+}
+</code></pre>
+<p>&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x8DEF;&#x7531;&#x4F1A;&#x52A0;&#x5165;&#x5230; <code>RouteCollection</code> &#x4E2D;&#xFF0C;&#x4F1A;&#x66F4;&#x65B0;&#x7C7B;&#x4E2D;&#x7684; <code>routes</code>&#x3001;<code>allRoutes</code>&#x3001;<code>nameList</code>&#x3001;<code>actionList</code>&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span><span class="hljs-params">(Route $route)</span>
+</span>{
+    $this-&gt;addToCollections($route);
+
+    $this-&gt;addLookups($route);
+
+    <span class="hljs-keyword">return</span> $route;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addToCollections</span><span class="hljs-params">($route)</span>
+</span>{
+    $domainAndUri = $route-&gt;domain().$route-&gt;uri();
+
+    <span class="hljs-keyword">foreach</span> ($route-&gt;methods() <span class="hljs-keyword">as</span> $method) {
+        $this-&gt;routes[$method][$domainAndUri] = $route;
+    }
+
+    $this-&gt;allRoutes[$method.$domainAndUri] = $route;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addLookups</span><span class="hljs-params">($route)</span>
+</span>{   
+    $action = $route-&gt;getAction();
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($action[<span class="hljs-string">&apos;as&apos;</span>])) {
+        $this-&gt;nameList[$action[<span class="hljs-string">&apos;as&apos;</span>]] = $route;
+    }
+
+   <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($action[<span class="hljs-string">&apos;controller&apos;</span>])) {
+        $this-&gt;addToActionList($action, $route);
+    }
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addToActionList</span><span class="hljs-params">($action, $route)</span>
+</span>{
+    $this-&gt;actionList[trim($action[<span class="hljs-string">&apos;controller&apos;</span>], <span class="hljs-string">&apos;\\&apos;</span>)] = $route;
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x5728;&#x4E0A;&#x9762;&#x8DEF;&#x7531;&#x7684;&#x6CE8;&#x518C;&#x542F;&#x52A8;&#x7AE0;&#x8282;&#x8BF4;&#x9053;&#xFF0C;&#x8DEF;&#x7531;&#x7684;&#x542F;&#x52A8;&#x662F; <code>namespace Illuminate\Foundation\Support\Providers\RouteServiceProvider</code> &#x5B8C;&#x6210;&#x7684;&#xFF0C;&#x8C03;&#x7528;&#x7684;&#x662F; <code>boot</code> &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">boot</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;setRootControllerNamespace();
+
+    <span class="hljs-keyword">if</span> ($this-&gt;app-&gt;routesAreCached()) {
+        $this-&gt;loadCachedRoutes();
+    } <span class="hljs-keyword">else</span> {
+        $this-&gt;loadRoutes();
+
+        $this-&gt;app-&gt;booted(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+            $this-&gt;app[<span class="hljs-string">&apos;router&apos;</span>]-&gt;getRoutes()-&gt;refreshNameLookups();
+        });
+    }
+}
+</code></pre>
+<p>&#x5728;&#x6700;&#x540E;&#x4E00;&#x53E5;&#xFF0C;&#x7A0B;&#x5E8F;&#x5C06;&#x4F1A;&#x5728;&#x6240;&#x6709;&#x670D;&#x52A1;&#x90FD;&#x542F;&#x52A8;&#x540E;&#x8FD0;&#x884C; <code>refreshNameLookups</code> &#x51FD;&#x6570;&#xFF0C;&#x628A;&#x6240;&#x6709;&#x7684; <code>name</code> &#x5C5E;&#x6027;&#x52A0;&#x8F7D;&#x5230; <code>RouteCollection</code> &#x4E2D;:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">refreshNameLookups</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;nameList = [];
+
+    <span class="hljs-keyword">foreach</span> ($this-&gt;allRoutes <span class="hljs-keyword">as</span> $route) {
+        <span class="hljs-keyword">if</span> ($route-&gt;getName()) {
+            $this-&gt;nameList[$route-&gt;getName()] = $route;
+        }
+    }
+}
+</code></pre>
+<p>&#x6D4B;&#x8BD5;&#x6837;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testRouteCollectionCanRefreshNameLookups</span><span class="hljs-params">()</span>
+</span>{
+    $routeIndex = <span class="hljs-keyword">new</span> Route(<span class="hljs-string">&apos;GET&apos;</span>, <span class="hljs-string">&apos;foo/index&apos;</span>, [
+        <span class="hljs-string">&apos;uses&apos;</span> =&gt; <span class="hljs-string">&apos;FooController@index&apos;</span>,
+    ]);
+
+    $this-&gt;assertNull($routeIndex-&gt;getName());
+
+    $this-&gt;routeCollection-&gt;add($routeIndex)-&gt;name(<span class="hljs-string">&apos;route_name&apos;</span>);
+
+    $this-&gt;assertNull($this-&gt;routeCollection-&gt;getByName(<span class="hljs-string">&apos;route_name&apos;</span>));
+
+    $this-&gt;routeCollection-&gt;refreshNameLookups();
+    $this-&gt;assertEquals($routeIndex, $this-&gt;routeCollection-&gt;getByName(<span class="hljs-string">&apos;route_name&apos;</span>));
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Laravel HTTP——路由.html" class="navigation navigation-prev " aria-label="Previous page: Laravel HTTP——路由">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Laravel HTTP——Pipeline中间件处理源码分析.html" class="navigation navigation-next " aria-label="Next page: Laravel HTTP——Pipeline中间件处理源码分析">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Laravel HTTP——路由加载源码分析","level":"1.5.2","depth":2,"next":{"title":"Laravel HTTP——Pipeline中间件处理源码分析","level":"1.5.3","depth":2,"path":"Laravel HTTP——Pipeline中间件处理源码分析.md","ref":"Laravel HTTP——Pipeline中间件处理源码分析.md","articles":[]},"previous":{"title":"Laravel HTTP——路由","level":"1.5.1","depth":2,"path":"Laravel HTTP——路由.md","ref":"Laravel HTTP——路由.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Laravel HTTP——路由加载源码分析.md","mtime":"2019-01-15T10:29:00.320Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T10:51:52.544Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

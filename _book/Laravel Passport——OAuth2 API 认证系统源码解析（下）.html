@@ -1,0 +1,1940 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Laravel Passport——OAuth2 API 认证系统源码解析(下) · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="Laravel Passport——OAuth2 API 认证系统源码解析.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    PHP Composer 自动加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="PHP Composer——自动加载原理.html">
+            
+                <a href="PHP Composer——自动加载原理.html">
+            
+                    
+                    PHP Composer——自动加载原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="PHP Composer—— 初始化源码分析.html">
+            
+                <a href="PHP Composer—— 初始化源码分析.html">
+            
+                    
+                    PHP Composer—— 初始化源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="PHP Composer-——-注册与运行源码分析.html">
+            
+                <a href="PHP Composer-——-注册与运行源码分析.html">
+            
+                    
+                    PHP Composer-——-注册与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Laravel Facade 门面
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="Laravel Facade——Facade 门面源码分析.html">
+            
+                <a href="Laravel Facade——Facade 门面源码分析.html">
+            
+                    
+                    Laravel Facade——Facade 门面源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Laravel Ioc 容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Laravel Container——IoC 服务容器.html">
+            
+                <a href="Laravel Container——IoC 服务容器.html">
+            
+                    
+                    Laravel Container——IoC 服务容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器绑定)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器解析)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="Laravel Container——服务容器的细节特性.html">
+            
+                <a href="Laravel Container——服务容器的细节特性.html">
+            
+                    
+                    Laravel Container——服务容器的细节特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Laravel Route 路由
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Laravel HTTP——路由.html">
+            
+                <a href="Laravel HTTP——路由.html">
+            
+                    
+                    Laravel HTTP——路由
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="Laravel HTTP——路由加载源码分析.html">
+            
+                <a href="Laravel HTTP——路由加载源码分析.html">
+            
+                    
+                    Laravel HTTP——路由加载源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                <a href="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                    
+                    Laravel HTTP——Pipeline中间件处理源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="Laravel HTTP——路由的正则编译.html">
+            
+                <a href="Laravel HTTP——路由的正则编译.html">
+            
+                    
+                    Laravel HTTP——路由的正则编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                <a href="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                    
+                    Laravel HTTP——路由的匹配与参数绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="Laravel HTTP——路由中间件源码分析.html">
+            
+                <a href="Laravel HTTP——路由中间件源码分析.html">
+            
+                    
+                    Laravel HTTP——路由中间件源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                <a href="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                    
+                    Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                <a href="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                    
+                    Laravel HTTP——控制器方法的参数构建与运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                <a href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP—— RESTFul 风格路由的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                <a href="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP——重定向的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Laravel ENV 环境变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                <a href="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                    
+                    Laravel ENV—— 环境变量的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Laravel Config 配置文件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                <a href="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                    
+                    Laravel Config—— 配置文件的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Laravel Exceptions 异常处理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="Laravel Exceptions——异常与错误处理.html">
+            
+                <a href="Laravel Exceptions——异常与错误处理.html">
+            
+                    
+                    Laravel Exceptions——异常与错误处理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Laravel Providers 服务提供者
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                <a href="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                    
+                    Laravel Providers——服务提供者的注册与启动源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Laravel Database 数据库
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="Laravel Database——数据库服务的启动与连接.html">
+            
+                <a href="Laravel Database——数据库服务的启动与连接.html">
+            
+                    
+                    Laravel Database——数据库服务的启动与连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="Laravel Database——数据库的 CRUD 操作.html">
+            
+                <a href="Laravel Database——数据库的 CRUD 操作.html">
+            
+                    
+                    Laravel Database——数据库的 CRUD 操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="Laravel Database——查询构造器与语法编译器源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="Laravel Database——查询构造器与语法编译器源码分析%28中%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(中)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="Laravel Database——查询构造器与语法编译器源码分析%28下%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="Laravel Database——分页原理与源码分析.html">
+            
+                <a href="Laravel Database——分页原理与源码分析.html">
+            
+                    
+                    Laravel Database——分页原理与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Laravel Database——Eloquent Model 源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                <a href="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                <a href="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                    
+                    Laravel Database——Eloquent Model 关联源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                <a href="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                    
+                    Laravel Database——Eloquent Model 模型关系加载与查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                <a href="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                    
+                    Laravel Database——Eloquent Model 更新关联模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Laravel Session
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="Laravel Session——session 的启动与运行源码分析.html">
+            
+                <a href="Laravel Session——session 的启动与运行源码分析.html">
+            
+                    
+                    Laravel Session——session 的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    Laravel Event 事件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                <a href="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                    
+                    Laravel Event——事件系统的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    Laravel Queue 队列
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务与分发源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务处理器源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    Laravel 广播系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="Laravel Broadcast——广播系统源码剖析.html">
+            
+                <a href="Laravel Broadcast——广播系统源码剖析.html">
+            
+                    
+                    Laravel Broadcast——广播系统源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    Laravel Passport
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.15.2" data-path="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Laravel Passport——OAuth2 API 认证系统源码解析(下)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="laravel-passport&#x2014;&#x2014;oauth2-api-&#x8BA4;&#x8BC1;&#x7CFB;&#x7EDF;&#x6E90;&#x7801;&#x89E3;&#x6790;&#xFF08;&#x4E0B;&#xFF09;">Laravel Passport&#x2014;&#x2014;OAuth2 API &#x8BA4;&#x8BC1;&#x7CFB;&#x7EDF;&#x6E90;&#x7801;&#x89E3;&#x6790;&#xFF08;&#x4E0B;&#xFF09;</h1>
+<h2 id="&#x9690;&#x5F0F;&#x6388;&#x6743;">&#x9690;&#x5F0F;&#x6388;&#x6743;</h2>
+<p>&#x9690;&#x5F0F;&#x6388;&#x6743;&#x7C7B;&#x4F3C;&#x4E8E;&#x6388;&#x6743;&#x7801;&#x6388;&#x6743;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x53EA;&#x4EE4;&#x724C;&#x5C06;&#x8FD4;&#x56DE;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x800C;&#x4E0D;&#x4EA4;&#x6362;&#x6388;&#x6743;&#x7801;&#x3002;&#x8FD9;&#x79CD;&#x6388;&#x6743;&#x6700;&#x5E38;&#x7528;&#x4E8E;&#x65E0;&#x6CD5;&#x5B89;&#x5168;&#x5B58;&#x50A8;&#x5BA2;&#x6237;&#x7AEF;&#x51ED;&#x636E;&#x7684; JavaScript &#x6216;&#x79FB;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;&#x901A;&#x8FC7;&#x8C03;&#x7528; <code>AuthServiceProvider</code> &#x4E2D;&#x7684; <code>enableImplicitGrant</code> &#x65B9;&#x6CD5;&#x6765;&#x542F;&#x7528;&#x8FD9;&#x79CD;&#x6388;&#x6743;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">boot</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;registerPolicies();
+
+    Passport::routes();
+
+    Passport::enableImplicitGrant();
+}
+</code></pre>
+<p>&#x8C03;&#x7528;&#x4E0A;&#x9762;&#x65B9;&#x6CD5;&#x5F00;&#x542F;&#x6388;&#x6743;&#x540E;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4ED6;&#x4EEC;&#x7684;&#x5BA2;&#x6237;&#x7AEF; ID &#x4ECE;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8BF7;&#x6C42;&#x8BBF;&#x95EE;&#x4EE4;&#x724C;&#x3002;&#x63A5;&#x5165;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5E94;&#x8BE5;&#x5411;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684; /oauth/authorize &#x8DEF;&#x7531;&#x53D1;&#x51FA;&#x91CD;&#x5B9A;&#x5411;&#x8BF7;&#x6C42;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-php">Route::get(<span class="hljs-string">&apos;/redirect&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    $query = http_build_query([
+        <span class="hljs-string">&apos;client_id&apos;</span> =&gt; <span class="hljs-string">&apos;client-id&apos;</span>,
+        <span class="hljs-string">&apos;redirect_uri&apos;</span> =&gt; <span class="hljs-string">&apos;http://example.com/callback&apos;</span>,
+        <span class="hljs-string">&apos;response_type&apos;</span> =&gt; <span class="hljs-string">&apos;token&apos;</span>,
+        <span class="hljs-string">&apos;scope&apos;</span> =&gt; <span class="hljs-string">&apos;&apos;</span>,
+    ]);
+
+    <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">&apos;http://your-app.com/oauth/authorize?&apos;</span>.$query);
+});
+</code></pre>
+<p>&#x9996;&#x5148;&#x4ECD;&#x7136;&#x662F;&#x9A8C;&#x8BC1;&#x6388;&#x6743;&#x8BF7;&#x6C42;&#x7684;&#x5408;&#x6CD5;&#x6027;&#xFF0C;&#x5176;&#x6D41;&#x7A0B;&#x4E0E;&#x6388;&#x6743;&#x7801;&#x6A21;&#x5F0F;&#x57FA;&#x672C;&#x4E00;&#x81F4;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validateAuthorizationRequest</span><span class="hljs-params">(ServerRequestInterface $request)</span>
+</span>{
+    $clientId = $this-&gt;getQueryStringParameter(
+        <span class="hljs-string">&apos;client_id&apos;</span>,
+        $request,
+        $this-&gt;getServerParameter(<span class="hljs-string">&apos;PHP_AUTH_USER&apos;</span>, $request)
+    );
+    <span class="hljs-keyword">if</span> (is_null($clientId)) {
+        <span class="hljs-keyword">throw</span> OAuthServerException::invalidRequest(<span class="hljs-string">&apos;client_id&apos;</span>);
+    }
+
+    $client = $this-&gt;clientRepository-&gt;getClientEntity(
+        $clientId,
+        $this-&gt;getIdentifier(),
+        <span class="hljs-keyword">null</span>,
+        <span class="hljs-keyword">false</span>
+    );
+
+    <span class="hljs-keyword">if</span> ($client <span class="hljs-keyword">instanceof</span> ClientEntityInterface === <span class="hljs-keyword">false</span>) {
+        $this-&gt;getEmitter()-&gt;emit(<span class="hljs-keyword">new</span> RequestEvent(RequestEvent::CLIENT_AUTHENTICATION_FAILED, $request));
+        <span class="hljs-keyword">throw</span> OAuthServerException::invalidClient();
+    }
+
+    $redirectUri = $this-&gt;getQueryStringParameter(<span class="hljs-string">&apos;redirect_uri&apos;</span>, $request);
+
+    $scopes = $this-&gt;validateScopes(
+        $this-&gt;getQueryStringParameter(<span class="hljs-string">&apos;scope&apos;</span>, $request, $this-&gt;defaultScope),
+        is_array($client-&gt;getRedirectUri())
+            ? $client-&gt;getRedirectUri()[<span class="hljs-number">0</span>]
+            : $client-&gt;getRedirectUri()
+    );
+
+    <span class="hljs-comment">// Finalize the requested scopes</span>
+    $finalizedScopes = $this-&gt;scopeRepository-&gt;finalizeScopes(
+        $scopes,
+        $this-&gt;getIdentifier(),
+        $client
+    );
+
+    $stateParameter = $this-&gt;getQueryStringParameter(<span class="hljs-string">&apos;state&apos;</span>, $request);
+
+    $authorizationRequest = <span class="hljs-keyword">new</span> AuthorizationRequest();
+    $authorizationRequest-&gt;setGrantTypeId($this-&gt;getIdentifier());
+    $authorizationRequest-&gt;setClient($client);
+    $authorizationRequest-&gt;setRedirectUri($redirectUri);
+    $authorizationRequest-&gt;setState($stateParameter);
+    $authorizationRequest-&gt;setScopes($finalizedScopes);
+
+    <span class="hljs-keyword">return</span> $authorizationRequest;
+}
+</code></pre>
+<p>&#x63A5;&#x7740;&#xFF0C;&#x5F53;&#x7528;&#x6237;&#x540C;&#x610F;&#x6388;&#x6743;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x8981;&#x76F4;&#x63A5;&#x8FD4;&#x56DE; <code>access_token</code>&#xFF0C;<code>League OAuth2</code> &#x76F4;&#x63A5;&#x5C06;&#x4EE4;&#x724C;&#x653E;&#x5165; <code>JWT</code> &#x4E2D;&#x53D1;&#x9001;&#x56DE;&#x7B2C;&#x4E09;&#x65B9;&#x5BA2;&#x6237;&#x7AEF;,&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x4F9D;&#x636E; <code>OAuth2</code> &#x6807;&#x51C6;&#xFF0C;&#x53C2;&#x6570;&#x90FD;&#x662F;&#x4EE5; <code>location hash</code> &#x7684;&#x5F62;&#x5F0F;&#x8FD4;&#x56DE;&#x7684;&#xFF0C;&#x95F4;&#x9694;&#x7B26;&#x662F; <code>#</code>&#xFF0C;&#x800C;&#x4E0D;&#x662F; <code>?</code>:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(\DateInterval $accessTokenTTL, $queryDelimiter = <span class="hljs-string">&apos;#&apos;</span>)</span>
+</span>{
+    $this-&gt;accessTokenTTL = $accessTokenTTL;
+    $this-&gt;queryDelimiter = $queryDelimiter;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">completeAuthorizationRequest</span><span class="hljs-params">(AuthorizationRequest $authorizationRequest)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($authorizationRequest-&gt;getUser() <span class="hljs-keyword">instanceof</span> UserEntityInterface === <span class="hljs-keyword">false</span>) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> \LogicException(<span class="hljs-string">&apos;An instance of UserEntityInterface should be set on the AuthorizationRequest&apos;</span>);
+    }
+
+    $finalRedirectUri = ($authorizationRequest-&gt;getRedirectUri() === <span class="hljs-keyword">null</span>)
+        ? is_array($authorizationRequest-&gt;getClient()-&gt;getRedirectUri())
+            ? $authorizationRequest-&gt;getClient()-&gt;getRedirectUri()[<span class="hljs-number">0</span>]
+            : $authorizationRequest-&gt;getClient()-&gt;getRedirectUri()
+        : $authorizationRequest-&gt;getRedirectUri();
+
+    <span class="hljs-comment">// The user approved the client, redirect them back with an access token</span>
+    <span class="hljs-keyword">if</span> ($authorizationRequest-&gt;isAuthorizationApproved() === <span class="hljs-keyword">true</span>) {
+        $accessToken = $this-&gt;issueAccessToken(
+            $this-&gt;accessTokenTTL,
+            $authorizationRequest-&gt;getClient(),
+            $authorizationRequest-&gt;getUser()-&gt;getIdentifier(),
+            $authorizationRequest-&gt;getScopes()
+        );
+
+        $response = <span class="hljs-keyword">new</span> RedirectResponse();
+        $response-&gt;setRedirectUri(
+            $this-&gt;makeRedirectUri(
+                $finalRedirectUri,
+                [
+                    <span class="hljs-string">&apos;access_token&apos;</span> =&gt; (string) $accessToken-&gt;convertToJWT($this-&gt;privateKey),
+                    <span class="hljs-string">&apos;token_type&apos;</span>   =&gt; <span class="hljs-string">&apos;Bearer&apos;</span>,
+                    <span class="hljs-string">&apos;expires_in&apos;</span>   =&gt; $accessToken-&gt;getExpiryDateTime()-&gt;getTimestamp() - (<span class="hljs-keyword">new</span> \DateTime())-&gt;getTimestamp(),
+                    <span class="hljs-string">&apos;state&apos;</span>        =&gt; $authorizationRequest-&gt;getState(),
+                ],
+                $this-&gt;queryDelimiter
+            )
+        );
+
+        <span class="hljs-keyword">return</span> $response;
+    }
+
+    <span class="hljs-comment">// The user denied the client, redirect them back with an error</span>
+    <span class="hljs-keyword">throw</span> OAuthServerException::accessDenied(
+        <span class="hljs-string">&apos;The user denied the request&apos;</span>,
+        $this-&gt;makeRedirectUri(
+            $finalRedirectUri,
+            [
+                <span class="hljs-string">&apos;state&apos;</span> =&gt; $authorizationRequest-&gt;getState(),
+            ]
+        )
+    );
+}
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x7528;&#x4E8E;&#x6784;&#x5EFA; <code>jwt</code> &#x7684;&#x79C1;&#x94A5;&#x5C31;&#x662F; <code>oauth-private.key</code>&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;<code>jwt</code> &#x4E00;&#x822C;&#x6709;&#x4E09;&#x4E2A;&#x90E8;&#x5206;&#x7EC4;&#x6210;&#xFF1A;<code>header</code>&#x3001;<code>claim</code>&#x3001;<code>sign</code>, &#x7528;&#x4E8E; <code>oauth2</code> &#x7684; <code>jwt</code> &#x4E2D; <code>claim</code> &#x4E3B;&#x8981;&#x6784;&#x6210;&#x6709;&#xFF1A;</p>
+<ul>
+<li>aud  &#x5BA2;&#x6237;&#x7AEF; id</li>
+<li>jti  access_token &#x968F;&#x673A;&#x7801;</li>
+<li>iat  &#x751F;&#x6210;&#x65F6;&#x95F4;</li>
+<li>nbf  &#x62D2;&#x7EDD;&#x63A5;&#x53D7; jwt &#x65F6;&#x95F4;</li>
+<li>exp  access_token &#x5931;&#x6548;&#x65F6;&#x95F4;</li>
+<li>sub  &#x7528;&#x6237; id</li>
+</ul>
+<p>&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x53C2;&#x8003; : <a href="https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32" target="_blank">JSON Web Token (JWT) draft-ietf-oauth-json-web-token-32</a></p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToJWT</span><span class="hljs-params">(CryptKey $privateKey)</span>
+</span>{
+    <span class="hljs-keyword">return</span> (<span class="hljs-keyword">new</span> Builder())
+        -&gt;setAudience($this-&gt;getClient()-&gt;getIdentifier())
+        -&gt;setId($this-&gt;getIdentifier(), <span class="hljs-keyword">true</span>)
+        -&gt;setIssuedAt(time())
+        -&gt;setNotBefore(time())
+        -&gt;setExpiration($this-&gt;getExpiryDateTime()-&gt;getTimestamp())
+        -&gt;setSubject($this-&gt;getUserIdentifier())
+        -&gt;set(<span class="hljs-string">&apos;scopes&apos;</span>, $this-&gt;getScopes())
+        -&gt;sign(<span class="hljs-keyword">new</span> Sha256(), <span class="hljs-keyword">new</span> Key($privateKey-&gt;getKeyPath(), $privateKey-&gt;getPassPhrase()))
+        -&gt;getToken();
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(
+    Encoder $encoder = null,
+    ClaimFactory $claimFactory = null
+)</span> </span>{
+    $this-&gt;encoder = $encoder ?: <span class="hljs-keyword">new</span> Encoder();
+    $this-&gt;claimFactory = $claimFactory ?: <span class="hljs-keyword">new</span> ClaimFactory();
+    $this-&gt;headers = [<span class="hljs-string">&apos;typ&apos;</span>=&gt; <span class="hljs-string">&apos;JWT&apos;</span>, <span class="hljs-string">&apos;alg&apos;</span> =&gt; <span class="hljs-string">&apos;none&apos;</span>];
+    $this-&gt;claims = [];
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setAudience</span><span class="hljs-params">($audience, $replicateAsHeader = false)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;setRegisteredClaim(<span class="hljs-string">&apos;aud&apos;</span>, (string) $audience, $replicateAsHeader);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setId</span><span class="hljs-params">($id, $replicateAsHeader = false)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;setRegisteredClaim(<span class="hljs-string">&apos;jti&apos;</span>, (string) $id, $replicateAsHeader);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setIssuedAt</span><span class="hljs-params">($issuedAt, $replicateAsHeader = false)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;setRegisteredClaim(<span class="hljs-string">&apos;iat&apos;</span>, (int) $issuedAt, $replicateAsHeader);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setNotBefore</span><span class="hljs-params">($notBefore, $replicateAsHeader = false)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;setRegisteredClaim(<span class="hljs-string">&apos;nbf&apos;</span>, (int) $notBefore, $replicateAsHeader);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setExpiration</span><span class="hljs-params">($expiration, $replicateAsHeader = false)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;setRegisteredClaim(<span class="hljs-string">&apos;exp&apos;</span>, (int) $expiration, $replicateAsHeader);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setSubject</span><span class="hljs-params">($subject, $replicateAsHeader = false)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;setRegisteredClaim(<span class="hljs-string">&apos;sub&apos;</span>, (string) $subject, $replicateAsHeader);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sign</span><span class="hljs-params">(Signer $signer, $key)</span>
+</span>{
+    $signer-&gt;modifyHeader($this-&gt;headers);
+
+    $this-&gt;signature = $signer-&gt;sign(
+        $this-&gt;getToken()-&gt;getPayload(),
+        $key
+    );
+
+    <span class="hljs-keyword">return</span> $this;
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getToken</span><span class="hljs-params">()</span>
+</span>{
+    $payload = [
+        $this-&gt;encoder-&gt;base64UrlEncode($this-&gt;encoder-&gt;jsonEncode($this-&gt;headers)),
+        $this-&gt;encoder-&gt;base64UrlEncode($this-&gt;encoder-&gt;jsonEncode($this-&gt;claims))
+    ];
+
+    <span class="hljs-keyword">if</span> ($this-&gt;signature !== <span class="hljs-keyword">null</span>) {
+        $payload[] = $this-&gt;encoder-&gt;base64UrlEncode($this-&gt;signature);
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Token($this-&gt;headers, $this-&gt;claims, $this-&gt;signature, $payload);
+}
+</code></pre>
+<p>&#x6839;&#x636E; JWT &#x7684;&#x751F;&#x6210;&#x65B9;&#x6CD5;&#xFF0C;&#x7B7E;&#x540D;&#x90E8;&#x5206; <code>signature</code> &#x662F; <code>header</code> &#x4E0E; <code>claim</code> &#x8FDB;&#x884C; <code>base64</code> &#x7F16;&#x7801;&#x540E;&#x518D;&#x52A0;&#x5BC6;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<h2 id="&#x5BA2;&#x6237;&#x7AEF;&#x6A21;&#x5F0F;">&#x5BA2;&#x6237;&#x7AEF;&#x6A21;&#x5F0F;</h2>
+<p>&#x5BA2;&#x6237;&#x7AEF;&#x51ED;&#x636E;&#x6388;&#x6743;&#x9002;&#x7528;&#x4E8E;&#x673A;&#x5668;&#x5230;&#x673A;&#x5668;&#x7684;&#x8BA4;&#x8BC1;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x901A;&#x8FC7; API &#x6267;&#x884C;&#x7EF4;&#x62A4;&#x4EFB;&#x52A1;&#x4E2D;&#x4F7F;&#x7528;&#x6B64;&#x6388;&#x6743;&#x3002;&#x8981;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x6388;&#x6743;&#xFF0C;&#x4F60;&#x9996;&#x5148;&#x9700;&#x8981;&#x5728; app/Http/Kernel.php &#x7684; routeMiddleware &#x53D8;&#x91CF;&#x4E2D;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> $routeMiddleware = [
+    <span class="hljs-string">&apos;client&apos;</span> =&gt; CheckClientCredentials::class,
+];
+
+Route::get(<span class="hljs-string">&apos;/user&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(Request $request)</span> </span>{
+    ...
+})-&gt;middleware(<span class="hljs-string">&apos;client&apos;</span>);
+</code></pre>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x901A;&#x8FC7;&#x5411; oauth/token &#x63A5;&#x53E3;&#x53D1;&#x51FA;&#x8BF7;&#x6C42;&#x6765;&#x83B7;&#x53D6;&#x4EE4;&#x724C;:</p>
+<pre><code class="lang-php">$response = $guzzle-&gt;post(<span class="hljs-string">&apos;http://your-app.com/oauth/token&apos;</span>, [
+    <span class="hljs-string">&apos;form_params&apos;</span> =&gt; [
+        <span class="hljs-string">&apos;grant_type&apos;</span> =&gt; <span class="hljs-string">&apos;client_credentials&apos;</span>,
+        <span class="hljs-string">&apos;client_id&apos;</span> =&gt; <span class="hljs-string">&apos;client-id&apos;</span>,
+        <span class="hljs-string">&apos;client_secret&apos;</span> =&gt; <span class="hljs-string">&apos;client-secret&apos;</span>,
+        <span class="hljs-string">&apos;scope&apos;</span> =&gt; <span class="hljs-string">&apos;your-scope&apos;</span>,
+    ],
+]);
+
+<span class="hljs-keyword">echo</span> json_decode((string) $response-&gt;getBody(), <span class="hljs-keyword">true</span>);
+</code></pre>
+<p>&#x5BA2;&#x6237;&#x7AEF;&#x6A21;&#x5F0F;&#x7C7B;&#x4F3C;&#x4E8E;&#x6388;&#x6743;&#x7801;&#x6A21;&#x5F0F;&#x7684;&#x540E;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x5229;&#x7528;&#x5BA2;&#x6237;&#x7AEF; id &#x4E0E;&#x5BA2;&#x6237;&#x7AEF;&#x5BC6;&#x7801;&#x6765;&#x83B7;&#x53D6; <code>access_token</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">respondToAccessTokenRequest</span><span class="hljs-params">(
+    ServerRequestInterface $request,
+    ResponseTypeInterface $responseType,
+    \DateInterval $accessTokenTTL
+)</span> </span>{
+    <span class="hljs-comment">// Validate request</span>
+    $client = $this-&gt;validateClient($request);
+    $scopes = $this-&gt;validateScopes($this-&gt;getRequestParameter(<span class="hljs-string">&apos;scope&apos;</span>, $request, $this-&gt;defaultScope));
+
+    <span class="hljs-comment">// Finalize the requested scopes</span>
+    $finalizedScopes = $this-&gt;scopeRepository-&gt;finalizeScopes($scopes, $this-&gt;getIdentifier(), $client);
+
+    <span class="hljs-comment">// Issue and persist access token</span>
+    $accessToken = $this-&gt;issueAccessToken($accessTokenTTL, $client, <span class="hljs-keyword">null</span>, $finalizedScopes);
+
+    <span class="hljs-comment">// Inject access token into response type</span>
+    $responseType-&gt;setAccessToken($accessToken);
+
+    <span class="hljs-keyword">return</span> $responseType;
+}
+</code></pre>
+<p>&#x7C7B;&#x4F3C;&#x4E8E;&#x6388;&#x6743;&#x7801;&#x6A21;&#x5F0F;&#xFF0C;<code>access_token</code> &#x7684;&#x53D1;&#x653E;&#x4E5F;&#x662F;&#x901A;&#x8FC7; <code>Bearer Token</code> &#x4E2D;&#x5B58;&#x653E; JWT&#x3002;</p>
+<h2 id="&#x5BC6;&#x7801;&#x6A21;&#x5F0F;">&#x5BC6;&#x7801;&#x6A21;&#x5F0F;</h2>
+<p>OAuth2 &#x5BC6;&#x7801;&#x6388;&#x6743;&#x673A;&#x5236;&#x53EF;&#x4EE5;&#x8BA9;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#xFF08;&#x5982;&#x79FB;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF09;&#x90AE;&#x7BB1;&#x5730;&#x5740;&#x6216;&#x8005;&#x7528;&#x6237;&#x540D;&#x548C;&#x5BC6;&#x7801;&#x83B7;&#x53D6;&#x8BBF;&#x95EE;&#x4EE4;&#x724C;&#x3002;&#x5982;&#x6B64;&#x4E00;&#x6765;&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x5B89;&#x5168;&#x5730;&#x5411;&#x81EA;&#x5DF1;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x51FA;&#x8BBF;&#x95EE;&#x4EE4;&#x724C;&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x904D;&#x5386;&#x6574;&#x4E2A; OAuth2 &#x6388;&#x6743;&#x4EE3;&#x7801;&#x91CD;&#x5B9A;&#x5411;&#x6D41;&#x7A0B;&#x3002;</p>
+<p>&#x521B;&#x5EFA;&#x5BC6;&#x7801;&#x6388;&#x6743;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5411;&#x7528;&#x6237;&#x7684;&#x7535;&#x5B50;&#x90AE;&#x4EF6;&#x5730;&#x5740;&#x548C;&#x5BC6;&#x7801;&#x5411; /oauth/token &#x8DEF;&#x7531;&#x53D1;&#x51FA; POST &#x8BF7;&#x6C42;&#x6765;&#x83B7;&#x53D6;&#x8BBF;&#x95EE;&#x4EE4;&#x724C;&#x3002;&#x800C;&#x8BE5;&#x8DEF;&#x7531;&#x5DF2;&#x7ECF;&#x7531; Passport::routes &#x65B9;&#x6CD5;&#x6CE8;&#x518C;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5B9A;&#x4E49;&#x5B83;&#x3002;&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x6210;&#x529F;&#xFF0C;&#x4F1A;&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x8FD4;&#x56DE;&#x7684; JSON &#x54CD;&#x5E94;&#x4E2D;&#x6536;&#x5230;&#x4E00;&#x4E2A; access_token &#x548C; refresh_token&#xFF1A;</p>
+<pre><code class="lang-php">$response = $http-&gt;post(<span class="hljs-string">&apos;http://your-app.com/oauth/token&apos;</span>, [
+    <span class="hljs-string">&apos;form_params&apos;</span> =&gt; [
+        <span class="hljs-string">&apos;grant_type&apos;</span> =&gt; <span class="hljs-string">&apos;password&apos;</span>,
+        <span class="hljs-string">&apos;client_id&apos;</span> =&gt; <span class="hljs-string">&apos;client-id&apos;</span>,
+        <span class="hljs-string">&apos;client_secret&apos;</span> =&gt; <span class="hljs-string">&apos;client-secret&apos;</span>,
+        <span class="hljs-string">&apos;username&apos;</span> =&gt; <span class="hljs-string">&apos;taylor@laravel.com&apos;</span>,
+        <span class="hljs-string">&apos;password&apos;</span> =&gt; <span class="hljs-string">&apos;my-password&apos;</span>,
+        <span class="hljs-string">&apos;scope&apos;</span> =&gt; <span class="hljs-string">&apos;&apos;</span>,
+    ],
+]);
+
+<span class="hljs-keyword">return</span> json_decode((string) $response-&gt;getBody(), <span class="hljs-keyword">true</span>);
+</code></pre>
+<p>&#x53EA;&#x8981;&#x7528;&#x7528;&#x6237;&#x540D;&#x4E0E;&#x5BC6;&#x7801;&#x6765;&#x9A8C;&#x8BC1;&#x5408;&#x6CD5;&#x6027;&#x5C31;&#x53EF;&#x4EE5;&#x53D1;&#x653E; <code>access_token</code> &#x4E0E; <code>refresh_token</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">respondToAccessTokenRequest</span><span class="hljs-params">(
+    ServerRequestInterface $request,
+    ResponseTypeInterface $responseType,
+    \DateInterval $accessTokenTTL
+)</span> </span>{
+    <span class="hljs-comment">// Validate request</span>
+    $client = $this-&gt;validateClient($request);
+    $scopes = $this-&gt;validateScopes($this-&gt;getRequestParameter(<span class="hljs-string">&apos;scope&apos;</span>, $request, $this-&gt;defaultScope));
+    $user = $this-&gt;validateUser($request, $client);
+
+    <span class="hljs-comment">// Finalize the requested scopes</span>
+    $finalizedScopes = $this-&gt;scopeRepository-&gt;finalizeScopes($scopes, $this-&gt;getIdentifier(), $client, $user-&gt;getIdentifier());
+
+    <span class="hljs-comment">// Issue and persist new tokens</span>
+    $accessToken = $this-&gt;issueAccessToken($accessTokenTTL, $client, $user-&gt;getIdentifier(), $finalizedScopes);
+    $refreshToken = $this-&gt;issueRefreshToken($accessToken);
+
+    <span class="hljs-comment">// Inject tokens into response</span>
+    $responseType-&gt;setAccessToken($accessToken);
+    $responseType-&gt;setRefreshToken($refreshToken);
+
+    <span class="hljs-keyword">return</span> $responseType;
+}
+
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validateUser</span><span class="hljs-params">(ServerRequestInterface $request, ClientEntityInterface $client)</span>
+</span>{
+    $username = $this-&gt;getRequestParameter(<span class="hljs-string">&apos;username&apos;</span>, $request);
+    <span class="hljs-keyword">if</span> (is_null($username)) {
+        <span class="hljs-keyword">throw</span> OAuthServerException::invalidRequest(<span class="hljs-string">&apos;username&apos;</span>);
+    }
+
+    $password = $this-&gt;getRequestParameter(<span class="hljs-string">&apos;password&apos;</span>, $request);
+    <span class="hljs-keyword">if</span> (is_null($password)) {
+        <span class="hljs-keyword">throw</span> OAuthServerException::invalidRequest(<span class="hljs-string">&apos;password&apos;</span>);
+    }
+
+    $user = $this-&gt;userRepository-&gt;getUserEntityByUserCredentials(
+        $username,
+        $password,
+        $this-&gt;getIdentifier(),
+        $client
+    );
+    <span class="hljs-keyword">if</span> ($user <span class="hljs-keyword">instanceof</span> UserEntityInterface === <span class="hljs-keyword">false</span>) {
+        $this-&gt;getEmitter()-&gt;emit(<span class="hljs-keyword">new</span> RequestEvent(RequestEvent::USER_AUTHENTICATION_FAILED, $request));
+
+        <span class="hljs-keyword">throw</span> OAuthServerException::invalidCredentials();
+    }
+
+    <span class="hljs-keyword">return</span> $user;
+}
+</code></pre>
+<h2 id="&#x8DEF;&#x7531;&#x4FDD;&#x62A4;">&#x8DEF;&#x7531;&#x4FDD;&#x62A4;</h2>
+<p>Passport &#x5305;&#x542B;&#x4E00;&#x4E2A; &#x9A8C;&#x8BC1;&#x4FDD;&#x62A4;&#x673A;&#x5236; &#x53EF;&#x4EE5;&#x9A8C;&#x8BC1;&#x8BF7;&#x6C42;&#x4E2D;&#x4F20;&#x5165;&#x7684;&#x8BBF;&#x95EE;&#x4EE4;&#x724C;&#x3002;&#x914D;&#x7F6E; api &#x7684;&#x770B;&#x5B88;&#x5668;&#x4F7F;&#x7528; passport &#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x540E;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5728;&#x9700;&#x8981;&#x6709;&#x6548;&#x8BBF;&#x95EE;&#x4EE4;&#x724C;&#x7684;&#x4EFB;&#x4F55;&#x8DEF;&#x7531;&#x4E0A;&#x6307;&#x5B9A; auth:api &#x4E2D;&#x95F4;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php">Route::get(<span class="hljs-string">&apos;/user&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">//</span>
+})-&gt;middleware(<span class="hljs-string">&apos;auth:api&apos;</span>);
+</code></pre>
+<p>&#x5F53;&#x8C03;&#x7528; Passport &#x4FDD;&#x62A4;&#x4E0B;&#x7684;&#x8DEF;&#x7531;&#x65F6;&#xFF0C;&#x63A5;&#x5165;&#x7684; API &#x5E94;&#x7528;&#x9700;&#x8981;&#x5C06;&#x8BBF;&#x95EE;&#x4EE4;&#x724C;&#x4F5C;&#x4E3A; Bearer &#x4EE4;&#x724C;&#x653E;&#x5728;&#x8BF7;&#x6C42;&#x5934; Authorization &#x4E2D;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x4F7F;&#x7528; Guzzle HTTP &#x5E93;&#x65F6;&#xFF1A;</p>
+<pre><code class="lang-php">$response = $client-&gt;request(<span class="hljs-string">&apos;GET&apos;</span>, <span class="hljs-string">&apos;/api/user&apos;</span>, [
+    <span class="hljs-string">&apos;headers&apos;</span> =&gt; [
+        <span class="hljs-string">&apos;Accept&apos;</span> =&gt; <span class="hljs-string">&apos;application/json&apos;</span>,
+        <span class="hljs-string">&apos;Authorization&apos;</span> =&gt; <span class="hljs-string">&apos;Bearer &apos;</span>.$accessToken,
+    ],
+]);
+</code></pre>
+<h2 id="authapi-&#x4E2D;&#x95F4;&#x4EF6;">auth:api &#x4E2D;&#x95F4;&#x4EF6;</h2>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x914D;&#x7F6E;&#x5B8C;&#x6210; <code>Passport</code> &#x7684;&#x56DB;&#x79CD;&#x6A21;&#x5F0F;&#x5E76;&#x62FF;&#x5230; <code>access_token</code> &#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x4EE4;&#x724C;&#x53BB;&#x8D44;&#x6E90;&#x670D;&#x52A1;&#x5668;&#x83B7;&#x53D6;&#x6570;&#x636E;&#x4E86;&#x3002;&#x8D44;&#x6E90;&#x670D;&#x52A1;&#x5668;&#x6700;&#x5E38;&#x7528;&#x7684;&#x6821;&#x9A8C;&#x4EE4;&#x724C;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#x5C31;&#x662F; <code>auth:api</code>&#xFF0C;&#x4E2D;&#x95F4;&#x4EF6;&#x662F; <code>auth</code>&#xFF0C;<code>api</code> &#x662F;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x53C2;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-string">&apos;auth&apos;</span> =&gt; \Illuminate\Auth\Middleware\Authenticate::class,
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x662F;&#x9A8C;&#x8BC1;&#x767B;&#x5F55;&#x72B6;&#x6001;&#x7684;&#x5E38;&#x7528;&#x4E2D;&#x95F4;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Authenticate</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Auth $auth)</span>
+    </span>{
+        $this-&gt;auth = $auth;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handle</span><span class="hljs-params">($request, Closure $next, ...$guards)</span>
+    </span>{
+        $this-&gt;authenticate($guards);
+
+        <span class="hljs-keyword">return</span> $next($request);
+    }
+
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">authenticate</span><span class="hljs-params">(array $guards)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">empty</span>($guards)) {
+            <span class="hljs-keyword">return</span> $this-&gt;auth-&gt;authenticate();
+        }
+
+        <span class="hljs-keyword">foreach</span> ($guards <span class="hljs-keyword">as</span> $guard) {
+            <span class="hljs-keyword">if</span> ($this-&gt;auth-&gt;guard($guard)-&gt;check()) {
+                <span class="hljs-keyword">return</span> $this-&gt;auth-&gt;shouldUse($guard);
+            }
+        }
+
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> AuthenticationException(<span class="hljs-string">&apos;Unauthenticated.&apos;</span>, $guards);
+    }
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x7684;&#x53C2;&#x6570; <code>api</code> &#x5C31;&#x662F;&#x4E0A;&#x9762;&#x7684; <code>guards</code>&#xFF0C;<code>Auth</code> &#x662F; <code>laravel</code> &#x81EA;&#x5E26;&#x7684;&#x767B;&#x5F55;&#x6821;&#x9A8C;&#x670D;&#x52A1;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AuthManager</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">FactoryContract</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">guard</span><span class="hljs-params">($name = null)</span>
+    </span>{
+        $name = $name ?: $this-&gt;getDefaultDriver();
+
+        <span class="hljs-keyword">return</span> $this-&gt;guards[$name] ?? $this-&gt;guards[$name] = $this-&gt;resolve($name);
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resolve</span><span class="hljs-params">($name)</span>
+    </span>{
+        $config = $this-&gt;getConfig($name);
+
+        <span class="hljs-keyword">if</span> (is_null($config)) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InvalidArgumentException(<span class="hljs-string">&quot;Auth guard [{$name}] is not defined.&quot;</span>);
+        }
+
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($this-&gt;customCreators[$config[<span class="hljs-string">&apos;driver&apos;</span>]])) {
+            <span class="hljs-keyword">return</span> $this-&gt;callCustomCreator($name, $config);
+        }
+
+        $driverMethod = <span class="hljs-string">&apos;create&apos;</span>.ucfirst($config[<span class="hljs-string">&apos;driver&apos;</span>]).<span class="hljs-string">&apos;Driver&apos;</span>;
+
+        <span class="hljs-keyword">if</span> (method_exists($this, $driverMethod)) {
+            <span class="hljs-keyword">return</span> $this-&gt;{$driverMethod}($name, $config);
+        }
+
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InvalidArgumentException(<span class="hljs-string">&quot;Auth guard driver [{$name}] is not defined.&quot;</span>);
+    }
+
+}
+</code></pre>
+<p>&#x6587;&#x6863;&#x544A;&#x8BC9;&#x6211;&#x4EEC;&#xFF0C;&#x82E5;&#x60F3;&#x8981;&#x4F7F;&#x7528; <code>passport</code> &#x670D;&#x52A1;&#xFF0C;&#x6211;&#x4EEC;&#x7684; <code>config/auth</code> &#x6587;&#x4EF6;&#x9700;&#x8981;&#x5982;&#x6B64;&#x914D;&#x7F6E;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-string">&apos;guards&apos;</span> =&gt; [
+    <span class="hljs-string">&apos;web&apos;</span> =&gt; [
+        <span class="hljs-string">&apos;driver&apos;</span> =&gt; <span class="hljs-string">&apos;session&apos;</span>,
+        <span class="hljs-string">&apos;provider&apos;</span> =&gt; <span class="hljs-string">&apos;users&apos;</span>,
+    ],
+
+    <span class="hljs-string">&apos;api&apos;</span> =&gt; [
+        <span class="hljs-string">&apos;driver&apos;</span> =&gt; <span class="hljs-string">&apos;passport&apos;</span>,
+        <span class="hljs-string">&apos;provider&apos;</span> =&gt; <span class="hljs-string">&apos;users&apos;</span>,
+    ],
+],
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;<code>driver</code> &#x5C31;&#x662F; <code>passport</code>&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x542F;&#x52A8; <code>passport</code> &#x670D;&#x52A1;&#x7684;&#x65F6;&#x5019;&#x66FE;&#x7ECF;&#x6CE8;&#x518C;&#x8FC7;&#x4E00;&#x4E2A; <code>Guard</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registerGuard</span><span class="hljs-params">()</span>
+</span>{
+    Auth::extend(<span class="hljs-string">&apos;passport&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app, $name, array $config)</span> </span>{
+        <span class="hljs-keyword">return</span> tap($this-&gt;makeGuard($config), <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($guard)</span> </span>{
+            $this-&gt;app-&gt;refresh(<span class="hljs-string">&apos;request&apos;</span>, $guard, <span class="hljs-string">&apos;setRequest&apos;</span>);
+        });
+    });
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeGuard</span><span class="hljs-params">(array $config)</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> RequestGuard(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($request)</span> <span class="hljs-title">use</span> <span class="hljs-params">($config)</span> </span>{
+        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">new</span> TokenGuard(
+            $this-&gt;app-&gt;make(ResourceServer::class),
+            Auth::createUserProvider($config[<span class="hljs-string">&apos;provider&apos;</span>]),
+            $this-&gt;app-&gt;make(TokenRepository::class),
+            $this-&gt;app-&gt;make(ClientRepository::class),
+            $this-&gt;app-&gt;make(<span class="hljs-string">&apos;encrypter&apos;</span>)
+        ))-&gt;user($request);
+    }, $this-&gt;app[<span class="hljs-string">&apos;request&apos;</span>]);
+}
+</code></pre>
+<p>&#x56E0;&#x6B64;&#xFF0C;<code>passport</code> &#x4F7F;&#x7528;&#x7684;&#x5C31;&#x662F;&#x8FD9;&#x4E2A; <code>TokenGuard</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TokenGuard</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(ResourceServer $server,
+                                UserProvider $provider,
+                                TokenRepository $tokens,
+                                ClientRepository $clients,
+                                Encrypter $encrypter)</span>
+    </span>{
+        $this-&gt;server = $server;
+        $this-&gt;tokens = $tokens;
+        $this-&gt;clients = $clients;
+        $this-&gt;provider = $provider;
+        $this-&gt;encrypter = $encrypter;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">user</span><span class="hljs-params">(Request $request)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> ($request-&gt;bearerToken()) {
+            <span class="hljs-keyword">return</span> $this-&gt;authenticateViaBearerToken($request);
+        } <span class="hljs-keyword">elseif</span> ($request-&gt;cookie(Passport::cookie())) {
+            <span class="hljs-keyword">return</span> $this-&gt;authenticateViaCookie($request);
+        }
+    }
+}
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;<code>TokenGuard</code> &#x652F;&#x6301;&#x4E24;&#x79CD; <code>Token</code> &#x7684;&#x9A8C;&#x8BC1;&#xFF1A;<code>BearerToken</code> &#x4E0E; <code>cookie</code>&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x9996;&#x5148;&#x770B; <code>BearerToken</code>:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bearerToken</span><span class="hljs-params">()</span>
+</span>{
+    $header = $this-&gt;header(<span class="hljs-string">&apos;Authorization&apos;</span>, <span class="hljs-string">&apos;&apos;</span>);
+
+    <span class="hljs-keyword">if</span> (Str::startsWith($header, <span class="hljs-string">&apos;Bearer &apos;</span>)) {
+        <span class="hljs-keyword">return</span> Str::substr($header, <span class="hljs-number">7</span>);
+    }
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">authenticateViaBearerToken</span><span class="hljs-params">($request)</span>
+</span>{
+    $psr = (<span class="hljs-keyword">new</span> DiactorosFactory)-&gt;createRequest($request);
+
+    <span class="hljs-keyword">try</span> {
+        $psr = $this-&gt;server-&gt;validateAuthenticatedRequest($psr);
+
+        $user = $this-&gt;provider-&gt;retrieveById(
+            $psr-&gt;getAttribute(<span class="hljs-string">&apos;oauth_user_id&apos;</span>)
+        );
+
+        <span class="hljs-keyword">if</span> (! $user) {
+            <span class="hljs-keyword">return</span>;
+        }
+
+        $token = $this-&gt;tokens-&gt;find(
+            $psr-&gt;getAttribute(<span class="hljs-string">&apos;oauth_access_token_id&apos;</span>)
+        );
+
+        $clientId = $psr-&gt;getAttribute(<span class="hljs-string">&apos;oauth_client_id&apos;</span>);
+
+        <span class="hljs-keyword">if</span> ($this-&gt;clients-&gt;revoked($clientId)) {
+            <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-keyword">return</span> $token ? $user-&gt;withAccessToken($token) : <span class="hljs-keyword">null</span>;
+    } <span class="hljs-keyword">catch</span> (OAuthServerException $e) {
+        <span class="hljs-keyword">return</span> Container::getInstance()-&gt;make(
+            ExceptionHandler::class
+        )-&gt;report($e);
+    }
+}
+</code></pre>
+<p>&#x9996;&#x5148;&#xFF0C;&#x9700;&#x8981;&#x9A8C;&#x8BC1;&#x8BF7;&#x6C42;&#x7684;&#x5408;&#x6CD5;&#x6027;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ResourceServer</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validateAuthenticatedRequest</span><span class="hljs-params">(ServerRequestInterface $request)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;getAuthorizationValidator()-&gt;validateAuthorization($request);
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAuthorizationValidator</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">if</span> ($this-&gt;authorizationValidator <span class="hljs-keyword">instanceof</span> AuthorizationValidatorInterface === <span class="hljs-keyword">false</span>) {
+            $this-&gt;authorizationValidator = <span class="hljs-keyword">new</span> BearerTokenValidator($this-&gt;accessTokenRepository);
+        }
+
+        $this-&gt;authorizationValidator-&gt;setPublicKey($this-&gt;publicKey);
+
+        <span class="hljs-keyword">return</span> $this-&gt;authorizationValidator;
+    }
+
+}
+</code></pre>
+<p><code>BearerTokenValidator</code> &#x4E13;&#x95E8;&#x7528;&#x4E8E;&#x9A8C;&#x8BC1; <code>BearerToken</code> &#x7684;&#x5408;&#x6CD5;&#x6027;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BearerTokenValidator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">AuthorizationValidatorInterface</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validateAuthorization</span><span class="hljs-params">(ServerRequestInterface $request)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> ($request-&gt;hasHeader(<span class="hljs-string">&apos;authorization&apos;</span>) === <span class="hljs-keyword">false</span>) {
+            <span class="hljs-keyword">throw</span> OAuthServerException::accessDenied(<span class="hljs-string">&apos;Missing &quot;Authorization&quot; header&apos;</span>);
+        }
+
+        $header = $request-&gt;getHeader(<span class="hljs-string">&apos;authorization&apos;</span>);
+        $jwt = trim(preg_replace(<span class="hljs-string">&apos;/^(?:\s+)?Bearer\s/&apos;</span>, <span class="hljs-string">&apos;&apos;</span>, $header[<span class="hljs-number">0</span>]));
+
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// Attempt to parse and validate the JWT</span>
+            $token = (<span class="hljs-keyword">new</span> Parser())-&gt;parse($jwt);
+            <span class="hljs-keyword">if</span> ($token-&gt;verify(<span class="hljs-keyword">new</span> Sha256(), $this-&gt;publicKey-&gt;getKeyPath()) === <span class="hljs-keyword">false</span>) {
+                <span class="hljs-keyword">throw</span> OAuthServerException::accessDenied(<span class="hljs-string">&apos;Access token could not be verified&apos;</span>);
+            }
+
+            <span class="hljs-comment">// Ensure access token hasn&apos;t expired</span>
+            $data = <span class="hljs-keyword">new</span> ValidationData();
+            $data-&gt;setCurrentTime(time());
+
+            <span class="hljs-keyword">if</span> ($token-&gt;validate($data) === <span class="hljs-keyword">false</span>) {
+                <span class="hljs-keyword">throw</span> OAuthServerException::accessDenied(<span class="hljs-string">&apos;Access token is invalid&apos;</span>);
+            }
+
+            <span class="hljs-comment">// Check if token has been revoked</span>
+            <span class="hljs-keyword">if</span> ($this-&gt;accessTokenRepository-&gt;isAccessTokenRevoked($token-&gt;getClaim(<span class="hljs-string">&apos;jti&apos;</span>))) {
+                <span class="hljs-keyword">throw</span> OAuthServerException::accessDenied(<span class="hljs-string">&apos;Access token has been revoked&apos;</span>);
+            }
+
+            <span class="hljs-comment">// Return the request with additional attributes</span>
+            <span class="hljs-keyword">return</span> $request
+                -&gt;withAttribute(<span class="hljs-string">&apos;oauth_access_token_id&apos;</span>, $token-&gt;getClaim(<span class="hljs-string">&apos;jti&apos;</span>))
+                -&gt;withAttribute(<span class="hljs-string">&apos;oauth_client_id&apos;</span>, $token-&gt;getClaim(<span class="hljs-string">&apos;aud&apos;</span>))
+                -&gt;withAttribute(<span class="hljs-string">&apos;oauth_user_id&apos;</span>, $token-&gt;getClaim(<span class="hljs-string">&apos;sub&apos;</span>))
+                -&gt;withAttribute(<span class="hljs-string">&apos;oauth_scopes&apos;</span>, $token-&gt;getClaim(<span class="hljs-string">&apos;scopes&apos;</span>));
+        } <span class="hljs-keyword">catch</span> (\InvalidArgumentException $exception) {
+            <span class="hljs-comment">// JWT couldn&apos;t be parsed so return the request as is</span>
+            <span class="hljs-keyword">throw</span> OAuthServerException::accessDenied($exception-&gt;getMessage());
+        } <span class="hljs-keyword">catch</span> (\RuntimeException $exception) {
+            <span class="hljs-comment">//JWR couldn&apos;t be parsed so return the request as is</span>
+            <span class="hljs-keyword">throw</span> OAuthServerException::accessDenied(<span class="hljs-string">&apos;Error while decoding to JSON&apos;</span>);
+        }
+    }
+}
+</code></pre>
+<p>&#x901A;&#x8FC7; <code>passport</code> &#x62FF;&#x5230;&#x7684; <code>access_token</code> &#x90FD;&#x662F; <code>JWT</code> &#x683C;&#x5F0F;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x9996;&#x5148;&#x7B2C;&#x4E00;&#x6B65;&#x9700;&#x8981;&#x5C06; <code>JWT</code> &#x89E3;&#x6790;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Parser</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parse</span><span class="hljs-params">($jwt)</span>
+    </span>{
+        $data = $this-&gt;splitJwt($jwt);
+        $header = $this-&gt;parseHeader($data[<span class="hljs-number">0</span>]);
+        $claims = $this-&gt;parseClaims($data[<span class="hljs-number">1</span>]);
+        $signature = $this-&gt;parseSignature($header, $data[<span class="hljs-number">2</span>]);
+
+        <span class="hljs-keyword">foreach</span> ($claims <span class="hljs-keyword">as</span> $name =&gt; $value) {
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($header[$name])) {
+                $header[$name] = $value;
+            }
+        }
+
+        <span class="hljs-keyword">if</span> ($signature === <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">unset</span>($data[<span class="hljs-number">2</span>]);
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Token($header, $claims, $signature, $data);
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">splitJwt</span><span class="hljs-params">($jwt)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (!is_string($jwt)) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InvalidArgumentException(<span class="hljs-string">&apos;The JWT string must have two dots&apos;</span>);
+        }
+
+        $data = explode(<span class="hljs-string">&apos;.&apos;</span>, $jwt);
+
+        <span class="hljs-keyword">if</span> (count($data) != <span class="hljs-number">3</span>) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InvalidArgumentException(<span class="hljs-string">&apos;The JWT string must have two dots&apos;</span>);
+        }
+
+        <span class="hljs-keyword">return</span> $data;
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseHeader</span><span class="hljs-params">($data)</span>
+    </span>{
+        $header = (<span class="hljs-keyword">array</span>) $this-&gt;decoder-&gt;jsonDecode($this-&gt;decoder-&gt;base64UrlDecode($data));
+
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($header[<span class="hljs-string">&apos;enc&apos;</span>])) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InvalidArgumentException(<span class="hljs-string">&apos;Encryption is not supported yet&apos;</span>);
+        }
+
+        <span class="hljs-keyword">return</span> $header;
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseClaims</span><span class="hljs-params">($data)</span>
+    </span>{
+        $claims = (<span class="hljs-keyword">array</span>) $this-&gt;decoder-&gt;jsonDecode($this-&gt;decoder-&gt;base64UrlDecode($data));
+
+        <span class="hljs-keyword">foreach</span> ($claims <span class="hljs-keyword">as</span> $name =&gt; &amp;$value) {
+            $value = $this-&gt;claimFactory-&gt;create($name, $value);
+        }
+
+        <span class="hljs-keyword">return</span> $claims;
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseSignature</span><span class="hljs-params">(array $header, $data)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> ($data == <span class="hljs-string">&apos;&apos;</span> || !<span class="hljs-keyword">isset</span>($header[<span class="hljs-string">&apos;alg&apos;</span>]) || $header[<span class="hljs-string">&apos;alg&apos;</span>] == <span class="hljs-string">&apos;none&apos;</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+        }
+
+        $hash = $this-&gt;decoder-&gt;base64UrlDecode($data);
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Signature($hash);
+    }
+
+}
+</code></pre>
+<p>&#x83B7;&#x5F97; <code>JWT</code> &#x7684;&#x4E09;&#x4E2A;&#x90E8;&#x5206;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x8981;&#x9A8C;&#x8BC1;&#x7B7E;&#x540D;&#x90E8;&#x5206;&#x662F;&#x5426;&#x5408;&#x6CD5;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Token</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">verify</span><span class="hljs-params">(Signer $signer, $key)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> ($this-&gt;signature === <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> BadMethodCallException(<span class="hljs-string">&apos;This token is not signed&apos;</span>);
+        }
+
+        <span class="hljs-keyword">if</span> ($this-&gt;headers[<span class="hljs-string">&apos;alg&apos;</span>] !== $signer-&gt;getAlgorithmId()) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        }
+
+        <span class="hljs-keyword">return</span> $this-&gt;signature-&gt;verify($signer, $this-&gt;getPayload(), $key);
+    }
+}
+</code></pre>
+<p>&#x9A8C;&#x8BC1;&#x901A;&#x8FC7;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x8981;&#x9A8C;&#x8BC1; <code>JWT</code> &#x5404;&#x4E2A;&#x90E8;&#x5206;&#x662F;&#x5426;&#x5408;&#x6CD5;&#xFF1A;</p>
+<pre><code class="lang-php">$data = <span class="hljs-keyword">new</span> ValidationData();
+$data-&gt;setCurrentTime(time());
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($currentTime = null)</span>
+</span>{
+    $currentTime = $currentTime ?: time();
+
+    $this-&gt;items = [
+        <span class="hljs-string">&apos;jti&apos;</span> =&gt; <span class="hljs-keyword">null</span>,
+        <span class="hljs-string">&apos;iss&apos;</span> =&gt; <span class="hljs-keyword">null</span>,
+        <span class="hljs-string">&apos;aud&apos;</span> =&gt; <span class="hljs-keyword">null</span>,
+        <span class="hljs-string">&apos;sub&apos;</span> =&gt; <span class="hljs-keyword">null</span>,
+        <span class="hljs-string">&apos;iat&apos;</span> =&gt; $currentTime,
+        <span class="hljs-string">&apos;nbf&apos;</span> =&gt; $currentTime,
+        <span class="hljs-string">&apos;exp&apos;</span> =&gt; $currentTime
+    ];
+}
+
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validate</span><span class="hljs-params">(ValidationData $data)</span>
+</span>{
+    <span class="hljs-keyword">foreach</span> ($this-&gt;getValidatableClaims() <span class="hljs-keyword">as</span> $claim) {
+        <span class="hljs-keyword">if</span> (!$claim-&gt;validate($data)) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        }
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+}    
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(array $callbacks = [])</span>
+</span>{
+    $this-&gt;callbacks = array_merge(
+        [
+            <span class="hljs-string">&apos;iat&apos;</span> =&gt; [$this, <span class="hljs-string">&apos;createLesserOrEqualsTo&apos;</span>],
+            <span class="hljs-string">&apos;nbf&apos;</span> =&gt; [$this, <span class="hljs-string">&apos;createLesserOrEqualsTo&apos;</span>],
+            <span class="hljs-string">&apos;exp&apos;</span> =&gt; [$this, <span class="hljs-string">&apos;createGreaterOrEqualsTo&apos;</span>],
+            <span class="hljs-string">&apos;iss&apos;</span> =&gt; [$this, <span class="hljs-string">&apos;createEqualsTo&apos;</span>],
+            <span class="hljs-string">&apos;aud&apos;</span> =&gt; [$this, <span class="hljs-string">&apos;createEqualsTo&apos;</span>],
+            <span class="hljs-string">&apos;sub&apos;</span> =&gt; [$this, <span class="hljs-string">&apos;createEqualsTo&apos;</span>],
+            <span class="hljs-string">&apos;jti&apos;</span> =&gt; [$this, <span class="hljs-string">&apos;createEqualsTo&apos;</span>]
+        ],
+        $callbacks
+    );
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x524D;&#x9762;&#x8BF4;&#x8FC7;&#xFF0C;</p>
+<ul>
+<li>aud &#x5BA2;&#x6237;&#x7AEF; id</li>
+<li>jti access_token &#x968F;&#x673A;&#x7801;</li>
+<li>iat &#x751F;&#x6210;&#x65F6;&#x95F4;</li>
+<li>nbf &#x62D2;&#x7EDD;&#x63A5;&#x53D7; jwt &#x65F6;&#x95F4;</li>
+<li>exp access_token &#x5931;&#x6548;&#x65F6;&#x95F4;</li>
+<li>sub &#x7528;&#x6237; id</li>
+</ul>
+<p>&#x56E0;&#x6B64;&#xFF0C;<code>JWT</code> &#x7684;&#x751F;&#x6210;&#x65F6;&#x95F4;&#x3001;&#x62D2;&#x7EDD;&#x63A5;&#x53D7;&#x65F6;&#x95F4;&#x3001;&#x5931;&#x6548;&#x65F6;&#x95F4;&#x5C31;&#x4F1A;&#x88AB;&#x9A8C;&#x8BC1;&#x5B8C;&#x6210;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x8FD8;&#x4F1A;&#x9A8C;&#x8BC1;&#x6700;&#x91CD;&#x8981;&#x7684; <code>access_token</code> &#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">if</span> ($this-&gt;accessTokenRepository-&gt;isAccessTokenRevoked($token-&gt;getClaim(<span class="hljs-string">&apos;jti&apos;</span>))) {
+    <span class="hljs-keyword">throw</span> OAuthServerException::accessDenied(<span class="hljs-string">&apos;Access token has been revoked&apos;</span>);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isAccessTokenRevoked</span><span class="hljs-params">($tokenId)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;tokenRepository-&gt;isAccessTokenRevoked($tokenId);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isAccessTokenRevoked</span><span class="hljs-params">($id)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($token = $this-&gt;find($id)) {
+        <span class="hljs-keyword">return</span> $token-&gt;revoked;
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+}
+</code></pre>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;<code>TokenGuard</code> &#x5C31;&#x4F1A;&#x9A8C;&#x8BC1; <code>userid</code>&#x3001;<code>clientid</code> &#x4E0E; <code>access_token</code> &#x7684;&#x5408;&#x6CD5;&#x6027;&#xFF1A;</p>
+<pre><code class="lang-php">$user = $this-&gt;provider-&gt;retrieveById(
+    $psr-&gt;getAttribute(<span class="hljs-string">&apos;oauth_user_id&apos;</span>)
+);
+
+<span class="hljs-keyword">if</span> (! $user) {
+    <span class="hljs-keyword">return</span>;
+}
+
+$token = $this-&gt;tokens-&gt;find(
+    $psr-&gt;getAttribute(<span class="hljs-string">&apos;oauth_access_token_id&apos;</span>)
+);
+
+$clientId = $psr-&gt;getAttribute(<span class="hljs-string">&apos;oauth_client_id&apos;</span>);
+
+<span class="hljs-keyword">if</span> ($this-&gt;clients-&gt;revoked($clientId)) {
+    <span class="hljs-keyword">return</span>;
+}
+
+<span class="hljs-keyword">return</span> $token ? $user-&gt;withAccessToken($token) : <span class="hljs-keyword">null</span>;
+</code></pre>
+<p>&#x4E2D;&#x95F4;&#x4EF6;&#x9A8C;&#x8BC1;&#x5B8C;&#x6210;&#x3002;</p>
+<h2 id="&#x5BA2;&#x6237;&#x7AEF;&#x6A21;&#x5F0F;&#x4E2D;&#x95F4;&#x4EF6;-checkclientcredentials">&#x5BA2;&#x6237;&#x7AEF;&#x6A21;&#x5F0F;&#x4E2D;&#x95F4;&#x4EF6; CheckClientCredentials</h2>
+<p>&#x6211;&#x4EEC;&#x5728;&#x4E0A;&#x9762;&#x53EF;&#x4EE5;&#x770B;&#x5230; <code>auth:api</code> &#x4E2D;&#x95F4;&#x4EF6;&#x4E0D;&#x4EC5;&#x9A8C;&#x8BC1; <code>access_token</code>&#xFF0C;&#x8FD8;&#x4F1A;&#x9A8C;&#x8BC1; <code>user_id</code>&#xFF0C;&#x5BF9;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#x6A21;&#x5F0F;&#x6765;&#x8BF4;&#xFF0C;&#x7531;&#x4E8E; <code>JWT</code> &#x4E2D;&#x5E76;&#x6CA1;&#x6709;&#x7528;&#x6237;&#x4FE1;&#x606F;&#xFF0C;&#x56E0;&#x6B64; <code>passport</code> &#x4E13;&#x95E8;&#x5B58;&#x5728;&#x4E2D;&#x95F4;&#x4EF6; <code>CheckClientCredentials</code> &#x6765;&#x505A;&#x975E;&#x767B;&#x5F55;&#x72B6;&#x6001;&#x7684;&#x6821;&#x9A8C;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CheckClientCredentials</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handle</span><span class="hljs-params">($request, Closure $next, ...$scopes)</span>
+    </span>{
+        $psr = (<span class="hljs-keyword">new</span> DiactorosFactory)-&gt;createRequest($request);
+
+        <span class="hljs-keyword">try</span> {
+            $psr = $this-&gt;server-&gt;validateAuthenticatedRequest($psr);
+        } <span class="hljs-keyword">catch</span> (OAuthServerException $e) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> AuthenticationException;
+        }
+
+        $this-&gt;validateScopes($psr, $scopes);
+
+        <span class="hljs-keyword">return</span> $next($request);
+    }
+}
+</code></pre>
+<h2 id="&#x4F7F;&#x7528;-javascript-&#x63A5;&#x5165;-api">&#x4F7F;&#x7528; JavaScript &#x63A5;&#x5165; API</h2>
+<p>&#x5728;&#x6784;&#x5EFA; API &#x65F6;&#xFF0C;&#x5982;&#x679C;&#x80FD;&#x901A;&#x8FC7; JavaScript &#x5E94;&#x7528;&#x63A5;&#x5165;&#x81EA;&#x5DF1;&#x7684; API &#x5C06;&#x4F1A;&#x7ED9;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x5E26;&#x6765;&#x6781;&#x5927;&#x7684;&#x4FBF;&#x5229;&#x3002;&#x8FD9;&#x79CD; API &#x5F00;&#x53D1;&#x65B9;&#x6CD5;&#x5141;&#x8BB8;&#x4F60;&#x4F7F;&#x7528;&#x81EA;&#x5DF1;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684; API &#x548C;&#x522B;&#x4EBA;&#x5171;&#x4EAB;&#x7684; API&#x3002;&#x4F60;&#x7684; Web &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3001;&#x79FB;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3001;&#x7B2C;&#x4E09;&#x65B9;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4EE5;&#x53CA;&#x53EF;&#x80FD;&#x5728;&#x5404;&#x79CD;&#x8F6F;&#x4EF6;&#x5305;&#x7BA1;&#x7406;&#x5668;&#x4E0A;&#x53D1;&#x5E03;&#x7684;&#x4EFB;&#x4F55; SDK &#x90FD;&#x53EF;&#x80FD;&#x4F1A;&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;API&#x3002;</p>
+<p>&#x901A;&#x5E38;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x4ECE; JavaScript &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x4F7F;&#x7528; API&#xFF0C;&#x5219;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5411;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x53D1;&#x9001;&#x8BBF;&#x95EE;&#x4EE4;&#x724C;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x4F20;&#x9012;&#x7ED9;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;&#x4F46;&#x662F;&#xFF0C;Passport &#x6709;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#x3002;&#x5C06; CreateFreshApiToken &#x4E2D;&#x95F4;&#x4EF6;&#x6DFB;&#x52A0;&#x5230; web &#x4E2D;&#x95F4;&#x4EF6;&#x7EC4;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-string">&apos;web&apos;</span> =&gt; [
+    <span class="hljs-comment">// Other middleware...</span>
+    \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
+],
+</code></pre>
+<p>Passport &#x7684;&#x8FD9;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x5C06;&#x4F1A;&#x5728;&#x4F60;&#x6240;&#x6709;&#x7684;&#x5BF9;&#x5916;&#x8BF7;&#x6C42;&#x4E2D;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A; laravel_token cookie&#x3002;&#x8BE5; cookie &#x5C06;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x52A0;&#x5BC6;&#x540E;&#x7684; JWT &#xFF0C;Passport &#x5C06;&#x7528;&#x6765;&#x9A8C;&#x8BC1;&#x6765;&#x81EA; JavaScript &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684; API &#x8BF7;&#x6C42;&#x3002;&#x81F3;&#x6B64;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x660E;&#x786E;&#x4F20;&#x9012;&#x8BBF;&#x95EE;&#x4EE4;&#x724C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x5411;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684; API &#x53D1;&#x51FA;&#x8BF7;&#x6C42;</p>
+<pre><code class="lang-php">axios.get(<span class="hljs-string">&apos;/user&apos;</span>)
+    .then(response =&gt; {
+        console.log(response.data);
+    });
+</code></pre>
+<p>&#x5F53;&#x4F7F;&#x7528;&#x4E0A;&#x9762;&#x7684;&#x6388;&#x6743;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;Axios &#x4F1A;&#x81EA;&#x52A8;&#x5E26;&#x4E0A; X-CSRF-TOKEN &#x8BF7;&#x6C42;&#x5934;&#x4F20;&#x9012;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x9ED8;&#x8BA4;&#x7684; Laravel JavaScript &#x811A;&#x624B;&#x67B6;&#x4F1A;&#x8BA9; Axios &#x53D1;&#x9001; X-Requested-With &#x8BF7;&#x6C42;&#x5934;:</p>
+<pre><code class="lang-php">window.axios.defaults.headers.common = {
+    <span class="hljs-string">&apos;X-Requested-With&apos;</span>: <span class="hljs-string">&apos;XMLHttpRequest&apos;</span>,
+};
+</code></pre>
+<h2 id="createfreshapitoken-&#x4E2D;&#x95F4;&#x4EF6;">CreateFreshApiToken &#x4E2D;&#x95F4;&#x4EF6;</h2>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CreateFreshApiToken</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handle</span><span class="hljs-params">($request, Closure $next, $guard = null)</span>
+    </span>{
+        $this-&gt;guard = $guard;
+
+        $response = $next($request);
+
+        <span class="hljs-keyword">if</span> ($this-&gt;shouldReceiveFreshToken($request, $response)) {
+            $response-&gt;withCookie($this-&gt;cookieFactory-&gt;make(
+                $request-&gt;user($this-&gt;guard)-&gt;getKey(), $request-&gt;session()-&gt;token()
+            ));
+        }
+
+        <span class="hljs-keyword">return</span> $response;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">make</span><span class="hljs-params">($userId, $csrfToken)</span>
+    </span>{
+        $config = $this-&gt;config-&gt;get(<span class="hljs-string">&apos;session&apos;</span>);
+
+        $expiration = Carbon::now()-&gt;addMinutes($config[<span class="hljs-string">&apos;lifetime&apos;</span>]);
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Cookie(
+            Passport::cookie(),
+            $this-&gt;createToken($userId, $csrfToken, $expiration),
+            $expiration,
+            $config[<span class="hljs-string">&apos;path&apos;</span>],
+            $config[<span class="hljs-string">&apos;domain&apos;</span>],
+            $config[<span class="hljs-string">&apos;secure&apos;</span>],
+            <span class="hljs-keyword">true</span>
+        );
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createToken</span><span class="hljs-params">($userId, $csrfToken, Carbon $expiration)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> JWT::encode([
+            <span class="hljs-string">&apos;sub&apos;</span> =&gt; $userId,
+            <span class="hljs-string">&apos;csrf&apos;</span> =&gt; $csrfToken,
+            <span class="hljs-string">&apos;expiry&apos;</span> =&gt; $expiration-&gt;getTimestamp(),
+        ], $this-&gt;encrypter-&gt;getKey());
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">shouldReceiveFreshToken</span><span class="hljs-params">($request, $response)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;requestShouldReceiveFreshToken($request) &amp;&amp;
+               $this-&gt;responseShouldReceiveFreshToken($response);
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">requestShouldReceiveFreshToken</span><span class="hljs-params">($request)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $request-&gt;isMethod(<span class="hljs-string">&apos;GET&apos;</span>) &amp;&amp; $request-&gt;user($this-&gt;guard);
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">responseShouldReceiveFreshToken</span><span class="hljs-params">($response)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $response <span class="hljs-keyword">instanceof</span> Response &amp;&amp; ! $this-&gt;alreadyContainsToken($response);
+    }
+}
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x53D1;&#x51FA;&#x7684; <code>JWT</code> &#x4EE4;&#x724C;&#x4ECD;&#x7136;&#x7531; <code>auth:api</code> &#x6765;&#x8D1F;&#x8D23;&#x9A8C;&#x8BC1;&#xFF0C;&#x6211;&#x4EEC;&#x524D;&#x9762;&#x8BF4;&#x8FC7;&#xFF0C;<code>TokenGuard</code> &#x8D1F;&#x8D23;&#x4E24;&#x79CD;&#x4EE4;&#x724C;&#x7684;&#x9A8C;&#x8BC1;&#xFF0C;&#x4E00;&#x79CD;&#x662F; <code>BearerToken</code>, &#x53E6;&#x4E00;&#x79CD;&#x5C31;&#x662F;&#x8FD9;&#x4E2A; <code>Cookie</code> :</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">user</span><span class="hljs-params">(Request $request)</span>
+</span>{
+    <span class="hljs-keyword">if</span> ($request-&gt;bearerToken()) {
+        <span class="hljs-keyword">return</span> $this-&gt;authenticateViaBearerToken($request);
+    } <span class="hljs-keyword">elseif</span> ($request-&gt;cookie(Passport::cookie())) {
+        <span class="hljs-keyword">return</span> $this-&gt;authenticateViaCookie($request);
+    }
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">authenticateViaCookie</span><span class="hljs-params">($request)</span>
+</span>{
+    <span class="hljs-keyword">try</span> {
+        $token = $this-&gt;decodeJwtTokenCookie($request);
+    } <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-keyword">if</span> (! $this-&gt;validCsrf($token, $request) ||
+        time() &gt;= $token[<span class="hljs-string">&apos;expiry&apos;</span>]) {
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-keyword">if</span> ($user = $this-&gt;provider-&gt;retrieveById($token[<span class="hljs-string">&apos;sub&apos;</span>])) {
+        <span class="hljs-keyword">return</span> $user-&gt;withAccessToken(<span class="hljs-keyword">new</span> TransientToken);
+    }
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">decodeJwtTokenCookie</span><span class="hljs-params">($request)</span>
+</span>{
+    <span class="hljs-keyword">return</span> (<span class="hljs-keyword">array</span>) JWT::decode(
+        $this-&gt;encrypter-&gt;decrypt($request-&gt;cookie(Passport::cookie())),
+        $this-&gt;encrypter-&gt;getKey(), [<span class="hljs-string">&apos;HS256&apos;</span>]
+    );
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validCsrf</span><span class="hljs-params">($token, $request)</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">isset</span>($token[<span class="hljs-string">&apos;csrf&apos;</span>]) &amp;&amp; hash_equals(
+        $token[<span class="hljs-string">&apos;csrf&apos;</span>], (string) $request-&gt;header(<span class="hljs-string">&apos;X-CSRF-TOKEN&apos;</span>)
+    );
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Laravel Passport——OAuth2 API 认证系统源码解析">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Laravel Passport——OAuth2 API 认证系统源码解析(下)","level":"1.15.2","depth":2,"previous":{"title":"Laravel Passport——OAuth2 API 认证系统源码解析","level":"1.15.1","depth":2,"path":"Laravel Passport——OAuth2 API 认证系统源码解析.md","ref":"Laravel Passport——OAuth2 API 认证系统源码解析.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Laravel Passport——OAuth2 API 认证系统源码解析（下）.md","mtime":"2019-01-15T10:29:00.323Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T10:51:52.544Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

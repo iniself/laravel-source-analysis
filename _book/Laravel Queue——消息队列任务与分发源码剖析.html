@@ -1,0 +1,1549 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Laravel Queue——消息队列任务与分发源码剖析 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Laravel Queue——消息队列任务处理器源码剖析.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    PHP Composer 自动加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="PHP Composer——自动加载原理.html">
+            
+                <a href="PHP Composer——自动加载原理.html">
+            
+                    
+                    PHP Composer——自动加载原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="PHP Composer—— 初始化源码分析.html">
+            
+                <a href="PHP Composer—— 初始化源码分析.html">
+            
+                    
+                    PHP Composer—— 初始化源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="PHP Composer-——-注册与运行源码分析.html">
+            
+                <a href="PHP Composer-——-注册与运行源码分析.html">
+            
+                    
+                    PHP Composer-——-注册与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Laravel Facade 门面
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="Laravel Facade——Facade 门面源码分析.html">
+            
+                <a href="Laravel Facade——Facade 门面源码分析.html">
+            
+                    
+                    Laravel Facade——Facade 门面源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Laravel Ioc 容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Laravel Container——IoC 服务容器.html">
+            
+                <a href="Laravel Container——IoC 服务容器.html">
+            
+                    
+                    Laravel Container——IoC 服务容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器绑定)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器解析)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="Laravel Container——服务容器的细节特性.html">
+            
+                <a href="Laravel Container——服务容器的细节特性.html">
+            
+                    
+                    Laravel Container——服务容器的细节特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Laravel Route 路由
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Laravel HTTP——路由.html">
+            
+                <a href="Laravel HTTP——路由.html">
+            
+                    
+                    Laravel HTTP——路由
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="Laravel HTTP——路由加载源码分析.html">
+            
+                <a href="Laravel HTTP——路由加载源码分析.html">
+            
+                    
+                    Laravel HTTP——路由加载源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                <a href="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                    
+                    Laravel HTTP——Pipeline中间件处理源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="Laravel HTTP——路由的正则编译.html">
+            
+                <a href="Laravel HTTP——路由的正则编译.html">
+            
+                    
+                    Laravel HTTP——路由的正则编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                <a href="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                    
+                    Laravel HTTP——路由的匹配与参数绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="Laravel HTTP——路由中间件源码分析.html">
+            
+                <a href="Laravel HTTP——路由中间件源码分析.html">
+            
+                    
+                    Laravel HTTP——路由中间件源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                <a href="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                    
+                    Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                <a href="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                    
+                    Laravel HTTP——控制器方法的参数构建与运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                <a href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP—— RESTFul 风格路由的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                <a href="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP——重定向的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Laravel ENV 环境变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                <a href="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                    
+                    Laravel ENV—— 环境变量的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Laravel Config 配置文件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                <a href="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                    
+                    Laravel Config—— 配置文件的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Laravel Exceptions 异常处理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="Laravel Exceptions——异常与错误处理.html">
+            
+                <a href="Laravel Exceptions——异常与错误处理.html">
+            
+                    
+                    Laravel Exceptions——异常与错误处理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Laravel Providers 服务提供者
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                <a href="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                    
+                    Laravel Providers——服务提供者的注册与启动源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Laravel Database 数据库
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="Laravel Database——数据库服务的启动与连接.html">
+            
+                <a href="Laravel Database——数据库服务的启动与连接.html">
+            
+                    
+                    Laravel Database——数据库服务的启动与连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="Laravel Database——数据库的 CRUD 操作.html">
+            
+                <a href="Laravel Database——数据库的 CRUD 操作.html">
+            
+                    
+                    Laravel Database——数据库的 CRUD 操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="Laravel Database——查询构造器与语法编译器源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="Laravel Database——查询构造器与语法编译器源码分析%28中%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(中)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="Laravel Database——查询构造器与语法编译器源码分析%28下%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="Laravel Database——分页原理与源码分析.html">
+            
+                <a href="Laravel Database——分页原理与源码分析.html">
+            
+                    
+                    Laravel Database——分页原理与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Laravel Database——Eloquent Model 源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                <a href="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                <a href="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                    
+                    Laravel Database——Eloquent Model 关联源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                <a href="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                    
+                    Laravel Database——Eloquent Model 模型关系加载与查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                <a href="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                    
+                    Laravel Database——Eloquent Model 更新关联模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Laravel Session
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="Laravel Session——session 的启动与运行源码分析.html">
+            
+                <a href="Laravel Session——session 的启动与运行源码分析.html">
+            
+                    
+                    Laravel Session——session 的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    Laravel Event 事件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                <a href="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                    
+                    Laravel Event——事件系统的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    Laravel Queue 队列
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.13.1" data-path="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务与分发源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务处理器源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    Laravel 广播系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="Laravel Broadcast——广播系统源码剖析.html">
+            
+                <a href="Laravel Broadcast——广播系统源码剖析.html">
+            
+                    
+                    Laravel Broadcast——广播系统源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    Laravel Passport
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Laravel Queue——消息队列任务与分发源码剖析</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="laravel-queue&#x2014;&#x2014;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4EFB;&#x52A1;&#x4E0E;&#x5206;&#x53D1;&#x6E90;&#x7801;&#x5256;&#x6790;">Laravel Queue&#x2014;&#x2014;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4EFB;&#x52A1;&#x4E0E;&#x5206;&#x53D1;&#x6E90;&#x7801;&#x5256;&#x6790;</h1>
+<h2 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h2>
+<p>&#x5728;&#x5B9E;&#x9645;&#x7684;&#x9879;&#x76EE;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x4F1A;&#x9047;&#x5230;&#x9700;&#x8981;&#x8F7B;&#x91CF;&#x7EA7;&#x961F;&#x5217;&#x7684;&#x60C5;&#x5F62;&#xFF0C;&#x4F8B;&#x5982;&#x53D1;&#x77ED;&#x4FE1;&#x3001;&#x53D1;&#x90AE;&#x4EF6;&#x7B49;&#xFF0C;&#x8FD9;&#x4E9B;&#x4EFB;&#x52A1;&#x4E0D;&#x8DB3;&#x4EE5;&#x4F7F;&#x7528; <code>kafka</code>&#x3001;<code>RabbitMQ</code> &#x7B49;&#x91CD;&#x91CF;&#x7EA7;&#x7684;&#x6D88;&#x606F;&#x961F;&#x5217;&#xFF0C;&#x4F46;&#x662F;&#x53C8;&#x7684;&#x786E;&#x9700;&#x8981;&#x5F02;&#x6B65;&#x3001;&#x91CD;&#x8BD5;&#x3001;&#x5E76;&#x53D1;&#x63A7;&#x5236;&#x7B49;&#x529F;&#x80FD;&#x3002;&#x901A;&#x5E38;&#x6765;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x4F1A;&#x4F7F;&#x7528; <code>Redis</code>&#x3001;<code>Beanstalk</code>&#x3001;<code>Amazon SQS</code> &#x6765;&#x5B9E;&#x73B0;&#x76F8;&#x5173;&#x529F;&#x80FD;&#xFF0C;<code>laravel</code> &#x4E3A;&#x6B64;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x540E;&#x53F0;&#x961F;&#x5217;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x7EDF;&#x4E00;&#x7684; <code>API</code>&#xFF0C;&#x672C;&#x6587;&#x5C06;&#x4F1A;&#x4ECB;&#x7ECD;&#x5E94;&#x7528;&#x6700;&#x4E3A;&#x5E7F;&#x6CDB;&#x7684; <code>redis</code> &#x961F;&#x5217;&#x3002;</p>
+<p>&#x672C;&#x6587;&#x53C2;&#x8003;&#x6587;&#x6863;&#x8D44;&#x6599;&#xFF1A;</p>
+<p><a href="https://laravel-china.org/articles/3729/use-laravel-queue-to-understand-the-knowledge" target="_blank">&#x4F7F;&#x7528; Laravel Queue &#x4E0D;&#x5F97;&#x4E0D;&#x660E;&#x767D;&#x7684;&#x77E5;&#x8BC6;</a></p>
+<p><a href="https://laravel-china.org/articles/4169/analysis-of-laravel-message-queue" target="_blank">Laravel &#x7684;&#x6D88;&#x606F;&#x961F;&#x5217;&#x5256;&#x6790;</a></p>
+<h2 id="&#x80CC;&#x666F;&#x77E5;&#x8BC6;">&#x80CC;&#x666F;&#x77E5;&#x8BC6;</h2>
+<p>&#x5728;&#x8BB2;&#x89E3; <code>laravel</code> &#x7684;&#x961F;&#x5217;&#x670D;&#x52A1;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x5148;&#x8BF4;&#x8BF4;&#x57FA;&#x4E8E; <code>redis</code> &#x7684;&#x961F;&#x5217;&#x670D;&#x52A1;&#x3002;&#x9996;&#x5148;&#xFF0C;redis&#x8BBE;&#x8BA1;&#x7528;&#x6765;&#x505A;&#x7F13;&#x5B58;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x7531;&#x4E8E;&#x5B83;&#x81EA;&#x8EAB;&#x7684;&#x67D0;&#x79CD;&#x7279;&#x6027;&#x4F7F;&#x5F97;&#x5B83;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x505A;&#x6D88;&#x606F;&#x961F;&#x5217;&#xFF0C;</p>
+<h3 id="redis-&#x961F;&#x5217;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;">redis &#x961F;&#x5217;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;</h3>
+<ul>
+<li>List &#x94FE;&#x8868;</li>
+</ul>
+<p><code>redis</code> &#x505A;&#x6D88;&#x606F;&#x961F;&#x5217;&#x7684;&#x7279;&#x6027;&#x4F8B;&#x5982;FIFO&#xFF08;&#x5148;&#x5165;&#x5148;&#x51FA;&#xFF09;&#x5F88;&#x5BB9;&#x6613;&#x5B9E;&#x73B0;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x4E00;&#x4E2A; <code>list</code> &#x5BF9;&#x8C61;&#x4ECE;&#x5934;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x4ECE;&#x5C3E;&#x90E8;&#x585E;&#x6570;&#x636E;&#x5373;&#x53EF;&#x3002;</p>
+<p>&#x76F8;&#x5173;&#x7684;&#x547D;&#x4EE4;&#xFF1A;&#xFF08;1&#xFF09;&#x5DE6;&#x4FA7;&#x5165;&#x53F3;&#x4FA7;&#x51FA;&#xFF1A;lpush/rpop&#xFF1B;&#xFF08;2&#xFF09;&#x53F3;&#x4FA7;&#x5165;&#x5DE6;&#x4FA7;&#x51FA;&#xFF1A;rpush/lpop&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x6D88;&#x606F;&#x961F;&#x5217;&#x5F88;&#x5BB9;&#x6613;&#x5B9E;&#x73B0;&#x3002;</p>
+<ul>
+<li>Zset &#x6709;&#x5E8F;&#x96C6;&#x5408;</li>
+</ul>
+<p>&#x6709;&#x4E9B;&#x4EFB;&#x52A1;&#x573A;&#x666F;&#xFF0C;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x4EFB;&#x52A1;&#x7ACB;&#x523B;&#x6267;&#x884C;&#xFF0C;&#x800C;&#x662F;&#x9700;&#x8981;&#x5EF6;&#x8FDF;&#x6267;&#x884C;&#xFF1B;&#x6709;&#x4E9B;&#x4EFB;&#x52A1;&#x5F88;&#x91CD;&#x8981;&#xFF0C;&#x9700;&#x8981;&#x5728;&#x4EFB;&#x52A1;&#x5931;&#x8D25;&#x7684;&#x65F6;&#x5019;&#x91CD;&#x65B0;&#x5C1D;&#x8BD5;&#x3002;&#x8FD9;&#x4E9B;&#x529F;&#x80FD;&#x4EC5;&#x4EC5;&#x4F9D;&#x9760; <code>list</code> &#x662F;&#x65E0;&#x6CD5;&#x5B8C;&#x6210;&#x7684;&#x3002;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x9700;&#x8981; <code>redis</code> &#x7684;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x3002;</p>
+<p><code>Redis</code> &#x6709;&#x5E8F;&#x96C6;&#x5408;&#x548C; <code>Redis</code> &#x96C6;&#x5408;&#x7C7B;&#x4F3C;&#xFF0C;&#x662F;&#x4E0D;&#x5305;&#x542B;&#x76F8;&#x540C;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5408;&#x96C6;&#x3002;&#x5B83;&#x4EEC;&#x7684;&#x5DEE;&#x522B;&#x662F;&#xFF0C;&#x6BCF;&#x4E2A;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x7684;&#x6210;&#x5458;&#x90FD;&#x5173;&#x8054;&#x7740;&#x4E00;&#x4E2A;&#x8BC4;&#x5206; <code>score</code>&#xFF0C;&#x8FD9;&#x4E2A;&#x8BC4;&#x5206;&#x7528;&#x4E8E;&#x628A;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x6210;&#x5458;&#x6309;&#x6700;&#x4F4E;&#x5206;&#x5230;&#x6700;&#x9AD8;&#x5206;&#x6392;&#x5217;&#x3002;</p>
+<p>&#x5355;&#x770B;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x548C;&#x5EF6;&#x8FDF;&#x4EFB;&#x52A1;&#x5E76;&#x65E0;&#x5173;&#x7CFB;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x5C06;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x7684;&#x8BC4;&#x5206; <code>score</code> &#x8BBE;&#x7F6E;&#x4E3A;&#x5EF6;&#x65F6;&#x4EFB;&#x52A1;&#x5F00;&#x542F;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x4E4B;&#x540E;&#x8F6E;&#x8BE2;&#x8FD9;&#x4E2A;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#xFF0C;&#x5C06;&#x5230;&#x671F;&#x7684;&#x4EFB;&#x52A1;&#x62FF;&#x51FA;&#x6765;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x5B9E;&#x73B0;&#x4E86;&#x5EF6;&#x8FDF;&#x4EFB;&#x52A1;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x91CD;&#x8981;&#x7684;&#x9700;&#x8981;&#x91CD;&#x8BD5;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x5728;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x4E4B;&#x524D;&#xFF0C;&#x4F1A;&#x5C06;&#x8BE5;&#x4EFB;&#x52A1;&#x653E;&#x5165;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x4E2D;&#xFF0C;&#x8BBE;&#x7F6E;&#x4EFB;&#x52A1;&#x6700;&#x957F;&#x7684;&#x6267;&#x884C;&#x65F6;&#x95F4;&#x3002;&#x82E5;&#x4EFB;&#x52A1;&#x987A;&#x5229;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#xFF0C;&#x8BE5;&#x4EFB;&#x52A1;&#x4F1A;&#x5728;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x4E2D;&#x5220;&#x9664;&#x3002;&#x5982;&#x679C;&#x4EFB;&#x52A1;&#x6CA1;&#x6709;&#x5728;&#x89C4;&#x5B9A;&#x65F6;&#x95F4;&#x5185;&#x5B8C;&#x6210;&#xFF0C;&#x90A3;&#x4E48;&#x8BE5;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x7684;&#x4EFB;&#x52A1;&#x5C06;&#x4F1A;&#x88AB;&#x91CD;&#x65B0;&#x653E;&#x5165;&#x961F;&#x5217;&#x4E2D;&#x3002;</p>
+<p>&#x76F8;&#x5173;&#x547D;&#x4EE4;&#xFF1A;</p>
+<p>(1) <code>ZADD</code> &#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x6210;&#x5458;&#x5230;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#xFF0C;&#x6216;&#x8005;&#x5982;&#x679C;&#x5B83;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x66F4;&#x65B0;&#x5176;&#x5206;&#x6570;&#x3002;</p>
+<p>(2) <code>ZRANGEBYSCORE</code> &#x6309;&#x5206;&#x6570;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#x8303;&#x56F4;&#x7684;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x3002;</p>
+<p>(3) <code>ZREMRANGEBYRANK</code> &#x5728;&#x7ED9;&#x5B9A;&#x7684;&#x7D22;&#x5F15;&#x4E4B;&#x5185;&#x5220;&#x9664;&#x6240;&#x6709;&#x6210;&#x5458;&#x7684;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x3002;</p>
+<h3 id="laravel-&#x961F;&#x5217;&#x670D;&#x52A1;&#x7684;&#x4EFB;&#x52A1;&#x8C03;&#x5EA6;">laravel &#x961F;&#x5217;&#x670D;&#x52A1;&#x7684;&#x4EFB;&#x52A1;&#x8C03;&#x5EA6;</h3>
+<p>&#x961F;&#x5217;&#x670D;&#x52A1;&#x7684;&#x4EFB;&#x52A1;&#x8C03;&#x5EA6;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="http://owql68l6p.bkt.clouddn.com/%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6.png" alt=""></p>
+<p><code>laravel</code> &#x7684;&#x961F;&#x5217;&#x670D;&#x52A1;&#x7531;&#x4E24;&#x4E2A;&#x8FDB;&#x7A0B;&#x63A7;&#x5236;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x751F;&#x4EA7;&#x8005;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x6D88;&#x8D39;&#x8005;&#x3002;&#x8FD9;&#x4E24;&#x4E2A;&#x8FDB;&#x7A0B;&#x64CD;&#x7EB5;&#x4E86; <code>redis</code> &#x4E09;&#x4E2A;&#x961F;&#x5217;&#xFF0C;&#x5176;&#x4E2D;&#x4E00;&#x4E2A; <code>List</code>&#xFF0C;&#x8D1F;&#x8D23;&#x5373;&#x65F6;&#x4EFB;&#x52A1;&#xFF0C;&#x4E24;&#x4E2A; <code>Zset</code>&#xFF0C;&#x8D1F;&#x8D23;&#x5EF6;&#x65F6;&#x4EFB;&#x52A1;&#x4E0E;&#x5F85;&#x5904;&#x7406;&#x4EFB;&#x52A1;&#x3002;</p>
+<p>&#x751F;&#x4EA7;&#x8005;&#x8D1F;&#x8D23;&#x5411; <code>redis</code> &#x63A8;&#x9001;&#x4EFB;&#x52A1;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5373;&#x65F6;&#x4EFB;&#x52A1;&#xFF0C;&#x9ED8;&#x8BA4;&#x5C31;&#x4F1A;&#x5411; <code>queue:default</code> &#x63A8;&#x9001;&#xFF1B;&#x5982;&#x679C;&#x662F;&#x5EF6;&#x65F6;&#x4EFB;&#x52A1;&#xFF0C;&#x5C31;&#x4F1A;&#x5411; <code>queue:default:delayed</code> &#x63A8;&#x9001;&#x3002;</p>
+<p>&#x6D88;&#x8D39;&#x8005;&#x8F6E;&#x8BE2;&#x4E24;&#x4E2A;&#x961F;&#x5217;&#xFF0C;&#x4E0D;&#x65AD;&#x7684;&#x4ECE;&#x961F;&#x5217;&#x4E2D;&#x53D6;&#x51FA;&#x4EFB;&#x52A1;&#xFF0C;&#x5148;&#x628A;&#x4EFB;&#x52A1;&#x653E;&#x5165; <code>queue:default:reserved</code> &#x4E2D;&#xFF0C;&#x518D;&#x6267;&#x884C;&#x76F8;&#x5173;&#x4EFB;&#x52A1;&#x3002;&#x5982;&#x679C;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x6210;&#x529F;&#xFF0C;&#x5C31;&#x4F1A;&#x5220;&#x9664; <code>queue:default:reserved</code> &#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x88AB;&#x91CD;&#x65B0;&#x653E;&#x5165; <code>queue:default:delayed</code> &#x961F;&#x5217;&#x4E2D;&#x3002;</p>
+<h2 id="laravel-&#x961F;&#x5217;&#x670D;&#x52A1;&#x7684;&#x603B;&#x4F53;&#x6D41;&#x7A0B;">laravel &#x961F;&#x5217;&#x670D;&#x52A1;&#x7684;&#x603B;&#x4F53;&#x6D41;&#x7A0B;</h2>
+<p>&#x4EFB;&#x52A1;&#x5206;&#x53D1;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<p><img src="http://owql68l6p.bkt.clouddn.com/QQ20171208-213853@2x.png" alt=""></p>
+<p>&#x4EFB;&#x52A1;&#x5904;&#x7406;&#x5668;&#x8FD0;&#x4F5C;&#xFF1A;</p>
+<p><img src="http://owql68l6p.bkt.clouddn.com/QQ20171208-213913@2x.png" alt=""></p>
+<h2 id="laravel-&#x961F;&#x5217;&#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;&#x4E0E;&#x542F;&#x52A8;">laravel &#x961F;&#x5217;&#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;&#x4E0E;&#x542F;&#x52A8;</h2>
+<p><code>laravel</code> &#x961F;&#x5217;&#x670D;&#x52A1;&#x9700;&#x8981;&#x6CE8;&#x518C;&#x7684;&#x670D;&#x52A1;&#x6BD4;&#x8F83;&#x591A;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">QueueServiceProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceProvider</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">register</span><span class="hljs-params">()</span>
+    </span>{
+        $this-&gt;registerManager();
+
+        $this-&gt;registerConnection();
+
+        $this-&gt;registerWorker();
+
+        $this-&gt;registerListener();
+
+        $this-&gt;registerFailedJobServices();
+    }
+}
+</code></pre>
+<h3 id="registermanager-&#x6CE8;&#x518C;&#x95E8;&#x9762;">registerManager &#x6CE8;&#x518C;&#x95E8;&#x9762;</h3>
+<p><code>registerManager</code> &#x8D1F;&#x8D23;&#x6CE8;&#x518C;&#x961F;&#x5217;&#x670D;&#x52A1;&#x7684;&#x95E8;&#x9762;&#x7C7B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registerManager</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;app-&gt;singleton(<span class="hljs-string">&apos;queue&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app)</span> </span>{
+        <span class="hljs-keyword">return</span> tap(<span class="hljs-keyword">new</span> QueueManager($app), <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($manager)</span> </span>{
+            $this-&gt;registerConnectors($manager);
+        });
+    });
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registerConnectors</span><span class="hljs-params">($manager)</span>
+</span>{
+    <span class="hljs-keyword">foreach</span> ([<span class="hljs-string">&apos;Null&apos;</span>, <span class="hljs-string">&apos;Sync&apos;</span>, <span class="hljs-string">&apos;Database&apos;</span>, <span class="hljs-string">&apos;Redis&apos;</span>, <span class="hljs-string">&apos;Beanstalkd&apos;</span>, <span class="hljs-string">&apos;Sqs&apos;</span>] <span class="hljs-keyword">as</span> $connector) {
+        $this-&gt;{<span class="hljs-string">&quot;register{$connector}Connector&quot;</span>}($manager);
+    }
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registerRedisConnector</span><span class="hljs-params">($manager)</span>
+</span>{
+    $manager-&gt;addConnector(<span class="hljs-string">&apos;redis&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> RedisConnector($this-&gt;app[<span class="hljs-string">&apos;redis&apos;</span>]);
+    });
+}
+</code></pre>
+<p><code>QueueManager</code> &#x662F;&#x961F;&#x5217;&#x670D;&#x52A1;&#x7684;&#x603B;&#x95E8;&#x9762;&#xFF0C;&#x63D0;&#x4F9B;&#x4E00;&#x5207;&#x4E0E;&#x961F;&#x5217;&#x76F8;&#x5173;&#x7684;&#x64CD;&#x4F5C;&#x63A5;&#x53E3;&#x3002;<code>QueueManager</code> &#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#x53D8;&#x91CF; <code>$connectors</code>&#xFF0C;&#x8BE5;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4E2D;&#x5B58;&#x50A8;&#x7740;&#x6240;&#x6709; <code>laravel</code> &#x652F;&#x6301;&#x7684;&#x5E95;&#x5C42;&#x961F;&#x5217;&#x670D;&#x52A1;&#xFF1A;&apos;Database&apos;, &apos;Redis&apos;, &apos;Beanstalkd&apos;, &apos;Sqs&apos;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">QueueManager</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">FactoryContract</span>, <span class="hljs-title">MonitorContract</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addConnector</span><span class="hljs-params">($driver, Closure $resolver)</span>
+    </span>{
+        $this-&gt;connectors[$driver] = $resolver;
+    }
+}
+</code></pre>
+<p>&#x6210;&#x5458;&#x53D8;&#x91CF; <code>$connectors</code> &#x4F1A;&#x88AB;&#x5B58;&#x50A8;&#x5404;&#x79CD;&#x9A71;&#x52A8;&#x7684; <code>connector</code>&#xFF0C;&#x4F8B;&#x5982; <code>RedisConnector</code>&#x3001;<code>SqsConnector</code>&#x3001;<code>DatabaseConnector</code>&#x3001;<code>BeanstalkdConnector</code>&#x3002;</p>
+<h3 id="registerconnection-&#x5E95;&#x5C42;&#x961F;&#x5217;&#x8FDE;&#x63A5;&#x670D;&#x52A1;">registerConnection &#x5E95;&#x5C42;&#x961F;&#x5217;&#x8FDE;&#x63A5;&#x670D;&#x52A1;</h3>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x5C31;&#x8981;&#x8FDE;&#x63A5;&#x5B9E;&#x73B0;&#x961F;&#x5217;&#x7684;&#x5E95;&#x5C42;&#x670D;&#x52A1;&#x4E86;&#xFF0C;&#x4F8B;&#x5982; <code>redis</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registerConnection</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;app-&gt;singleton(<span class="hljs-string">&apos;queue.connection&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app)</span> </span>{
+        <span class="hljs-keyword">return</span> $app[<span class="hljs-string">&apos;queue&apos;</span>]-&gt;connection();
+    });
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">connection</span><span class="hljs-params">($name = null)</span>
+</span>{
+    $name = $name ?: $this-&gt;getDefaultDriver();
+
+    <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">isset</span>($this-&gt;connections[$name])) {
+        $this-&gt;connections[$name] = $this-&gt;resolve($name);
+
+        $this-&gt;connections[$name]-&gt;setContainer($this-&gt;app);
+    }
+
+    <span class="hljs-keyword">return</span> $this-&gt;connections[$name];
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDefaultDriver</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> $this-&gt;app[<span class="hljs-string">&apos;config&apos;</span>][<span class="hljs-string">&apos;queue.default&apos;</span>];
+}
+</code></pre>
+<p><code>connection</code> &#x51FD;&#x6570;&#x9996;&#x5148;&#x4F1A;&#x83B7;&#x53D6; <code>&#x8FDE;&#x63A5;</code> &#x540D;&#xFF0C;&#x6CA1;&#x6709; <code>&#x8FDE;&#x63A5;</code> &#x540D;&#x5C31;&#x4F1A;&#x4ECE; <code>config</code> &#x4E2D;&#x83B7;&#x53D6;&#x9ED8;&#x8BA4;&#x7684;&#x8FDE;&#x63A5;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resolve</span><span class="hljs-params">($name)</span>
+</span>{
+    $config = $this-&gt;getConfig($name);
+
+    <span class="hljs-keyword">return</span> $this-&gt;getConnector($config[<span class="hljs-string">&apos;driver&apos;</span>])
+                    -&gt;connect($config)
+                    -&gt;setConnectionName($name);
+}
+</code></pre>
+<p><code>resolve</code> &#x51FD;&#x6570;&#x5229;&#x7528;&#x76F8;&#x5E94;&#x7684;&#x5E95;&#x5C42;&#x9A71;&#x52A8; <code>connector</code> &#x8FDB;&#x884C;&#x8FDE;&#x63A5;&#x64CD;&#x4F5C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; <code>connect</code> &#x51FD;&#x6570;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x4F1A;&#x8FD4;&#x56DE; <code>RedisQueue</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RedisConnector</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ConnectorInterface</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">connect</span><span class="hljs-params">(array $config)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> RedisQueue(
+            $this-&gt;redis, $config[<span class="hljs-string">&apos;queue&apos;</span>],
+            Arr::get($config, <span class="hljs-string">&apos;connection&apos;</span>, $this-&gt;connection),
+            Arr::get($config, <span class="hljs-string">&apos;retry_after&apos;</span>, <span class="hljs-number">60</span>)
+        );
+    }
+}
+</code></pre>
+<h3 id="registerworker-&#x6D88;&#x8D39;&#x8005;&#x670D;&#x52A1;&#x6CE8;&#x518C;">registerWorker &#x6D88;&#x8D39;&#x8005;&#x670D;&#x52A1;&#x6CE8;&#x518C;</h3>
+<p>&#x6D88;&#x8D39;&#x8005;&#x7684;&#x6CE8;&#x518C;&#x670D;&#x52A1;&#x4F1A;&#x8FD4;&#x56DE; <code>Illuminate\Queue\Worker</code> &#x7C7B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registerWorker</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;app-&gt;singleton(<span class="hljs-string">&apos;queue.worker&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Worker(
+            $this-&gt;app[<span class="hljs-string">&apos;queue&apos;</span>], $this-&gt;app[<span class="hljs-string">&apos;events&apos;</span>], $this-&gt;app[ExceptionHandler::class]
+        );
+    });
+}
+</code></pre>
+<h2 id="laravel-bus-&#x670D;&#x52A1;&#x6CE8;&#x518C;&#x4E0E;&#x542F;&#x52A8;">laravel Bus &#x670D;&#x52A1;&#x6CE8;&#x518C;&#x4E0E;&#x542F;&#x52A8;</h2>
+<p>&#x5B9A;&#x4E49;&#x597D;&#x81EA;&#x5DF1;&#x60F3;&#x8981;&#x7684;&#x961F;&#x5217;&#x7C7B;&#x4E4B;&#x540E;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x5C06;&#x961F;&#x5217;&#x4EFB;&#x52A1;&#x63A8;&#x9001;&#x7ED9;&#x5E95;&#x5C42;&#x9A71;&#x52A8;&#x540E;&#x53F0;&#xFF0C;&#x4F8B;&#x5982; <code>redis</code>&#xFF0C;&#x4E00;&#x822C;&#x4F1A;&#x4F7F;&#x7528; <code>dispatch</code> &#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php">Job::dispatch();
+</code></pre>
+<p>&#x6216;&#x8005;</p>
+<pre><code class="lang-php">$job = (<span class="hljs-keyword">new</span> ProcessPodcast($pocast));
+
+dispatch($job);
+</code></pre>
+<p><code>dispatch</code> &#x51FD;&#x6570;&#x5C31;&#x662F; <code>Bus</code> &#x670D;&#x52A1;&#xFF0C;&#x4E13;&#x95E8;&#x7528;&#x4E8E;&#x5206;&#x53D1;&#x961F;&#x5217;&#x4EFB;&#x52A1;&#x3002;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BusServiceProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceProvider</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">register</span><span class="hljs-params">()</span>
+    </span>{
+        $this-&gt;app-&gt;singleton(Dispatcher::class, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($app)</span> </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Dispatcher($app, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($connection = null)</span> <span class="hljs-title">use</span> <span class="hljs-params">($app)</span> </span>{
+                <span class="hljs-keyword">return</span> $app[QueueFactoryContract::class]-&gt;connection($connection);
+            });
+        });
+
+        $this-&gt;app-&gt;alias(
+            Dispatcher::class, DispatcherContract::class
+        );
+
+        $this-&gt;app-&gt;alias(
+            Dispatcher::class, QueueingDispatcherContract::class
+        );
+    }
+}
+</code></pre>
+<h2 id="&#x521B;&#x5EFA;&#x4EFB;&#x52A1;">&#x521B;&#x5EFA;&#x4EFB;&#x52A1;</h2>
+<h3 id="queue-&#x8BBE;&#x7F6E;">queue &#x8BBE;&#x7F6E;</h3>
+<pre><code class="lang-php"><span class="hljs-string">&apos;redis&apos;</span> =&gt; [
+        <span class="hljs-string">&apos;driver&apos;</span> =&gt; <span class="hljs-string">&apos;redis&apos;</span>,
+        <span class="hljs-string">&apos;connection&apos;</span> =&gt; <span class="hljs-string">&apos;default&apos;</span>,
+        <span class="hljs-string">&apos;queue&apos;</span> =&gt; <span class="hljs-string">&apos;default&apos;</span>,
+        <span class="hljs-string">&apos;retry_after&apos;</span> =&gt; <span class="hljs-number">90</span>,
+    ],
+</code></pre>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x9ED8;&#x8BA4;&#x7684; <code>redis</code> &#x914D;&#x7F6E;&#x5982;&#x4E0A;&#xFF0C;<code>connection</code> &#x662F; <code>database</code> &#x4E2D; <code>redis</code> &#x7684;&#x8FDE;&#x63A5;&#x540D;&#x79F0;&#xFF1B;<code>queue</code> &#x662F; <code>redis</code> &#x4E2D;&#x7684;&#x961F;&#x5217;&#x540D;&#x79F0;&#xFF0C;&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x7684;&#x662F; <code>redis</code> &#x96C6;&#x7FA4;&#x7684;&#x8BDD;&#xFF0C;&#x8FD9;&#x4E2A;&#x9700;&#x8981;&#x4F7F;&#x7528; <code>key hash tag</code>&#xFF0C;&#x4E5F;&#x5C31;&#x662F; <code>{default}</code>;&#x5F53;&#x4EFB;&#x52A1;&#x8FD0;&#x884C;&#x8D85;&#x8FC7; <code>retry_after</code> &#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x540E;&#xFF0C;&#x8BE5;&#x4EFB;&#x52A1;&#x4F1A;&#x88AB;&#x91CD;&#x65B0;&#x653E;&#x5165;&#x961F;&#x5217;&#x5F53;&#x4E2D;&#x3002;</p>
+<h3 id="&#x4EFB;&#x52A1;&#x7C7B;&#x7684;&#x521B;&#x5EFA;">&#x4EFB;&#x52A1;&#x7C7B;&#x7684;&#x521B;&#x5EFA;</h3>
+<ul>
+<li><p>&#x4EFB;&#x52A1;&#x7C7B;&#x7684;&#x7ED3;&#x6784;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x53EA;&#x4F1A;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x8BA9;&#x961F;&#x5217;&#x7528;&#x6765;&#x8C03;&#x7528;&#x6B64;&#x4EFB;&#x52A1;&#x7684; <code>handle</code> &#x65B9;&#x6CD5;&#x3002;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x4F7F;&#x5F97;&#x4EFB;&#x52A1;&#x88AB;&#x63A8;&#x9001;&#x5230;&#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x540C;&#x6B65;&#x6267;&#x884C;&#xFF0C;&#x90A3;&#x4E48;&#x9700;&#x8981;&#x5B9E;&#x73B0; <code>Illuminate\Contracts\Queue\ShouldQueue</code> &#x63A5;&#x53E3;&#x3002;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x8BA9;&#x4EFB;&#x52A1;&#x63A8;&#x9001;&#x5230;&#x7279;&#x5B9A;&#x7684;&#x8FDE;&#x63A5;&#x4E2D;&#xFF0C;&#x4F8B;&#x5982; <code>redis</code> &#x6216;&#x8005; <code>sqs</code>&#xFF0C;&#x90A3;&#x4E48;&#x9700;&#x8981;&#x8BBE;&#x7F6E; <code>conneciton</code> &#x53D8;&#x91CF;&#x3002;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x8BA9;&#x4EFB;&#x52A1;&#x63A8;&#x9001;&#x5230;&#x7279;&#x5B9A;&#x7684;&#x961F;&#x5217;&#x4E2D;&#x53BB;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E; <code>queue</code> &#x53D8;&#x91CF;&#x3002;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x8BA9;&#x4EFB;&#x52A1;&#x5EF6;&#x8FDF;&#x63A8;&#x9001;&#xFF0C;&#x90A3;&#x4E48;&#x9700;&#x8981;&#x8BBE;&#x7F6E; <code>delay</code> &#x53D8;&#x91CF;&#x3002;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x8BBE;&#x7F6E;&#x4EFB;&#x52A1;&#x81F3;&#x591A;&#x91CD;&#x8BD5;&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>tries</code> &#x53D8;&#x91CF;&#xFF1B;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x8BBE;&#x7F6E;&#x4EFB;&#x52A1;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x7684;&#x6700;&#x5927;&#x79D2;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>timeout</code> &#x53C2;&#x6570;&#x3002;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x624B;&#x52A8;&#x8BBF;&#x95EE;&#x961F;&#x5217;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>trait</code> : <code>Illuminate\Queue\InteractsWithQueue</code>&#x3002;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x961F;&#x5217;&#x76D1;&#x542C;&#x5668;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x6B21;&#x6570;&#x8D85;&#x8FC7;&#x5728;&#x5DE5;&#x4F5C;&#x961F;&#x5217;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x6700;&#x5927;&#x5C1D;&#x8BD5;&#x6B21;&#x6570;&#xFF0C;&#x76D1;&#x542C;&#x5668;&#x7684; <code>failed</code> &#x65B9;&#x6CD5;&#x5C06;&#x4F1A;&#x88AB;&#x81EA;&#x52A8;&#x8C03;&#x7528;&#x3002; <code>failed</code> &#x65B9;&#x6CD5;&#x63A5;&#x53D7;&#x4E8B;&#x4EF6;&#x5B9E;&#x4F8B;&#x548C;&#x5931;&#x8D25;&#x7684;&#x5F02;&#x5E38;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF1A;</p>
+</li>
+</ul>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProcessPodcast</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ShouldQueue</span>
+</span>{
+    <span class="hljs-keyword">use</span> <span class="hljs-title">Dispatchable</span>, <span class="hljs-title">InteractsWithQueue</span>, <span class="hljs-title">Queueable</span>, <span class="hljs-title">SerializesModels</span>;
+
+    <span class="hljs-keyword">protected</span> $podcast;
+
+    <span class="hljs-keyword">public</span> $connection = <span class="hljs-string">&apos;redis&apos;</span>;
+
+    <span class="hljs-keyword">public</span> $queue = <span class="hljs-string">&apos;test&apos;</span>;
+
+    <span class="hljs-keyword">public</span> $delay = <span class="hljs-number">30</span>;
+
+    <span class="hljs-keyword">public</span> $tries = <span class="hljs-number">5</span>;
+
+    <span class="hljs-keyword">public</span> $timeout = <span class="hljs-number">30</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Podcast $podcast)</span>
+    </span>{
+        $this-&gt;podcast = $podcast;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handle</span><span class="hljs-params">(AudioProcessor $processor)</span>
+    </span>{
+        <span class="hljs-comment">// Process uploaded podcast...</span>
+
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">false</span>) {
+            $this-&gt;release(<span class="hljs-number">30</span>);
+        }
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">failed</span><span class="hljs-params">(OrderShipped $event, $exception)</span>
+    </span>{
+        <span class="hljs-comment">//</span>
+    }
+}
+</code></pre>
+<h3 id="&#x4EFB;&#x52A1;&#x4E8B;&#x4EF6;">&#x4EFB;&#x52A1;&#x4E8B;&#x4EF6;</h3>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppServiceProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceProvider</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">boot</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//&#x4EFB;&#x52A1;&#x8FD0;&#x884C;&#x524D;</span>
+        Queue::before(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(JobProcessing $event)</span> </span>{
+            <span class="hljs-comment">// $event-&gt;connectionName</span>
+            <span class="hljs-comment">// $event-&gt;job</span>
+            <span class="hljs-comment">// $event-&gt;job-&gt;payload()</span>
+        });
+
+        <span class="hljs-comment">//&#x4EFB;&#x52A1;&#x8FD0;&#x884C;&#x540E;</span>
+        Queue::after(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(JobProcessed $event)</span> </span>{
+            <span class="hljs-comment">// $event-&gt;connectionName</span>
+            <span class="hljs-comment">// $event-&gt;job</span>
+            <span class="hljs-comment">// $event-&gt;job-&gt;payload()</span>
+        });
+
+        <span class="hljs-comment">//&#x4EFB;&#x52A1;&#x5FAA;&#x73AF;&#x524D;</span>
+        Queue::looping(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+              <span class="hljs-keyword">while</span> (DB::transactionLevel() &gt; <span class="hljs-number">0</span>) {
+              DB::rollBack();
+            }
+        });
+
+        <span class="hljs-comment">//&#x4EFB;&#x52A1;&#x5931;&#x8D25;&#x540E;</span>
+         Queue::failing(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(JobFailed $event)</span> </span>{
+            <span class="hljs-comment">// $event-&gt;connectionName</span>
+            <span class="hljs-comment">// $event-&gt;job</span>
+            <span class="hljs-comment">// $event-&gt;exception</span>
+        });
+
+        <span class="hljs-comment">//&#x5F02;&#x5E38;&#x53D1;&#x751F;&#x540E;</span>
+        Queue::exceptionOccurred(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(JobFailed $event)</span> </span>{
+            <span class="hljs-comment">// $event-&gt;connectionName</span>
+            <span class="hljs-comment">// $event-&gt;job</span>
+            <span class="hljs-comment">// $event-&gt;exception</span>
+        });
+    }
+}
+</code></pre>
+<h2 id="&#x4EFB;&#x52A1;&#x7684;&#x5206;&#x53D1;">&#x4EFB;&#x52A1;&#x7684;&#x5206;&#x53D1;</h2>
+<h3 id="&#x5206;&#x53D1;&#x670D;&#x52A1;">&#x5206;&#x53D1;&#x670D;&#x52A1;</h3>
+<ul>
+<li>&#x5199;&#x597D;&#x4EFB;&#x52A1;&#x7C7B;&#x540E;&#xFF0C;&#x5C31;&#x80FD;&#x901A;&#x8FC7; <code>dispatch</code> &#x8F85;&#x52A9;&#x51FD;&#x6570;&#x6765;&#x5206;&#x53D1;&#x5B83;&#x4E86;&#x3002;&#x552F;&#x4E00;&#x9700;&#x8981;&#x4F20;&#x9012;&#x7ED9; <code>dispatch</code> &#x7684;&#x53C2;&#x6570;&#x662F;&#x8FD9;&#x4E2A;&#x4EFB;&#x52A1;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PodcastController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">store</span><span class="hljs-params">(Request $request)</span>
+    </span>{
+        <span class="hljs-comment">// &#x521B;&#x5EFA;&#x64AD;&#x5BA2;...</span>
+
+        ProcessPodcast::dispatch($podcast);
+    }
+}
+</code></pre>
+<ul>
+<li>&#x5982;&#x679C;&#x60F3;&#x5EF6;&#x8FDF;&#x6267;&#x884C;&#x4E00;&#x4E2A;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4EFB;&#x52A1;&#x5B9E;&#x4F8B;&#x7684; <code>delay</code> &#x65B9;&#x6CD5;&#x3002;</li>
+</ul>
+<pre><code class="lang-php"> ProcessPodcast::dispatch($podcast)
+                -&gt;delay(Carbon::now()-&gt;addMinutes(<span class="hljs-number">10</span>));
+</code></pre>
+<ul>
+<li>&#x901A;&#x8FC7;&#x63A8;&#x9001;&#x4EFB;&#x52A1;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x961F;&#x5217;&#xFF0C;&#x53EF;&#x4EE5;&#x7ED9;&#x961F;&#x5217;&#x4EFB;&#x52A1;&#x5206;&#x7C7B;&#xFF0C;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x63A7;&#x5236;&#x7ED9;&#x4E0D;&#x540C;&#x7684;&#x961F;&#x5217;&#x5206;&#x914D;&#x591A;&#x5C11;&#x4EFB;&#x52A1;&#x3002;&#x8981;&#x6307;&#x5B9A;&#x961F;&#x5217;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x8C03;&#x7528;&#x4EFB;&#x52A1;&#x5B9E;&#x4F8B;&#x7684; <code>onQueue</code> &#x65B9;&#x6CD5;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-php">ProcessPodcast::dispatch($podcast)-&gt;onQueue(<span class="hljs-string">&apos;processing&apos;</span>);
+</code></pre>
+<ul>
+<li>&#x5982;&#x679C;&#x4F7F;&#x7528;&#x4E86;&#x591A;&#x4E2A;&#x961F;&#x5217;&#x8FDE;&#x63A5;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x4EFB;&#x52A1;&#x63A8;&#x5230;&#x6307;&#x5B9A;&#x8FDE;&#x63A5;&#x3002;&#x8981;&#x6307;&#x5B9A;&#x8FDE;&#x63A5;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x5206;&#x53D1;&#x4EFB;&#x52A1;&#x7684;&#x65F6;&#x5019;&#x4F7F;&#x7528; <code>onConnection</code> &#x65B9;&#x6CD5;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-php">ProcessPodcast::dispatch($podcast)-&gt;onConnection(<span class="hljs-string">&apos;redis
+&apos;</span>);
+</code></pre>
+<p>&#x8FD9;&#x4E9B;&#x94FE;&#x5F0F;&#x7684;&#x51FD;&#x6570;&#x662F;&#x5728; <code>trait</code>&#xFF1A;<code>Illuminate\Foundation\Bus\Dispatchable</code> &#x7684;&#x57FA;&#x7840;&#x4E0A;&#x5E94;&#x7528;&#x7684;&#xFF0C;&#x8BE5; <code>trait</code> &#x7531; <code>dispatch</code> &#x51FD;&#x6570;&#x542F;&#x52A8;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">trait</span> Dispatchable
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatch</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> PendingDispatch(<span class="hljs-keyword">new</span> <span class="hljs-keyword">static</span>(...func_get_args()));
+    }
+}
+</code></pre>
+<p><code>PendingDispatch</code> &#x7C7B;&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x94FE;&#x5F0F;&#x51FD;&#x6570;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x5DE7;&#x5999;&#x5728;&#x6790;&#x6784;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x6790;&#x6784;&#x51FD;&#x6570;&#x81EA;&#x52A8;&#x8C03;&#x7528;&#x5168;&#x5C40;&#x51FD;&#x6570; <code>dispatch</code>&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PendingDispatch</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($job)</span>
+    </span>{
+        $this-&gt;job = $job;
+    }
+
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onConnection</span><span class="hljs-params">($connection)</span>
+    </span>{
+        $this-&gt;job-&gt;onConnection($connection);
+
+        <span class="hljs-keyword">return</span> $this;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onQueue</span><span class="hljs-params">($queue)</span>
+    </span>{
+        $this-&gt;job-&gt;onQueue($queue);
+
+        <span class="hljs-keyword">return</span> $this;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delay</span><span class="hljs-params">($delay)</span>
+    </span>{
+        $this-&gt;job-&gt;delay($delay);
+
+        <span class="hljs-keyword">return</span> $this;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__destruct</span><span class="hljs-params">()</span>
+    </span>{
+        dispatch($this-&gt;job);
+    }
+
+
+}
+</code></pre>
+<p>&#x5404;&#x4E2A;&#x51FD;&#x6570;&#x91CC;&#x9762;&#x7684; <code>onConnection</code>&#x3001;<code>delay</code>&#x3001;<code>onQueue</code> &#x7B49;&#x51FD;&#x6570;&#x662F;&#x4EFB;&#x52A1;&#x4E2D;&#x7684; <code>trait</code>&#xFF1A;<code>Illuminate\Bus\Queueable</code></p>
+<pre><code class="lang-php"><span class="hljs-keyword">trait</span> Queueable
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onConnection</span><span class="hljs-params">($connection)</span>
+    </span>{
+        $this-&gt;connection = $connection;
+
+        <span class="hljs-keyword">return</span> $this;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onQueue</span><span class="hljs-params">($queue)</span>
+    </span>{
+        $this-&gt;queue = $queue;
+
+        <span class="hljs-keyword">return</span> $this;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delay</span><span class="hljs-params">($delay)</span>
+    </span>{
+        $this-&gt;delay = $delay;
+
+        <span class="hljs-keyword">return</span> $this;
+    }
+}
+</code></pre>
+<h3 id="dispatch-&#x4EFB;&#x52A1;&#x5206;&#x53D1;&#x6E90;&#x7801;">dispatch &#x4EFB;&#x52A1;&#x5206;&#x53D1;&#x6E90;&#x7801;</h3>
+<p>&#x4EFB;&#x52A1;&#x7684;&#x5206;&#x53D1;&#x79BB;&#x4E0D;&#x5F00; <code>Bus</code> &#x670D;&#x52A1;&#xFF0C;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x5168;&#x5C40;&#x51FD;&#x6570; <code>dispatch</code>&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>Dispatchable</code> &#x8FD9;&#x4E2A; <code>trait</code>:</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dispatcher</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">QueueingDispatcher</span>
+</span>{
+     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatch</span><span class="hljs-params">($command)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> ($this-&gt;queueResolver &amp;&amp; $this-&gt;commandShouldBeQueued($command)) {
+            <span class="hljs-keyword">return</span> $this-&gt;dispatchToQueue($command);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> $this-&gt;dispatchNow($command);
+        }
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">commandShouldBeQueued</span><span class="hljs-params">($command)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $command <span class="hljs-keyword">instanceof</span> ShouldQueue;
+    }
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x770B;&#x5F02;&#x6B65;&#x7684;&#x4EFB;&#x52A1;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatchToQueue</span><span class="hljs-params">($command)</span>
+</span>{
+    $connection = <span class="hljs-keyword">isset</span>($command-&gt;connection) ? $command-&gt;connection : <span class="hljs-keyword">null</span>;
+
+    $queue = call_user_func($this-&gt;queueResolver, $connection);
+
+    <span class="hljs-keyword">if</span> (! $queue <span class="hljs-keyword">instanceof</span> Queue) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&apos;Queue resolver did not return a Queue implementation.&apos;</span>);
+    }
+
+    <span class="hljs-keyword">if</span> (method_exists($command, <span class="hljs-string">&apos;queue&apos;</span>)) {
+        <span class="hljs-keyword">return</span> $command-&gt;queue($queue, $command);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> $this-&gt;pushCommandToQueue($queue, $command);
+    }
+}
+</code></pre>
+<p>&#x8FDB;&#x884C;&#x4EFB;&#x52A1;&#x5206;&#x53D1;&#x4E4B;&#x524D;&#xFF0C;&#x9996;&#x5148;&#x8981;&#x5229;&#x7528; <code>queueResolver</code> &#x8FDE;&#x63A5;&#x5E95;&#x5C42;&#x9A71;&#x52A8;&#x3002;&#x5982;&#x679C;&#x4EFB;&#x52A1;&#x7C7B;&#x4E2D;&#x542B;&#x6709; <code>queue</code> &#x51FD;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x5229;&#x7528;&#x7528;&#x6237;&#x81EA;&#x5DF1;&#x7684; <code>queue</code> &#x5BF9;&#x9A71;&#x52A8;&#x8FDB;&#x884C;&#x63A8;&#x9001;&#x4EFB;&#x52A1;&#x3002;&#x5426;&#x5219;&#x5C31;&#x4F1A;&#x542F;&#x52A8;&#x9ED8;&#x8BA4;&#x7684;&#x7A0B;&#x5E8F;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pushCommandToQueue</span><span class="hljs-params">($queue, $command)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($command-&gt;queue, $command-&gt;delay)) {
+        <span class="hljs-keyword">return</span> $queue-&gt;laterOn($command-&gt;queue, $command-&gt;delay, $command);
+    }
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($command-&gt;queue)) {
+        <span class="hljs-keyword">return</span> $queue-&gt;pushOn($command-&gt;queue, $command);
+    }
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($command-&gt;delay)) {
+        <span class="hljs-keyword">return</span> $queue-&gt;later($command-&gt;delay, $command);
+    }
+
+    <span class="hljs-keyword">return</span> $queue-&gt;push($command);
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x4EE5; <code>redis</code> &#x4E3A;&#x4F8B;&#xFF0C;<code>queue</code> &#x8FD9;&#x4E2A;&#x7C7B;&#x5C31;&#x662F; <code>Illuminate\Queue\RedisQueue</code>:</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RedisQueue</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Queue</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">QueueContract</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">push</span><span class="hljs-params">($job, $data = <span class="hljs-string">&apos;&apos;</span>, $queue = null)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;pushRaw($this-&gt;createPayload($job, $data), $queue);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pushOn</span><span class="hljs-params">($queue, $job, $data = <span class="hljs-string">&apos;&apos;</span>)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;push($job, $data, $queue);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">later</span><span class="hljs-params">($delay, $job, $data = <span class="hljs-string">&apos;&apos;</span>, $queue = null)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;laterRaw($delay, $this-&gt;createPayload($job, $data), $queue);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">laterOn</span><span class="hljs-params">($queue, $delay, $job, $data = <span class="hljs-string">&apos;&apos;</span>)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;later($delay, $job, $data, $queue);
+    }
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x5148;&#x770B; <code>push</code>&#xFF0C;<code>push</code> &#x51FD;&#x6570;&#x8C03;&#x7528; <code>pushRaw</code>&#xFF0C;&#x5728;&#x8C03;&#x7528;&#x4E4B;&#x524D;&#xFF0C;&#x8981;&#x628A;&#x4EFB;&#x52A1;&#x7C7B;&#x8FDB;&#x884C;&#x5E8F;&#x5217;&#x5316;&#xFF0C;&#x5E76;&#x4E14;&#x4EE5;&#x7279;&#x5B9A;&#x7684;&#x683C;&#x5F0F;&#x8FDB;&#x884C; <code>json</code> &#x5E8F;&#x5217;&#x5316;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createPayload</span><span class="hljs-params">($job, $data = <span class="hljs-string">&apos;&apos;</span>, $queue = null)</span>
+</span>{
+    $payload = json_encode($this-&gt;createPayloadArray($job, $data, $queue));
+
+    <span class="hljs-keyword">if</span> (JSON_ERROR_NONE !== json_last_error()) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> InvalidPayloadException;
+    }
+
+    <span class="hljs-keyword">return</span> $payload;
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createPayloadArray</span><span class="hljs-params">($job, $data = <span class="hljs-string">&apos;&apos;</span>, $queue = null)</span>
+</span>{
+    <span class="hljs-keyword">return</span> is_object($job)
+                ? $this-&gt;createObjectPayload($job)
+                : $this-&gt;createStringPayload($job, $data);
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createObjectPayload</span><span class="hljs-params">($job)</span>
+</span>{
+    <span class="hljs-keyword">return</span> [
+        <span class="hljs-string">&apos;job&apos;</span> =&gt; <span class="hljs-string">&apos;Illuminate\Queue\CallQueuedHandler@call&apos;</span>,
+        <span class="hljs-string">&apos;maxTries&apos;</span> =&gt; <span class="hljs-keyword">isset</span>($job-&gt;tries) ? $job-&gt;tries : <span class="hljs-keyword">null</span>,
+        <span class="hljs-string">&apos;timeout&apos;</span> =&gt; <span class="hljs-keyword">isset</span>($job-&gt;timeout) ? $job-&gt;timeout : <span class="hljs-keyword">null</span>,
+        <span class="hljs-string">&apos;data&apos;</span> =&gt; [
+            <span class="hljs-string">&apos;commandName&apos;</span> =&gt; get_class($job),
+            <span class="hljs-string">&apos;command&apos;</span> =&gt; serialize(<span class="hljs-keyword">clone</span> $job),
+        ],
+    ];
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createStringPayload</span><span class="hljs-params">($job, $data)</span>
+</span>{
+    <span class="hljs-keyword">return</span> [<span class="hljs-string">&apos;job&apos;</span> =&gt; $job, <span class="hljs-string">&apos;data&apos;</span> =&gt; $data];
+}
+</code></pre>
+<p>&#x683C;&#x5F0F;&#x5316;&#x6570;&#x636E;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x5C06; <code>json</code> &#x63A8;&#x9001;&#x5230; <code>redis</code> &#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x5BF9;&#x4E8E;&#x975E;&#x5EF6;&#x65F6;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x76F4;&#x63A5;&#x8C03;&#x7528; <code>rpush</code> &#x5373;&#x53EF;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pushRaw</span><span class="hljs-params">($payload, $queue = null, array $options = [])</span>
+</span>{
+    $this-&gt;getConnection()-&gt;rpush($this-&gt;getQueue($queue), $payload);
+
+    <span class="hljs-keyword">return</span> Arr::get(json_decode($payload, <span class="hljs-keyword">true</span>), <span class="hljs-string">&apos;id&apos;</span>);
+}
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x5EF6;&#x65F6;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x4F1A;&#x8C03;&#x7528; <code>laterRaw</code>&#xFF0C;&#x8C03;&#x7528; <code>redis</code> &#x7684;&#x6709;&#x5E8F;&#x96C6;&#x5408; <code>zadd</code> &#x51FD;&#x6570;:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">availableAt</span><span class="hljs-params">($delay = <span class="hljs-number">0</span>)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $delay <span class="hljs-keyword">instanceof</span> DateTimeInterface
+                        ? $delay-&gt;getTimestamp()
+                        : Carbon::now()-&gt;addSeconds($delay)-&gt;getTimestamp();
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">laterRaw</span><span class="hljs-params">($delay, $payload, $queue = null)</span>
+</span>{
+    $this-&gt;getConnection()-&gt;zadd(
+        $this-&gt;getQueue($queue).<span class="hljs-string">&apos;:delayed&apos;</span>, $this-&gt;availableAt($delay), $payload
+    );
+
+    <span class="hljs-keyword">return</span> Arr::get(json_decode($payload, <span class="hljs-keyword">true</span>), <span class="hljs-string">&apos;id&apos;</span>);
+}
+</code></pre>
+<p>&#x8FD9;&#x6837;&#xFF0C;&#x76F8;&#x5173;&#x4EFB;&#x52A1;&#x5C31;&#x4F1A;&#x88AB;&#x5206;&#x53D1;&#x5230; <code>redis</code> &#x5BF9;&#x5E94;&#x7684;&#x961F;&#x5217;&#x4E2D;&#x53BB;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="Laravel Queue——消息队列任务处理器源码剖析.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Laravel Queue——消息队列任务处理器源码剖析">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Laravel Queue——消息队列任务与分发源码剖析","level":"1.13.1","depth":2,"next":{"title":"Laravel Queue——消息队列任务处理器源码剖析","level":"1.13.2","depth":2,"path":"Laravel Queue——消息队列任务处理器源码剖析.md","ref":"Laravel Queue——消息队列任务处理器源码剖析.md","articles":[]},"previous":{"title":"Laravel Queue 队列","level":"1.13","depth":1,"ref":"","articles":[{"title":"Laravel Queue——消息队列任务与分发源码剖析","level":"1.13.1","depth":2,"path":"Laravel Queue——消息队列任务与分发源码剖析.md","ref":"Laravel Queue——消息队列任务与分发源码剖析.md","articles":[]},{"title":"Laravel Queue——消息队列任务处理器源码剖析","level":"1.13.2","depth":2,"path":"Laravel Queue——消息队列任务处理器源码剖析.md","ref":"Laravel Queue——消息队列任务处理器源码剖析.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Laravel Queue——消息队列任务与分发源码剖析.md","mtime":"2019-01-15T10:29:00.324Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T10:51:52.544Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

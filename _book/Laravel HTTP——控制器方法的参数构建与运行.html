@@ -1,0 +1,1197 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Laravel HTTP——控制器方法的参数构建与运行 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html" />
+    
+    
+    <link rel="prev" href="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    PHP Composer 自动加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="PHP Composer——自动加载原理.html">
+            
+                <a href="PHP Composer——自动加载原理.html">
+            
+                    
+                    PHP Composer——自动加载原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="PHP Composer—— 初始化源码分析.html">
+            
+                <a href="PHP Composer—— 初始化源码分析.html">
+            
+                    
+                    PHP Composer—— 初始化源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="PHP Composer-——-注册与运行源码分析.html">
+            
+                <a href="PHP Composer-——-注册与运行源码分析.html">
+            
+                    
+                    PHP Composer-——-注册与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    Laravel Facade 门面
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="Laravel Facade——Facade 门面源码分析.html">
+            
+                <a href="Laravel Facade——Facade 门面源码分析.html">
+            
+                    
+                    Laravel Facade——Facade 门面源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    Laravel Ioc 容器
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Laravel Container——IoC 服务容器.html">
+            
+                <a href="Laravel Container——IoC 服务容器.html">
+            
+                    
+                    Laravel Container——IoC 服务容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器绑定)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Container——IoC 服务容器源码解析(服务器解析)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="Laravel Container——服务容器的细节特性.html">
+            
+                <a href="Laravel Container——服务容器的细节特性.html">
+            
+                    
+                    Laravel Container——服务容器的细节特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Laravel Route 路由
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Laravel HTTP——路由.html">
+            
+                <a href="Laravel HTTP——路由.html">
+            
+                    
+                    Laravel HTTP——路由
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="Laravel HTTP——路由加载源码分析.html">
+            
+                <a href="Laravel HTTP——路由加载源码分析.html">
+            
+                    
+                    Laravel HTTP——路由加载源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                <a href="Laravel HTTP——Pipeline中间件处理源码分析.html">
+            
+                    
+                    Laravel HTTP——Pipeline中间件处理源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="Laravel HTTP——路由的正则编译.html">
+            
+                <a href="Laravel HTTP——路由的正则编译.html">
+            
+                    
+                    Laravel HTTP——路由的正则编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                <a href="Laravel HTTP——路由的匹配与参数绑定.html">
+            
+                    
+                    Laravel HTTP——路由的匹配与参数绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="Laravel HTTP——路由中间件源码分析.html">
+            
+                <a href="Laravel HTTP——路由中间件源码分析.html">
+            
+                    
+                    Laravel HTTP——路由中间件源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                <a href="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html">
+            
+                    
+                    Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.8" data-path="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                <a href="Laravel HTTP——控制器方法的参数构建与运行.html">
+            
+                    
+                    Laravel HTTP——控制器方法的参数构建与运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                <a href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP—— RESTFul 风格路由的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                <a href="Laravel HTTP——重定向的使用与源码分析.html">
+            
+                    
+                    Laravel HTTP——重定向的使用与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    Laravel ENV 环境变量
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                <a href="Laravel ENV—— 环境变量的加载与源码解析.html">
+            
+                    
+                    Laravel ENV—— 环境变量的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Laravel Config 配置文件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                <a href="Laravel Config—— 配置文件的加载与源码解析.html">
+            
+                    
+                    Laravel Config—— 配置文件的加载与源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Laravel Exceptions 异常处理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="Laravel Exceptions——异常与错误处理.html">
+            
+                <a href="Laravel Exceptions——异常与错误处理.html">
+            
+                    
+                    Laravel Exceptions——异常与错误处理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    Laravel Providers 服务提供者
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                <a href="Laravel Providers——服务提供者的注册与启动源码解析.html">
+            
+                    
+                    Laravel Providers——服务提供者的注册与启动源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    Laravel Database 数据库
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="Laravel Database——数据库服务的启动与连接.html">
+            
+                <a href="Laravel Database——数据库服务的启动与连接.html">
+            
+                    
+                    Laravel Database——数据库服务的启动与连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="Laravel Database——数据库的 CRUD 操作.html">
+            
+                <a href="Laravel Database——数据库的 CRUD 操作.html">
+            
+                    
+                    Laravel Database——数据库的 CRUD 操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="Laravel Database——查询构造器与语法编译器源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="Laravel Database——查询构造器与语法编译器源码分析%28中%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(中)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="Laravel Database——查询构造器与语法编译器源码分析%28下%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——查询构造器与语法编译器源码分析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="Laravel Database——分页原理与源码分析.html">
+            
+                <a href="Laravel Database——分页原理与源码分析.html">
+            
+                    
+                    Laravel Database——分页原理与源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Laravel Database——Eloquent Model 源码分析%28上%29.md">
+            
+                <span>
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析(上)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                <a href="Laravel Database——Eloquent Model 源码分析（下）.html">
+            
+                    
+                    Laravel Database——Eloquent Model 源码分析（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                <a href="Laravel Database——Eloquent Model 关联源码分析.html">
+            
+                    
+                    Laravel Database——Eloquent Model 关联源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                <a href="Laravel Database——Eloquent Model 模型关系加载与查询.html">
+            
+                    
+                    Laravel Database——Eloquent Model 模型关系加载与查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                <a href="Laravel Database——Eloquent Model 更新关联模型.html">
+            
+                    
+                    Laravel Database——Eloquent Model 更新关联模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    Laravel Session
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="Laravel Session——session 的启动与运行源码分析.html">
+            
+                <a href="Laravel Session——session 的启动与运行源码分析.html">
+            
+                    
+                    Laravel Session——session 的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    Laravel Event 事件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                <a href="Laravel Event——事件系统的启动与运行源码分析.html">
+            
+                    
+                    Laravel Event——事件系统的启动与运行源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    Laravel Queue 队列
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务与分发源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务与分发源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                <a href="Laravel Queue——消息队列任务处理器源码剖析.html">
+            
+                    
+                    Laravel Queue——消息队列任务处理器源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    Laravel 广播系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="Laravel Broadcast——广播系统源码剖析.html">
+            
+                <a href="Laravel Broadcast——广播系统源码剖析.html">
+            
+                    
+                    Laravel Broadcast——广播系统源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    Laravel Passport
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                <a href="Laravel Passport——OAuth2 API 认证系统源码解析（下）.html">
+            
+                    
+                    Laravel Passport——OAuth2 API 认证系统源码解析(下)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Laravel HTTP——控制器方法的参数构建与运行</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x524D;&#x8A00;">&#x524D;&#x8A00;</h1>
+<p>&#x7ECF;&#x8FC7;&#x524D;&#x9762;&#x4E00;&#x7CFB;&#x5217;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x73B0;&#x5728;&#x8BF7;&#x6C42;&#x7EC8;&#x4E8E;&#x8981;&#x8FBE;&#x5230;&#x4E86;&#x6B63;&#x786E;&#x7684;&#x63A7;&#x5236;&#x5668;&#x65B9;&#x6CD5;&#x4E86;&#x3002;&#x672C;&#x7BC7;&#x6587;&#x7AE0;&#x4E3B;&#x8981;&#x8BB2; <code>laravel</code> &#x5982;&#x4F55;&#x8C03;&#x7528;&#x63A7;&#x5236;&#x5668;&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x4E14;&#x4E3A;&#x63A7;&#x5236;&#x5668;&#x65B9;&#x6CD5;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x6784;&#x5EFA;&#x53C2;&#x6570;&#x7684;&#x8FC7;&#x7A0B;&#x3002;</p>
+<h1 id="&#x8DEF;&#x7531;&#x63A7;&#x5236;&#x5668;&#x7684;&#x8C03;&#x7528;">&#x8DEF;&#x7531;&#x63A7;&#x5236;&#x5668;&#x7684;&#x8C03;&#x7528;</h1>
+<p>&#x6211;&#x4EEC;&#x524D;&#x9762;&#x5DF2;&#x7ECF;&#x89E3;&#x6790;&#x8FC7;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x641C;&#x96C6;&#x4E0E;&#x6392;&#x5E8F;&#x3001;pipeline &#x7684;&#x539F;&#x7406;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x8981;&#x8FDB;&#x884C;&#x8DEF;&#x7531;&#x7684; <code>run</code> &#x8FD0;&#x884C;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">runRouteWithinStack</span><span class="hljs-params">(Route $route, Request $request)</span>
+</span>{
+    $shouldSkipMiddleware = $this-&gt;container-&gt;bound(<span class="hljs-string">&apos;middleware.disable&apos;</span>) &amp;&amp;
+                            $this-&gt;container-&gt;make(<span class="hljs-string">&apos;middleware.disable&apos;</span>) === <span class="hljs-keyword">true</span>;
+
+    $middleware = $shouldSkipMiddleware ? [] : $this-&gt;gatherRouteMiddleware($route);
+
+    <span class="hljs-keyword">return</span> (<span class="hljs-keyword">new</span> Pipeline($this-&gt;container))
+                    -&gt;send($request)
+                    -&gt;through($middleware)
+                    -&gt;then(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($request)</span> <span class="hljs-title">use</span> <span class="hljs-params">($route)</span> </span>{
+                        <span class="hljs-keyword">return</span> $this-&gt;prepareResponse(
+                            $request, $route-&gt;run()
+                        );
+                    });
+}
+</code></pre>
+<p>&#x8DEF;&#x7531;&#x7684; <code>run</code> &#x51FD;&#x6570;&#x4E3B;&#x8981;&#x8D1F;&#x8D23;&#x8DEF;&#x7531;&#x63A7;&#x5236;&#x5668;&#x65B9;&#x6CD5;&#x4E0E;&#x8DEF;&#x7531;&#x95ED;&#x5305;&#x51FD;&#x6570;&#x7684;&#x8FD0;&#x884C;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span><span class="hljs-params">()</span>
+</span>{
+    $this-&gt;container = $this-&gt;container ?: <span class="hljs-keyword">new</span> Container;
+
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">if</span> ($this-&gt;isControllerAction()) {
+            <span class="hljs-keyword">return</span> $this-&gt;runController();
+        }
+
+        <span class="hljs-keyword">return</span> $this-&gt;runCallable();
+    } <span class="hljs-keyword">catch</span> (HttpResponseException $e) {
+        <span class="hljs-keyword">return</span> $e-&gt;getResponse();
+    }
+}
+</code></pre>
+<p>&#x8DEF;&#x7531;&#x7684;&#x8FD0;&#x884C;&#x4E3B;&#x8981;&#x9760; <code>ControllerDispatcher</code> &#x8FD9;&#x4E2A;&#x7C7B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Route</span>
+</span>{
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isControllerAction</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> is_string($this-&gt;action[<span class="hljs-string">&apos;uses&apos;</span>]);
+    }
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">runController</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">new</span> ControllerDispatcher($this-&gt;container))-&gt;dispatch(
+            $this, $this-&gt;getController(), $this-&gt;getControllerMethod()
+        );
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ControllerDispatcher</span>
+</span>{
+    <span class="hljs-keyword">use</span> <span class="hljs-title">RouteDependencyResolverTrait</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatch</span><span class="hljs-params">(Route $route, $controller, $method)</span>
+    </span>{
+        $parameters = $this-&gt;resolveClassMethodDependencies(
+            $route-&gt;parametersWithoutNulls(), $controller, $method
+        );
+
+        <span class="hljs-keyword">if</span> (method_exists($controller, <span class="hljs-string">&apos;callAction&apos;</span>)) {
+            <span class="hljs-keyword">return</span> $controller-&gt;callAction($method, $parameters);
+        }
+
+        <span class="hljs-keyword">return</span> $controller-&gt;{$method}(...array_values($parameters));
+    }
+}
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x53EF;&#x4EE5;&#x5F88;&#x6E05;&#x6670;&#x5730;&#x770B;&#x51FA;&#xFF0C;&#x63A7;&#x5236;&#x5668;&#x7684;&#x8FD0;&#x884C;&#x5206;&#x4E3A;&#x4E24;&#x6B65;&#xFF1A;&#x89E3;&#x6790;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x3001;&#x8C03;&#x7528;callAction</p>
+<h2 id="&#x89E3;&#x6790;&#x63A7;&#x5236;&#x5668;&#x65B9;&#x6CD5;&#x53C2;&#x6570;">&#x89E3;&#x6790;&#x63A7;&#x5236;&#x5668;&#x65B9;&#x6CD5;&#x53C2;&#x6570;</h2>
+<p>&#x89E3;&#x6790;&#x53C2;&#x6570;&#x7684;&#x529F;&#x80FD;&#x4E3B;&#x8981;&#x7531; <code>ControllerDispatcher</code> &#x7C7B;&#x7684; <code>RouteDependencyResolverTrait</code> &#x8FD9;&#x4E00; <code>trait</code> &#x8D1F;&#x8D23;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">trait</span> RouteDependencyResolverTrait
+{
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resolveClassMethodDependencies</span><span class="hljs-params">(array $parameters, $instance, $method)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (! method_exists($instance, $method)) {
+            <span class="hljs-keyword">return</span> $parameters;
+        }
+
+        <span class="hljs-keyword">return</span> $this-&gt;resolveMethodDependencies(
+            $parameters, <span class="hljs-keyword">new</span> ReflectionMethod($instance, $method)
+        );
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resolveMethodDependencies</span><span class="hljs-params">(array $parameters, ReflectionFunctionAbstract $reflector)</span>
+    </span>{
+        $instanceCount = <span class="hljs-number">0</span>;
+
+        $values = array_values($parameters);
+
+        <span class="hljs-keyword">foreach</span> ($reflector-&gt;getParameters() <span class="hljs-keyword">as</span> $key =&gt; $parameter) {
+            $instance = $this-&gt;transformDependency(
+                $parameter, $parameters
+            );
+
+            <span class="hljs-keyword">if</span> (! is_null($instance)) {
+                $instanceCount++;
+
+                $this-&gt;spliceIntoParameters($parameters, $key, $instance);
+            } <span class="hljs-keyword">elseif</span> (! <span class="hljs-keyword">isset</span>($values[$key - $instanceCount]) &amp;&amp;
+                      $parameter-&gt;isDefaultValueAvailable()) {
+                $this-&gt;spliceIntoParameters($parameters, $key, $parameter-&gt;getDefaultValue());
+            }
+        }
+
+        <span class="hljs-keyword">return</span> $parameters;
+    }
+}
+</code></pre>
+<p>&#x63A7;&#x5236;&#x5668;&#x65B9;&#x6CD5;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x6784;&#x9020;&#x96BE;&#x70B9;&#x5728;&#x4E8E;&#xFF0C;&#x53C2;&#x6570;&#x6765;&#x6E90;&#x6709;&#x4E09;&#x79CD;&#xFF1A;</p>
+<ul>
+<li>&#x8DEF;&#x7531;&#x53C2;&#x6570;&#x8D4B;&#x503C;</li>
+<li>Ioc &#x5BB9;&#x5668;&#x81EA;&#x52A8;&#x6CE8;&#x5165;</li>
+<li>&#x51FD;&#x6570;&#x81EA;&#x5E26;&#x9ED8;&#x8BA4;&#x503C;</li>
+</ul>
+<p>&#x5728; Ioc &#x5BB9;&#x5668;&#x81EA;&#x52A8;&#x6CE8;&#x5165;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8981;&#x4FDD;&#x8BC1;&#x8DEF;&#x7531;&#x7684;&#x73B0;&#x6709;&#x53C2;&#x6570;&#x4E2D;&#x6CA1;&#x6709;&#x76F8;&#x5E94;&#x7684;&#x7C7B;&#xFF0C;&#x9632;&#x6B62;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x8986;&#x76D6;&#x8DEF;&#x7531;&#x7ED1;&#x5B9A;&#x7684;&#x53C2;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transformDependency</span><span class="hljs-params">(ReflectionParameter $parameter, $parameters)</span>
+</span>{
+    $class = $parameter-&gt;getClass();
+
+    <span class="hljs-keyword">if</span> ($class &amp;&amp; ! $this-&gt;alreadyInParameters($class-&gt;name, $parameters)) {
+        <span class="hljs-keyword">return</span> $this-&gt;container-&gt;make($class-&gt;name);
+    }
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">alreadyInParameters</span><span class="hljs-params">($class, array $parameters)</span>
+</span>{
+    <span class="hljs-keyword">return</span> ! is_null(Arr::first($parameters, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($value)</span> <span class="hljs-title">use</span> <span class="hljs-params">($class)</span> </span>{
+        <span class="hljs-keyword">return</span> $value <span class="hljs-keyword">instanceof</span> $class;
+    }));
+}
+</code></pre>
+<p>&#x7531; Ioc &#x5BB9;&#x5668;&#x6784;&#x9020;&#x51FA;&#x7684;&#x53C2;&#x6570;&#x9700;&#x8981;&#x63D2;&#x5165;&#x5230;&#x539F;&#x6709;&#x7684;&#x8DEF;&#x7531;&#x53C2;&#x6570;&#x6570;&#x7EC4;&#x4E2D;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">if</span> (! is_null($instance)) {
+    $instanceCount++;
+
+    $this-&gt;spliceIntoParameters($parameters, $key, $instance);
+}
+
+<span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">spliceIntoParameters</span><span class="hljs-params">(array &amp;$parameters, $offset, $value)</span>
+</span>{
+    array_splice(
+        $parameters, $offset, <span class="hljs-number">0</span>, [$value]
+    );
+}
+</code></pre>
+<p>&#x5F53;&#x8DEF;&#x7531;&#x7684;&#x53C2;&#x6570;&#x6570;&#x7EC4;&#x4E0E; Ioc &#x5BB9;&#x5668;&#x6784;&#x9020;&#x7684;&#x53C2;&#x6570;&#x6570;&#x91CF;&#x4E0D;&#x8DB3;&#x4EE5;&#x8986;&#x76D6;&#x63A7;&#x5236;&#x5668;&#x53C2;&#x6570;&#x4E2A;&#x6570;&#x65F6;&#xFF0C;&#x5C31;&#x8981;&#x53BB;&#x5224;&#x65AD;&#x63A7;&#x5236;&#x5668;&#x662F;&#x5426;&#x5177;&#x6709;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">elseif</span> (! <span class="hljs-keyword">isset</span>($values[$key - $instanceCount]) &amp;&amp;
+       $parameter-&gt;isDefaultValueAvailable()) {
+    $this-&gt;spliceIntoParameters($parameters, $key, $parameter-&gt;getDefaultValue());
+}
+</code></pre>
+<h2 id="&#x8C03;&#x7528;&#x63A7;&#x5236;&#x5668;&#x65B9;&#x6CD5;-callaction">&#x8C03;&#x7528;&#x63A7;&#x5236;&#x5668;&#x65B9;&#x6CD5; callAction</h2>
+<p>&#x6240;&#x6709;&#x7684;&#x63A7;&#x5236;&#x5668;&#x5E76;&#x975E;&#x662F;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x76F8;&#x5E94;&#x65B9;&#x6CD5;&#x7684;&#xFF0C;&#x800C;&#x662F;&#x901A;&#x8FC7; <code>callAction</code> &#x51FD;&#x6570;&#x518D;&#x5206;&#x914D;&#xFF0C;&#x5982;&#x679C;&#x5B9E;&#x5728;&#x6CA1;&#x6709;&#x76F8;&#x5E94;&#x65B9;&#x6CD5;&#x8FD8;&#x4F1A;&#x8C03;&#x7528;&#x9B54;&#x672F;&#x65B9;&#x6CD5; <code>__call()</code>:</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callAction</span><span class="hljs-params">($method, $parameters)</span>
+</span>{
+    <span class="hljs-keyword">return</span> call_user_func_array([$this, $method], $parameters);
+}
+
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__call</span><span class="hljs-params">($method, $parameters)</span>
+</span>{
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> BadMethodCallException(<span class="hljs-string">&quot;Method [{$method}] does not exist.&quot;</span>);
+}
+</code></pre>
+<h1 id="&#x8DEF;&#x7531;&#x95ED;&#x5305;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;">&#x8DEF;&#x7531;&#x95ED;&#x5305;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;</h1>
+<p>&#x8DEF;&#x7531;&#x95ED;&#x5305;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x4E0E;&#x63A7;&#x5236;&#x5668;&#x65B9;&#x6CD5;&#x4E00;&#x6837;&#xFF0C;&#x4ECD;&#x7136;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#xFF0C;&#x53C2;&#x6570;&#x6784;&#x9020;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">runCallable</span><span class="hljs-params">()</span>
+</span>{
+    $callable = $this-&gt;action[<span class="hljs-string">&apos;uses&apos;</span>];
+
+    <span class="hljs-keyword">return</span> $callable(...array_values($this-&gt;resolveMethodDependencies(
+        $this-&gt;parametersWithoutNulls(), <span class="hljs-keyword">new</span> ReflectionFunction($this-&gt;action[<span class="hljs-string">&apos;uses&apos;</span>])
+    )));
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.html" class="navigation navigation-prev " aria-label="Previous page: Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Laravel HTTP—— RESTFul 风格路由的使用与源码分析.html" class="navigation navigation-next " aria-label="Next page: Laravel HTTP—— RESTFul 风格路由的使用与源码分析">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Laravel HTTP——控制器方法的参数构建与运行","level":"1.5.8","depth":2,"next":{"title":"Laravel HTTP—— RESTFul 风格路由的使用与源码分析","level":"1.5.9","depth":2,"path":"Laravel HTTP—— RESTFul 风格路由的使用与源码分析.md","ref":"Laravel HTTP—— RESTFul 风格路由的使用与源码分析.md","articles":[]},"previous":{"title":"Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析","level":"1.5.7","depth":2,"path":"Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.md","ref":"Laravel HTTP——SubstituteBindings 参数绑定中间件的使用与源码解析.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Laravel HTTP——控制器方法的参数构建与运行.md","mtime":"2019-01-15T10:29:00.316Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T10:51:52.544Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
