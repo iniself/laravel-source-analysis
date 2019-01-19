@@ -244,7 +244,7 @@ public static function loadClassLoader($class)
 ```php
 <?php
   class ComposerStaticInit832ea71bfb9a4128da8660baedaac82e{
-     public static $files = array(...);
+     public static $files = array(...);//实际文件中有真实的数组，这里只是表示而已
      public static $prefixLengthsPsr4 = array(...);
      public static $prefixDirsPsr4 = array(...);
      public static $prefixesPsr0 = array(...);
@@ -278,6 +278,7 @@ public static function loadClassLoader($class)
  #### 最简单的 classMap:
 
 ```php
+//依然在autoload_static.php文件中
 <?php
   public static $classMap = array (
   	'App\\Console\\Kernel'
