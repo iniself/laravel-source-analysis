@@ -935,91 +935,85 @@
 <p>&#x2003;&#x2003;Facades&#xFF08;&#x8BFB;&#x97F3;&#xFF1A;/f&#x259;&#x2C8;s&#xE4;d/ &#xFF09;&#x4E3A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x4E2D;&#x53EF;&#x7528;&#x7684;&#x7C7B;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x300C;&#x9759;&#x6001;&#x300D;&#x63A5;&#x53E3;&#x3002;Laravel &#x81EA;&#x5E26;&#x4E86;&#x5F88;&#x591A; facades &#xFF0C;&#x51E0;&#x4E4E;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x8BBF;&#x95EE;&#x5230; Laravel &#x4E2D;&#x6240;&#x6709;&#x7684;&#x670D;&#x52A1;&#x3002;Laravel facades &#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x4E2D;&#x90A3;&#x4E9B;&#x5E95;&#x5C42;&#x7C7B;&#x7684;&#x300C;&#x9759;&#x6001;&#x4EE3;&#x7406;&#x300D;&#xFF0C;&#x76F8;&#x6BD4;&#x4E8E;&#x4F20;&#x7EDF;&#x7684;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#xFF0C; facades &#x5728;&#x63D0;&#x4F9B;&#x4E86;&#x7B80;&#x6D01;&#x4E14;&#x4E30;&#x5BCC;&#x7684;&#x8BED;&#x6CD5;&#x540C;&#x65F6;&#xFF0C;&#x8FD8;&#x5E26;&#x6765;&#x4E86;&#x66F4;&#x597D;&#x7684;&#x53EF;&#x6D4B;&#x8BD5;&#x6027;&#x548C;&#x6269;&#x5C55;&#x6027;&#x3002;</p>
 </blockquote>
 <p>&#x2003;&#x2003;&#x4EC0;&#x4E48;&#x610F;&#x601D;&#x5462;&#xFF1F;&#x9996;&#x5148;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x77E5;&#x9053;laravel&#x6846;&#x67B6;&#x7684;&#x6838;&#x5FC3;&#x5C31;&#x662F;&#x4E2A;Ioc&#x5BB9;&#x5668;&#x5373;<a href="http://d.laravel-china.org/docs/5.4/container" target="_blank">&#x670D;&#x52A1;&#x5BB9;&#x5668;</a>&#xFF0C;&#x529F;&#x80FD;&#x7C7B;&#x4F3C;&#x4E8E;&#x4E00;&#x4E2A;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#xFF0C;&#x662F;&#x4E2A;&#x9AD8;&#x7EA7;&#x7248;&#x7684;&#x5DE5;&#x5382;&#x3002;laravel&#x7684;&#x5176;&#x4ED6;&#x529F;&#x80FD;&#x4F8B;&#x5982;&#x8DEF;&#x7531;&#x3001;&#x7F13;&#x5B58;&#x3001;&#x65E5;&#x5FD7;&#x3001;&#x6570;&#x636E;&#x5E93;&#x5176;&#x5B9E;&#x90FD;&#x662F;&#x7C7B;&#x4F3C;&#x4E8E;&#x63D2;&#x4EF6;&#x6216;&#x8005;&#x96F6;&#x4EF6;&#x4E00;&#x6837;&#xFF0C;&#x53EB;&#x505A;<a href="http://d.laravel-china.org/docs/5.4/providers" target="_blank">&#x670D;&#x52A1;</a>&#x3002;Ioc&#x5BB9;&#x5668;&#x4E3B;&#x8981;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x751F;&#x4EA7;&#x5404;&#x79CD;&#x96F6;&#x4EF6;&#xFF0C;&#x5C31;&#x662F;&#x63D0;&#x4F9B;&#x5404;&#x4E2A;&#x670D;&#x52A1;&#x3002;&#x5728;laravel&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x7528;&#x67D0;&#x4E2A;&#x670D;&#x52A1;&#xFF0C;&#x8BE5;&#x600E;&#x4E48;&#x529E;&#x5462;&#xFF1F;&#x6700;&#x7B80;&#x5355;&#x7684;&#x529E;&#x6CD5;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x7684;make&#x51FD;&#x6570;&#xFF0C;&#x6216;&#x8005;&#x5229;&#x7528;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#xFF0C;&#x6216;&#x8005;&#x5C31;&#x662F;&#x4ECA;&#x5929;&#x8981;&#x8BB2;&#x7684;&#x95E8;&#x9762;Facade&#x3002;&#x95E8;&#x9762;&#x76F8;&#x5BF9;&#x4E8E;&#x5176;&#x4ED6;&#x65B9;&#x6CD5;&#x6765;&#x8BF4;&#xFF0C;&#x6700;&#x5927;&#x7684;&#x7279;&#x70B9;&#x5C31;&#x662F;&#x7B80;&#x6D01;&#xFF0C;&#x4F8B;&#x5982;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684;Router&#xFF0C;&#x5982;&#x679C;&#x5229;&#x7528;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x7684;make&#xFF1A;</p>
-<pre><code>```php
-App::make(&apos;router&apos;)-&gt;get(&apos;/&apos;, function () {
-  return view(&apos;welcome&apos;);
+<pre><code class="lang-php">App::make(<span class="hljs-string">&apos;router&apos;</span>)-&gt;get(<span class="hljs-string">&apos;/&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> view(<span class="hljs-string">&apos;welcome&apos;</span>);
 });
-```
-</code></pre><p>&#x5982;&#x679C;&#x5229;&#x7528;&#x95E8;&#x9762;&#xFF1A;</p>
-<pre><code>```php
-Route::get(&apos;/&apos;, function () {
-  return view(&apos;welcome&apos;);
+</code></pre>
+<p>&#x5982;&#x679C;&#x5229;&#x7528;&#x95E8;&#x9762;&#xFF1A;</p>
+<pre><code class="lang-php">Route::get(<span class="hljs-string">&apos;/&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> view(<span class="hljs-string">&apos;welcome&apos;</span>);
 });
-```
-</code></pre><p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x4EE3;&#x7801;&#x66F4;&#x52A0;&#x7B80;&#x6D01;&#x3002;&#x5176;&#x5B9E;&#xFF0C;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5C31;&#x4F1A;&#x4ECB;&#x7ECD;&#x95E8;&#x9762;&#x6700;&#x540E;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x7684;make&#x51FD;&#x6570;&#x3002;</p>
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x4EE3;&#x7801;&#x66F4;&#x52A0;&#x7B80;&#x6D01;&#x3002;&#x5176;&#x5B9E;&#xFF0C;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5C31;&#x4F1A;&#x4ECB;&#x7ECD;&#x95E8;&#x9762;&#x6700;&#x540E;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x7684;make&#x51FD;&#x6570;&#x3002;</p>
 <h1 id="facade&#x7684;&#x539F;&#x7406;">Facade&#x7684;&#x539F;&#x7406;</h1>
 <p>&#x2003;&#x2003;&#x6211;&#x4EEC;&#x4EE5;Route&#x4E3A;&#x4F8B;&#xFF0C;&#x6765;&#x8BB2;&#x89E3;&#x4E00;&#x4E0B;&#x95E8;&#x9762;Facade&#x7684;&#x539F;&#x7406;&#x4E0E;&#x5B9E;&#x73B0;&#x3002;&#x6211;&#x4EEC;&#x5148;&#x6765;&#x770B;Route&#x7684;&#x95E8;&#x9762;&#x7C7B;&#xFF1A;</p>
-<pre><code>```php
-class Route extends Facade
-{
-    protected static function getFacadeAccessor()
-    {
-        return &apos;router&apos;;
+<pre><code class="lang-php"><span class="hljs-comment">///vendor/laravel/framework/src/Illuminate/Support/Facades/Route.php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Route</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Facade</span>
+</span>{
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFacadeAccessor</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;router&apos;</span>;
     }
 }
-```
-</code></pre><p>&#x2003;&#x2003;&#x5F88;&#x7B80;&#x5355;&#x5427;&#xFF1F;&#x5176;&#x5B9E;&#x6BCF;&#x4E2A;&#x95E8;&#x9762;&#x7C7B;&#x4E5F;&#x5C31;&#x662F;&#x91CD;&#x5B9A;&#x4E49;&#x4E00;&#x4E0B;getFacadeAccessor&#x51FD;&#x6570;&#x5C31;&#x884C;&#x4E86;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x670D;&#x52A1;&#x7684;&#x552F;&#x4E00;&#x540D;&#x79F0;&#xFF1A;router&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x8981;&#x786E;&#x4FDD;&#x8FD9;&#x4E2A;&#x540D;&#x79F0;&#x53EF;&#x4EE5;&#x7528;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x7684;make&#x51FD;&#x6570;&#x521B;&#x5EFA;&#x6210;&#x529F;(App::make(&apos;router&apos;))&#xFF0C;&#x539F;&#x56E0;&#x6211;&#x4EEC;&#x9A6C;&#x4E0A;&#x5C31;&#x4F1A;&#x8BB2;&#x5230;&#x3002;
+</code></pre>
+<p>&#x2003;&#x2003;&#x5F88;&#x7B80;&#x5355;&#x5427;&#xFF1F;&#x5176;&#x5B9E;&#x6BCF;&#x4E2A;&#x95E8;&#x9762;&#x7C7B;&#x4E5F;&#x5C31;&#x662F;&#x91CD;&#x5B9A;&#x4E49;&#x4E00;&#x4E0B;getFacadeAccessor&#x51FD;&#x6570;&#x5C31;&#x884C;&#x4E86;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x670D;&#x52A1;&#x7684;&#x552F;&#x4E00;&#x540D;&#x79F0;&#xFF1A;router&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x8981;&#x786E;&#x4FDD;&#x8FD9;&#x4E2A;&#x540D;&#x79F0;&#x53EF;&#x4EE5;&#x7528;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x7684;make&#x51FD;&#x6570;&#x521B;&#x5EFA;&#x6210;&#x529F;(App::make(&apos;router&apos;))&#xFF0C;&#x539F;&#x56E0;&#x6211;&#x4EEC;&#x9A6C;&#x4E0A;&#x5C31;&#x4F1A;&#x8BB2;&#x5230;&#x3002;
 &#x2003;&#x2003;&#x90A3;&#x4E48;&#x5F53;&#x6211;&#x4EEC;&#x5199;&#x51FA;Route::get()&#x8FD9;&#x6837;&#x7684;&#x8BED;&#x53E5;&#x65F6;&#xFF0C;&#x5230;&#x5E95;&#x53D1;&#x751F;&#x4E86;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;&#x5965;&#x79D8;&#x5C31;&#x5728;&#x57FA;&#x7C7B;Facade&#x4E2D;&#x3002;</p>
-<pre><code>```php
-public static function __callStatic($method, $args)
-{
-    $instance = static::getFacadeRoot();
+<pre><code class="lang-php"><span class="hljs-comment">///vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__callStatic</span><span class="hljs-params">($method, $args)</span>
+</span>{
+    $instance = <span class="hljs-keyword">static</span>::getFacadeRoot();
 
-    if (! $instance) {
-        throw new RuntimeException(&apos;A facade root has not been set.&apos;);
+    <span class="hljs-keyword">if</span> (! $instance) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&apos;A facade root has not been set.&apos;</span>);
     }
 
-    return $instance-&gt;$method(...$args);
+    <span class="hljs-keyword">return</span> $instance-&gt;$method(...$args);
 }
-```
-</code></pre><p>&#x2003;&#x2003;&#x5F53;&#x8FD0;&#x884C;Route::get()&#x65F6;&#xFF0C;&#x53D1;&#x73B0;&#x95E8;&#x9762;Route&#x6CA1;&#x6709;&#x9759;&#x6001;get()&#x51FD;&#x6570;&#xFF0C;PHP&#x5C31;&#x4F1A;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x9B54;&#x672F;&#x51FD;&#x6570;__callStatic&#x3002;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x8FD9;&#x4E2A;&#x9B54;&#x672F;&#x51FD;&#x6570;&#x505A;&#x4E86;&#x4E24;&#x4EF6;&#x4E8B;&#xFF1A;&#x83B7;&#x5F97;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#xFF0C;&#x5229;&#x7528;&#x5BF9;&#x8C61;&#x8C03;&#x7528;get()&#x51FD;&#x6570;&#x3002;&#x9996;&#x5148;&#x5148;&#x770B;&#x770B;&#x5982;&#x4F55;&#x83B7;&#x5F97;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x7684;&#xFF1A;</p>
-<pre><code>```php
-public static function getFacadeRoot()
-{
-    return static::resolveFacadeInstance(static::getFacadeAccessor());
+</code></pre>
+<p>&#x2003;&#x2003;&#x5F53;&#x8FD0;&#x884C;Route::get()&#x65F6;&#xFF0C;&#x53D1;&#x73B0;&#x95E8;&#x9762;Route&#x6CA1;&#x6709;&#x9759;&#x6001;get()&#x51FD;&#x6570;&#xFF0C;PHP&#x5C31;&#x4F1A;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x9B54;&#x672F;&#x51FD;&#x6570;__callStatic&#x3002;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x8FD9;&#x4E2A;&#x9B54;&#x672F;&#x51FD;&#x6570;&#x505A;&#x4E86;&#x4E24;&#x4EF6;&#x4E8B;&#xFF1A;&#x83B7;&#x5F97;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#xFF0C;&#x5229;&#x7528;&#x5BF9;&#x8C61;&#x8C03;&#x7528;get()&#x51FD;&#x6570;&#x3002;&#x9996;&#x5148;&#x5148;&#x770B;&#x770B;&#x5982;&#x4F55;&#x83B7;&#x5F97;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-comment">///vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFacadeRoot</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">static</span>::resolveFacadeInstance(<span class="hljs-keyword">static</span>::getFacadeAccessor());
 }
-protected static function getFacadeAccessor()
-{
-    throw new RuntimeException(&apos;Facade does not implement getFacadeAccessor method.&apos;);
+<span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFacadeAccessor</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&apos;Facade does not implement getFacadeAccessor method.&apos;</span>);
 }
-protected static function resolveFacadeInstance($name)
-{
-    if (is_object($name)) {
-        return $name;
+<span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resolveFacadeInstance</span><span class="hljs-params">($name)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (is_object($name)) {
+        <span class="hljs-keyword">return</span> $name;
     }
 
-    if (isset(static::$resolvedInstance[$name])) {
-        return static::$resolvedInstance[$name];
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-keyword">static</span>::$resolvedInstance[$name])) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">static</span>::$resolvedInstance[$name];
     }
 
-    return static::$resolvedInstance[$name] = static::$app[$name];
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">static</span>::$resolvedInstance[$name] = <span class="hljs-keyword">static</span>::$app[$name];
 }
-```
-</code></pre><p>&#x2003;&#x2003;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x57FA;&#x7C7B;getFacadeRoot()&#x8C03;&#x7528;&#x4E86;getFacadeAccessor()&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x7684;&#x670D;&#x52A1;&#x91CD;&#x8F7D;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x8C03;&#x7528;&#x4E86;&#x57FA;&#x7C7B;&#x7684;getFacadeAccessor&#xFF0C;&#x5C31;&#x4F1A;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x3002;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x4F8B;&#x5B50;&#x91CC;getFacadeAccessor()&#x8FD4;&#x56DE;&#x4E86;&#x201C;router&#x201D;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;getFacadeRoot()&#x53C8;&#x8C03;&#x7528;&#x4E86;resolveFacadeInstance()&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x91CC;&#x91CD;&#x70B9;&#x5C31;&#x662F;</p>
-<pre><code>```php
-return static::$resolvedInstance[$name] = static::$app[$name];
-```
-</code></pre><p>&#x6211;&#x4EEC;&#x770B;&#x5230;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x5229;&#x7528;&#x4E86;$app&#x4E5F;&#x5C31;&#x662F;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x521B;&#x5EFA;&#x4E86;&#x201C;router&#x201D;&#xFF0C;&#x521B;&#x5EFA;&#x6210;&#x529F;&#x540E;&#x653E;&#x5165;$resolvedInstance&#x4F5C;&#x4E3A;&#x7F13;&#x5B58;&#xFF0C;&#x4EE5;&#x4FBF;&#x4EE5;&#x540E;&#x5FEB;&#x901F;&#x52A0;&#x8F7D;&#x3002;
+</code></pre>
+<p>&#x2003;&#x2003;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x57FA;&#x7C7B;getFacadeRoot()&#x8C03;&#x7528;&#x4E86;getFacadeAccessor()&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x7684; Route.php &#x4E2D;&#x91CD;&#x8F7D;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x57FA;&#x7C7B;&#x7684;getFacadeAccessor&#xFF0C;&#x4F1A;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x3002;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x4F8B;&#x5B50; (Route.php) &#x91CC;getFacadeAccessor()&#x8FD4;&#x56DE;&#x4E86;&#x201C;router&#x201D;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;getFacadeRoot()&#x53C8;&#x8C03;&#x7528;&#x4E86;resolveFacadeInstance()&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x91CC;&#x91CD;&#x70B9;&#x5C31;&#x662F;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">return</span> <span class="hljs-keyword">static</span>::$resolvedInstance[$name] = <span class="hljs-keyword">static</span>::$app[$name];
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x770B;&#x5230;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x5229;&#x7528;&#x4E86;$app&#x4E5F;&#x5C31;&#x662F;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x521B;&#x5EFA;&#x4E86;&#x201C;router&#x201D;  ( <a href="GLOSSARY.html#first-note" class="glossary-term" title="&#x5DE5;&#x5382;&#x521B;&#x9020;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6709;&#x5F88;&#x591A;&#x65B9;&#x6CD5;&#xFF1A;">First Note</a> )&#xFF0C;&#x521B;&#x5EFA;&#x6210;&#x529F;&#x540E;&#x653E;&#x5165;$resolvedInstance&#x4F5C;&#x4E3A;&#x7F13;&#x5B58;&#xFF0C;&#x4EE5;&#x4FBF;&#x4EE5;&#x540E;&#x5FEB;&#x901F;&#x52A0;&#x8F7D;&#x3002;
 &#x2003;&#x2003;&#x597D;&#x4E86;&#xFF0C;Facade&#x7684;&#x539F;&#x7406;&#x5230;&#x8FD9;&#x91CC;&#x5C31;&#x8BB2;&#x5B8C;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x5230;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x6709;&#x4E2A;&#x7591;&#x60D1;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x4EE3;&#x7801;&#x4E2D;&#x5199;Route&#x5C31;&#x53EF;&#x4EE5;&#x8C03;&#x7528;Illuminate\Support\Facades\Route&#x5462;&#xFF1F;&#x8FD9;&#x4E2A;&#x5C31;&#x662F;&#x522B;&#x540D;&#x7684;&#x7528;&#x9014;&#x4E86;&#xFF0C;&#x5F88;&#x591A;&#x95E8;&#x9762;&#x90FD;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x522B;&#x540D;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5C31;&#x4E0D;&#x5FC5;&#x5728;&#x4EE3;&#x7801;&#x91CC;&#x9762;&#x5199;use Illuminate\Support\Facades\Route&#xFF0C;&#x800C;&#x662F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x7528;Route&#x4E86;&#x3002;</p>
 <h1 id="&#x522B;&#x540D;aliases">&#x522B;&#x540D;Aliases</h1>
 <p>&#x2003;&#x2003;&#x4E3A;&#x4EC0;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;laravel&#x4E2D;&#x5168;&#x5C40;&#x7528;Route&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x4F7F;&#x7528;use Illuminate\Support\Facades\Route?&#x5176;&#x5B9E;&#x5965;&#x79D8;&#x5728;&#x4E8E;&#x4E00;&#x4E2A;PHP&#x51FD;&#x6570;&#xFF1A;<a href="http://www.php.net/manual/zh/function.class-alias.php" target="_blank">class_alias</a>&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x4E3A;&#x4EFB;&#x4F55;&#x7C7B;&#x521B;&#x5EFA;&#x522B;&#x540D;&#x3002;laravel&#x5728;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x4E3A;&#x5404;&#x4E2A;&#x95E8;&#x9762;&#x7C7B;&#x8C03;&#x7528;&#x4E86;class_alias&#x51FD;&#x6570;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x5FC5;&#x76F4;&#x63A5;&#x7528;&#x7C7B;&#x540D;&#xFF0C;&#x76F4;&#x63A5;&#x7528;&#x522B;&#x540D;&#x5373;&#x53EF;&#x3002;&#x5728;config&#x6587;&#x4EF6;&#x5939;&#x7684;app&#x6587;&#x4EF6;&#x91CC;&#x9762;&#x5B58;&#x653E;&#x7740;&#x95E8;&#x9762;&#x4E0E;&#x7C7B;&#x540D;&#x7684;&#x6620;&#x5C04;&#xFF1A;</p>
-<pre><code>```php
-&apos;aliases&apos; =&gt; [
+<pre><code class="lang-php"><span class="hljs-string">&apos;aliases&apos;</span> =&gt; [
 
-    &apos;App&apos; =&gt; Illuminate\Support\Facades\App::class,
-    &apos;Artisan&apos; =&gt; Illuminate\Support\Facades\Artisan::class,
-    &apos;Auth&apos; =&gt; Illuminate\Support\Facades\Auth::class,
+    <span class="hljs-string">&apos;App&apos;</span> =&gt; Illuminate\Support\Facades\App::class,
+    <span class="hljs-string">&apos;Artisan&apos;</span> =&gt; Illuminate\Support\Facades\Artisan::class,
+    <span class="hljs-string">&apos;Auth&apos;</span> =&gt; Illuminate\Support\Facades\Auth::class,
     ...
     ]
-
-```
-</code></pre><p>&#x2003;&#x2003;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;laravel&#x662F;&#x5982;&#x4F55;&#x4E3A;&#x95E8;&#x9762;&#x7C7B;&#x521B;&#x5EFA;&#x522B;&#x540D;&#x7684;&#x3002;</p>
+</code></pre>
+<p>&#x2003;&#x2003;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;laravel&#x662F;&#x5982;&#x4F55;&#x4E3A;&#x95E8;&#x9762;&#x7C7B;&#x521B;&#x5EFA;&#x522B;&#x540D;&#x7684;&#x3002;</p>
 <h2 id="&#x542F;&#x52A8;&#x522B;&#x540D;aliases&#x670D;&#x52A1;">&#x542F;&#x52A8;&#x522B;&#x540D;Aliases&#x670D;&#x52A1;</h2>
 <p>&#x2003;&#x2003;&#x8BF4;&#x5230;laravel&#x7684;&#x542F;&#x52A8;&#xFF0C;&#x6211;&#x4EEC;&#x79BB;&#x4E0D;&#x5F00;index.php&#xFF1A;</p>
-<pre><code>```php
-require __DIR__.&apos;/../bootstrap/autoload.php&apos;;
+<pre><code class="lang-php"><span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">&apos;/../bootstrap/autoload.php&apos;</span>;
 
-$app = require_once __DIR__.&apos;/../bootstrap/app.php&apos;;
+$app = <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">&apos;/../bootstrap/app.php&apos;</span>;
 
 $kernel = $app-&gt;make(Illuminate\Contracts\Http\Kernel::class);
 
@@ -1027,61 +1021,57 @@ $response = $kernel-&gt;handle(
 $request = Illuminate\Http\Request::capture()
 );
 ...
-```
-</code></pre><p>&#x2003;&#x2003;&#x7B2C;&#x4E00;&#x53E5;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x524D;&#x9762;&#x535A;&#x5BA2;&#x8BF4;&#x7684;composer&#x7684;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x7B2C;&#x4E8C;&#x53E5;&#x83B7;&#x53D6;laravel&#x6838;&#x5FC3;&#x7684;Ioc&#x5BB9;&#x5668;&#xFF0C;&#x7B2C;&#x4E09;&#x53E5;&#x201C;&#x5236;&#x9020;&#x201D;&#x51FA;Http&#x8BF7;&#x6C42;&#x7684;&#x5185;&#x6838;&#xFF0C;&#x7B2C;&#x56DB;&#x53E5;&#x662F;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x7684;&#x5173;&#x952E;&#xFF0C;&#x8FD9;&#x53E5;&#x7275;&#x626F;&#x5F88;&#x5927;&#xFF0C;laravel&#x91CC;&#x9762;&#x6240;&#x6709;&#x529F;&#x80FD;&#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;&#x52A0;&#x8F7D;&#xFF0C;&#x4E43;&#x81F3;Http&#x8BF7;&#x6C42;&#x7684;&#x6784;&#x9020;&#x4E0E;&#x4F20;&#x9012;&#x90FD;&#x662F;&#x8FD9;&#x4E00;&#x53E5;&#x7684;&#x529F;&#x52B3;&#x3002;</p>
-<pre><code>```php
-$request = Illuminate\Http\Request::capture()
-```
-</code></pre><p>&#x2003;&#x2003;&#x8FD9;&#x53E5;&#x662F;laravel&#x901A;&#x8FC7;&#x5168;&#x5C40;$_SERVER&#x6570;&#x7EC4;&#x6784;&#x9020;&#x4E00;&#x4E2A;Http&#x8BF7;&#x6C42;&#x7684;&#x8BED;&#x53E5;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x4F1A;&#x8C03;&#x7528;Http&#x7684;&#x5185;&#x6838;&#x51FD;&#x6570;handle&#xFF1A;</p>
-<pre><code>```php
-    public function handle($request)
-    {
-        try {
+</code></pre>
+<p>&#x2003;&#x2003;&#x7B2C;&#x4E00;&#x53E5;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x524D;&#x9762;&#x535A;&#x5BA2;&#x8BF4;&#x7684;composer&#x7684;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x7B2C;&#x4E8C;&#x53E5;&#x83B7;&#x53D6;laravel&#x6838;&#x5FC3;&#x7684;Ioc&#x5BB9;&#x5668;&#xFF0C;&#x7B2C;&#x4E09;&#x53E5;&#x201C;&#x5236;&#x9020;&#x201D;&#x51FA;Http&#x8BF7;&#x6C42;&#x7684;&#x5185;&#x6838;&#xFF0C;&#x7B2C;&#x56DB;&#x53E5;&#x662F;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x7684;&#x5173;&#x952E;&#xFF0C;&#x8FD9;&#x53E5;&#x7275;&#x626F;&#x5F88;&#x5927;&#xFF0C;laravel&#x91CC;&#x9762;&#x6240;&#x6709;&#x529F;&#x80FD;&#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;&#x52A0;&#x8F7D;&#xFF0C;&#x4E43;&#x81F3;Http&#x8BF7;&#x6C42;&#x7684;&#x6784;&#x9020;&#x4E0E;&#x4F20;&#x9012;&#x90FD;&#x662F;&#x8FD9;&#x4E00;&#x53E5;&#x7684;&#x529F;&#x52B3;&#x3002;</p>
+<pre><code class="lang-php">$request = Illuminate\Http\Request::capture()
+</code></pre>
+<p>&#x2003;&#x2003;&#x8FD9;&#x53E5;&#x662F;laravel&#x901A;&#x8FC7;&#x5168;&#x5C40;$_SERVER&#x6570;&#x7EC4;&#x6784;&#x9020;&#x4E00;&#x4E2A;Http&#x8BF7;&#x6C42;&#x7684;&#x8BED;&#x53E5;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x4F1A;&#x8C03;&#x7528;Http&#x7684;&#x5185;&#x6838;&#x51FD;&#x6570;handle&#xFF1A;</p>
+<pre><code class="lang-php">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handle</span><span class="hljs-params">($request)</span>
+    </span>{
+        <span class="hljs-keyword">try</span> {
             $request-&gt;enableHttpMethodParameterOverride();
 
             $response = $this-&gt;sendRequestThroughRouter($request);
-        } catch (Exception $e) {
+        } <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $e) {
             $this-&gt;reportException($e);
 
             $response = $this-&gt;renderException($request, $e);
-        } catch (Throwable $e) {
-            $this-&gt;reportException($e = new FatalThrowableError($e));
+        } <span class="hljs-keyword">catch</span> (Throwable $e) {
+            $this-&gt;reportException($e = <span class="hljs-keyword">new</span> FatalThrowableError($e));
 
             $response = $this-&gt;renderException($request, $e);
         }
 
-        event(new Events\RequestHandled($request, $response));
+        event(<span class="hljs-keyword">new</span> Events\RequestHandled($request, $response));
 
-        return $response;
+        <span class="hljs-keyword">return</span> $response;
     }
-```
-</code></pre><p>&#x2003;&#x2003;&#x5728;handle&#x51FD;&#x6570;&#x65B9;&#x6CD5;&#x4E2D;enableHttpMethodParameterOverride&#x51FD;&#x6570;&#x662F;&#x5141;&#x8BB8;&#x5728;&#x8868;&#x5355;&#x4E2D;&#x4F7F;&#x7528;delete&#x3001;put&#x7B49;&#x7C7B;&#x578B;&#x7684;&#x8BF7;&#x6C42;&#x3002;&#x6211;&#x4EEC;&#x63A5;&#x7740;&#x770B;sendRequestThroughRouter&#xFF1A;</p>
-<pre><code>```php
-    protected function sendRequestThroughRouter($request)
-    {
-        $this-&gt;app-&gt;instance(&apos;request&apos;, $request);
+</code></pre>
+<p>&#x2003;&#x2003;&#x5728;handle&#x51FD;&#x6570;&#x65B9;&#x6CD5;&#x4E2D;enableHttpMethodParameterOverride&#x51FD;&#x6570;&#x662F;&#x5141;&#x8BB8;&#x5728;&#x8868;&#x5355;&#x4E2D;&#x4F7F;&#x7528;delete&#x3001;put&#x7B49;&#x7C7B;&#x578B;&#x7684;&#x8BF7;&#x6C42;&#x3002;&#x6211;&#x4EEC;&#x63A5;&#x7740;&#x770B;sendRequestThroughRouter&#xFF1A;</p>
+<pre><code class="lang-php">    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sendRequestThroughRouter</span><span class="hljs-params">($request)</span>
+    </span>{
+        $this-&gt;app-&gt;instance(<span class="hljs-string">&apos;request&apos;</span>, $request);
 
-        Facade::clearResolvedInstance(&apos;request&apos;);
+        Facade::clearResolvedInstance(<span class="hljs-string">&apos;request&apos;</span>);
 
         $this-&gt;bootstrap();
 
-        return (new Pipeline($this-&gt;app))
+        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">new</span> Pipeline($this-&gt;app))
                     -&gt;send($request)
                     -&gt;through($this-&gt;app-&gt;shouldSkipMiddleware() ? [] : 
-                              $this-&gt;middleware)
+                                $this-&gt;middleware)
                     -&gt;then($this-&gt;dispatchToRouter());
     }
-```
-</code></pre><p>&#x2003;&#x2003;&#x524D;&#x4E24;&#x53E5;&#x662F;&#x5728;laravel&#x7684;Ioc&#x5BB9;&#x5668;&#x8BBE;&#x7F6E;request&#x8BF7;&#x6C42;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#xFF0C;Facade&#x4E2D;&#x6E05;&#x695A;request&#x7684;&#x7F13;&#x5B58;&#x5B9E;&#x4F8B;&#x3002;bootstrap&#xFF1A;</p>
-<pre><code>```php
-    public function bootstrap()
-    {
-        if (! $this-&gt;app-&gt;hasBeenBootstrapped()) {
+</code></pre>
+<p>&#x2003;&#x2003;&#x524D;&#x4E24;&#x53E5;&#x662F;&#x5728;laravel&#x7684;Ioc&#x5BB9;&#x5668;&#x8BBE;&#x7F6E;request&#x8BF7;&#x6C42;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#xFF0C;Facade&#x4E2D;&#x6E05;&#x695A;request&#x7684;&#x7F13;&#x5B58;&#x5B9E;&#x4F8B;&#x3002;bootstrap&#xFF1A;</p>
+<pre><code class="lang-php">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bootstrap</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (! $this-&gt;app-&gt;hasBeenBootstrapped()) {
             $this-&gt;app-&gt;bootstrapWith($this-&gt;bootstrappers());
         }
     }
 
-    protected $bootstrappers = [
+    <span class="hljs-keyword">protected</span> $bootstrappers = [
         \Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables::class,
         \Illuminate\Foundation\Bootstrap\LoadConfiguration::class,
         \Illuminate\Foundation\Bootstrap\HandleExceptions::class,
@@ -1089,42 +1079,39 @@ $request = Illuminate\Http\Request::capture()
         \Illuminate\Foundation\Bootstrap\RegisterProviders::class,
         \Illuminate\Foundation\Bootstrap\BootProviders::class,
 ];
-```
-</code></pre><p>&#x2003;&#x2003;$bootstrappers&#x662F;Http&#x5185;&#x6838;&#x91CC;&#x4E13;&#x95E8;&#x7528;&#x4E8E;&#x542F;&#x52A8;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;bootstrap&#x51FD;&#x6570;&#x4E2D;&#x8C03;&#x7528;Ioc&#x5BB9;&#x5668;&#x7684;bootstrapWith&#x51FD;&#x6570;&#x6765;&#x521B;&#x5EFA;&#x8FD9;&#x4E9B;&#x7EC4;&#x4EF6;&#x5E76;&#x5229;&#x7528;&#x7EC4;&#x4EF6;&#x8FDB;&#x884C;&#x542F;&#x52A8;&#x670D;&#x52A1;&#x3002;app-&gt;bootstrapWith&#xFF1A;</p>
-<pre><code>```php
-    public function bootstrapWith(array $bootstrappers)
-    {
-        $this-&gt;hasBeenBootstrapped = true;
+</code></pre>
+<p>&#x2003;&#x2003;$bootstrappers&#x662F;Http&#x5185;&#x6838;&#x91CC;&#x4E13;&#x95E8;&#x7528;&#x4E8E;&#x542F;&#x52A8;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;bootstrap&#x51FD;&#x6570;&#x4E2D;&#x8C03;&#x7528;Ioc&#x5BB9;&#x5668;&#x7684;bootstrapWith&#x51FD;&#x6570;&#x6765;&#x521B;&#x5EFA;&#x8FD9;&#x4E9B;&#x7EC4;&#x4EF6;&#x5E76;&#x5229;&#x7528;&#x7EC4;&#x4EF6;&#x8FDB;&#x884C;&#x542F;&#x52A8;&#x670D;&#x52A1;&#x3002;app-&gt;bootstrapWith&#xFF1A;</p>
+<pre><code class="lang-php">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bootstrapWith</span><span class="hljs-params">(array $bootstrappers)</span>
+    </span>{
+        $this-&gt;hasBeenBootstrapped = <span class="hljs-keyword">true</span>;
 
-        foreach ($bootstrappers as $bootstrapper) {
-            $this[&apos;events&apos;]-&gt;fire(&apos;bootstrapping: &apos;.$bootstrapper, [$this]);
+        <span class="hljs-keyword">foreach</span> ($bootstrappers <span class="hljs-keyword">as</span> $bootstrapper) {
+            $this[<span class="hljs-string">&apos;events&apos;</span>]-&gt;fire(<span class="hljs-string">&apos;bootstrapping: &apos;</span>.$bootstrapper, [$this]);
 
             $this-&gt;make($bootstrapper)-&gt;bootstrap($this);
 
-            $this[&apos;events&apos;]-&gt;fire(&apos;bootstrapped: &apos;.$bootstrapper, [$this]);
+            $this[<span class="hljs-string">&apos;events&apos;</span>]-&gt;fire(<span class="hljs-string">&apos;bootstrapped: &apos;</span>.$bootstrapper, [$this]);
         }
     }
-```
-</code></pre><p>&#x2003;&#x2003;&#x53EF;&#x4EE5;&#x770B;&#x5230;bootstrapWith&#x51FD;&#x6570;&#x4E5F;&#x5C31;&#x662F;&#x5229;&#x7528;Ioc&#x5BB9;&#x5668;&#x521B;&#x5EFA;&#x5404;&#x4E2A;&#x542F;&#x52A8;&#x670D;&#x52A1;&#x7684;&#x5B9E;&#x4F8B;&#x540E;&#xFF0C;&#x56DE;&#x8C03;&#x542F;&#x52A8;&#x81EA;&#x5DF1;&#x7684;&#x51FD;&#x6570;bootstrap&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EA;&#x770B;&#x6211;&#x4EEC;Facade&#x7684;&#x542F;&#x52A8;&#x7EC4;&#x4EF6;</p>
-<pre><code>```php
-\Illuminate\Foundation\Bootstrap\RegisterFacades::class
-```
-</code></pre><p>RegisterFacades&#x7684;bootstrap&#x51FD;&#x6570;&#xFF1A;</p>
-<pre><code>```php
-class RegisterFacades
-{
-    public function bootstrap(Application $app)
-    {
+</code></pre>
+<p>&#x2003;&#x2003;&#x53EF;&#x4EE5;&#x770B;&#x5230;bootstrapWith&#x51FD;&#x6570;&#x4E5F;&#x5C31;&#x662F;&#x5229;&#x7528;Ioc&#x5BB9;&#x5668;&#x521B;&#x5EFA;&#x5404;&#x4E2A;&#x542F;&#x52A8;&#x670D;&#x52A1;&#x7684;&#x5B9E;&#x4F8B;&#x540E;&#xFF0C;&#x56DE;&#x8C03;&#x542F;&#x52A8;&#x81EA;&#x5DF1;&#x7684;&#x51FD;&#x6570;bootstrap&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EA;&#x770B;&#x6211;&#x4EEC;Facade&#x7684;&#x542F;&#x52A8;&#x7EC4;&#x4EF6;</p>
+<pre><code class="lang-php">\Illuminate\Foundation\Bootstrap\RegisterFacades::class
+</code></pre>
+<p>RegisterFacades&#x7684;bootstrap&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RegisterFacades</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bootstrap</span><span class="hljs-params">(Application $app)</span>
+    </span>{
         Facade::clearResolvedInstances();
 
         Facade::setFacadeApplication($app);
 
-        AliasLoader::getInstance($app-&gt;make(&apos;config&apos;)-&gt;get(&apos;app.aliases&apos;, []))
-                     -&gt;register();
+        AliasLoader::getInstance($app-&gt;make(<span class="hljs-string">&apos;config&apos;</span>)-&gt;get(<span class="hljs-string">&apos;app.aliases&apos;</span>, []))
+                        -&gt;register();
     }
 }
-```
-</code></pre><p>&#x2003;&#x2003;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#xFF0C;bootstrap&#x505A;&#x4E86;&#x4E00;&#x4E0B;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;</p>
+</code></pre>
+<p>&#x2003;&#x2003;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#xFF0C;bootstrap&#x505A;&#x4E86;&#x4E00;&#x4E0B;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;</p>
 <blockquote>
 <ol>
 <li>&#x6E05;&#x9664;&#x4E86;Facade&#x4E2D;&#x7684;&#x7F13;&#x5B58;</li>
@@ -1134,164 +1121,154 @@ class RegisterFacades
 <li>&#x8C03;&#x7528;AliasLoader-&gt;register()</li>
 </ol>
 </blockquote>
-<pre><code>```php
-    public function register()
-    {
-        if (! $this-&gt;registered) {
+<pre><code class="lang-php">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">register</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (! $this-&gt;registered) {
             $this-&gt;prependToLoaderStack();
 
-            $this-&gt;registered = true;
+            $this-&gt;registered = <span class="hljs-keyword">true</span>;
         }
     }
 
-    protected function prependToLoaderStack()
-    {
-        spl_autoload_register([$this, &apos;load&apos;], true, true);
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">prependToLoaderStack</span><span class="hljs-params">()</span>
+    </span>{
+        spl_autoload_register([$this, <span class="hljs-string">&apos;load&apos;</span>], <span class="hljs-keyword">true</span>, <span class="hljs-keyword">true</span>);
     }
-```
-</code></pre><p>&#x2003;&#x2003;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x522B;&#x540D;&#x670D;&#x52A1;&#x7684;&#x542F;&#x52A8;&#x5173;&#x952E;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;spl_autoload_register&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x5F88;&#x719F;&#x6089;&#x4E86;&#xFF0C;&#x5728;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x4E2D;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x89E3;&#x6790;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x7528;&#x4E8E;&#x89E3;&#x6790;&#x522B;&#x540D;&#x7684;&#x771F;&#x6B63;&#x7C7B;&#x540D;&#x3002;</p>
+</code></pre>
+<p>&#x2003;&#x2003;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x522B;&#x540D;&#x670D;&#x52A1;&#x7684;&#x542F;&#x52A8;&#x5173;&#x952E;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;spl_autoload_register&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x5F88;&#x719F;&#x6089;&#x4E86;&#xFF0C;&#x5728;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x4E2D;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x89E3;&#x6790;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x7528;&#x4E8E;&#x89E3;&#x6790;&#x522B;&#x540D;&#x7684;&#x771F;&#x6B63;&#x7C7B;&#x540D;&#x3002;</p>
 <h2 id="&#x522B;&#x540D;aliases&#x670D;&#x52A1;">&#x522B;&#x540D;Aliases&#x670D;&#x52A1;</h2>
 <p>&#x2003;&#x2003;&#x6211;&#x4EEC;&#x9996;&#x5148;&#x6765;&#x770B;&#x770B;&#x88AB;&#x6CE8;&#x518C;&#x5230;spl_autoload_register&#x7684;&#x51FD;&#x6570;&#xFF0C;load&#xFF1A;</p>
-<pre><code>```php
-    public function load($alias)
-    {
-        if (static::$facadeNamespace &amp;&amp; strpos($alias, 
-                                        static::$facadeNamespace) === 0) {
+<pre><code class="lang-php">    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">load</span><span class="hljs-params">($alias)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">static</span>::$facadeNamespace &amp;&amp; strpos($alias, 
+                                        <span class="hljs-keyword">static</span>::$facadeNamespace) === <span class="hljs-number">0</span>) {
             $this-&gt;loadFacade($alias);
 
-            return true;
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
         }
 
-        if (isset($this-&gt;aliases[$alias])) {
-            return class_alias($this-&gt;aliases[$alias], $alias);
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($this-&gt;aliases[$alias])) {
+            <span class="hljs-keyword">return</span> class_alias($this-&gt;aliases[$alias], $alias);
         }
     }
-```
-</code></pre><p>&#x2003;&#x2003;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x4E0B;&#x9762;&#x5F88;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x5C31;&#x662F;class_alias&#x5229;&#x7528;&#x522B;&#x540D;&#x6620;&#x5C04;&#x6570;&#x7EC4;&#x5C06;&#x522B;&#x540D;&#x6620;&#x5C04;&#x5230;&#x771F;&#x6B63;&#x7684;&#x95E8;&#x9762;&#x7C7B;&#x4E2D;&#x53BB;&#xFF0C;&#x4F46;&#x662F;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x662F;&#x4EC0;&#x4E48;&#x5462;?&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x8FD9;&#x4E2A;&#x662F;laravel5.4&#x7248;&#x672C;&#x65B0;&#x51FA;&#x7684;&#x529F;&#x80FD;&#x53EB;&#x505A;&#x5B9E;&#x65F6;&#x95E8;&#x9762;&#x670D;&#x52A1;&#x3002;</p>
+</code></pre>
+<p>&#x2003;&#x2003;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x4E0B;&#x9762;&#x5F88;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x5C31;&#x662F;class_alias&#x5229;&#x7528;&#x522B;&#x540D;&#x6620;&#x5C04;&#x6570;&#x7EC4;&#x5C06;&#x522B;&#x540D;&#x6620;&#x5C04;&#x5230;&#x771F;&#x6B63;&#x7684;&#x95E8;&#x9762;&#x7C7B;&#x4E2D;&#x53BB;&#xFF0C;&#x4F46;&#x662F;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x662F;&#x4EC0;&#x4E48;&#x5462;?&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x8FD9;&#x4E2A;&#x662F;laravel5.4&#x7248;&#x672C;&#x65B0;&#x51FA;&#x7684;&#x529F;&#x80FD;&#x53EB;&#x505A;&#x5B9E;&#x65F6;&#x95E8;&#x9762;&#x670D;&#x52A1;&#x3002;</p>
 <h2 id="&#x5B9E;&#x65F6;&#x95E8;&#x9762;&#x670D;&#x52A1;">&#x5B9E;&#x65F6;&#x95E8;&#x9762;&#x670D;&#x52A1;</h2>
 <p>&#x2003;&#x2003;&#x5176;&#x5B9E;&#x95E8;&#x9762;&#x529F;&#x80FD;&#x5DF2;&#x7ECF;&#x5F88;&#x7B80;&#x5355;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7C7B;&#x7EE7;&#x627F;Facade&#x5373;&#x53EF;&#xFF0C;&#x4F46;&#x662F;laravel5.4&#x6253;&#x7B97;&#x66F4;&#x8FD1;&#x4E00;&#x6B65;&#x2014;&#x2014;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x95E8;&#x9762;&#x5B50;&#x7C7B;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x5B9E;&#x65F6;&#x95E8;&#x9762;&#x3002;
 &#x2003;&#x2003;&#x5B9E;&#x65F6;&#x95E8;&#x9762;&#x600E;&#x4E48;&#x7528;&#xFF1F;&#x770B;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
-<pre><code>```php
-namespace App\Services;
+<pre><code class="lang-php"><span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Services</span>;
 
-class PaymentGateway
-{
-    protected $tax;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PaymentGateway</span>
+</span>{
+    <span class="hljs-keyword">protected</span> $tax;
 
-    public function __construct(TaxCalculator $tax)
-    {
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(TaxCalculator $tax)</span>
+    </span>{
         $this-&gt;tax = $tax;
     }
 }
-```
-</code></pre><p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x7C7B;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x4E3A;&#x8FD9;&#x4E2A;&#x7C7B;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x95E8;&#x9762;&#xFF0C;&#x5728;laravel5.4&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x505A;&#xFF1A;</p>
-<pre><code>```php
-use Facades\ {
-    App\Services\PaymentGateway
+</code></pre>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x7C7B;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x4E3A;&#x8FD9;&#x4E2A;&#x7C7B;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x95E8;&#x9762;&#xFF0C;&#x5728;laravel5.4&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x505A;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Facades</span>\ {
+    <span class="hljs-title">App</span>\<span class="hljs-title">Services</span>\<span class="hljs-title">PaymentGateway</span>
 };
 
-Route::get(&apos;/pay/{amount}&apos;, function ($amount) {
+Route::get(<span class="hljs-string">&apos;/pay/{amount}&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($amount)</span> </span>{
     PaymentGateway::pay($amount);
 });
-```
-</code></pre><p>&#x2003;&#x2003;&#x5F53;&#x7136;&#x5982;&#x679C;&#x4F60;&#x613F;&#x610F;&#xFF0C;&#x4F60;&#x8FD8;&#x53EF;&#x4EE5;&#x5728;alias&#x6570;&#x7EC4;&#x4E3A;&#x95E8;&#x9762;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x522B;&#x540D;&#x6620;&#x5C04;&quot;PaymentGateway&quot; =&gt; &quot;use Facades\App\Services\PaymentGateway&quot;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4E0D;&#x7528;&#x5199;&#x8FD9;&#x4E48;&#x957F;&#x7684;&#x540D;&#x5B57;&#x4E86;&#x3002;
+</code></pre>
+<p>&#x2003;&#x2003;&#x5F53;&#x7136;&#x5982;&#x679C;&#x4F60;&#x613F;&#x610F;&#xFF0C;&#x4F60;&#x8FD8;&#x53EF;&#x4EE5;&#x5728;alias&#x6570;&#x7EC4;&#x4E3A;&#x95E8;&#x9762;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x522B;&#x540D;&#x6620;&#x5C04;&quot;PaymentGateway&quot; =&gt; &quot;use Facades\App\Services\PaymentGateway&quot;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4E0D;&#x7528;&#x5199;&#x8FD9;&#x4E48;&#x957F;&#x7684;&#x540D;&#x5B57;&#x4E86;&#x3002;
 &#x2003;&#x2003;&#x90A3;&#x4E48;&#x8FD9;&#x4E48;&#x505A;&#x7684;&#x539F;&#x7406;&#x662F;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;&#x6211;&#x4EEC;&#x63A5;&#x7740;&#x770B;&#x6E90;&#x7801;&#xFF1A;</p>
-<pre><code>```php
-protected static $facadeNamespace = &apos;Facades\\&apos;;
-if (static::$facadeNamespace &amp;&amp; strpos($alias, static::$facadeNamespace) === 0) {
-   $this-&gt;loadFacade($alias);
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> $facadeNamespace = <span class="hljs-string">&apos;Facades\\&apos;</span>;
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">static</span>::$facadeNamespace &amp;&amp; strpos($alias, <span class="hljs-keyword">static</span>::$facadeNamespace) === <span class="hljs-number">0</span>) {
+    $this-&gt;loadFacade($alias);
 
-   return true;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
 }
-```
-</code></pre><p>&#x2003;&#x2003;&#x5982;&#x679C;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x662F;&#x4EE5;Facades\&#x5F00;&#x5934;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x8C03;&#x7528;&#x5B9E;&#x65F6;&#x95E8;&#x9762;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x8C03;&#x7528;loadFacade&#x51FD;&#x6570;&#xFF1A;</p>
-<pre><code>```php
-protected function loadFacade($alias)
-{
-    tap($this-&gt;ensureFacadeExists($alias), function ($path) {
-        require $path;
+</code></pre>
+<p>&#x2003;&#x2003;&#x5982;&#x679C;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x662F;&#x4EE5;Facades\&#x5F00;&#x5934;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x8C03;&#x7528;&#x5B9E;&#x65F6;&#x95E8;&#x9762;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x8C03;&#x7528;loadFacade&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadFacade</span><span class="hljs-params">($alias)</span>
+</span>{
+    tap($this-&gt;ensureFacadeExists($alias), <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($path)</span> </span>{
+        <span class="hljs-keyword">require</span> $path;
     });
 }
-```
-</code></pre><p>&#x2003;&#x2003;<a href="https://segmentfault.com/a/1190000008447747" target="_blank">tap</a>&#x662F;laravel&#x7684;&#x5168;&#x5C40;&#x5E2E;&#x52A9;&#x51FD;&#x6570;&#xFF0C;ensureFacadeExists&#x51FD;&#x6570;&#x8D1F;&#x8D23;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x95E8;&#x9762;&#x7C7B;&#xFF0C;loadFacade&#x8D1F;&#x8D23;&#x52A0;&#x8F7D;&#x95E8;&#x9762;&#x7C7B;&#xFF1A;</p>
-<pre><code>   ```php
-    protected function ensureFacadeExists($alias)
-    {
-        if (file_exists($path = storage_path(&apos;framework/cache/facade-&apos;.sha1($alias).&apos;.php&apos;))) {
-            return $path;
-        }
-
-        file_put_contents($path, $this-&gt;formatFacadeStub(
-            $alias, file_get_contents(__DIR__.&apos;/stubs/facade.stub&apos;)
-        ));
-
-        return $path;
+</code></pre>
+<p>&#x2003;&#x2003;<a href="https://segmentfault.com/a/1190000008447747" target="_blank">tap</a>&#x662F;laravel&#x7684;&#x5168;&#x5C40;&#x5E2E;&#x52A9;&#x51FD;&#x6570;&#xFF0C;ensureFacadeExists&#x51FD;&#x6570;&#x8D1F;&#x8D23;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x95E8;&#x9762;&#x7C7B;&#xFF0C;loadFacade&#x8D1F;&#x8D23;&#x52A0;&#x8F7D;&#x95E8;&#x9762;&#x7C7B;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ensureFacadeExists</span><span class="hljs-params">($alias)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (file_exists($path = storage_path(<span class="hljs-string">&apos;framework/cache/facade-&apos;</span>.sha1($alias).<span class="hljs-string">&apos;.php&apos;</span>))) {
+        <span class="hljs-keyword">return</span> $path;
     }
-    ```
-</code></pre><p>&#x2003;&#x2003;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#xFF0C;laravel&#x6846;&#x67B6;&#x751F;&#x6210;&#x7684;&#x95E8;&#x9762;&#x7C7B;&#x4F1A;&#x653E;&#x5230;stroge/framework/cache/&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#xFF0C;&#x540D;&#x5B57;&#x4EE5;facade&#x5F00;&#x5934;&#xFF0C;&#x4EE5;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x54C8;&#x5E0C;&#x7ED3;&#x5C3E;&#x3002;&#x5982;&#x679C;&#x5B58;&#x5728;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5C31;&#x4F1A;&#x8FD4;&#x56DE;&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x8981;&#x5229;&#x7528;file_put_contents&#x751F;&#x6210;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;formatFacadeStub&#xFF1A;</p>
-<pre><code>    ```php
-    protected function formatFacadeStub($alias, $stub)
-    {
-        $replacements = [
-            str_replace(&apos;/&apos;, &apos;\\&apos;, dirname(str_replace(&apos;\\&apos;, &apos;/&apos;, $alias))),
-            class_basename($alias),
-            substr($alias, strlen(static::$facadeNamespace)),
-        ];
 
-        return str_replace(
-            [&apos;DummyNamespace&apos;, &apos;DummyClass&apos;, &apos;DummyTarget&apos;], $replacements, $stub
-        );
-    }
-```
-</code></pre><p>&#x7B80;&#x5355;&#x7684;&#x8BF4;&#xFF0C;&#x5BF9;&#x4E8E;Facades\App\Services\PaymentGateway&#xFF0C;$replacements&#x7B2C;&#x4E00;&#x9879;&#x662F;&#x95E8;&#x9762;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x5C06;Facades\App\Services\PaymentGateway&#x8F6C;&#x4E3A;Facades/App/Services/PaymentGateway&#xFF0C;&#x53D6;&#x524D;&#x9762;Facades/App/Services/&#xFF0C;&#x518D;&#x8F6C;&#x4E3A;&#x547D;&#x540D;&#x7A7A;&#x95F4;Facades\App\Services\&#xFF1B;&#x7B2C;&#x4E8C;&#x9879;&#x662F;&#x95E8;&#x9762;&#x7C7B;&#x540D;&#xFF0C;PaymentGateway&#xFF1B;&#x7B2C;&#x4E09;&#x9879;&#x662F;&#x95E8;&#x9762;&#x7C7B;&#x7684;&#x670D;&#x52A1;&#x5BF9;&#x8C61;&#xFF0C;App\Services\PaymentGateway&#xFF0C;&#x7528;&#x8FD9;&#x4E9B;&#x6765;&#x66FF;&#x6362;&#x95E8;&#x9762;&#x7684;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#xFF1A;</p>
-<pre><code>```php
-&lt;?php
+    file_put_contents($path, $this-&gt;formatFacadeStub(
+        $alias, file_get_contents(<span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">&apos;/stubs/facade.stub&apos;</span>)
+    ));
 
-namespace DummyNamespace;
+    <span class="hljs-keyword">return</span> $path;
+}
+</code></pre>
+<p>&#x2003;&#x2003;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#xFF0C;laravel&#x6846;&#x67B6;&#x751F;&#x6210;&#x7684;&#x95E8;&#x9762;&#x7C7B;&#x4F1A;&#x653E;&#x5230;stroge/framework/cache/&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#xFF0C;&#x540D;&#x5B57;&#x4EE5;facade&#x5F00;&#x5934;&#xFF0C;&#x4EE5;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x7684;&#x54C8;&#x5E0C;&#x7ED3;&#x5C3E;&#x3002;&#x5982;&#x679C;&#x5B58;&#x5728;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5C31;&#x4F1A;&#x8FD4;&#x56DE;&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x8981;&#x5229;&#x7528;file_put_contents&#x751F;&#x6210;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;formatFacadeStub&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatFacadeStub</span><span class="hljs-params">($alias, $stub)</span>
+</span>{
+    $replacements = [
+        str_replace(<span class="hljs-string">&apos;/&apos;</span>, <span class="hljs-string">&apos;\\&apos;</span>, dirname(str_replace(<span class="hljs-string">&apos;\\&apos;</span>, <span class="hljs-string">&apos;/&apos;</span>, $alias))),
+        class_basename($alias),
+        substr($alias, strlen(<span class="hljs-keyword">static</span>::$facadeNamespace)),
+    ];
 
-use Illuminate\Support\Facades\Facade;
+    <span class="hljs-keyword">return</span> str_replace(
+        [<span class="hljs-string">&apos;DummyNamespace&apos;</span>, <span class="hljs-string">&apos;DummyClass&apos;</span>, <span class="hljs-string">&apos;DummyTarget&apos;</span>], $replacements, $stub
+    );
+}
+</code></pre>
+<p>&#x7B80;&#x5355;&#x7684;&#x8BF4;&#xFF0C;&#x5BF9;&#x4E8E;Facades\App\Services\PaymentGateway&#xFF0C;$replacements&#x7B2C;&#x4E00;&#x9879;&#x662F;&#x95E8;&#x9762;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x5C06;Facades\App\Services\PaymentGateway&#x8F6C;&#x4E3A;Facades/App/Services/PaymentGateway&#xFF0C;&#x53D6;&#x524D;&#x9762;Facades/App/Services/&#xFF0C;&#x518D;&#x8F6C;&#x4E3A;&#x547D;&#x540D;&#x7A7A;&#x95F4;Facades\App\Services\&#xFF1B;&#x7B2C;&#x4E8C;&#x9879;&#x662F;&#x95E8;&#x9762;&#x7C7B;&#x540D;&#xFF0C;PaymentGateway&#xFF1B;&#x7B2C;&#x4E09;&#x9879;&#x662F;&#x95E8;&#x9762;&#x7C7B;&#x7684;&#x670D;&#x52A1;&#x5BF9;&#x8C61;&#xFF0C;App\Services\PaymentGateway&#xFF0C;&#x7528;&#x8FD9;&#x4E9B;&#x6765;&#x66FF;&#x6362;&#x95E8;&#x9762;&#x7684;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
 
-/**
- * @see \DummyTarget
- */
-class DummyClass extends Facade
-{
-    /**
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">DummyNamespace</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Support</span>\<span class="hljs-title">Facades</span>\<span class="hljs-title">Facade</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@see</span> \DummyTarget
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DummyClass</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Facade</span>
+</span>{
+    <span class="hljs-comment">/**
      * Get the registered name of the component.
      *
-     * @return string
-     */
-    protected static function getFacadeAccessor()
-    {
-        return &apos;DummyTarget&apos;;
+     * <span class="hljs-doctag">@return</span> string
+        */</span>
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFacadeAccessor</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;DummyTarget&apos;</span>;
     }
 }
-```
-</code></pre><p>&#x66FF;&#x6362;&#x540E;&#x7684;&#x6587;&#x4EF6;&#x662F;&#xFF1A;</p>
-<pre><code>```php
-&lt;?php
+</code></pre>
+<p>&#x66FF;&#x6362;&#x540E;&#x7684;&#x6587;&#x4EF6;&#x662F;&#xFF1A;</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
 
-namespace Facades\App\Services\;
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Facades</span>\<span class="hljs-title">App</span>\<span class="hljs-title">Services</span>\;
 
-use Illuminate\Support\Facades\Facade;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Support</span>\<span class="hljs-title">Facades</span>\<span class="hljs-title">Facade</span>;
 
-/**
- * @see \DummyTarget
- */
-class PaymentGateway extends Facade
-{
-    /**
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@see</span> \DummyTarget
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PaymentGateway</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Facade</span>
+</span>{
+    <span class="hljs-comment">/**
      * Get the registered name of the component.
      *
-     * @return string
-     */
-    protected static function getFacadeAccessor()
-    {
-        return &apos;App\Services\PaymentGateway&apos;;
+     * <span class="hljs-doctag">@return</span> string
+        */</span>
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFacadeAccessor</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;App\Services\PaymentGateway&apos;</span>;
     }
 }
-```
-</code></pre><p>&#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x7B80;&#x5355;&#xFF01;&#xFF01;&#xFF01;</p>
+</code></pre>
+<p>&#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x7B80;&#x5355;&#xFF01;&#xFF01;&#xFF01;</p>
 <h1 id="&#x7ED3;&#x8BED;">&#x7ED3;&#x8BED;</h1>
 <p>&#x2003;&#x2003;&#x95E8;&#x9762;&#x7684;&#x539F;&#x7406;&#x5C31;&#x662F;&#x8FD9;&#x4E9B;&#xFF0C;&#x76F8;&#x5BF9;&#x6765;&#x8BF4;&#x95E8;&#x9762;&#x670D;&#x52A1;&#x7684;&#x539F;&#x7406;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x548C;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x76F8;&#x4E92;&#x914D;&#x5408;&#x4F7F;&#x5F97;&#x4EE3;&#x7801;&#x66F4;&#x52A0;&#x7B80;&#x6D01;&#xFF0C;&#x5E0C;&#x671B;&#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x66F4;&#x597D;&#x7684;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x95E8;&#x9762;&#xFF01;</p>
 
@@ -1329,7 +1306,7 @@ class PaymentGateway extends Facade
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Laravel Facade——Facade 门面源码分析","level":"1.3.1","depth":2,"next":{"title":"Laravel Ioc 容器","level":"1.4","depth":1,"ref":"","articles":[{"title":"Laravel Container——IoC 服务容器","level":"1.4.1","depth":2,"path":"Laravel Container——IoC 服务容器.md","ref":"Laravel Container——IoC 服务容器.md","articles":[]},{"title":"Laravel Container——IoC 服务容器源码解析(服务器绑定)","level":"1.4.2","depth":2,"path":"Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md","ref":"Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md","articles":[]},{"title":"Laravel Container——IoC 服务容器源码解析(服务器解析)","level":"1.4.3","depth":2,"path":"Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md","ref":"Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md","articles":[]},{"title":"Laravel Container——服务容器的细节特性","level":"1.4.4","depth":2,"path":"Laravel Container——服务容器的细节特性.md","ref":"Laravel Container——服务容器的细节特性.md","articles":[]}]},"previous":{"title":"Laravel Facade 门面","level":"1.3","depth":1,"ref":"","articles":[{"title":"Laravel Facade——Facade 门面源码分析","level":"1.3.1","depth":2,"path":"Laravel Facade——Facade 门面源码分析.md","ref":"Laravel Facade——Facade 门面源码分析.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Laravel Facade——Facade 门面源码分析.md","mtime":"2019-01-15T10:29:00.314Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T12:52:47.793Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Laravel Facade——Facade 门面源码分析","level":"1.3.1","depth":2,"next":{"title":"Laravel Ioc 容器","level":"1.4","depth":1,"ref":"","articles":[{"title":"Laravel Container——IoC 服务容器","level":"1.4.1","depth":2,"path":"Laravel Container——IoC 服务容器.md","ref":"Laravel Container——IoC 服务容器.md","articles":[]},{"title":"Laravel Container——IoC 服务容器源码解析(服务器绑定)","level":"1.4.2","depth":2,"path":"Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md","ref":"Laravel Container——IoC 服务容器源码解析%28服务器绑定%29.md","articles":[]},{"title":"Laravel Container——IoC 服务容器源码解析(服务器解析)","level":"1.4.3","depth":2,"path":"Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md","ref":"Laravel Container——IoC 服务容器源码解析%28服务器解析%29.md","articles":[]},{"title":"Laravel Container——服务容器的细节特性","level":"1.4.4","depth":2,"path":"Laravel Container——服务容器的细节特性.md","ref":"Laravel Container——服务容器的细节特性.md","articles":[]}]},"previous":{"title":"Laravel Facade 门面","level":"1.3","depth":1,"ref":"","articles":[{"title":"Laravel Facade——Facade 门面源码分析","level":"1.3.1","depth":2,"path":"Laravel Facade——Facade 门面源码分析.md","ref":"Laravel Facade——Facade 门面源码分析.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Laravel Facade——Facade 门面源码分析.md","mtime":"2019-01-29T12:25:38.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-29T12:16:16.363Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -1337,6 +1314,10 @@ class PaymentGateway extends Facade
         
     <script src="gitbook/gitbook.js"></script>
     <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
     
         
         <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>

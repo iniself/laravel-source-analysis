@@ -1149,7 +1149,7 @@
 <p>&#x9759;&#x6001;&#x521D;&#x59CB;&#x5316;&#x53EA;&#x652F;&#x6301; PHP5.6 &#x4EE5;&#x4E0A;&#x7248;&#x672C;&#x5E76;&#x4E14;&#x4E0D;&#x652F;&#x6301; HHVM &#x865A;&#x62DF;&#x673A;&#x3002;&#x6211;&#x4EEC;&#x6DF1;&#x5165; <code>autoload_static.php</code> &#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x53D1;&#x73B0;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x9759;&#x6001;&#x521D;&#x59CB;&#x5316;&#x7684;&#x7C7B;&#xFF0C;&#x540D;&#x5B57;&#x53EB; <code>ComposerStaticInit832ea71bfb9a4128da8660baedaac82e</code>&#xFF0C;&#x4ECD;&#x7136;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x51B2;&#x7A81;&#x52A0;&#x4E86; hash &#x503C;&#x3002;&#x8FD9;&#x4E2A;&#x7C7B;&#x5F88;&#x7B80;&#x5355;&#xFF1A;</p>
 <pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
   <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ComposerStaticInit832ea71bfb9a4128da8660baedaac82e</span></span>{
-     <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> $files = <span class="hljs-keyword">array</span>(...);
+     <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> $files = <span class="hljs-keyword">array</span>(...);<span class="hljs-comment">//&#x5B9E;&#x9645;&#x6587;&#x4EF6;&#x4E2D;&#x6709;&#x771F;&#x5B9E;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x662F;&#x8868;&#x793A;&#x800C;&#x5DF2;</span>
      <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> $prefixLengthsPsr4 = <span class="hljs-keyword">array</span>(...);
      <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> $prefixDirsPsr4 = <span class="hljs-keyword">array</span>(...);
      <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> $prefixesPsr0 = <span class="hljs-keyword">array</span>(...);
@@ -1177,7 +1177,8 @@
 <p>&#x5173;&#x4E8E;&#x533F;&#x540D;&#x51FD;&#x6570;&#x7684;<a href="http://www.cnblogs.com/yjf512/p/4421289.html" target="_blank">&#x7ED1;&#x5B9A;&#x529F;&#x80FD;</a>&#x3002;</p>
 <p>&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x662F;&#x9876;&#x7EA7;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5173;&#x952E;&#x4E86;&#x3002;</p>
 <h4 id="&#x6700;&#x7B80;&#x5355;&#x7684;-classmap">&#x6700;&#x7B80;&#x5355;&#x7684; classMap:</h4>
-<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-php"><span class="hljs-comment">//&#x4F9D;&#x7136;&#x5728;autoload_static.php&#x6587;&#x4EF6;&#x4E2D;</span>
+<span class="hljs-meta">&lt;?php</span>
   <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> $classMap = <span class="hljs-keyword">array</span> (
       <span class="hljs-string">&apos;App\\Console\\Kernel&apos;</span>
               =&gt; <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/../..&apos;</span> . <span class="hljs-string">&apos;/app/Console/Kernel.php&apos;</span>,
@@ -1464,7 +1465,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"PHP Composer—— 初始化源码分析","level":"1.2.2","depth":2,"next":{"title":"PHP Composer-——-注册与运行源码分析","level":"1.2.3","depth":2,"path":"PHP Composer-——-注册与运行源码分析.md","ref":"PHP Composer-——-注册与运行源码分析.md","articles":[]},"previous":{"title":"PHP Composer——自动加载原理","level":"1.2.1","depth":2,"path":"PHP Composer——自动加载原理.md","ref":"PHP Composer——自动加载原理.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP Composer—— 初始化源码分析.md","mtime":"2019-01-15T12:47:22.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-15T12:52:47.793Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"PHP Composer—— 初始化源码分析","level":"1.2.2","depth":2,"next":{"title":"PHP Composer-——-注册与运行源码分析","level":"1.2.3","depth":2,"path":"PHP Composer-——-注册与运行源码分析.md","ref":"PHP Composer-——-注册与运行源码分析.md","articles":[]},"previous":{"title":"PHP Composer——自动加载原理","level":"1.2.1","depth":2,"path":"PHP Composer——自动加载原理.md","ref":"PHP Composer——自动加载原理.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PHP Composer—— 初始化源码分析.md","mtime":"2019-01-19T01:15:28.766Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-29T12:16:16.363Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -1472,6 +1473,10 @@
         
     <script src="gitbook/gitbook.js"></script>
     <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
     
         
         <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>

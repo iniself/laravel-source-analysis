@@ -30,8 +30,8 @@ $useStaticLoader = PHP_VERSION_ID >= 50600 &&
 if ($useStaticLoader) {
     require_once __DIR__ . '/autoload_static.php';
 
-    call_user_func(\Composer\Autoload\ComposerStaticInit
-    832ea71bfb9a4128da8660baedaac82e::getInitializer($loader));
+    call_user_func(\Composer\Autoload\ComposerStaticInit832ea71bfb9a4128da8660baedaac82e::getInitializer($loader));
+    //autoload_static.php整个文件的命名空间就是 Composer\Autoload; 所以\Composer\Autoload\ComposerStaticInit832ea71bfb9a4128da8660baedaac82e实际就是运行autoload_static.php中的ComposerStaticInit832ea71bfb9a4128da8660baedaac82e方法
 
 } else {
     $map = require __DIR__ . '/autoload_namespaces.php';
@@ -72,6 +72,7 @@ return $loader;
 现在我们开始引导类的第四部分：注册自动加载核心类对象。我们来看看核心类的register()函数：
 	
 ```php
+//ClassLoader.php
 public function register($prepend = false)
 {
     spl_autoload_register(array($this, 'loadClass'), true, $prepend);
@@ -124,6 +125,7 @@ return array(
 ## 加载全局函数
 
 ```php
+// /vendor/composer/autoload_real.php
 class ComposerAutoloaderInit832ea71bfb9a4128da8660baedaac82e{
     public static function getLoader(){
         ...
